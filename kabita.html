@@ -1,10 +1,489 @@
+
 <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AAYUSH नेपाली साहित्य | कविता संग्रह</title>
 
-<title>कविता संग्रह | आयुस नेपाली साहित्य</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+ font-family:'Noto Serif Devanagari',serif;
+ background:#f5f2eb;
+ color:#29251f;
+ line-height:1.9;
+}
+
+header{
+ background:linear-gradient(135deg,#172b4d,#176b62);
+ color:white;
+ text-align:center;
+ padding:35px 15px;
+}
+
+header h1{font-size:30px}
+header p{margin-top:8px;color:#e5eee9}
+
+nav{
+ background:#10243e;
+ padding:12px;
+ text-align:center;
+ color:white;
+ position:sticky;
+ top:0;
+ z-index:10;
+}
+
+.container{
+ max-width:1100px;
+ margin:25px auto;
+ padding:15px;
+}
+
+.intro{
+ background:white;
+ padding:22px;
+ border-radius:12px;
+ text-align:center;
+ box-shadow:0 3px 12px #0001;
+ margin-bottom:25px;
+}
+
+h2{
+ color:#176b62;
+ margin-bottom:12px;
+}
+
+.search{
+ width:100%;
+ padding:14px;
+ border:1px solid #ccc;
+ border-radius:9px;
+ font-size:16px;
+ margin:15px 0;
+ font-family:inherit;
+}
+
+.categories{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+ gap:13px;
+}
+
+.category{
+ background:white;
+ border:1px solid #e3dfd4;
+ border-radius:10px;
+ padding:17px;
+ cursor:pointer;
+ transition:.2s;
+ text-align:center;
+}
+
+.category:hover,.category.active{
+ background:#176b62;
+ color:white;
+ transform:translateY(-3px);
+}
+
+.category h3{font-size:17px}
+
+.poem-list{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:12px;
+ margin-top:20px;
+}
+
+.poem-item{
+ background:white;
+ padding:15px;
+ border-radius:9px;
+ cursor:pointer;
+ border-left:4px solid #176b62;
+}
+
+.poem-item:hover{background:#e8f3ee}
+
+.poem-box{
+ background:white;
+ margin-top:25px;
+ padding:25px;
+ border-radius:12px;
+ box-shadow:0 4px 15px #0001;
+ display:none;
+}
+
+.poem-box h2{text-align:center}
+
+.author{
+ text-align:center;
+ color:#777;
+ margin-bottom:20px;
+}
+
+.stanza{
+ text-align:center;
+ margin:22px 0;
+ font-size:17px;
+ white-space:pre-line;
+}
+
+.controls{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+ justify-content:center;
+ margin:20px 0;
+}
+
+button{
+ border:0;
+ background:#176b62;
+ color:white;
+ padding:11px 17px;
+ border-radius:7px;
+ cursor:pointer;
+ font-family:inherit;
+ font-size:14px;
+}
+
+button:hover{background:#104c45}
+
+footer{
+ background:#10243e;
+ color:white;
+ text-align:center;
+ padding:25px;
+ margin-top:40px;
+}
+
+.small{font-size:13px;color:#777}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>📖 AAYUSH नेपाली साहित्य</h1>
+<p>नेपाली कविताको विशाल डिजिटल संग्रह</p>
+<p>साहित्य, संस्कृति, भावना र सिर्जनाको संसार</p>
+</header>
+
+<nav>
+🌺 कविता संग्रह | नेपाली साहित्य
+</nav>
+
+<div class="container">
+
+<section class="intro">
+<h2>कविता साहित्य</h2>
+<p>
+कविता मानव मनका भावना, विचार, कल्पना र अनुभूतिहरू
+व्यक्त गर्ने सुन्दर साहित्यिक विधा हो।
+यस संग्रहमा विभिन्न विषयका नेपाली कविताहरू पढ्न सकिन्छ।
+</p>
+</section>
+
+<input class="search" id="search"
+placeholder="🔍 कविता वा विधा खोज्नुहोस्..."
+oninput="searchPoems()">
+
+<h2>📚 कविता विधाहरू</h2>
+
+<div class="categories" id="categories"></div>
+
+<h2 style="margin-top:30px" id="listTitle">
+कविता संग्रह
+</h2>
+
+<p class="small" id="count"></p>
+
+<div class="poem-list" id="poemList"></div>
+
+<section class="poem-box" id="poemBox">
+<h2 id="poemTitle"></h2>
+<div class="author">रचनाकार: Aayush Jaishi</div>
+
+<div id="poemContent"></div>
+
+<div class="controls">
+<button onclick="previousPoem()">⬅ अघिल्लो</button>
+<button onclick="nextPoem()">अर्को ➜</button>
+<button onclick="printPoem()">🖨 प्रिन्ट</button>
+</div>
+</section>
+
+</div>
+
+<footer>
+<h3>AAYUSH नेपाली साहित्य</h3>
+<p>नेपाली भाषा, साहित्य र संस्कृतिको संरक्षण तथा विकासमा समर्पित।</p>
+<p>© 2026 AAYUSH नेपाली साहित्य</p>
+</footer>
+
+<script>
+
+// नौवटा मुख्य कविता विधा
+const categories = [
+{
+ name:"देशभक्ति कविता",
+ icon:"🇳🇵",
+ subject:"मातृभूमि",
+ images:["हिमाल","पहाड","तराई","राष्ट्रिय झण्डा","वीर पुर्खा"],
+ values:["स्वाभिमान","एकता","साहस","त्याग","राष्ट्रप्रेम"],
+ actions:["देशको सेवा गरौँ","राष्ट्रको गौरव बढाऔँ","माटोको सम्मान गरौँ"]
+},
+{
+ name:"प्रकृति कविता",
+ icon:"🌿",
+ subject:"प्रकृति",
+ images:["हरियो वन","कलकल बग्ने नदी","हिमाल","फूलको बगैँचा","चराचुरुङ्गी"],
+ values:["हरियाली","सुन्दरता","शान्ति","स्वच्छता","जीवन"],
+ actions:["रूख रोपौँ","प्रकृतिको रक्षा गरौँ","वातावरण सफा राखौँ"]
+},
+{
+ name:"जीवन कविता",
+ icon:"🌅",
+ subject:"जीवन",
+ images:["बिहानीको घाम","समयको यात्रा","संघर्षको बाटो","आशाको किरण","जीवनको अनुभव"],
+ values:["धैर्य","आशा","विश्वास","परिश्रम","अनुभव"],
+ actions:["अगाडि बढिरहौँ","समयको सम्मान गरौँ","आफ्नो बाटो आफैँ बनाऔँ"]
+},
+{
+ name:"प्रेम कविता",
+ icon:"❤️",
+ subject:"प्रेम",
+ images:["मायाको भावना","मिठो सम्झना","मनको आवाज","विश्वासको सम्बन्ध","स्नेहको संसार"],
+ values:["माया","विश्वास","सम्मान","समर्पण","आत्मीयता"],
+ actions:["एकअर्काको सम्मान गरौँ","मनको भावना बुझौँ","साँचो माया बाँडौँ"]
+},
+{
+ name:"प्रेरणादायी कविता",
+ icon:"🔥",
+ subject:"प्रेरणा",
+ images:["सफलताको शिखर","संघर्षको यात्रा","नयाँ बिहानी","सपना","आत्मविश्वास"],
+ values:["मेहनत","साहस","लगनशीलता","आत्मविश्वास","सपना"],
+ actions:["कहिल्यै हार नमानौँ","लक्ष्यतर्फ अघि बढौँ","आफ्नो क्षमतामा विश्वास गरौँ"]
+},
+{
+ name:"बालकविता",
+ icon:"🧒",
+ subject:"बाल संसार",
+ images:["रङ्गीचङ्गी पुतली","विद्यालयको घण्टी","फूलबारी","खेल्ने साथी","मिठो मुस्कान"],
+ values:["खुसी","मित्रता","ज्ञान","खेल","असल बानी"],
+ actions:["मिलेर खेलौँ","रमाइलो गरी पढौँ","सबैलाई माया गरौँ"]
+},
+{
+ name:"समाज कविता",
+ icon:"🏘️",
+ subject:"समाज",
+ images:["गाउँको बस्ती","श्रमिकको पसिना","सामूहिक प्रयास","सामाजिक एकता","न्यायको आवाज"],
+ values:["समानता","सहयोग","न्याय","एकता","सद्भाव"],
+ actions:["भेदभाव हटाऔँ","एकअर्कालाई सहयोग गरौँ","समाजलाई राम्रो बनाऔँ"]
+},
+{
+ name:"मानवीय मूल्य कविता",
+ icon:"🤝",
+ subject:"मानवता",
+ images:["दयाको भावना","सेवाको बाटो","सहयोगी हात","मानवीय सम्बन्ध","करुणाको दीप"],
+ values:["दया","करुणा","इमानदारी","सेवा","सहिष्णुता"],
+ actions:["दुःखीलाई सहयोग गरौँ","सबैलाई सम्मान गरौँ","मानवताको बाटो रोजौँ"]
+},
+{
+ name:"शिक्षा कविता",
+ icon:"📚",
+ subject:"शिक्षा",
+ images:["ज्ञानको दीप","विद्यालयको आँगन","किताबका पाना","शिक्षकको प्रेरणा","विद्यार्थीको सपना"],
+ values:["ज्ञान","अनुशासन","मेहनत","सीप","शिक्षा"],
+ actions:["नियमित अध्ययन गरौँ","ज्ञान बाँडौँ","शिक्षाको उज्यालो फैलाऔँ"]
+}
+];
+
+// प्रत्येक विधाका लागि १० श्लोकको संरचना
+const stanzaPatterns = [
+ (c,n,i)=>`ज्ञान र चेतनाको उज्यालो ${c.subject} मा छ,
+${c.images[0]} जस्तै सुन्दर यसको संसार छ।`,
+ (c,n,i)=>`जब ${c.images[1]} ले नयाँ सन्देश ल्याउँछ,
+मनभित्र ${c.values[0]} को भावना जाग्छ।`,
+ (c,n,i)=>`${c.images[2]} ले हामीलाई कथा सुनाउँछ,
+${c.values[1]} ले जीवनलाई सुन्दर बनाउँछ।`,
+ (c,n,i)=>`समयसँगै बदलिन्छन् अनुभव र विचार,
+तर ${c.subject} सधैँ रहन्छ हाम्रो आधार।`,
+ (c,n,i)=>`${c.images[3]} जस्तै फैलियोस् हाम्रो सपना,
+असल कर्मले सजियोस् जीवनको कल्पना।`,
+ (c,n,i)=>`${c.values[2]} को बाटो सधैँ रोजौँ,
+सत्य र सद्भावका फूलहरू खोजौँ।`,
+ (c,n,i)=>`${c.images[4]} बाट सिकौँ नयाँ पाठ,
+उज्यालो बनोस् हाम्रो हरेक रात।`,
+ (c,n,i)=>`${c.values[3]} ले बनाउँछ मानिस महान्,
+असल विचारले बढाउँछ समाजको मान।`,
+ (c,n,i)=>`${c.actions[0]} भन्ने सन्देश फैलाऔँ,
+सकारात्मक सोचले नयाँ संसार बनाऔँ।`,
+ (c,n,i)=>`यो हाम्रो सानो सुन्दर अभिलाषा,
+${c.subject} सँग जोडिरहोस् जीवनको आशा।`
+];
+
+let allPoems = [];
+let currentCategory = 0;
+let currentIndex = 0;
+let selectedPoems = [];
+
+// प्रत्येक विधामा १०० वटा नमुना कविता निर्माण
+categories.forEach((cat,ci)=>{
+ for(let i=1;i<=100;i++){
+
+  let poem={
+   id:ci*100+i,
+   category:cat.name,
+   title:cat.name+" — नमुना कविता "+i,
+   stanzas:[]
+  };
+
+  for(let s=0;s<10;s++){
+   poem.stanzas.push(stanzaPatterns[s](cat,i,s));
+  }
+
+  allPoems.push(poem);
+ }
+});
+
+// विधाहरू देखाउने
+function showCategories(){
+ const area=document.getElementById("categories");
+
+ categories.forEach((cat,i)=>{
+  let div=document.createElement("div");
+  div.className="category";
+  div.innerHTML=`
+  <h3>${cat.icon} ${cat.name}</h3>
+  <p>१०० वटा कविता</p>
+  `;
+  div.onclick=()=>selectCategory(i);
+  area.appendChild(div);
+ });
+}
+
+// विधा चयन गर्ने
+function selectCategory(index){
+ currentCategory=index;
+ selectedPoems=allPoems.filter(
+  p=>p.category===categories[index].name
+ );
+ currentIndex=0;
+
+ document.getElementById("listTitle").innerText=
+ categories[index].name;
+
+ document.getElementById("search").value="";
+
+ renderList();
+ closePoem();
+}
+
+// कविता सूची देखाउने
+function renderList(){
+ const list=document.getElementById("poemList");
+ list.innerHTML="";
+
+ selectedPoems.forEach((poem,i)=>{
+  let item=document.createElement("div");
+  item.className="poem-item";
+  item.innerHTML=`
+  <strong>${poem.title}</strong>
+  <p class="small">१० श्लोक | नेपाली कविता</p>
+  `;
+  item.onclick=()=>openPoem(i);
+  list.appendChild(item);
+ });
+
+ document.getElementById("count").innerText=
+ "कुल कविता: "+selectedPoems.length;
+}
+
+// कविता खोल्ने
+function openPoem(index){
+ currentIndex=index;
+ const poem=selectedPoems[index];
+
+ document.getElementById("poemTitle").innerText=
+ poem.title;
+
+ const content=document.getElementById("poemContent");
+ content.innerHTML="";
+
+ poem.stanzas.forEach((stanza,i)=>{
+  let div=document.createElement("div");
+  div.className="stanza";
+  div.innerHTML=
+   `<strong>॥ ${i+1} ॥</strong><br>`+
+   stanza.replace(/\n/g,"<br>");
+  content.appendChild(div);
+ });
+
+ document.getElementById("poemBox").style.display="block";
+
+ document.getElementById("poemBox").scrollIntoView({
+  behavior:"smooth"
+ });
+}
+
+function closePoem(){
+ document.getElementById("poemBox").style.display="none";
+}
+
+function nextPoem(){
+ if(currentIndex<selectedPoems.length-1){
+  openPoem(currentIndex+1);
+ }
+}
+
+function previousPoem(){
+ if(currentIndex>0){
+  openPoem(currentIndex-1);
+ }
+}
+
+// खोज सुविधा
+function searchPoems(){
+ let q=document.getElementById("search").value.toLowerCase();
+
+ let results=allPoems.filter(p=>
+  p.title.toLowerCase().includes(q) ||
+  p.category.toLowerCase().includes(q)
+ );
+
+ selectedPoems=results;
+
+ document.getElementById("listTitle").innerText=
+ "खोजको नतिजा";
+
+ renderList();
+ closePoem();
+}
+
+// प्रिन्ट सुविधा
+function printPoem(){
+ window.print();
+}
+
+// सुरुवाती प्रदर्शन
+showCategories();
+selectCategory(0);
+
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>आयुस नेपाली साहित्य | कविता संग्रह</title>
 
 <style>
 *{
@@ -15,205 +494,203 @@
 
 body{
     font-family:"Noto Sans Devanagari",sans-serif;
-    background:#f4f6fb;
+    background:#f4f5fb;
     color:#222;
-    line-height:1.8;
+    line-height:1.9;
 }
 
 header{
-    background:linear-gradient(135deg,#312e81,#be185d);
+    background:linear-gradient(135deg,#581c87,#be185d,#7c3aed);
     color:white;
     text-align:center;
-    padding:30px 15px;
+    padding:35px 15px;
 }
 
-header h1{font-size:28px;}
+header h1{font-size:30px;}
 
 nav{
-    background:#be185d;
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
+    background:#3b0764;
+    padding:12px;
+    text-align:center;
 }
 
 nav a{
     color:white;
     text-decoration:none;
-    padding:12px 15px;
+    margin:5px 12px;
+    display:inline-block;
 }
-
-nav a:hover{background:#312e81;}
-
-.hero{
-    background:linear-gradient(135deg,#4c1d95,#db2777);
-    color:white;
-    text-align:center;
-    padding:45px 15px;
-}
-
-.hero h2{
-    font-size:30px;
-    margin-bottom:10px;
-}
-
-.controls{
-    max-width:1100px;
-    margin:25px auto;
-    padding:10px;
-    text-align:center;
-}
-
-.controls input,
-.controls select{
-    padding:12px;
-    margin:5px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-size:15px;
-}
-
-#search{width:min(95%,450px);}
-
-button{
-    cursor:pointer;
-    border:0;
-    border-radius:7px;
-    padding:10px 15px;
-    background:#7e22ce;
-    color:white;
-    margin:4px;
-}
-
-button:hover{opacity:.85;}
 
 .container{
-    max-width:1100px;
+    max-width:1150px;
     margin:auto;
-    padding:15px;
+    padding:18px;
 }
 
-.section-title{
-    text-align:center;
-    color:#be185d;
-    margin:25px 0;
-}
-
-.categories{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-    gap:12px;
-}
-
-.category{
-    background:#6b21a8;
-    color:white;
-    text-align:center;
-    padding:15px 8px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-.category:hover{background:#be185d;}
-
-.poem-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:18px;
-}
-
-.poem-card{
+.intro,.card,.category-card{
     background:white;
     padding:20px;
     border-radius:12px;
     box-shadow:0 3px 12px #00000012;
 }
 
-.poem-card h3{
-    color:#be185d;
-    margin-bottom:8px;
+.intro{margin-bottom:20px;}
+
+.controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:20px 0;
 }
+
+input{
+    flex:1;
+    min-width:200px;
+}
+
+input,button{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-family:inherit;
+    font-size:15px;
+}
+
+button{
+    background:#9333ea;
+    color:white;
+    border:0;
+    cursor:pointer;
+}
+
+button:hover{opacity:.85;}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:16px;
+    margin-top:20px;
+}
+
+.category-card{
+    border-top:4px solid #9333ea;
+    cursor:pointer;
+}
+
+.category-card h3{color:#7e22ce;}
+
+.category-card button{
+    width:100%;
+    margin-top:12px;
+}
+
+.card{
+    border-top:4px solid #be185d;
+}
+
+.card h3{color:#9d174d;}
 
 .meta{
     color:#777;
     font-size:13px;
-    margin:8px 0;
 }
 
-.poem-card button{background:#be185d;}
-
-#noResults{
-    display:none;
-    text-align:center;
-    padding:30px;
+.card button{
+    width:100%;
+    margin-top:10px;
 }
 
-.reader{
+.count{margin:15px 0;}
+
+.back-button{
+    background:#475569;
+    margin:10px 0;
+}
+
+.modal{
     display:none;
     position:fixed;
     inset:0;
-    z-index:10;
     background:#000b;
+    z-index:20;
     overflow-y:auto;
-    padding:20px;
+    padding:15px;
 }
 
-.reader-box{
-    max-width:800px;
-    margin:20px auto;
+.modal-content{
+    max-width:850px;
+    margin:25px auto;
     background:white;
     color:#222;
     padding:25px;
     border-radius:12px;
 }
 
-.reader-box h2{
-    color:#be185d;
-    text-align:center;
+.modal-content h2{
+    color:#9333ea;
+    margin-bottom:10px;
+}
+
+.modal-controls{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
     margin:15px 0;
 }
 
-#poemContent{
-    font-size:20px;
-    line-height:2.2;
-    white-space:pre-line;
+.poem-text{
+    font-size:18px;
+    line-height:2.1;
     text-align:center;
-    margin:25px 0;
 }
 
-.reader-tools{
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:8px;
+.poem-text p{
+    margin:25px 0;
+    white-space:pre-line;
+}
+
+.close{
+    float:right;
+    background:#dc2626;
 }
 
 footer{
-    background:#312e81;
+    background:#3b0764;
     color:white;
     text-align:center;
     padding:25px;
-    margin-top:40px;
+    margin-top:35px;
 }
 
 body.dark{
-    background:#101827;
+    background:#111827;
+    color:#f3f4f6;
+}
+
+body.dark .intro,
+body.dark .card,
+body.dark .category-card{
+    background:#1f2937;
+    color:#f3f4f6;
+}
+
+body.dark .card h3,
+body.dark .category-card h3{
+    color:#e9a8ff;
+}
+
+body.dark .meta{color:#cbd5e1;}
+
+body.dark .modal-content{
+    background:#1f2937;
     color:white;
 }
 
-body.dark .poem-card{
-    background:#1e293b;
-    color:white;
-}
-
-body.dark .reader-box{
-    background:#1e293b;
-    color:white;
-}
+body.dark .modal-content h2{color:#e9a8ff;}
 
 @media(max-width:600px){
     header h1{font-size:23px;}
-    .hero h2{font-size:24px;}
-    nav a{padding:10px;font-size:13px;}
+    .modal-content{padding:15px;}
 }
 </style>
 </head>
@@ -221,575 +698,643 @@ body.dark .reader-box{
 <body>
 
 <header>
-    <h1>📝 आयुस नेपाली साहित्य</h1>
-    <p>AAYUSH NEPALI SAHITYA</p>
-    <p>नेपाली कविता संग्रह</p>
+    <h1>आयुस नेपाली साहित्य</h1>
+    <h2>📖 नेपाली कविता संसार</h2>
+    <p>भावनाको अभिव्यक्ति, शब्दहरूको संसार।</p>
 </header>
 
 <nav>
-    <a href="index.html">🏠 गृहपृष्ठ</a>
-    <a href="katha.html">📖 कथा</a>
-    <a href="kabita.html">📝 कविता</a>
-    <a href="bal-sahitya.html">🧒 बाल साहित्य</a>
-    <a href="nibandha.html">📚 निबन्ध</a>
-    <a href="about.html">👤 हाम्रो बारेमा</a>
+    <a href="index.html">गृहपृष्ठ</a>
+    <a href="katha.html">कथा</a>
+    <a href="kabita.html">कविता</a>
+    <a href="bal-sahitya.html">बाल साहित्य</a>
+    <a href="nibandha.html">निबन्ध</a>
 </nav>
-
-<section class="hero">
-    <h2>❤️ कविताको सुन्दर संसार</h2>
-    <p>भावना, कल्पना, प्रकृति, देश र जीवनका शब्दहरू।</p>
-    <p>पढौँ, लेखौँ र नेपाली साहित्यलाई माया गरौँ।</p>
-</section>
-
-<div class="controls">
-
-    <input
-        type="search"
-        id="search"
-        placeholder="🔍 कविताको शीर्षक वा शब्द खोज्नुहोस्..."
-        oninput="renderPoems()">
-
-    <select id="categoryFilter" onchange="renderPoems()">
-        <option value="सबै">सबै विधा</option>
-        <option>देशभक्ति</option>
-        <option>प्रकृति</option>
-        <option>जीवन</option>
-        <option>प्रेम</option>
-        <option>प्रेरणा</option>
-        <option>बाल कविता</option>
-        <option>समाज</option>
-    </select>
-
-    <button onclick="toggleDark()">🌙 Dark / Light</button>
-
-</div>
 
 <div class="container">
 
-    <h2 class="section-title">कविताका विधाहरू</h2>
+    <section class="intro">
+        <h2>कविता संग्रहमा स्वागत छ!</h2>
+        <p>
+            यहाँ विभिन्न विधाका नेपाली कविताहरू पढ्न सकिन्छ।
+            आफ्नो मनपर्ने विधा छान्नुहोस् र कविताको संसारमा रमाउनुहोस्।
+        </p>
+    </section>
 
-    <div class="categories">
-        <div class="category" onclick="chooseCategory('देशभक्ति')">🇳🇵<br>देशभक्ति</div>
-        <div class="category" onclick="chooseCategory('प्रकृति')">🌿<br>प्रकृति</div>
-        <div class="category" onclick="chooseCategory('जीवन')">🌍<br>जीवन</div>
-        <div class="category" onclick="chooseCategory('प्रेम')">❤️<br>प्रेम</div>
-        <div class="category" onclick="chooseCategory('प्रेरणा')">⭐<br>प्रेरणा</div>
-        <div class="category" onclick="chooseCategory('बाल कविता')">🧒<br>बाल कविता</div>
-        <div class="category" onclick="chooseCategory('समाज')">🤝<br>समाज</div>
+    <div class="controls">
+        <input
+            type="search"
+            id="search"
+            placeholder="कविताको नाम वा शब्द खोज्नुहोस्..."
+        >
+
+        <button onclick="toggleTheme()" id="themeButton">
+            🌙 Dark Mode
+        </button>
     </div>
 
-    <h2 class="section-title">📚 हाम्रो कविता पुस्तकालय</h2>
+    <div id="categoryPage">
+        <h2>कविताका विधाहरू छान्नुहोस्</h2>
+        <div class="grid" id="categoryGrid"></div>
+    </div>
 
-    <div id="poemList" class="poem-grid"></div>
+    <div id="poemPage" style="display:none;">
 
-    <p id="noResults">यो खोजसँग मिल्ने कविता भेटिएन।</p>
+        <button class="back-button" onclick="showCategories()">
+            ← सबै विधामा फर्कनुहोस्
+        </button>
+
+        <h2 id="categoryTitle"></h2>
+
+        <p class="count" id="count"></p>
+
+        <div class="grid" id="poemGrid"></div>
+
+    </div>
 
 </div>
 
-<div class="reader" id="reader">
+<div class="modal" id="reader">
 
-    <div class="reader-box">
+    <div class="modal-content">
 
-        <div class="reader-tools">
+        <button class="close" onclick="closePoem()">बन्द ✖</button>
+
+        <h2 id="poemTitle"></h2>
+        <p id="poemInfo"></p>
+
+        <div class="modal-controls">
             <button onclick="changeFont(1)">A+ ठूलो</button>
             <button onclick="changeFont(-1)">A- सानो</button>
-            <button onclick="closeReader()">✖ बन्द</button>
         </div>
 
-        <h2 id="readerTitle"></h2>
-
-        <p id="readerMeta" class="meta"></p>
-
-        <div id="poemContent"></div>
-
-        <h3 id="lastTitle" style="text-align:center;color:#be185d;"></h3>
-
-        <button onclick="closeReader()">कविता सूचीमा फर्कनुहोस्</button>
+        <div class="poem-text" id="poemBody"></div>
 
     </div>
+
 </div>
 
 <footer>
-    <p>© 2026 AAYUSH NEPALI SAHITYA</p>
-    <p>कविता लेखक: Aayush Jaishi</p>
-    <p>Developed by Aayush Jaishi</p>
-    <p>नेपाली भाषा र साहित्यको संरक्षण हाम्रो उद्देश्य।</p>
+    <h2>आयुस नेपाली साहित्य</h2>
+    <p>लेखक तथा प्रस्तोता: Aayush Jaishi</p>
+    <p>© 2026 Aayush Nepali Sahitya</p>
 </footer>
 
 <script>
 
-const poems = [
+/* ==================================
+   १. कविता विधाहरू
+================================== */
 
-{
- title:"मेरो प्यारो नेपाल",
- category:"देशभक्ति",
- author:"Aayush Jaishi",
- topic:"देशप्रेम",
- content:`हिमाल हाँस्छ सेतो हिउँमा,
-पहाड रमाउँछ हरियालीमा।
-तराई सजिन्छ सुनौलो धानले,
-नेपाल चम्किन्छ आफ्नै शानले।
+const categories = [
+    "प्रेम कविता",
+    "देशभक्ति कविता",
+    "प्रकृति कविता",
+    "जीवन कविता",
+    "प्रेरणादायी कविता",
+    "बाल कविता",
+    "सामाजिक कविता",
+    "वियोग कविता",
+    "मित्रता कविता",
+    "आध्यात्मिक कविता"
+];
 
+
+/* ==================================
+   २. कविता विषयहरू
+================================== */
+
+const themes = [
+    "सुनौलो सपना",
+    "मेरो देश नेपाल",
+    "जीवनको यात्रा",
+    "आमाको माया",
+    "समयको महत्त्व",
+    "हरियो वन",
+    "बाल्यकालको सम्झना",
+    "मेहनतको फल",
+    "मित्रताको सम्बन्ध",
+    "नयाँ बिहानी",
+    "आशाको किरण",
+    "सुन्दर संसार",
+    "ज्ञानको उज्यालो",
+    "गाउँको सम्झना",
+    "मानवताको बाटो",
+    "हिमालको सुन्दरता",
+    "नदीको आवाज",
+    "सफलताको खोजी",
+    "प्रकृतिको उपहार",
+    "भविष्यको सपना"
+];
+
+
+/* ==================================
+   ३. विधाअनुसार १० श्लोकका आधार
+================================== */
+
+const templates = {
+
+"प्रेम कविता":[
+`मनको आकाशमा एउटा उज्यालो सपना छ,
+भावनाको संसारमा मीठो एउटा कल्पना छ।
+शब्दले व्यक्त गर्न नसकिने अनुभूति,
+मौनताभित्र लुकेको सुन्दर अभिव्यक्ति।`,
+
+`बिहानीको घामझैँ आशा फैलिरहोस्,
+हरेक दिन जीवनमा खुसी पलाइरहोस्।
+सम्बन्धमा विश्वास र सम्मान रहोस्,
+हरेक मनमा सद्भावको फूल फुलोस्।`,
+
+`माया भनेको केवल बोल्नु होइन,
+एकअर्काको भावना बुझ्नु पनि हो।
+सुखमा मात्र होइन दुःखमा साथ दिनु,
+स्वतन्त्रता र सम्मानको अर्थ बुझ्नु हो।`,
+
+`फूलको सुगन्धझैँ राम्रो व्यवहार होस्,
+मनभित्र सधैँ उज्यालो विचार होस्।
+समय बदलिँदा पनि सम्मान नबदलियोस्,
+असल सम्बन्धको विश्वास कहिल्यै नहराओस्।`
+],
+
+"देशभक्ति कविता":[
+`हिमालको शिरमा चम्किन्छ घाम,
+नेपाल हाम्रो प्यारो नाम।
+पहाड, तराई, हिमालको माटो,
+हाम्रो गौरव, हाम्रो बाटो।`,
+
+`लालीगुराँस वनमा फुल्छ,
+गाउँको आँगन खुसीले खुल्छ।
 मेचीदेखि महाकालीसम्म,
-माया छ हाम्रो मुटुभरि।
-भाषा अनेक, भेष अनेक,
-एकता हाम्रो सबैभन्दा ठूलो शक्ति।
+हाम्रो देशको माया छ मनमन।`,
 
-बुद्धको ज्ञान, सगरमाथाको शिर,
-इतिहास बोकेको हाम्रो देश।
-नेपालको माटो प्यारो लाग्छ,
-यसैमा छ हाम्रो स्वाभिमान विशेष।`
-},
+`इतिहासले साहस सिकाउँछ,
+संस्कृतिले पहिचान दिलाउँछ।
+शान्ति र विकासको बाटो रोजौँ,
+एकताको सुन्दर दीप बालौँ।`,
 
-{
- title:"प्रकृतिको मुस्कान",
- category:"प्रकृति",
- author:"Aayush Jaishi",
- topic:"प्रकृति प्रेम",
- content:`बिहानीको घाम उदाउँदा,
-फूलहरू मुस्कुराउँछन्।
-चराहरूको मीठो गीतले,
-वनपाखा गुञ्जाउँछन्।
+`देशलाई माया कर्मले देखाऔँ,
+इमानदारीको बाटो अपनाऔँ।
+शिक्षा र श्रमलाई सम्मान गरौँ,
+नेपालको भविष्य उज्यालो बनाऔँ।`
+],
 
+"प्रकृति कविता":[
+`हरियो वनले गीत सुनाउँछ,
+चरीले बिहान बोलाउँछ।
 खोलाको पानी कलकल बग्छ,
-हावाले गीत सुनाउँछ।
-हरियो वनको काखभित्र,
-मनले शान्ति पाउँछ।
+प्रकृतिको सुन्दरता मनमा जग्छ।`,
 
-प्रकृति हाम्रो जीवन हो,
-यसलाई सधैँ जोगाऔँ।
-रुख रोपौँ, सफा राखौँ,
-सुन्दर संसार बनाऔँ।`
-},
+`हिमालमाथि हिउँ चम्किन्छ,
+फूलको बास्ना चारैतिर फैलिन्छ।
+बादलले आकाश ढाकिदिन्छ,
+वर्षाले धरतीलाई सजाइदिन्छ।`,
 
-{
- title:"समयको मूल्य",
- category:"जीवन",
- author:"Aayush Jaishi",
- topic:"समयको महत्त्व",
- content:`समय कहिल्यै रोकिन्न,
-नदीझैँ बगिरहन्छ।
-आज गरेको राम्रो कर्मले,
-भोलिको बाटो खोलिरहन्छ।
+`रूखले हामीलाई छाया दिन्छ,
+नदीले जीवनको आधार दिन्छ।
+पानी र हावा अमूल्य धन,
+प्रकृतिको रक्षा गरौँ सबै जन।`,
 
-सानो प्रयास व्यर्थ हुँदैन,
-मेहनतले फल दिन्छ।
-धैर्य राखी अघि बढ्दा,
-सपनाले आकार लिन्छ।
+`फोहोर नगरौँ नदी किनारमा,
+बिरुवा रोपौँ खुला मैदानमा।
+हरियाली जोगाउने प्रण गरौँ,
+स्वच्छ संसार निर्माण गरौँ।`
+],
 
-आजको समय अमूल्य छ,
-यसलाई खेर नफाल।
-ज्ञान र सीप सिक्दै जाऊ,
-आफ्नो भविष्य उज्यालो पार।`
-},
+"जीवन कविता":[
+`जीवन एउटा लामो यात्रा हो,
+अनुभवले भरिएको कथा हो।
+कहिले घाम, कहिले छाया,
+यही यात्रामा लुकेको छ माया।`,
 
-{
- title:"आमाको माया",
- category:"प्रेम",
- author:"Aayush Jaishi",
- topic:"आमाप्रतिको माया",
- content:`आमाको बोली मीठो लाग्छ,
-आमाको माया न्यानो।
-दुःखमा साथ दिने हात,
-आमाको मन विशाल र राम्रो।
+`समयले धेरै कुरा सिकाउँछ,
+अनुभवले नयाँ बाटो देखाउँछ।
+गल्तीबाट पाठ सिक्नुपर्छ,
+आफ्नो जिम्मेवारी बुझ्नुपर्छ।`,
 
-सानो हुँदा सम्हाल्ने,
-ठूलो हुँदा सम्झाउने।
-सही बाटो देखाइदिने,
-आमा नै हुन् सिकाउने।
+`सपना देख्नु राम्रो कुरा हो,
+मेहनत गर्नु अझ ठूलो कुरा हो।
+धैर्य राखेर अघि बढौँ,
+आफ्नो लक्ष्यतर्फ पाइला चालौँ।`,
 
-आमाको ऋण तिर्न सकिन्न,
-माया सधैँ गरिरहौँ।
-आमाको सम्मान गर्दै,
-असल मान्छे बनिरहौँ।`
-},
+`जीवनलाई अर्थपूर्ण बनाऔँ,
+अरूको दुःख बुझ्न सिकौँ।
+आफ्नो खुसीसँगै अरूको मुस्कान,
+बनाऔँ मानवताको पहिचान।`
+],
 
-{
- title:"सपनाको बाटो",
- category:"प्रेरणा",
- author:"Aayush Jaishi",
- topic:"लक्ष्य र मेहनत",
- content:`सपना देख्नु राम्रो हो,
-तर कर्म पनि गर्नुपर्छ।
-लक्ष्य भेट्ने यात्रामा,
-धैर्यसाथ अघि बढ्नुपर्छ।
+"प्रेरणादायी कविता":[
+`उठ र आफ्नो लक्ष्य चिन,
+मेहनतको बाटोमा अघि बढ निरन्तर।
+सानो प्रयासले ठूलो फल दिन्छ,
+धैर्यले सफलताको ढोका खोल्छ।`,
 
-बाटो कहिलेकाहीँ कठिन होला,
-मनमा आशा राखिराख।
-हरेक दिन केही सिक्दै,
-आफ्नो क्षमता बढाइराख।
+`असफलता अन्तिम गन्तव्य होइन,
+त्यसले सिकाउने पाठ सानो होइन।
+फेरि प्रयास गर्ने साहस राख,
+आफ्नो क्षमतामाथि विश्वास राख।`,
 
-मेहनतको बीउ रोपेपछि,
-सफलताको फूल फुल्छ।
-आफूमाथि विश्वास राख्दा,
-नयाँ सम्भावना खुल्छ।`
-},
+`ज्ञानको दीप मनमा बाल,
+आलस्यलाई आफूबाट टाढा हाल।
+हरेक दिन नयाँ कुरा सिक,
+आफ्नो भविष्य आफैँले लेख।`,
 
-{
- title:"सानो साथी",
- category:"बाल कविता",
- author:"Aayush Jaishi",
- topic:"बालमैत्री संसार",
- content:`सानो साथी विद्यालय जाऊ,
-किताब बोकी ज्ञान बढाऊ।
-गुरुका कुरा ध्यानले सुन,
-नयाँ कुरा सिक्दै अघि बढ।
+`अरूलाई पनि साथमा लैजाऊ,
+सफलताको खुसी बाँड्दै जाऊ।
+असल कर्मको बाटो रोज,
+आफ्नो सपनालाई वास्तविकता बनाऊ।`
+],
 
-साथीसँग मिलेर खेल,
-सबैसँग राम्रो बोल।
-सत्य बोल र सहयोग गर,
-असल बानी सधैँ सम्हाल।`
-},
+"बाल कविता":[
+`सानो घाम उदायो,
+बिहानीको बेला आयो।
+चराले गीत सुनायो,
+विद्यालय जाने समय आयो।`,
 
-{
- title:"हाम्रो गाउँ",
- category:"समाज",
- author:"Aayush Jaishi",
- topic:"ग्रामीण जीवन",
- content:`डाँडामाथि सानो गाउँ,
-वरिपरि हरियो वन।
-खेतबारीमा काम गर्ने,
-मेहनती मानिसको मन।
+`किताब बोकी जाऔँ,
+नयाँ कुरा सिक्दै रमाऔँ।
+साथीसँग मिलेर खेलौँ,
+सबैलाई माया गरौँ।`,
 
-बिहानीमा घाम झुल्किँदा,
-गाउँमा चहलपहल हुन्छ।
-मिलेर काम गर्दा यहाँ,
-हरेक कठिनाइ सजिलो बन्छ।
+`फूल फुल्यो बारीमा,
+पुतली आयो फुलबारीमा।
+रङ्गीन पखेटा फिँजारी,
+उड्छे ऊ रमाउँदै वरिपरि।`,
 
-गाउँ हाम्रो पहिचान हो,
-यसको माया गरौँ।
-शिक्षा, स्वास्थ्य र विकासले,
-आफ्नो गाउँ सजाऔँ।`
-},
+`सत्य बोल्ने बानी बसालौँ,
+सफा र स्वस्थ भएर बसौँ।
+मेहनत गरी अघि बढौँ,
+असल नागरिक बनौँ।`
+],
 
-{
- title:"ज्ञानको उज्यालो",
- category:"प्रेरणा",
- author:"Aayush Jaishi",
- topic:"शिक्षाको महत्त्व",
- content:`अँध्यारो हटाउने ज्योति,
-ज्ञानको उज्यालो हो।
-जीवनलाई बाटो देखाउने,
-शिक्षा अमूल्य धन हो।
+"सामाजिक कविता":[
+`समाज हाम्रो साझा घर,
+सहयोग यसको सुन्दर स्वर।
+सबैलाई समान सम्मान दिऔँ,
+भेदभावका पर्खाल हटाऔँ।`,
 
-किताबसँग मित्रता गर,
-प्रश्न गर्न नडराऊ।
-नयाँ सीप र ज्ञान सिकेर,
-आफ्नो भविष्य बनाऊ।
+`गरिबको पीडा बुझ्न सकौँ,
+दुःखमा परेकालाई साथ दिऔँ।
+शिक्षाको उज्यालो फैलाऔँ,
+सबैका लागि अवसर बनाऔँ।`,
 
-शिक्षित मनले समाज बदल्छ,
-सही सोच फैलाउँछ।
-ज्ञान बाँड्ने मानिसले,
-सबैको जीवन सजाउँछ।`
-},
+`जात र भाषाले छुट्याउनु हुँदैन,
+मानवतालाई भुल्नु हुँदैन।
+एकताको हात फैलाऔँ,
+सद्भावको समाज बनाऔँ।`,
 
-{
- title:"वर्षाको गीत",
- category:"प्रकृति",
- author:"Aayush Jaishi",
- topic:"वर्षा ऋतु",
- content:`आकाशमा बादल लाग्यो,
-चिसो हावा चल्न थाल्यो।
-टिपटिप पानी झर्न थालेपछि,
-धरतीको मुहार खुल्न थाल्यो।
+`अन्यायविरुद्ध आवाज उठाऔँ,
+सत्य र न्यायको बाटो अपनाऔँ।
+असल व्यवहार सबैले गरौँ,
+सुन्दर समाज निर्माण गरौँ।`
+],
 
-खेतबारी हरियो भयो,
-किसानको मन रमायो।
-पानीले धोएको बाटोमा,
-नयाँ सुन्दरता छायो।
+"वियोग कविता":[
+`साँझको हावाले सम्झना ल्याउँछ,
+मौन मनले पुराना कुरा सुनाउँछ।
+बितेका दिनका ती मीठा पल,
+सम्झनामा रहन्छन् सधैँ अटल।`,
 
-वर्षा प्रकृतिको उपहार,
-पानीको महत्त्व बुझौँ।
-सफा पानी बचाउँदै,
-धरतीलाई माया गरौँ।`
-},
+`समयले बाटो फरक बनायो,
+जीवनले नयाँ मोड देखायो।
+टाढा भए पनि शुभकामना रहोस्,
+हरेक यात्रामा खुसीको उज्यालो रहोस्।`,
 
-{
- title:"मित्रताको फूल",
- category:"जीवन",
- author:"Aayush Jaishi",
- topic:"मित्रता",
- content:`मित्रता एउटा फूल हो,
-विश्वास यसको सुगन्ध।
-सुखदुःखमा साथ दिने,
-मित्र नै जीवनको सम्बन्ध।
+`आँखामा सपना अझै बाँकी छन्,
+मनभित्र नयाँ आशा जागेका छन्।
+बितेका पललाई सम्मान गरौँ,
+आफ्नो यात्रालाई अघि बढाऔँ।`,
 
-रिस उठे पनि सम्झौँ,
-माफी माग्न सिकौँ।
-एकअर्काको सम्मान गर्दै,
-मित्रताको बाटो हिँडौँ।`
-},
+`विछोडले यात्रा रोकिँदैन,
+समयको बहाव कहिल्यै थाक्दैन।
+नयाँ बिहानी फेरि आउनेछ,
+मनमा आशाको फूल फुलाउनेछ।`
+],
 
-{
- title:"हिमालको शान",
- category:"देशभक्ति",
- author:"Aayush Jaishi",
- topic:"हिमाल र नेपालको गौरव",
- content:`हिमाल हाम्रो गौरव हो,
-सेतो मुकुटझैँ चम्किन्छ।
-सगरमाथाको उचाइले,
-संसारभरि नाम चम्किन्छ।
+"मित्रता कविता":[
+`मित्रता विश्वासको नाता हो,
+सुखदुःख बाँड्ने एउटा बाटो हो।
+हाँसोमा खुसी थपिदिन्छ,
+कठिन समयमा साथ दिइदिन्छ।`,
 
-हिउँको काखमा सुन्दरता,
-प्रकृतिको अनुपम दान।
-नेपालको शिर उच्च राख्ने,
-हिमाल हाम्रो महान् पहिचान।`
-},
+`असल साथी सत्य बोल्छ,
+गल्ती हुँदा सही बाटो खोल्छ।
+सफलतामा खुसी मनाउँछ,
+दुःखमा साथ निभाउँछ।`,
 
-{
- title:"मेहनती किसान",
- category:"समाज",
- author:"Aayush Jaishi",
- topic:"किसानको योगदान",
- content:`बिहानै खेतमा पुग्छन्,
-किसानका मेहनती हात।
-घामपानी सहेर पनि,
-उनी गर्छन् दिनरात।
+`समयसँगै बाटो फरक होला,
+सम्झनाको सम्बन्ध गहिरो होला।
+सम्मान र विश्वास रहिरहोस्,
+मित्रताको फूल फुलिरहोस्।`,
 
-धान, मकै र गहुँ फलाउँछन्,
-सबैको भोक मेटाउँछन्।
-किसानको श्रमले नै,
-हाम्रा घरमा अन्न पुर्‍याउँछन्।
+`मित्रता धनले किन्न सकिँदैन,
+साँचो व्यवहारबिना टिक्न सकिँदैन।
+एकअर्कालाई बुझ्न सिकौँ,
+असल मित्रताको मूल्य राखौँ।`
+],
 
-किसानलाई सम्मान गरौँ,
-उनीहरूको श्रम बुझौँ।
-अन्नको एक दाना पनि,
-कहिल्यै खेर नफालौँ।`
-},
+"आध्यात्मिक कविता":[
+`मनको शान्ति खोज्दै जाऔँ,
+सत्यको बाटो रोज्दै जाऔँ।
+दया र करुणा मनमा राखौँ,
+सबैप्रति सम्मान देखाऔँ।`,
 
-{
- title:"बालापन",
- category:"बाल कविता",
- author:"Aayush Jaishi",
- topic:"बाल्यकाल",
- content:`बालापनका मीठा दिन,
-खेल र हाँसोले भरिएका।
-साथीभाइसँगका सम्झना,
-मनभित्र सधैँ सजिएका।
+`लोभ र घमण्ड टाढा राखौँ,
+असल कर्मको दीप बालौँ।
+आफ्नो मनलाई स्वच्छ बनाऔँ,
+मानवताको बाटो अपनाऔँ।`,
 
-कहिले कुद्ने, कहिले खेल्ने,
-कहिले गीत गाउने।
-सानो संसारभित्र हामी,
-ठूला सपना सजाउने।`
-},
+`सेवा नै सुन्दर कर्म हो,
+सत्य नै जीवनको धर्म हो।
+अरूको पीडा बुझ्न सकौँ,
+सहयोगको हात बढाउन सकौँ।`,
 
-{
- title:"सत्यको बाटो",
- category:"जीवन",
- author:"Aayush Jaishi",
- topic:"इमानदारी",
- content:`सत्य बोल्नु राम्रो बानी,
-झुटले मन दुखाउँछ।
-इमानदारीको बाटोले,
-विश्वास सधैँ बढाउँछ।
+`शान्ति आफ्नै व्यवहारमा छ,
+सद्भाव आफ्नै विचारमा छ।
+क्षमा र प्रेम अपनाऔँ,
+असल जीवनको अर्थ बुझौँ।`
+]
 
-सही कुरा गर्न सिकौँ,
-गल्ती भए स्वीकारौँ।
-सत्य र न्यायको पक्षमा,
-सधैँ अघि बढौँ।`
-},
+};
 
-{
- title:"फूलको सन्देश",
- category:"प्रकृति",
- author:"Aayush Jaishi",
- topic:"फूल र प्रकृति",
- content:`फूलले भन्छ मुस्कुराऊ,
-जीवन सुन्दर बनाऊ।
-रङ्गीचङ्गी संसारभित्र,
-सबैलाई माया बाँड।
 
-काँडाबीच पनि फुल्न सिक,
-आशा कहिल्यै नछोड।
-सानो सुगन्धले पनि,
-संसारलाई सुन्दर बनाऊ।`
-},
+/* ==================================
+   ४. १००० कविता बनाउने
+================================== */
 
-{
- title:"देशको भविष्य",
- category:"देशभक्ति",
- author:"Aayush Jaishi",
- topic:"युवा र राष्ट्र निर्माण",
- content:`हामी देशका सन्तान हौँ,
-भविष्य हाम्रो हातमा।
-ज्ञान र सीप लिएर अघि बढौँ,
-देशको विकासको साथमा।
+const poems=[];
 
-मेहनत गरौँ, इमानदार बनौँ,
-नयाँ विचार ल्याऔँ।
-आफ्नो देशको गौरव बढाउन,
-आफ्नो कर्तव्य निभाऔँ।`
-},
+categories.forEach((category,categoryIndex)=>{
 
-{
- title:"नदीको यात्रा",
- category:"प्रकृति",
- author:"Aayush Jaishi",
- topic:"नदी र जीवन",
- content:`पहाडबाट झरेको पानी,
-नदी बनेर बग्छ।
-ढुङ्गा र मोड पार गर्दै,
-आफ्नो यात्रा गर्छ।
+    for(let i=0;i<100;i++){
 
-कहिल्यै पछि नहट्ने,
-नदीबाट पाठ सिकौँ।
-कठिनाइ आए पनि,
-आफ्नो लक्ष्यतिर हिँडौँ।`
-},
+        const theme=themes[i%themes.length];
 
-{
- title:"असल व्यवहार",
- category:"समाज",
- author:"Aayush Jaishi",
- topic:"मानवीयता",
- content:`मीठो बोली बोलौँ,
-सबैको सम्मान गरौँ।
-ठूलालाई आदर गर्दै,
-सानालाई माया गरौँ।
+        const base=templates[category];
 
-अरूको दुःख बुझौँ,
-सहयोगको हात बढाऔँ।
-असल व्यवहार अपनाएर,
-सुन्दर समाज बनाऔँ।`
-},
+        let stanzas=[];
 
-{
- title:"उज्यालो बिहान",
- category:"प्रेरणा",
- author:"Aayush Jaishi",
- topic:"नयाँ सुरुवात",
- content:`रात बितेपछि बिहान आउँछ,
-अँध्यारो सधैँ रहँदैन।
-आज कठिनाइ भए पनि,
-भोलि आशा हराउँदैन।
+        for(let j=0;j<10;j++){
 
-नयाँ दिन नयाँ अवसर,
-नयाँ सोच लिएर आऊ।
-आफ्नो लक्ष्य सम्झेर,
-अगाडि बढ्दै जाऊ।`
-},
+            const original=base[j%base.length];
 
-{
- title:"सपनाको संसार",
- category:"प्रेम",
- author:"Aayush Jaishi",
- topic:"सपना र भावना",
- content:`मनभित्रका साना सपना,
-शब्द बनेर आउँछन्।
-नबोलेका भावनाहरू,
-कवितामा सजिन्छन्।
+            const stanza=
+                original+
+                "\n\n"+
+                theme+" हाम्रो जीवनको एउटा सुन्दर पक्ष हो,\n"+
+                यसलाई बुझ्नु र सम्मान गर्नु नै असल सोच हो।";
 
-सम्मान र विश्वासको बाटो,
-सम्बन्धलाई सुन्दर बनाउँछ।
-साँचो भावनाको उज्यालोले,
-मनमा आशा जगाउँछ।`
+            stanzas.push(stanza);
+
+        }
+
+        poems.push({
+            id:poems.length+1,
+            category:category,
+            title:theme+" — कविता "+(i+1),
+            stanzas:stanzas
+        });
+
+    }
+
+});
+
+
+/* ==================================
+   ५. विधाहरू देखाउने
+================================== */
+
+const categoryGrid=document.getElementById("categoryGrid");
+
+function renderCategories(){
+
+    categoryGrid.innerHTML="";
+
+    categories.forEach(category=>{
+
+        const total=poems.filter(
+            poem=>poem.category===category
+        ).length;
+
+        const card=document.createElement("div");
+
+        card.className="category-card";
+
+        const title=document.createElement("h3");
+        title.textContent="📖 "+category;
+
+        const info=document.createElement("p");
+        info.textContent="जम्मा कविता: "+total;
+
+        const button=document.createElement("button");
+        button.textContent="यो विधाका कविता हेर्नुहोस्";
+
+        button.onclick=()=>showPoems(category);
+
+        card.appendChild(title);
+        card.appendChild(info);
+        card.appendChild(button);
+
+        categoryGrid.appendChild(card);
+
+    });
+
 }
 
-];
+
+/* ==================================
+   ६. विधाभित्रका कविता देखाउने
+================================== */
+
+let currentCategory="";
+let fontSize=18;
+
+function showPoems(category){
+
+    currentCategory=category;
+
+    document.getElementById("categoryPage").style.display="none";
+    document.getElementById("poemPage").style.display="block";
+
+    document.getElementById("categoryTitle").textContent=category;
+
+    document.getElementById("search").value="";
+
+    renderPoems();
+
+}
+
+function showCategories(){
+
+    document.getElementById("categoryPage").style.display="block";
+    document.getElementById("poemPage").style.display="none";
+
+}
+
+
+/* ==================================
+   ७. कविता खोज्ने र देखाउने
+================================== */
 
 function renderPoems(){
 
-    const list=document.getElementById("poemList");
-    const search=document.getElementById("search").value.toLowerCase();
-    const category=document.getElementById("categoryFilter").value;
+    const keyword=document.getElementById("search")
+        .value.toLowerCase().trim();
 
-    list.innerHTML="";
-    let count=0;
+    const filtered=poems.filter(poem=>{
 
-    poems.forEach((poem,index)=>{
+        const categoryMatch=poem.category===currentCategory;
 
-        const text=(poem.title+" "+poem.category+" "+poem.topic+" "+poem.content).toLowerCase();
+        const content=(
+            poem.title+" "+
+            poem.category+" "+
+            poem.stanzas.join(" ")
+        ).toLowerCase();
 
-        const matchesSearch=text.includes(search);
-        const matchesCategory=category==="सबै" || poem.category===category;
+        return categoryMatch && content.includes(keyword);
 
-        if(matchesSearch && matchesCategory){
-
-            count++;
-
-            const card=document.createElement("article");
-            card.className="poem-card";
-
-            const title=document.createElement("h3");
-            title.textContent=poem.title;
-
-            const meta=document.createElement("p");
-            meta.className="meta";
-            meta.textContent="विधा: "+poem.category;
-
-            const topic=document.createElement("p");
-            topic.textContent="विषय: "+poem.topic;
-
-            const author=document.createElement("p");
-            author.className="meta";
-            author.textContent="लेखक: "+poem.author;
-
-            const preview=document.createElement("p");
-            preview.textContent=poem.content.slice(0,90)+"...";
-
-            const button=document.createElement("button");
-            button.textContent="पूरा कविता पढ्नुहोस् →";
-            button.onclick=()=>openReader(index);
-
-            card.append(title,meta,topic,author,preview,button);
-            list.appendChild(card);
-        }
     });
 
-    document.getElementById("noResults").style.display=
-        count===0 ? "block" : "none";
+    const grid=document.getElementById("poemGrid");
+
+    grid.innerHTML="";
+
+    document.getElementById("count").textContent=
+        "यस विधामा जम्मा १०० कविता | देखिएका: "+filtered.length;
+
+    if(filtered.length===0){
+
+        grid.innerHTML="<p>कविता भेटिएन।</p>";
+        return;
+
+    }
+
+    filtered.forEach(poem=>{
+
+        const card=document.createElement("div");
+        card.className="card";
+
+        const title=document.createElement("h3");
+        title.textContent=poem.title;
+
+        const meta=document.createElement("p");
+        meta.className="meta";
+        meta.textContent=
+            poem.category+" | "+poem.stanzas.length+" श्लोक";
+
+        const button=document.createElement("button");
+        button.textContent="पूरा कविता पढ्नुहोस्";
+
+        button.onclick=()=>openPoem(poem.id);
+
+        card.appendChild(title);
+        card.appendChild(meta);
+        card.appendChild(button);
+
+        grid.appendChild(card);
+
+    });
+
 }
 
-let currentFont=20;
 
-function openReader(index){
+/* ==================================
+   ८. पूरा कविता पढ्ने
+================================== */
 
-    const poem=poems[index];
+function openPoem(id){
 
-    document.getElementById("readerTitle").textContent=poem.title;
+    const poem=poems.find(p=>p.id===id);
 
-    document.getElementById("readerMeta").textContent=
-        "विषय: "+poem.topic+" | विधा: "+poem.category+
-        " | लेखक: "+poem.author;
-
-    document.getElementById("poemContent").textContent=poem.content;
-
-    document.getElementById("lastTitle").textContent=
-        "— "+poem.title+" —";
+    if(!poem)return;
 
     document.getElementById("reader").style.display="block";
+
+    document.getElementById("poemTitle").textContent=poem.title;
+
+    document.getElementById("poemInfo").textContent=
+        "विधा: "+poem.category+
+        " | लेखक: Aayush Jaishi";
+
+    const body=document.getElementById("poemBody");
+
+    body.innerHTML="";
+
+    poem.stanzas.forEach((stanza,index)=>{
+
+        const p=document.createElement("p");
+
+        p.textContent=
+            "श्लोक "+(index+1)+"\n\n"+stanza;
+
+        p.style.fontSize=fontSize+"px";
+
+        body.appendChild(p);
+
+    });
+
 }
 
-function closeReader(){
+
+/* ==================================
+   ९. कविता बन्द गर्ने
+================================== */
+
+function closePoem(){
+
     document.getElementById("reader").style.display="none";
+
 }
+
+
+/* ==================================
+   १०. अक्षर ठूलो / सानो
+================================== */
 
 function changeFont(amount){
 
-    currentFont+=amount;
+    fontSize+=amount;
 
-    if(currentFont<14)currentFont=14;
-    if(currentFont>34)currentFont=34;
+    if(fontSize<13)fontSize=13;
+    if(fontSize>30)fontSize=30;
 
-    document.getElementById("poemContent").style.fontSize=
-        currentFont+"px";
-}
+    document.querySelectorAll("#poemBody p").forEach(p=>{
 
-function chooseCategory(category){
+        p.style.fontSize=fontSize+"px";
 
-    document.getElementById("categoryFilter").value=category;
-    renderPoems();
-
-    document.querySelector(".section-title").scrollIntoView({
-        behavior:"smooth"
     });
+
 }
 
-function toggleDark(){
+
+/* ==================================
+   ११. Dark / Light Mode
+================================== */
+
+function toggleTheme(){
+
     document.body.classList.toggle("dark");
+
+    const dark=document.body.classList.contains("dark");
+
+    document.getElementById("themeButton").textContent=
+        dark ? "☀️ Light Mode" : "🌙 Dark Mode";
+
 }
 
-renderPoems();
+
+/* ==================================
+   १२. Search
+================================== */
+
+document.getElementById("search")
+.addEventListener("input",renderPoems);
+
+
+/* ==================================
+   १३. वेबसाइट सुरु गर्ने
+================================== */
+
+renderCategories();
 
 </script>
 
