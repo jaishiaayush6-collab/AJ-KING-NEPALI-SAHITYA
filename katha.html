@@ -1,638 +1,389 @@
+
 <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>आयुस नेपाली साहित्य | कथा संग्रह</title>
-
+<title>AAYUSH नेपाली साहित्य | कथा संग्रह</title>
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root {
+  --bg:#f4f1ea; --surface:#fff; --text:#252525;
+  --muted:#777; --primary:#8b3d25; --border:#e5ded2;
 }
-
-body{
-    font-family:"Noto Sans Devanagari",sans-serif;
-    background:#f4f5fb;
-    color:#222;
-    line-height:1.9;
-    transition:.3s;
+body.dark {
+  --bg:#171717; --surface:#242424; --text:#f3eee7;
+  --muted:#b9b1a7; --primary:#e99a70; --border:#414141;
 }
-
-header{
-    background:linear-gradient(135deg,#064e3b,#047857,#0f766e);
-    color:white;
-    text-align:center;
-    padding:35px 15px;
+* {box-sizing:border-box}
+body {
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif;
+  line-height:1.8;transition:.25s;
 }
-
-header h1{font-size:30px;}
-
-nav{
-    background:#064e3b;
-    padding:12px;
-    text-align:center;
+header {
+  background:linear-gradient(120deg,#542719,#a65332);
+  color:white;padding:30px 18px;text-align:center;
 }
-
-nav a{
-    color:white;
-    text-decoration:none;
-    margin:5px 12px;
-    display:inline-block;
+header h1 {margin:0;font-size:clamp(25px,5vw,42px)}
+header p {margin:8px 0 0}
+nav {
+  position:sticky;top:0;z-index:5;background:var(--surface);
+  border-bottom:1px solid var(--border);padding:12px;
+  display:flex;justify-content:center;gap:10px;flex-wrap:wrap;
 }
-
-.container{
-    max-width:1150px;
-    margin:auto;
-    padding:18px;
+button,select,input {
+  font:inherit;border:1px solid var(--border);
+  border-radius:9px;padding:9px 13px;
 }
-
-.intro,.card{
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 3px 12px #00000012;
+button {cursor:pointer;background:var(--primary);color:white;border:0}
+button.secondary {background:var(--surface);color:var(--text);border:1px solid var(--border)}
+button:hover {opacity:.85}
+main {max-width:1150px;margin:auto;padding:22px 15px}
+.toolbar {
+  display:grid;grid-template-columns:2fr 1fr;gap:10px;margin-bottom:18px;
 }
-
-.intro{margin-bottom:20px;}
-
-.controls{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin:20px 0;
+input,select {width:100%;background:var(--surface);color:var(--text)}
+.layout {display:grid;grid-template-columns:250px 1fr;gap:20px}
+.panel,.story-card,.reader {
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:13px;padding:17px;
 }
-
-input{
-    flex:1;
-    min-width:200px;
+.panel {height:max-content}
+.panel h3 {margin-top:0}
+.category-list {display:grid;gap:7px}
+.category-list button {
+  text-align:left;background:transparent;color:var(--text);
+  border:1px solid var(--border);
 }
-
-input,button{
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-family:inherit;
-    font-size:15px;
+.category-list button.active {
+  background:var(--primary);color:white;border-color:var(--primary);
 }
-
-button{
-    background:#047857;
-    color:white;
-    border:0;
-    cursor:pointer;
-}
-
-button:hover{opacity:.85;}
-
-.categories{
-    display:flex;
-    flex-wrap:wrap;
-    gap:9px;
-    margin:15px 0;
-}
-
-.cat-btn{
-    background:#d1fae5;
-    color:#065f46;
-}
-
-.cat-btn.active{
-    background:#047857;
-    color:white;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:16px;
-    margin-top:20px;
-}
-
-.card{
-    border-top:4px solid #047857;
-}
-
-.card h3{color:#047857;}
-
-.meta{
-    color:#777;
-    font-size:13px;
-}
-
-.card button{
-    width:100%;
-    margin-top:10px;
-}
-
-.count{margin:15px 0;}
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:#000b;
-    z-index:20;
-    overflow-y:auto;
-    padding:15px;
-}
-
-.modal-content{
-    max-width:850px;
-    margin:25px auto;
-    background:white;
-    color:#222;
-    padding:25px;
-    border-radius:12px;
-}
-
-.modal-content h2{
-    color:#047857;
-    margin-bottom:10px;
-}
-
-.modal-controls{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    margin:15px 0;
-}
-
-.story-text{
-    font-size:18px;
-    line-height:2.1;
-}
-
-.story-text p{
-    margin:18px 0;
-    text-align:justify;
-}
-
-.close{float:right;background:#dc2626;}
-
-footer{
-    background:#064e3b;
-    color:white;
-    text-align:center;
-    padding:25px;
-    margin-top:35px;
-}
-
-body.dark{
-    background:#111827;
-    color:#f3f4f6;
-}
-
-body.dark .intro,
-body.dark .card{
-    background:#1f2937;
-    color:#f3f4f6;
-}
-
-body.dark .card h3,
-body.dark .modal-content h2{
-    color:#6ee7b7;
-}
-
-body.dark .meta{color:#cbd5e1;}
-
-body.dark .cat-btn{
-    background:#374151;
-    color:white;
-}
-
-body.dark .cat-btn.active{background:#047857;}
-
-body.dark .modal-content{
-    background:#1f2937;
-    color:white;
-}
-
-@media(max-width:600px){
-    header h1{font-size:23px;}
-    .modal-content{padding:15px;}
+.cards {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.story-card h3 {margin:4px 0;color:var(--primary)}
+.story-card p {color:var(--muted);margin:5px 0 12px}
+.meta {font-size:13px;color:var(--muted)}
+.actions {display:flex;gap:8px;flex-wrap:wrap}
+.reader {max-width:850px;margin:auto}
+.reader h2 {color:var(--primary)}
+.reader-content {font-size:var(--reader-size,18px);line-height:2.1}
+.reader-content p {margin:0 0 18px;text-align:justify}
+.hidden {display:none!important}
+footer {text-align:center;padding:25px;color:var(--muted)}
+#count {color:var(--muted);margin:10px 0}
+@media(max-width:760px) {
+ .layout {grid-template-columns:1fr}
+ .cards {grid-template-columns:1fr}
+ .toolbar {grid-template-columns:1fr}
+ nav {position:static}
 }
 </style>
 </head>
-
 <body>
-
 <header>
-    <h1>आयुस नेपाली साहित्य</h1>
-    <h2>📚 नेपाली कथा संग्रह</h2>
-    <p>कथामा जीवन, शब्दमा संसार।</p>
+  <h1>📚 AAYUSH नेपाली साहित्य</h1>
+  <p>नेपाली कथा संसारमा तपाईंलाई स्वागत छ</p>
+  <p>कथा पढौँ, ज्ञान बढाऔँ, साहित्यलाई माया गरौँ।</p>
 </header>
 
 <nav>
-    <a href="index.html">गृहपृष्ठ</a>
-    <a href="katha.html">कथा</a>
-    <a href="kabita.html">कविता</a>
-    <a href="bal-sahitya.html">बाल साहित्य</a>
-    <a href="nibandha.html">निबन्ध</a>
+  <button onclick="showHome()">🏠 गृहपृष्ठ</button>
+  <button class="secondary" onclick="showFavorites()">❤️ मनपर्ने कथा</button>
+  <button class="secondary" onclick="changeTheme()">🌙 थिम परिवर्तन</button>
+  <button class="secondary" onclick="changeFont(-1)">अ−</button>
+  <button class="secondary" onclick="changeFont(1)">अ+</button>
 </nav>
 
-<div class="container">
-
-    <section class="intro">
-        <h2>कथा संसारमा स्वागत छ!</h2>
-        <p>
-            यस संग्रहमा प्रेरणादायी, सामाजिक, नैतिक, बाल,
-            ऐतिहासिक, देशभक्ति, पारिवारिक, प्रकृति,
-            विज्ञान तथा रहस्यात्मक विधाका १०० नमुना कथा छन्।
-            आफ्नो रुचिअनुसार कथा खोज्नुहोस् र पढ्नुहोस्।
-        </p>
-    </section>
-
-    <div class="controls">
-        <input
-            type="search"
-            id="search"
-            placeholder="कथाको नाम वा शब्द खोज्नुहोस्..."
-        >
-
-        <button onclick="toggleTheme()" id="themeButton">
-            🌙 Dark Mode
-        </button>
+<main>
+  <section id="home">
+    <h2>📖 नेपाली कथा संग्रह</h2>
+    <div class="toolbar">
+      <input id="search" placeholder="कथाको नाम वा शब्द खोज्नुहोस्..." oninput="renderStories()">
+      <select id="sort" onchange="renderStories()">
+        <option value="all">सबै कथाहरू</option>
+        <option value="favorites">मनपर्ने कथाहरू</option>
+      </select>
     </div>
 
-    <h2>कथाका विधाहरू</h2>
-
-    <div class="categories" id="categories"></div>
-
-    <p class="count" id="count"></p>
-
-    <div class="grid" id="storyGrid"></div>
-
-</div>
-
-<div class="modal" id="reader">
-    <div class="modal-content">
-
-        <button class="close" onclick="closeStory()">बन्द ✖</button>
-
-        <h2 id="storyTitle"></h2>
-        <p id="storyInfo"></p>
-
-        <div class="modal-controls">
-            <button onclick="changeFont(1)">A+ ठूलो</button>
-            <button onclick="changeFont(-1)">A- सानो</button>
-        </div>
-
-        <div class="story-text" id="storyBody"></div>
-
+    <div class="layout">
+      <aside class="panel">
+        <h3>📚 कथा विधाहरू</h3>
+        <div id="categories" class="category-list"></div>
+      </aside>
+      <section>
+        <h2 id="categoryTitle">सबै कथाहरू</h2>
+        <div id="count"></div>
+        <div id="storyCards" class="cards"></div>
+      </section>
     </div>
-</div>
+  </section>
+
+  <section id="reading" class="hidden">
+    <button class="secondary" onclick="showHome()">← कथा सूचीमा फर्कनुहोस्</button>
+    <article class="reader">
+      <div class="meta" id="readCategory"></div>
+      <h2 id="readTitle"></h2>
+      <div class="actions">
+        <button onclick="changeFont(-1)">अक्षर सानो</button>
+        <button onclick="changeFont(1)">अक्षर ठूलो</button>
+        <button class="secondary" id="readFavorite" onclick="toggleCurrentFavorite()">❤️ मनपर्ने</button>
+      </div>
+      <hr>
+      <div id="readContent" class="reader-content"></div>
+    </article>
+  </section>
+</main>
 
 <footer>
-    <h2>आयुस नेपाली साहित्य</h2>
-    <p>लेखक तथा प्रस्तोता: Aayush Jaishi</p>
-    <p>© 2026 Aayush Nepali Sahitya</p>
+  <p>© 2026 AAYUSH नेपाली साहित्य | नेपाली भाषा र साहित्यको सम्मान</p>
 </footer>
 
 <script>
-
-/* कथाका १० विधा */
 const categories = [
-    "प्रेरणादायी कथा",
-    "सामाजिक कथा",
-    "नैतिक कथा",
-    "बाल कथा",
-    "ऐतिहासिक कथा",
-    "देशभक्ति कथा",
-    "पारिवारिक कथा",
-    "प्रकृति तथा वातावरण कथा",
-    "विज्ञान तथा प्रविधि कथा",
-    "रहस्यात्मक कथा"
+ "सामाजिक कथा","डर तथा रहस्य कथा","नैतिक कथा","बाल कथा",
+ "ऐतिहासिक कथा","लघुकथा","पारिवारिक कथा","प्राकृतिक कथा",
+ "वातावरण सम्बन्धी कथा","विज्ञान तथा प्रविधि कथा",
+ "वैज्ञानिक कथा","वैवाहिक कथा","सांस्कृतिक कथा",
+ "प्रेम कथा","विश्वसम्बन्धी कथा"
 ];
 
-/* प्रत्येक विधाका १० कथा शीर्षक */
-const titles = [
-    "सानो प्रयासको ठूलो सफलता",
-    "इमानदारीको पुरस्कार",
-    "आमाको सपना",
-    "हराएको बाटो",
-    "नयाँ बिहान",
-    "गाउँको परिवर्तन",
-    "साहसी बालक",
-    "अन्तिम अवसर",
-    "ज्ञानको उज्यालो",
-    "अद्भुत खोज"
+const stories = [
+{
+ id:1,category:"सामाजिक कथा",title:"गाउँको साझा बाटो",
+content:[
+"पहाडको काखमा रहेको सुन्दर गाउँमा धेरै परिवार बसोबास गर्थे। गाउँको बीचबाट एउटा साँघुरो बाटो गएको थियो। त्यही बाटोबाट विद्यार्थी विद्यालय जान्थे, किसान खेतमा पुग्थे र बिरामीलाई स्वास्थ्य चौकी लैजाने गरिन्थ्यो। तर वर्षौँदेखि बाटोको विषयमा गाउँलेहरूबीच विवाद चलिरहेको थियो। कसैले आफ्नो जग्गा पर्ने भन्दै बाटो फराकिलो बनाउन दिँदैनथे।",
+"एक दिन ठूलो वर्षा भयो। गाउँकी एक वृद्ध महिला बिरामी परिन्। उनलाई स्वास्थ्य चौकी पुर्‍याउनुपर्ने भयो, तर साँघुरो बाटो र पहिरोका कारण सबैलाई कठिनाइ भयो। त्यसपछि गाउँका युवाहरूले छलफल बोलाए। उनीहरूले व्यक्तिगत स्वार्थभन्दा समुदायको आवश्यकता ठूलो भएको कुरा सबैलाई सम्झाए।",
+"केही दिनको छलफलपछि गाउँलेहरूले मिलेर बाटो मर्मत गर्ने निर्णय गरे। कसैले श्रमदान गरे, कसैले ढुङ्गा ल्याए र कसैले खानेपानीको व्यवस्था गरे। सबैको सहयोगले बाटो फराकिलो र सुरक्षित बन्यो। गाउँमा मानिसहरूबीचको सम्बन्ध पनि सुध्रियो।",
+"त्यस दिन गाउँलेहरूले एउटा महत्त्वपूर्ण कुरा सिके—समाज राम्रो बनाउन अरूलाई दोष दिनुभन्दा आफूले गर्न सक्ने योगदानबाट सुरुवात गर्नुपर्छ। साझा समस्या समाधान गर्न एकता, सहकार्य र आपसी सम्मान आवश्यक हुन्छ।"
+]},
+{
+ id:2,category:"डर तथा रहस्य कथा",title:"पुरानो घरको रहस्य",
+content:[
+"गाउँको छेउमा एउटा पुरानो घर थियो। धेरै वर्षदेखि त्यहाँ कोही बसेको थिएन। घरको झ्याल हावाले हल्लाउँदा अनौठो आवाज आउँथ्यो। गाउँका बालबालिका त्यस घरको नजिक जान डराउँथे। एक दिन विद्यालयको परियोजनाका लागि इतिहास खोजिरहेका दुई विद्यार्थीले त्यस घरबारे जानकारी लिने निर्णय गरे।",
+"उनीहरूले गाउँका ज्येष्ठ नागरिकसँग कुरा गरे। घर कुनै समय गाउँका शिक्षकको रहेछ। शिक्षकले गाउँमा पुस्तकालय खोल्ने सपना देखेका थिए। तर उनको निधनपछि घर बन्द भएको रहेछ। विद्यार्थीहरूले घरभित्र पुराना किताब र कागजात सुरक्षित रहेको थाहा पाए।",
+"गाउँका मानिसहरूको सहयोगमा घर सफा गरियो। एउटा कुनामा शिक्षकले लेखेका डायरी र पुस्तकहरू भेटिए। राति सुनिने आवाजको कारण पनि पत्ता लाग्यो—भाँचिएको झ्याल हावाले हल्लाउँदा आवाज आउँदो रहेछ।",
+"रहस्यमय भनिएको त्यो घर अन्ततः गाउँको सानो पुस्तकालय बन्यो। विद्यार्थीहरूले बुझे—कहिलेकाहीँ हामीलाई डर लाग्ने कुराको पछाडि अज्ञात कारण लुकेको हुन्छ। सत्य पत्ता लगाउन जिज्ञासा, धैर्य र समझदारी चाहिन्छ।"
+]},
+{
+ id:3,category:"नैतिक कथा",title:"इमानदार बालक",
+content:[
+"एक विद्यालयमा आरव नामको विद्यार्थी पढ्थ्यो। ऊ पढाइमा मेहनती र व्यवहारमा इमानदार थियो। एक दिन विद्यालयको आँगनमा उसले एउटा सानो पर्स भेट्टायो। पर्सभित्र केही पैसा र परिचयपत्र थियो। उसका साथीहरूले त्यो पैसा राख्न सुझाव दिए, तर आरवले त्यसो गर्न उचित ठानेन।",
+"उसले पर्स शिक्षकलाई बुझायो। शिक्षकले परिचयपत्र हेरेर पर्सका मालिकलाई बोलाए। पर्स हराएका व्यक्ति विद्यालयका एक कर्मचारी थिए। पर्स सुरक्षित पाउँदा उनी निकै खुसी भए र आरवलाई धन्यवाद दिए।",
+"विद्यालयको सभामा शिक्षकले आरवको कामको प्रशंसा गरे। तर आरवले आफूले कुनै ठूलो काम नगरेको, केवल सही काम गरेको बताए। उसका साथीहरूले पनि इमानदारीको महत्त्व बुझ्न थाले।",
+"त्यस दिन सबैले सिके—इमानदारीको मूल्य पैसाले मापन गर्न सकिँदैन। सही काम गर्दा मनमा आत्मविश्वास र अरूको विश्वास दुवै बढ्छ।"
+]},
+{
+ id:4,category:"बाल कथा",title:"सानो चरीको ठूलो सपना",
+content:[
+"एउटा हरियो वनमा सानी चरी बस्थी। उसका पखेटा अरू चराभन्दा साना थिए। ठूला चराहरू टाढासम्म उडेको देख्दा उसलाई पनि आकाशको यात्रा गर्ने रहर लाग्थ्यो। तर ऊ आफू सक्दिनँ कि भनेर डराउँथी।",
+"एक दिन उसकी आमाले उसलाई भनिन्, 'ठूलो यात्रा पनि सानो प्रयासबाट सुरु हुन्छ।' त्यसपछि सानी चरीले हरेक बिहान अभ्यास गर्न थाली। सुरुमा ऊ नजिकैको हाँगासम्म मात्र उड्थी। विस्तारै उसले आफ्नो उडानमा विश्वास गर्न सिक्दै गई।",
+"केही समयपछि ऊ वनको अर्को छेउसम्म पुग्न सफल भई। बाटोमा उसले नयाँ फूल, खोल्सा र चराहरू देखी। उसले आफ्नो क्षमताबारे नयाँ कुरा सिक्दै गई।",
+"सानी चरीले बुझी—अरूसँग तुलना गर्नुभन्दा आफ्नो प्रयासलाई निरन्तरता दिनु महत्त्वपूर्ण हुन्छ। धैर्य, अभ्यास र आत्मविश्वासले सपना पूरा गर्ने बाटो खोल्छ।"
+]},
+{
+ id:5,category:"ऐतिहासिक कथा",title:"पुरानो किल्लाको सम्झना",
+content:[
+"पहाडको टुप्पोमा एउटा पुरानो किल्ला थियो। त्यस किल्लाले धेरै पुस्ताको इतिहास बोकेको थियो। गाउँका शिक्षकले विद्यार्थीहरूलाई इतिहास पढाउँदा किल्लाको संरक्षण गर्नुपर्ने कुरा बताउँथे। एक दिन विद्यार्थीहरू शिक्षकसँगै किल्ला हेर्न गए।",
+"त्यहाँ पुगेपछि उनीहरूले पुराना पर्खाल, ढुङ्गाका सिँढी र पानी जम्मा गर्ने पोखरी देखे। शिक्षकले किल्ला केवल ढुङ्गाको संरचना नभई पुराना मानिसहरूको जीवन, कला र परिश्रमको प्रमाण भएको बताए।",
+"विद्यार्थीहरूले फोहोर नफाल्ने, पर्खालमा नलेख्ने र ऐतिहासिक वस्तु नबिगार्ने प्रतिबद्धता गरे। उनीहरूले किल्लाबारे जानकारी संकलन गरी विद्यालयमा प्रदर्शनी पनि आयोजना गरे।",
+"इतिहास बुझ्नु भनेको विगतलाई सम्मान गर्दै वर्तमानलाई राम्रो बनाउनु हो। सम्पदाको संरक्षण गर्नु सबै पुस्ताको साझा जिम्मेवारी हो।"
+]},
+{
+ id:6,category:"लघुकथा",title:"एउटा पुस्तक",
+content:[
+"बसपार्कमा एउटा पुरानो पुस्तक बेवारिसे अवस्थामा थियो। धेरै मानिस त्यसको छेउबाट हिँडे, तर कसैले ध्यान दिएन। विद्यालयबाट फर्कँदै गरेको एक बालकले पुस्तक उठायो।",
+"उसले पुस्तकका पानाहरू पल्टायो। भित्र कसैले लेखेको सानो वाक्य थियो—'ज्ञान बाँड्दा घट्दैन।' बालकले पुस्तक विद्यालयको पुस्तकालयमा बुझायो।",
+"केही दिनपछि त्यो पुस्तक धेरै विद्यार्थीले पढे। एउटा बेवास्ता गरिएको पुस्तकले धेरैको मनमा नयाँ जिज्ञासा जगायो।"
+]},
+{
+ id:7,category:"पारिवारिक कथा",title:"हजुरआमाको आँगन",
+content:[
+"शहरमा पढ्ने नातिनी बिदामा गाउँ फर्कँदा हजुरआमाको घरमा पुग्थी। घरको आँगनमा तुलसीको मठ, फूलका बिरुवा र पुरानो काठको बेन्च थियो। हजुरआमा हरेक बिहान आँगन सफा गर्थिन्।",
+"नातिनीलाई मोबाइल र इन्टरनेटको संसार मन पर्थ्यो। हजुरआमालाई भने परिवारसँग बसेर कुरा गर्ने बानी थियो। सुरुमा उनीहरूका रुचि फरक देखिए पनि एकअर्काको कुरा सुन्न थालेपछि उनीहरू नजिक भए।",
+"नातिनीले हजुरआमालाई मोबाइलमा परिवारका फोटो हेर्न सिकाई। हजुरआमाले नातिनीलाई पुराना पारिवारिक सम्झना र गाउँका कथा सुनाइन्।",
+"परिवारको सम्बन्ध उपहारले मात्र होइन, समय, सम्मान र मायाले बलियो हुन्छ भन्ने कुरा उनीहरूले एकअर्काबाट सिके।"
+]},
+{
+ id:8,category:"प्राकृतिक कथा",title:"नदीको गीत",
+content:[
+"हिमालको काखमा जन्मिएको एउटा सानो खोला पहाड हुँदै बग्थ्यो। बाटोमा उसले ढुङ्गा, वन, खेत र बस्ती भेट्थ्यो। मानिसहरूले त्यसको पानी पिउँथे, खेतमा लगाउँथे र जनावरलाई खुवाउँथे।",
+"एक वर्ष गाउँमा लामो खडेरी पर्‍यो। खोलाको पानी घट्न थाल्यो। गाउँलेहरूले पानीको महत्त्व बुझेर मुहान संरक्षण गर्ने, वृक्षरोपण गर्ने र पानी खेर नफाल्ने निर्णय गरे।",
+"केही समयपछि मुहान वरिपरि हरियाली बढ्यो। वर्षा हुँदा पानी जमिनमा सोसिन थाल्यो र खोलामा फेरि पानी बढ्यो। गाउँलेहरूले प्रकृतिसँग मिलेर बाँच्नुको अर्थ बुझे।"
+]},
+{
+ id:9,category:"वातावरण सम्बन्धी कथा",title:"हरियो विद्यालय",
+content:[
+"एउटा विद्यालयको वरिपरि प्लास्टिक र फोहोर थुप्रिन थालेको थियो। विद्यार्थीहरूलाई सफा वातावरणको महत्त्व थाहा भए पनि व्यवहारमा परिवर्तन आएको थिएन। एक दिन विज्ञान शिक्षकले विद्यालयलाई हरियो बनाउने अभियान सुरु गरे।",
+"विद्यार्थीहरूले फोहोर छुट्याउने डस्टबिन राखे। खाली ठाउँमा फूल र फलफूलका बिरुवा रोपे। पानी बचत गर्ने र एकपटक प्रयोग हुने प्लास्टिक घटाउने अभियान पनि चलाए।",
+"केही महिनापछि विद्यालय सफा र हरियाली भयो। अभिभावक र स्थानीय समुदायले पनि अभियानमा साथ दिए। सानो समूहको प्रयासले ठूलो परिवर्तन ल्याउन सक्छ भन्ने उदाहरण विद्यालय बन्यो।"
+]},
+{
+ id:10,category:"विज्ञान तथा प्रविधि कथा",title:"गाउँमा इन्टरनेट",
+content:[
+"पहाडी गाउँमा इन्टरनेटको सुविधा सीमित थियो। विद्यार्थीहरूलाई नयाँ जानकारी पाउन कठिन हुन्थ्यो। गाउँका युवाहरूले विद्यालयमा सुरक्षित डिजिटल सिकाइ केन्द्र स्थापना गर्ने योजना बनाए।",
+"उनीहरूले कम्प्युटर, इन्टरनेट र डिजिटल पुस्तकको व्यवस्था गरे। शिक्षकहरूले विद्यार्थीलाई सही स्रोतबाट जानकारी खोज्ने, गोपनीयता जोगाउने र प्रविधिको जिम्मेवार प्रयोग गर्ने तरिका सिकाए।",
+"अब गाउँका विद्यार्थीले विज्ञानका प्रयोग, भाषा अभ्यास र शैक्षिक सामग्री अध्ययन गर्न पाए। प्रविधि उपयोगी हुन त्यसलाई सही उद्देश्य र जिम्मेवारीका साथ प्रयोग गर्नुपर्छ भन्ने कुरा सबैले बुझे।"
+]},
+{
+ id:11,category:"वैज्ञानिक कथा",title:"ताराहरूको प्रश्न",
+content:[
+"मीरा राति आकाश हेर्न मन पराउँथी। ताराहरू किन चम्किन्छन् र चन्द्रमा किन आकार बदलिएको जस्तो देखिन्छ भन्ने प्रश्न उसलाई सधैँ लाग्थ्यो। विद्यालयको विज्ञान क्लबमा उसले आफ्ना प्रश्न राखी।",
+"शिक्षकले उसलाई आकाश अवलोकन डायरी बनाउन सुझाव दिए। मीराले हरेक रात चन्द्रमाको अवस्था, मौसम र देखिएका ताराहरूको विवरण लेख्न थाली। उसले पुस्तक र विश्वसनीय शैक्षिक स्रोतबाट पनि जानकारी पढी।",
+"केही हप्तापछि उसले आफ्नो अवलोकन विद्यालयमा प्रस्तुत गरी। उसका साथीहरूले पनि आकाश हेर्न र प्रश्न सोध्न थाले। जिज्ञासा नै वैज्ञानिक सोचको सुरुवात हो भन्ने कुरा मीराले अनुभव गरी।"
+]},
+{
+ id:12,category:"वैवाहिक कथा",title:"साझा समझदारी",
+content:[
+"एक परिवारमा दुई जना वयस्क जीवनसाथी आफ्नो काम र घरको जिम्मेवारी मिलाएर अघि बढिरहेका थिए। उनीहरूको विचार कहिलेकाहीँ फरक हुन्थ्यो। तर उनीहरू एकअर्काको कुरा ध्यान दिएर सुन्ने गर्थे।",
+"एक दिन घरको खर्च र समय व्यवस्थापनबारे असमझदारी भयो। उनीहरूले रिसमा निर्णय नगरी शान्त भएर छलफल गरे। दुवैले आफ्नो आवश्यकता बताए र मिलेर योजना बनाए।",
+"उनीहरूले सम्बन्ध टिकाउन सम्मान, संवाद, विश्वास र बराबरीको भूमिका महत्त्वपूर्ण हुने कुरा बुझे। सहकार्यले घरलाई सहज र खुसीपूर्ण बनाउँछ।"
+]},
+{
+ id:13,category:"सांस्कृतिक कथा",title:"मादलको ताल",
+content:[
+"गाउँमा चाडपर्व नजिकिँदै थियो। युवाहरू सांस्कृतिक कार्यक्रममा नाचगानको तयारी गर्दै थिए। एक जना वृद्ध कलाकारले पुरानो मादल निकालेर नयाँ पुस्तालाई यसको ताल सिकाउन थाले।",
+"सुरुमा युवाहरूलाई पुरानो गीत कठिन लाग्यो। तर कलाकारले गीतको अर्थ, त्यससँग जोडिएको इतिहास र समुदायको सम्झना सुनाए। विस्तारै सबैले अभ्यास गर्न थाले।",
+"कार्यक्रमको दिन पुरानो र नयाँ पुस्ता एउटै मञ्चमा प्रस्तुत भए। गाउँलेहरूले आफ्नो संस्कृति जोगाउनु भनेको पुराना कुरा मात्र दोहोर्‍याउनु नभई त्यसको अर्थ बुझेर नयाँ पुस्तामा हस्तान्तरण गर्नु हो भन्ने महसुस गरे।"
+]},
+{
+ id:14,category:"प्रेम कथा",title:"पुस्तकालयको भेट",
+content:[
+"विद्यालयको पुस्तकालयमा दुई विद्यार्थीको भेट हुन्थ्यो। दुवैलाई कथा र कविता पढ्न मन पर्थ्यो। उनीहरू पुस्तकबारे विचार साटासाट गर्थे र एकअर्काको रुचिको सम्मान गर्थे।",
+"समयसँगै उनीहरू असल साथी बने। परीक्षाको तयारीमा एकअर्कालाई सहयोग गरे र विद्यालयको साहित्यिक कार्यक्रममा सँगै भाग लिए। उनीहरूले मित्रतामा विश्वास, इमानदारी र व्यक्तिगत सीमाको सम्मान आवश्यक हुने कुरा बुझे।",
+"उनीहरूको सम्बन्धको सुन्दर पक्ष यही थियो—एकअर्कालाई राम्रो बन्न प्रेरित गर्नु।"
+]},
+{
+ id:15,category:"विश्वसम्बन्धी कथा",title:"सीमापारिको मित्रता",
+content:[
+"नेपालको एउटा विद्यालयले अर्को देशको विद्यालयसँग पत्र आदानप्रदान कार्यक्रम सुरु गर्‍यो। विद्यार्थीहरूले आफ्नो भाषा, संस्कृति, खानपान र चाडपर्वबारे लेखेर पठाउँथे।",
+"सुरुमा उनीहरूलाई एकअर्काको जीवनशैली अनौठो लाग्यो। तर पत्रहरू पढ्दै जाँदा उनीहरूले धेरै समानता पनि भेटे। सबैलाई परिवार, शिक्षा, सुरक्षित वातावरण र मित्रताको महत्त्व उत्तिकै रहेछ।",
+"विद्यालयहरूले संयुक्त अनलाइन कार्यक्रम आयोजना गरे। विद्यार्थीहरूले फरक संस्कृति बुझ्नु र सम्मान गर्नु विश्वमैत्री समाज निर्माण गर्ने आधार हो भन्ने कुरा सिके।"
+]}
 ];
 
-/* कथाका नमुना विषय र अनुच्छेद */
-const storyIdeas = {
+let activeCategory = "सबै";
+let currentStory = null;
+let readerSize = 18;
+let favorites = JSON.parse(localStorage.getItem("aayushFavorites") || "[]");
 
-"प्रेरणादायी कथा":[
-"एक विद्यार्थीले आफ्नो जीवनमा केही राम्रो गर्ने सपना देखेको थियो। उसको परिवारको अवस्था सामान्य थियो, तर उसले आफ्नो लक्ष्य छोडेन।",
-"उसले हरेक दिन थोरै समय पढाइ र नयाँ सीप सिक्न छुट्याउन थाल्यो। सुरुमा उसलाई धेरै कुरा कठिन लाग्थ्यो, तर उसले हार मानेन।",
-"एक दिन उसले एउटा प्रतियोगितामा भाग लिने निर्णय गर्‍यो। अरूले आफूभन्दा राम्रो गर्छन् भन्ने सोच आए पनि उसले तयारी जारी राख्यो।",
-"प्रतियोगिताको नतिजा आउँदा उसले पुरस्कार जित्यो। त्यो सफलताले उसलाई मेहनत र धैर्यको महत्त्व अझ राम्रोसँग बुझायो।",
-"त्यसपछि उसले आफूले सिकेका कुरा अरू साथीलाई पनि सिकाउन थाल्यो। उसले बुझ्यो—सफलता भनेको आफू मात्र अघि बढ्नु होइन, अरूलाई पनि अघि बढ्न सहयोग गर्नु हो।"
-],
-
-"सामाजिक कथा":[
-"एउटा गाउँमा विभिन्न पेसा र पृष्ठभूमिका मानिसहरू मिलेर बस्थे। गाउँमा धेरै सम्भावना भए पनि सबैले आफ्नो समस्या आफैँ समाधान गर्न खोज्थे।",
-"एक दिन गाउँको सार्वजनिक धारामा समस्या आयो। पानी लिन आउने मानिसहरूलाई कठिनाइ हुन थाल्यो र गाउँलेहरूबीच छलफल सुरु भयो।",
-"केही युवाले सबैलाई एउटै ठाउँमा बोलाएर समस्या समाधान गर्ने प्रस्ताव राखे। उनीहरूले कसैलाई दोष नदिई सबैको कुरा ध्यान दिएर सुने।",
-"गाउँलेहरूले मिलेर काम गर्ने निर्णय गरे। कसैले सामग्री जुटाए, कसैले श्रम दिए र कसैले आवश्यक सल्लाह उपलब्ध गराए।",
-"केही दिनमै धाराको समस्या समाधान भयो। गाउँलेहरूले एकताको शक्ति बुझे र त्यसपछि गाउँका अरू समस्या पनि मिलेर समाधान गर्न थाले।"
-],
-
-"नैतिक कथा":[
-"एउटा विद्यार्थीले विद्यालय जाने बाटोमा एउटा झोला भेट्टायो। झोलाभित्र केही किताब, कागजात र पैसा थियो।",
-"उसका साथीहरूले झोला आफैँसँग राख्न सुझाव दिए। तर उसलाई त्यो सामान कसैको मेहनत र आवश्यकतासँग जोडिएको हुन सक्छ भन्ने लाग्यो।",
-"उसले झोलामा भेटिएको परिचयपत्र हेरेर त्यसको मालिक पत्ता लगाउने प्रयास गर्‍यो। शिक्षकको सहयोग लिएर उसले झोलाको मालिकलाई खबर पठायो।",
-"झोला हराएका व्यक्ति विद्यालय आए र आफ्नो सामान सुरक्षित पाउँदा खुसी भए। उनले विद्यार्थीलाई धन्यवाद दिए।",
-"विद्यार्थीले कुनै ठूलो पुरस्कारको आशा गरेको थिएन। उसले सही काम गर्दा मनमा हुने सन्तुष्टि नै सबैभन्दा ठूलो पुरस्कार हो भन्ने कुरा सिक्यो।"
-],
-
-"बाल कथा":[
-"एउटा सानो गाउँमा रमेश नामको बालक बस्थ्यो। उसलाई नयाँ कुरा सिक्न र आफ्ना साथीहरूसँग खेल्न धेरै मन पर्थ्यो।",
-"एक दिन उसले घरनजिकै एउटा घाइते चरा भेट्टायो। उसले चरालाई सुरक्षित ठाउँमा राखेर परिवारका ठूलाबडासँग सहयोग माग्यो।",
-"परिवारको सहयोगमा चरालाई आवश्यक हेरचाह गरियो। रमेशले चरालाई दुःख नदिई शान्त वातावरणमा राख्नुपर्छ भन्ने कुरा बुझ्यो।",
-"केही दिनपछि चरा स्वस्थ भयो र खुला आकाशमा उड्न सक्ने भयो। रमेशले त्यसलाई स्वतन्त्र रूपमा उड्न दियो।",
-"त्यस दिनदेखि रमेशले साथीहरूलाई पनि चराचुरुङ्गी र जनावरप्रति दया गर्न सिकाउन थाल्यो। उसको सानो कामले अरू बालबालिकालाई पनि राम्रो व्यवहार गर्न प्रेरित गर्‍यो।"
-],
-
-"ऐतिहासिक कथा":[
-"पुरानो समयको एउटा पहाडी बस्तीमा मानिसहरू मेहनत र आपसी सहयोगमा जीवन बिताउँथे। त्यहाँका बूढापाकाले पुराना घटना र पुर्खाका अनुभव सुनाउने गर्थे।",
-"एक दिन गाउँका विद्यार्थीहरूले आफ्नो बस्तीको इतिहास बुझ्ने निर्णय गरे। उनीहरूले पुराना अभिलेख, स्मारक र स्थानीय जानकारसँग जानकारी संकलन गरे।",
-"खोज्दै जाँदा उनीहरूले आफ्नो गाउँसँग जोडिएका धेरै महत्त्वपूर्ण घटना पत्ता लगाए। ती घटनाले गाउँको पहिचान र संस्कृतिको महत्त्व देखाउँथे।",
-"विद्यार्थीहरूले आफूले पाएका जानकारीलाई मिलाएर विद्यालयमा एउटा सानो प्रदर्शनी तयार गरे। गाउँका मानिसहरू पनि प्रदर्शनी हेर्न आए।",
-"त्यसपछि गाउँलेहरूले पुराना सम्पदा र इतिहास संरक्षण गर्ने निर्णय गरे। नयाँ पुस्ताले आफ्नो इतिहास बुझ्नु भविष्यका लागि पनि आवश्यक छ भन्ने सबैले महसुस गरे।"
-],
-
-"देशभक्ति कथा":[
-"नेपालको एउटा सुन्दर गाउँमा विभिन्न समुदायका मानिसहरू मिलेर बस्थे। उनीहरू आफ्नो भाषा, संस्कृति र देशको पहिचानप्रति गर्व गर्थे।",
-"एक दिन विद्यालयमा देशको विकासमा युवाको भूमिका विषयमा कार्यक्रम आयोजना भयो। विद्यार्थीहरूले शिक्षा, सरसफाइ, कृषि र प्रविधिबारे आफ्ना विचार राखे।",
-"कार्यक्रममा एक विद्यार्थीले देशलाई माया गर्नु भनेको केवल भाषण गर्नु होइन, आफ्नो जिम्मेवारी पूरा गर्नु पनि हो भन्यो।",
-"उसको विचारबाट प्रभावित भएर विद्यार्थीहरूले विद्यालय र गाउँ सफा राख्ने अभियान सुरु गरे। उनीहरूले पुस्तक संकलन गरेर आवश्यक परेका बालबालिकालाई पनि सहयोग गरे।",
-"सानो अभियानले गाउँमा राम्रो परिवर्तन ल्यायो। उनीहरूले देशको भविष्य निर्माणमा प्रत्येक नागरिकको योगदान महत्त्वपूर्ण हुन्छ भन्ने कुरा बुझे।"
-],
-
-"पारिवारिक कथा":[
-"एउटा परिवारमा हजुरबा, हजुरआमा, बुबा, आमा र दुई जना बालबालिका बस्थे। सबैको दैनिक काम फरक भए पनि उनीहरू एकअर्कालाई माया गर्थे।",
-"केही समयदेखि परिवारका सदस्यहरू व्यस्त भएका कारण सँगै बसेर कुरा गर्ने समय कम भएको थियो। बालबालिकाले हजुरबाका पुराना कथा सुन्न पनि पाएका थिएनन्।",
-"एक दिन आमाले सबैलाई बेलुका केही समय सँगै बिताउने प्रस्ताव राखिन्। सबैले आफ्नो काम सकेर एउटै ठाउँमा भेला हुने निर्णय गरे।",
-"त्यो साँझ हजुरबाले पुराना अनुभव सुनाए र बालबालिकाले आफ्ना विद्यालयका कुरा बताए। सबैले एकअर्काको कुरा ध्यान दिएर सुने।",
-"त्यसपछि परिवारले हरेक दिन केही समय सँगै बिताउने बानी बसाल्यो। उनीहरूले परिवारको सम्बन्ध बलियो बनाउन समय र संवाद आवश्यक हुन्छ भन्ने कुरा बुझे।"
-],
-
-"प्रकृति तथा वातावरण कथा":[
-"एउटा गाउँ हरिया वन र स्वच्छ खोलाले घेरिएको थियो। गाउँका मानिसहरू प्रकृतिमा निर्भर भएर खेतीपाती र पशुपालन गर्थे।",
-"समयसँगै गाउँमा फोहोर बढ्न थाल्यो। खोलामा प्लास्टिक फालिन थाल्यो र वरपरका रूखहरू पनि काटिन थाले।",
-"विद्यालयका विद्यार्थीहरूले वातावरण सफा राख्न अभियान सुरु गर्ने निर्णय गरे। उनीहरूले शिक्षक र गाउँका मानिससँग मिलेर सरसफाइ तथा वृक्षरोपण कार्यक्रम आयोजना गरे।",
-"सबैले मिलेर खोलाको किनार सफा गरे र उपयुक्त ठाउँमा बिरुवा रोपे। विद्यार्थीहरूले प्लास्टिकको प्रयोग घटाउन पनि घरघरमा सन्देश पुर्‍याए।",
-"केही समयपछि गाउँको वातावरण सफा र हरियाली हुँदै गयो। गाउँलेहरूले प्रकृतिको संरक्षण गर्नु आफ्नै भविष्यको संरक्षण गर्नु हो भन्ने कुरा बुझे।"
-],
-
-"विज्ञान तथा प्रविधि कथा":[
-"एउटा विद्यालयमा विज्ञानप्रति रुचि राख्ने विद्यार्थीहरूको समूह थियो। उनीहरू आफ्नो वरपरका समस्यालाई विज्ञान र प्रविधिको सहयोगले समाधान गर्न चाहन्थे।",
-"एक दिन उनीहरूले विद्यालयको बगैँचामा पानीको अनावश्यक प्रयोग भइरहेको देखे। त्यसलाई कम गर्न नयाँ उपाय खोज्ने निर्णय गरे।",
-"शिक्षकको मार्गदर्शनमा उनीहरूले माटोको चिस्यान बुझ्ने साधारण नमुना तयार गरे। उनीहरूले पुस्तक र सुरक्षित शैक्षिक सामग्रीको सहयोग लिएर त्यसको काम गर्ने तरिका बुझे।",
-"धेरै प्रयासपछि उनीहरूको नमुना सफल भयो। आवश्यक परेको बेला मात्र पानी दिने प्रणालीको विचार विद्यालयमा प्रस्तुत गरियो।",
-"त्यसपछि विद्यार्थीहरूले विज्ञान भनेको किताबमा मात्र सीमित हुँदैन, दैनिक जीवनका समस्या समाधान गर्ने माध्यम पनि हो भन्ने कुरा सिके।"
-],
-
-"रहस्यात्मक कथा":[
-"एउटा पुरानो पुस्तकालय गाउँको बीचमा थियो। त्यहाँ धेरै वर्षदेखि नखोलिएको एउटा कोठा रहेको कुरा विद्यार्थीहरूले सुनेका थिए।",
-"एक दिन पुस्तकालयका हेरालुले त्यो कोठामा पुराना पुस्तक र नक्सा सुरक्षित रहेको बताए। विद्यार्थीहरूले अनुमति लिएर त्यसबारे जान्न चाहना देखाए।",
-"शिक्षक र पुस्तकालयका हेरालुको उपस्थितिमा कोठा खोलियो। भित्र पुराना कागजात, एउटा नक्सा र गाउँको इतिहाससँग सम्बन्धित टिपोट भेटिए।",
-"नक्सामा देखाइएको स्थान गाउँको पुरानो चौतारो थियो। विद्यार्थीहरूले त्यहाँ पुगेर स्थानीय जानकारसँग थप जानकारी लिए।",
-"अन्ततः उनीहरूले त्यो रहस्य कुनै डर लाग्दो घटना नभई गाउँको इतिहाससँग जोडिएको कुरा भएको थाहा पाए। उनीहरूले भेटिएका सामग्री सुरक्षित राख्न पुस्तकालयलाई सहयोग गरे।"
-]
-
-};
-
-
-/* १०० कथा बनाउने */
-const stories=[];
-
-categories.forEach((category,categoryIndex)=>{
-
-    for(let i=0;i<10;i++){
-
-        const base=storyIdeas[category];
-
-        const title=titles[i];
-
-        const paragraphs=base.map((paragraph,index)=>{
-
-            if(i===0)return paragraph;
-
-            const variations=[
-                "त्यस घटनाले उसको मनमा नयाँ विचार जन्मायो। उसले आफ्नो वरपरको अवस्था ध्यानपूर्वक बुझ्न थाल्यो।",
-                "उसले आफ्नो योजना पूरा गर्न साथी र परिवारसँग सल्लाह गर्‍यो। सबैको सुझावले उसलाई नयाँ बाटो देखायो।",
-                "सुरुमा केही कठिनाइ आए पनि उसले धैर्य राख्यो। उसले समस्या बुझेर त्यसको समाधान खोज्ने प्रयास गर्‍यो।",
-                "उसको व्यवहारबाट अरू मानिसहरू पनि प्रभावित भए। उनीहरूले पनि आफ्नो तर्फबाट सहयोग गर्ने निर्णय गरे।",
-                "अन्त्यमा सबैले एउटा महत्त्वपूर्ण शिक्षा पाए। राम्रो सोच, इमानदारी र सहयोगले जीवनमा सकारात्मक परिवर्तन ल्याउन सक्छ।"
-            ];
-
-            return paragraph+" "+variations[(i+index)%variations.length];
-
-        });
-
-        stories.push({
-            id:stories.length+1,
-            category:category,
-            title:title+" — "+category+" "+(i+1),
-            paragraphs:paragraphs
-        });
-
-    }
-
-});
-
-
-/* विधा देखाउने */
-let selectedCategory="सबै";
-let fontSize=18;
-
-const categoriesBox=document.getElementById("categories");
-const storyGrid=document.getElementById("storyGrid");
-const search=document.getElementById("search");
-
-function renderCategories(){
-
-    categoriesBox.innerHTML="";
-
-    ["सबै",...categories].forEach(category=>{
-
-        const button=document.createElement("button");
-
-        button.className="cat-btn";
-
-        if(category===selectedCategory){
-            button.classList.add("active");
-        }
-
-        button.textContent=category;
-
-        button.onclick=()=>{
-
-            selectedCategory=category;
-
-            renderCategories();
-            renderStories();
-
-        };
-
-        categoriesBox.appendChild(button);
-
-    });
-
+function saveFavorites(){
+ localStorage.setItem("aayushFavorites",JSON.stringify(favorites));
 }
 
+function buildCategories(){
+ const box=document.getElementById("categories");
+ box.innerHTML="";
+ const all=["सबै",...categories];
+ all.forEach(cat=>{
+  const btn=document.createElement("button");
+  btn.textContent=cat;
+  btn.className=activeCategory===cat?"active":"";
+  btn.onclick=()=>{activeCategory=cat;buildCategories();renderStories();};
+  box.appendChild(btn);
+ });
+}
 
-/* कथा खोज्ने र देखाउने */
 function renderStories(){
-
-    const keyword=search.value.toLowerCase().trim();
-
-    const filtered=stories.filter(story=>{
-
-        const categoryMatch=
-            selectedCategory==="सबै" ||
-            story.category===selectedCategory;
-
-        const fullText=(
-            story.title+" "+
-            story.category+" "+
-            story.paragraphs.join(" ")
-        ).toLowerCase();
-
-        return categoryMatch && fullText.includes(keyword);
-
-    });
-
-    storyGrid.innerHTML="";
-
-    document.getElementById("count").textContent=
-        "जम्मा कथा: "+stories.length+
-        " | देखिएका कथा: "+filtered.length;
-
-    if(filtered.length===0){
-
-        storyGrid.innerHTML="<p>कुनै कथा भेटिएन।</p>";
-        return;
-
-    }
-
-    filtered.forEach(story=>{
-
-        const card=document.createElement("div");
-        card.className="card";
-
-        const title=document.createElement("h3");
-        title.textContent=story.title;
-
-        const meta=document.createElement("p");
-        meta.className="meta";
-        meta.textContent="विधा: "+story.category;
-
-        const description=document.createElement("p");
-        description.textContent=
-            story.paragraphs[0].substring(0,110)+"...";
-
-        const button=document.createElement("button");
-        button.textContent="पूरा कथा पढ्नुहोस्";
-        button.onclick=()=>openStory(story.id);
-
-        card.appendChild(title);
-        card.appendChild(meta);
-        card.appendChild(description);
-        card.appendChild(button);
-
-        storyGrid.appendChild(card);
-
-    });
-
+ const query=document.getElementById("search").value.trim().toLowerCase();
+ const onlyFav=document.getElementById("sort").value==="favorites";
+ let list=stories.filter(s=>{
+  const matchesCategory=activeCategory==="सबै"||s.category===activeCategory;
+  const matchesSearch=(s.title+" "+s.category+" "+s.content.join(" ")).toLowerCase().includes(query);
+  const matchesFav=!onlyFav||favorites.includes(s.id);
+  return matchesCategory&&matchesSearch&&matchesFav;
+ });
+ document.getElementById("categoryTitle").textContent=activeCategory==="सबै"?"सबै कथाहरू":activeCategory;
+ document.getElementById("count").textContent=`देखाइएका कथा: ${list.length}`;
+ const box=document.getElementById("storyCards");
+ box.innerHTML="";
+ if(!list.length){
+  box.innerHTML="<p>यस खोजमा कथा भेटिएन। अर्को शब्द प्रयोग गरेर खोज्नुहोस्।</p>";
+  return;
+ }
+ list.forEach(s=>{
+  const card=document.createElement("article");
+  card.className="story-card";
+  const excerpt=s.content.join(" ").slice(0,155)+"…";
+  card.innerHTML=`
+   <div class="meta">${escapeHTML(s.category)}</div>
+   <h3>${escapeHTML(s.title)}</h3>
+   <p>${escapeHTML(excerpt)}</p>
+   <div class="actions">
+    <button onclick="openStory(${s.id})">कथा पढ्नुहोस्</button>
+    <button class="secondary" onclick="toggleFavorite(${s.id})">
+     ${favorites.includes(s.id)?"❤️ हटाउनुहोस्":"♡ मनपर्ने"}
+    </button>
+   </div>`;
+  box.appendChild(card);
+ });
 }
 
+function escapeHTML(value){
+ return String(value).replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
+}
 
-/* पूरा कथा पढ्ने */
+function toggleFavorite(id){
+ favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];
+ saveFavorites();
+ renderStories();
+ if(currentStory&&currentStory.id===id){
+  document.getElementById("readFavorite").textContent=
+   favorites.includes(id)?"❤️ मनपर्नेमा छ":"♡ मनपर्नेमा राख्नुहोस्";
+ }
+}
+
+function toggleCurrentFavorite(){
+ if(currentStory)toggleFavorite(currentStory.id);
+}
+
 function openStory(id){
-
-    const story=stories.find(s=>s.id===id);
-
-    if(!story)return;
-
-    document.getElementById("reader").style.display="block";
-
-    document.getElementById("storyTitle").textContent=
-        story.title;
-
-    document.getElementById("storyInfo").textContent=
-        "विधा: "+story.category+
-        " | लेखक: Aayush Jaishi";
-
-    const body=document.getElementById("storyBody");
-
-    body.innerHTML="";
-
-    story.paragraphs.forEach(paragraph=>{
-
-        const p=document.createElement("p");
-
-        p.textContent=paragraph;
-        p.style.fontSize=fontSize+"px";
-
-        body.appendChild(p);
-
-    });
-
+ const story=stories.find(s=>s.id===id);
+ if(!story)return;
+ currentStory=story;
+ document.getElementById("home").classList.add("hidden");
+ document.getElementById("reading").classList.remove("hidden");
+ document.getElementById("readCategory").textContent=story.category;
+ document.getElementById("readTitle").textContent=story.title;
+ document.getElementById("readContent").innerHTML=
+  story.content.map(p=>`<p>${escapeHTML(p)}</p>`).join("");
+ document.getElementById("readFavorite").textContent=
+  favorites.includes(id)?"❤️ मनपर्नेमा छ":"♡ मनपर्नेमा राख्नुहोस्";
+ document.getElementById("readContent").style.setProperty("--reader-size",readerSize+"px");
+ window.scrollTo(0,0);
 }
 
-
-/* कथा बन्द गर्ने */
-function closeStory(){
-
-    document.getElementById("reader").style.display="none";
-
+function showHome(){
+ document.getElementById("reading").classList.add("hidden");
+ document.getElementById("home").classList.remove("hidden");
+ currentStory=null;
+ renderStories();
 }
 
+function showFavorites(){
+ document.getElementById("sort").value="favorites";
+ activeCategory="सबै";
+ buildCategories();
+ showHome();
+}
 
-/* अक्षर ठूलो वा सानो */
+function changeTheme(){
+ document.body.classList.toggle("dark");
+ localStorage.setItem("aayushTheme",document.body.classList.contains("dark")?"dark":"light");
+}
+
 function changeFont(amount){
-
-    fontSize+=amount;
-
-    if(fontSize<13)fontSize=13;
-    if(fontSize>30)fontSize=30;
-
-    document.querySelectorAll("#storyBody p").forEach(p=>{
-
-        p.style.fontSize=fontSize+"px";
-
-    });
-
+ readerSize=Math.max(14,Math.min(30,readerSize+amount));
+ if(currentStory){
+  document.getElementById("readContent").style.fontSize=readerSize+"px";
+ }
 }
 
-
-/* Dark / Light Mode */
-function toggleTheme(){
-
-    document.body.classList.toggle("dark");
-
-    const dark=document.body.classList.contains("dark");
-
-    document.getElementById("themeButton").textContent=
-        dark ? "☀️ Light Mode" : "🌙 Dark Mode";
-
+if(localStorage.getItem("aayushTheme")==="dark"){
+ document.body.classList.add("dark");
 }
-
-
-/* Search */
-search.addEventListener("input",renderStories);
-
-
-/* सुरु गर्ने */
-renderCategories();
+buildCategories();
 renderStories();
-
 </script>
-
 </body>
 </html>
