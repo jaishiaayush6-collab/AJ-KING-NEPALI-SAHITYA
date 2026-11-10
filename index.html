@@ -14,35 +14,49 @@
     box-sizing:border-box;
 }
 
+:root{
+    --primary:#172554;
+    --secondary:#e43f5a;
+    --background:#f4f6fb;
+    --card:#ffffff;
+    --text:#222222;
+}
+
 body{
     font-family:"Noto Sans Devanagari",sans-serif;
-    background:#f5f7fb;
-    color:#222;
+    background:var(--background);
+    color:var(--text);
+    transition:0.3s;
+}
+
+body.dark{
+    --background:#101827;
+    --card:#1e293b;
+    --text:#ffffff;
 }
 
 /* HEADER */
 
 header{
-    background:linear-gradient(135deg,#162447,#1f4068);
+    background:linear-gradient(135deg,#172554,#1e40af);
     color:white;
-    padding:25px 15px;
     text-align:center;
+    padding:30px 15px;
 }
 
 header h1{
     font-size:30px;
-    margin-bottom:8px;
+    margin-bottom:10px;
 }
 
 header p{
-    font-size:14px;
-    color:#ddd;
+    line-height:1.8;
 }
 
 /* NAVIGATION */
 
 nav{
-    background:#e43f5a;
+    background:var(--secondary);
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
@@ -51,19 +65,34 @@ nav{
 nav a{
     color:white;
     text-decoration:none;
-    padding:15px 18px;
+    padding:15px 16px;
     font-weight:bold;
-    transition:0.3s;
 }
 
 nav a:hover{
-    background:#162447;
+    background:#172554;
 }
 
-/* HERO SECTION */
+/* SETTINGS */
+
+.settings{
+    text-align:right;
+    padding:15px 20px;
+}
+
+.settings button{
+    background:#172554;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:7px;
+    cursor:pointer;
+    margin-left:5px;
+}
+
+/* WELCOME */
 
 .hero{
-    min-height:350px;
     background:linear-gradient(
         rgba(0,0,0,0.65),
         rgba(0,0,0,0.65)
@@ -71,31 +100,28 @@ nav a:hover{
     url("https://images.unsplash.com/photo-1455390582262-044cdead277a")
     center/cover;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
     color:white;
-    padding:30px;
+    text-align:center;
+    padding:85px 20px;
 }
 
 .hero h2{
-    font-size:35px;
-    margin-bottom:15px;
+    font-size:38px;
+    margin-bottom:20px;
 }
 
 .hero p{
     font-size:17px;
-    line-height:1.8;
+    line-height:2;
 }
 
 .hero button{
-    margin-top:20px;
-    padding:12px 25px;
+    margin-top:25px;
+    padding:13px 25px;
     background:#e43f5a;
-    border:none;
     color:white;
-    border-radius:6px;
+    border:none;
+    border-radius:7px;
     font-size:16px;
     cursor:pointer;
 }
@@ -104,45 +130,45 @@ nav a:hover{
 
 .intro{
     text-align:center;
-    padding:45px 20px;
+    padding:55px 20px;
 }
 
 .intro h2{
-    color:#1f4068;
-    margin-bottom:15px;
+    color:#e43f5a;
+    margin-bottom:20px;
 }
 
 .intro p{
-    max-width:750px;
+    max-width:850px;
     margin:auto;
-    line-height:2;
+    line-height:2.2;
 }
 
-/* CATEGORY SECTION */
+/* CATEGORY */
 
 .categories{
-    padding:35px 20px;
+    padding:35px 20px 60px;
     text-align:center;
 }
 
 .categories h2{
-    font-size:27px;
-    color:#162447;
+    font-size:28px;
     margin-bottom:30px;
 }
 
 .category-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
     max-width:1100px;
     margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:22px;
 }
 
 .card{
-    background:white;
+    background:var(--card);
+    color:var(--text);
     padding:30px 20px;
-    border-radius:12px;
+    border-radius:14px;
     box-shadow:0 4px 15px rgba(0,0,0,0.08);
     transition:0.3s;
 }
@@ -151,66 +177,75 @@ nav a:hover{
     transform:translateY(-7px);
 }
 
-.card .icon{
-    font-size:45px;
+.icon{
+    font-size:50px;
     margin-bottom:15px;
 }
 
 .card h3{
     color:#e43f5a;
-    margin-bottom:12px;
+    margin-bottom:15px;
 }
 
 .card p{
-    line-height:1.8;
+    line-height:1.9;
     font-size:14px;
 }
 
 .card a{
     display:inline-block;
-    margin-top:18px;
-    padding:10px 20px;
-    background:#162447;
+    margin-top:20px;
+    background:#172554;
     color:white;
+    padding:11px 20px;
     text-decoration:none;
-    border-radius:5px;
+    border-radius:7px;
 }
 
-/* ABOUT AUTHOR */
+/* PURPOSE */
+
+.purpose{
+    background:var(--card);
+    color:var(--text);
+    padding:50px 20px;
+    text-align:center;
+}
+
+.purpose h2{
+    color:#e43f5a;
+    margin-bottom:20px;
+}
+
+.purpose p{
+    max-width:800px;
+    margin:auto;
+    line-height:2.2;
+}
+
+/* AUTHOR */
 
 .author{
-    background:#e9eef7;
     text-align:center;
     padding:45px 20px;
 }
 
 .author h2{
-    color:#162447;
+    color:#e43f5a;
     margin-bottom:15px;
-}
-
-.author p{
-    line-height:2;
-    max-width:700px;
-    margin:auto;
 }
 
 /* FOOTER */
 
 footer{
-    background:#162447;
+    background:#172554;
     color:white;
     text-align:center;
     padding:25px 15px;
-}
-
-footer p{
     line-height:2;
-    font-size:14px;
 }
 
 footer span{
-    color:#ff6978;
+    color:#ff7185;
 }
 
 /* MOBILE */
@@ -222,11 +257,11 @@ footer span{
     }
 
     .hero h2{
-        font-size:25px;
+        font-size:27px;
     }
 
     nav a{
-        padding:12px 10px;
+        padding:12px 9px;
         font-size:13px;
     }
 
@@ -241,200 +276,226 @@ footer span{
 
 <header>
 
-    <h1>📚 आयुस नेपाली साहित्य</h1>
+<h1>📚 आयुस नेपाली साहित्य</h1>
 
-    <p>AAYUSH NEPALI SAHITYA</p>
+<p>AAYUSH NEPALI SAHITYA</p>
 
-    <p>नेपाली भाषा, साहित्य र सिर्जनाको साझा संसार</p>
+<p>नेपाली भाषा, साहित्य र सिर्जनाको साझा संसार</p>
 
 </header>
-
 
 <!-- NAVIGATION -->
 
 <nav>
 
-    <a href="index.html">🏠 गृहपृष्ठ</a>
+<a href="index.html">🏠 गृहपृष्ठ</a>
 
-    <a href="katha.html">📖 कथा</a>
+<a href="katha.html">📖 कथा</a>
 
-    <a href="kabita.html">📝 कविता</a>
+<a href="kabita.html">📝 कविता</a>
 
-    <a href="bal-sahitya.html">🧒 बाल साहित्य</a>
+<a href="bal-sahitya.html">🧒 बाल साहित्य</a>
 
-    <a href="nibandha.html">📚 निबन्ध</a>
+<a href="nibandha.html">📚 निबन्ध</a>
 
-    <a href="about.html">👤 हाम्रो बारेमा</a>
+<a href="about.html">👤 हाम्रो बारेमा</a>
 
 </nav>
 
+<!-- SETTINGS -->
 
-<!-- HERO SECTION -->
+<div class="settings">
+
+<button onclick="toggleDark()">
+🌙 Light / Dark
+</button>
+
+<button onclick="alert('यस वेबसाइटको मुख्य भाषा नेपाली हो।')">
+🌐 नेपाली
+</button>
+
+</div>
+
+<!-- WELCOME -->
 
 <section class="hero">
 
-    <div>
+<h2>Welcome to आयुस नेपाली साहित्य</h2>
 
-        <h2>शब्दमा भावना, साहित्यमा जीवन</h2>
+<p>
+नेपाली भाषा, साहित्य र सिर्जनाको संसारमा<br>
+तपाईंलाई हार्दिक स्वागत छ।
+</p>
 
-        <p>
-            नेपाली भाषा र साहित्यको संरक्षण,
-            सिर्जना र विकासका लागि एउटा सानो प्रयास।
-        </p>
+<button onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">
 
-        <button onclick="location.href='#categories'">
+साहित्य पढ्न सुरु गर्नुहोस्
 
-            साहित्य पढ्न सुरु गर्नुहोस्
-
-        </button>
-
-    </div>
+</button>
 
 </section>
-
 
 <!-- INTRODUCTION -->
 
 <section class="intro">
 
-    <h2>हाम्रो साहित्यिक संसारमा स्वागत छ।</h2>
+<h2>हाम्रो साहित्यिक संसारमा स्वागत छ।</h2>
 
-    <p>
+<p>
 
-        आयुस नेपाली साहित्यमा तपाईंलाई हार्दिक स्वागत छ।
-        यहाँ तपाईंले विभिन्न नेपाली कथा, कविता,
-        बाल साहित्य तथा निबन्धहरू पढ्न सक्नुहुन्छ।
+आयुस नेपाली साहित्य नेपाली भाषा, साहित्य,
+कला र सिर्जनालाई माया गर्ने सम्पूर्ण पाठकहरूको
+साझा डिजिटल प्लेटफर्म हो।
 
-        हाम्रो उद्देश्य नेपाली भाषा, साहित्य,
-        कला र सिर्जनालाई डिजिटल माध्यमबाट
-        सबैमाझ पुर्‍याउनु हो।
+यहाँ कथा, कविता, बाल साहित्य र निबन्धका
+विभिन्न सामग्रीहरू पढ्न सकिन्छ।
 
-    </p>
+हाम्रो प्रयास नेपाली साहित्यलाई नयाँ पुस्तासम्म
+पुर्‍याउनु र नेपाली भाषाको संरक्षण तथा विकासमा
+योगदान पुर्‍याउनु हो।
+
+</p>
 
 </section>
 
-
-<!-- CATEGORIES -->
+<!-- FOUR MAIN CATEGORIES -->
 
 <section class="categories" id="categories">
 
-    <h2>📚 साहित्यका मुख्य विधाहरू</h2>
+<h2>📚 साहित्यका मुख्य चार विधा</h2>
 
-    <div class="category-container">
+<div class="category-container">
 
-        <!-- STORY -->
+<div class="card">
 
-        <div class="card">
+<div class="icon">📖</div>
 
-            <div class="icon">📖</div>
+<h3>नेपाली कथा</h3>
 
-            <h3>नेपाली कथा</h3>
+<p>
+जीवन, समाज, प्रेम, संघर्ष,
+प्रेरणा र यथार्थमा आधारित
+विभिन्न नेपाली कथाहरू।
+</p>
 
-            <p>
-                जीवन, समाज, प्रेम, संघर्ष र
-                प्रेरणादायी घटनामा आधारित
-                रोचक नेपाली कथाहरू।
-            </p>
+<a href="katha.html">कथा पढ्नुहोस् →</a>
 
-            <a href="katha.html">कथा पढ्नुहोस्</a>
+</div>
 
-        </div>
+<div class="card">
 
+<div class="icon">📝</div>
 
-        <!-- POETRY -->
+<h3>नेपाली कविता</h3>
 
-        <div class="card">
+<p>
+देशप्रेम, प्रकृति, जीवन,
+भावना र समाजसँग सम्बन्धित
+सुन्दर नेपाली कविताहरू।
+</p>
 
-            <div class="icon">📝</div>
+<a href="kabita.html">कविता पढ्नुहोस् →</a>
 
-            <h3>नेपाली कविता</h3>
+</div>
 
-            <p>
-                भावना, प्रकृति, देशप्रेम,
-                जीवन र समाजसँग सम्बन्धित
-                सुन्दर कविताहरू।
-            </p>
+<div class="card">
 
-            <a href="kabita.html">कविता पढ्नुहोस्</a>
+<div class="icon">🧒</div>
 
-        </div>
+<h3>बाल साहित्य</h3>
 
+<p>
+बालबालिकाका लागि रमाइला कथा,
+बाल कविता, ज्ञान र
+नैतिक शिक्षाका सामग्रीहरू।
+</p>
 
-        <!-- CHILDREN LITERATURE -->
+<a href="bal-sahitya.html">बाल साहित्य पढ्नुहोस् →</a>
 
-        <div class="card">
+</div>
 
-            <div class="icon">🧒</div>
+<div class="card">
 
-            <h3>बाल साहित्य</h3>
+<div class="icon">📚</div>
 
-            <p>
-                बालबालिकाका लागि रमाइला कथा,
-                ज्ञानवर्धक सामग्री र
-                नैतिक शिक्षाहरू।
-            </p>
+<h3>नेपाली निबन्ध</h3>
 
-            <a href="bal-sahitya.html">पढ्न सुरु गर्नुहोस्</a>
+<p>
+शिक्षा, संस्कृति, वातावरण,
+समाज र विभिन्न विषयका
+ज्ञानवर्धक निबन्धहरू।
+</p>
 
-        </div>
+<a href="nibandha.html">निबन्ध पढ्नुहोस् →</a>
 
+</div>
 
-        <!-- ESSAY -->
-
-        <div class="card">
-
-            <div class="icon">📚</div>
-
-            <h3>नेपाली निबन्ध</h3>
-
-            <p>
-                शिक्षा, संस्कृति, वातावरण,
-                समाज र समसामयिक विषयका
-                जानकारीमूलक निबन्धहरू।
-            </p>
-
-            <a href="nibandha.html">निबन्ध पढ्नुहोस्</a>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
+<!-- PURPOSE -->
+
+<section class="purpose">
+
+<h2>🎯 हाम्रो वेबसाइटको उद्देश्य</h2>
+
+<p>
+
+आयुस नेपाली साहित्य वेबसाइट निर्माण गर्नुको
+मुख्य उद्देश्य नेपाली भाषा र साहित्यको संरक्षण,
+सम्बर्द्धन तथा प्रवर्द्धन गर्नु हो।
+
+हामी नयाँ पुस्तामा पढ्ने, लेख्ने र सिर्जना गर्ने
+बानीको विकास गर्न चाहन्छौँ।
+
+नेपाली कथा, कविता, बाल साहित्य र निबन्धलाई
+एउटै डिजिटल प्लेटफर्ममा उपलब्ध गराई
+पाठक र लेखकबीच साहित्यिक सम्बन्ध स्थापित गर्नु
+हाम्रो लक्ष्य हो।
+
+नेपाली साहित्यको उज्ज्वल भविष्य निर्माणमा
+सानो योगदान दिनु नै हाम्रो उद्देश्य हो।
+
+</p>
+
+</section>
 
 <!-- AUTHOR -->
 
 <section class="author">
 
-    <h2>✍️ हाम्रो बारेमा</h2>
+<h2>✍️ Founder & Developer</h2>
 
-    <p>
+<h3>Aayush Jaishi</h3>
 
-        आयुस नेपाली साहित्य नेपाली भाषा तथा साहित्यलाई
-        माया गर्ने पाठक र सिर्जनाकर्ताहरूका लागि
-        तयार गरिएको साहित्यिक वेबसाइट हो।
-
-        <br><br>
-
-        Developer & Founder: Aayush Jaishi
-
-    </p>
+<p>Founder of AAYUSH NEPALI SAHITYA</p>
 
 </section>
-
 
 <!-- FOOTER -->
 
 <footer>
 
-    <p>© 2026 AAYUSH NEPALI SAHITYA</p>
+<p>© 2026 AAYUSH NEPALI SAHITYA</p>
 
-    <p>Developed by <span>Aayush Jaishi</span></p>
+<p>Developed by <span>Aayush Jaishi</span></p>
 
-    <p>नेपाली साहित्यको संरक्षण र प्रवर्द्धनमा हाम्रो योगदान।</p>
+<p>नेपाली साहित्यको संरक्षण र प्रवर्द्धनमा हाम्रो योगदान।</p>
 
 </footer>
 
+<!-- JAVASCRIPT -->
+
+<script>
+
+function toggleDark(){
+
+document.body.classList.toggle("dark");
+
+}
+
+</script>
 
 </body>
 </html>
