@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>नेपाली साहित्य | AAYUSH</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:"Noto Sans Devanagari",Arial,sans-serif;
+ background:#f4f6fb;
+ color:#222;
+}
+header{
+ background:linear-gradient(120deg,#14213d,#3155a4);
+ color:white;
+ text-align:center;
+ padding:35px 15px;
+}
+header h1{margin:0;font-size:30px}
+nav{
+ background:#101c35;
+ padding:14px;
+ text-align:center;
+}
+nav a{
+ color:white;
+ text-decoration:none;
+ margin:10px;
+}
+.container{max-width:1050px;margin:auto;padding:25px}
+.search{
+ width:100%;
+ padding:14px;
+ border:1px solid #ccc;
+ border-radius:10px;
+ margin:15px 0;
+ font-size:16px;
+}
+.categories{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+ margin:15px 0;
+}
+.categories button{
+ border:0;
+ padding:11px 18px;
+ border-radius:20px;
+ background:#dce5ff;
+ cursor:pointer;
+}
+.categories button:hover{background:#3155a4;color:white}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+ gap:20px;
+}
+.card{
+ background:white;
+ padding:22px;
+ border-radius:14px;
+ box-shadow:0 4px 14px #0001;
+}
+.card h2{color:#244b99}
+.card a{
+ display:inline-block;
+ background:#244b99;
+ color:white;
+ text-decoration:none;
+ padding:10px 16px;
+ border-radius:8px;
+ margin-top:10px;
+}
+footer{
+ text-align:center;
+ background:#14213d;
+ color:white;
+ padding:20px;
+ margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>📚 AAYUSH NEPALI SAHITYA</h1>
+<p>नेपाली साहित्यको विशाल संसारमा स्वागत छ</p>
+</header>
+
+<nav>
+<a href="index.html">गृहपृष्ठ</a>
+<a href="sahitya.html">साहित्य</a>
+</nav>
+
+<div class="container">
+
+<h2>नेपाली साहित्य पढ्नुहोस्</h2>
+<p>आफूलाई मन पर्ने साहित्यिक विधा छान्नुहोस्।</p>
+
+<input class="search" id="search"
+placeholder="लेख वा साहित्य खोज्नुहोस्..."
+oninput="filterBooks()">
+
+<div class="categories">
+<button onclick="filterCategory('सबै')">सबै</button>
+<button onclick="filterCategory('कथा')">कथा</button>
+<button onclick="filterCategory('कविता')">कविता</button>
+<button onclick="filterCategory('निबन्ध')">निबन्ध</button>
+<button onclick="filterCategory('बालसाहित्य')">बालसाहित्य</button>
+</div>
+
+<div class="grid" id="bookGrid">
+
+<div class="card" data-category="कथा">
+<h2>मेहनती विद्यार्थी</h2>
+<p>मेहनत र लगनशीलताको प्रेरणादायी कथा।</p>
+<a href="read.html?article=story">पूरा पढ्नुहोस् →</a>
+</div>
+
+<div class="card" data-category="कविता">
+<h2>मेरो सुन्दर नेपाल</h2>
+<p>नेपालको प्राकृतिक सुन्दरताबारे कविता।</p>
+<a href="read.html?article=poem">पूरा पढ्नुहोस् →</a>
+</div>
+
+<div class="card" data-category="निबन्ध">
+<h2>शिक्षाको महत्त्व</h2>
+<p>मानव जीवनमा शिक्षाको भूमिका।</p>
+<a href="read.html?article=essay">पूरा पढ्नुहोस् →</a>
+</div>
+
+<div class="card" data-category="बालसाहित्य">
+<h2>असल बानी</h2>
+<p>बालबालिकाका लागि उपयोगी सन्देश।</p>
+<a href="read.html?article=children">पूरा पढ्नुहोस् →</a>
+</div>
+
+</div>
+</div>
+
+<footer>
+<p>© 2026 AAYUSH NEPALI SAHITYA</p>
+</footer>
+
+<script>
+let selectedCategory = "सबै";
+
+function filterBooks(){
+ const keyword=document.getElementById("search").value.toLowerCase();
+
+ document.querySelectorAll(".card").forEach(card=>{
+  const text=card.innerText.toLowerCase();
+  const category=card.dataset.category;
+
+  card.style.display=
+   text.includes(keyword) &&
+   (selectedCategory==="सबै" || category===selectedCategory)
+   ? "block":"none";
+ });
+}
+
+function filterCategory(category){
+ selectedCategory=category;
+ filterBooks();
+}
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>पूरा साहित्य पढ्नुहोस्</title>
+
+<style>
+body{
+ margin:0;
+ background:#f4f6fb;
+ font-family:"Noto Sans Devanagari",Arial,sans-serif;
+ color:#252525;
+ line-height:1.9;
+}
+header{
+ background:#14213d;
+ color:white;
+ padding:22px;
+ text-align:center;
+}
+main{
+ max-width:850px;
+ background:white;
+ margin:30px auto;
+ padding:30px;
+ border-radius:14px;
+ box-shadow:0 4px 15px #0001;
+}
+h1{color:#244b99}
+.article{
+ white-space:pre-line;
+ font-size:18px;
+}
+.back{
+ display:inline-block;
+ padding:10px 18px;
+ background:#244b99;
+ color:white;
+ text-decoration:none;
+ border-radius:8px;
+}
+@media(max-width:600px){
+ main{margin:15px;padding:20px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>📚 AAYUSH NEPALI SAHITYA</h2>
+<p>ज्ञान, साहित्य र सिर्जनाको संसार</p>
+</header>
+
+<main>
+<a class="back" href="sahitya.html">← पछाडि जानुहोस्</a>
+
+<h1 id="title">साहित्य</h1>
+<p id="category"></p>
+
+<div class="article" id="content"></div>
+</main>
+
+<script>
+const articles = {
+
+story:{
+ title:"मेहनती विद्यार्थी",
+ category:"कथा",
+ content:`एक गाउँमा रमेश नाम गरेको मेहनती विद्यार्थी बस्थ्यो। ऊ आफ्नो पढाइप्रति निकै लगनशील थियो।
+
+रमेश हरेक बिहान समयमै उठ्थ्यो। विद्यालय जानुअघि गृहकार्य पूरा गर्थ्यो। ऊ शिक्षकले पढाएका पाठ ध्यान दिएर सुन्थ्यो र नबुझेका कुरा सोध्थ्यो।
+
+उसका साथीहरू खेल्न र रमाइलो गर्न मन पराउँथे। रमेश पनि उनीहरूसँग खेल्थ्यो, तर पढाइका लागि छुट्याएको समय कहिल्यै खेर फाल्दैनथ्यो।
+
+एक दिन विद्यालयमा परीक्षा भयो। रमेशले नियमित अभ्यास र मेहनतका कारण राम्रो नतिजा ल्यायो।
+
+उसले बुझ्यो कि सफलता प्राप्त गर्न निरन्तर प्रयास, समयको सदुपयोग र आत्मविश्वास आवश्यक हुन्छ।
+
+शिक्षा: मेहनत र लगनशीलताले सफलताको बाटो खोल्छ।`
+},
+
+poem:{
+ title:"मेरो सुन्दर नेपाल",
+ category:"कविता",
+ content:`हिमाल हाँस्छ सेतै बनी,
+पहाड सजिन्छ हरियाली धनी।
+तराईमा धानका बाला झुल्छन्,
+नेपालका सुन्दर दृश्य मन छुन्छन्।
+
+नदी बग्छन् कलकल गर्दै,
+चराहरू गाउँछन् रमाउँदै।
+विविध भाषा, संस्कृति हाम्रो,
+नेपाल देश लाग्छ प्यारो।
+
+मेहनत गरौँ देशका लागि,
+माया गरौँ सबैलाई हृदयदेखि।
+शान्ति र सद्भाव फैलाऔँ,
+सुन्दर नेपाल अझै बनाऔँ।`
+},
+
+essay:{
+ title:"शिक्षाको महत्त्व",
+ category:"निबन्ध",
+ content:`शिक्षा मानव जीवनको महत्त्वपूर्ण आधार हो। शिक्षाले मानिसलाई ज्ञान, सीप, विवेक र असल व्यवहार सिकाउँछ।
+
+शिक्षा प्राप्त गरेपछि मानिसले सही र गलत छुट्याउन सक्छ। शिक्षाले अन्धविश्वास, अशिक्षा र सामाजिक कुरीतिलाई हटाउन सहयोग गर्छ।
+
+विद्यालय, घर, समाज र विभिन्न अनुभवबाट मानिसले शिक्षा प्राप्त गर्छ। शिक्षाले व्यक्तिलाई आत्मनिर्भर बनाउनुका साथै समाज र राष्ट्रको विकासमा योगदान दिन सक्षम बनाउँछ।
+
+त्यसैले प्रत्येक बालबालिकाले शिक्षा प्राप्त गर्ने अवसर पाउनुपर्छ। शिक्षित नागरिक नै समृद्ध राष्ट्र निर्माणका आधार हुन्।
+
+निष्कर्षमा, शिक्षा जीवनलाई उज्यालो बनाउने अमूल्य सम्पत्ति हो।`
+},
+
+children:{
+ title:"असल बानी",
+ category:"बालसाहित्य",
+ content:`हामी सबैले असल बानी बसाल्नुपर्छ। बिहान चाँडै उठ्ने, दाँत माझ्ने, नुहाउने र सफा लुगा लगाउने राम्रो बानी हो।
+
+विद्यालयमा शिक्षकको आदर गर्नुपर्छ। साथीहरूसँग मिलेर बस्नुपर्छ। कसैलाई दुःख दिनु हुँदैन।
+
+आफ्नो काम आफैँ गर्ने, समयमै पढ्ने र घरपरिवारलाई सहयोग गर्ने बानीले हामीलाई जिम्मेवार बनाउँछ।
+
+हामीले सधैँ सत्य बोल्नुपर्छ र सबैलाई सम्मान गर्नुपर्छ।
+
+असल बानीले हाम्रो जीवन सुन्दर र सफल बनाउँछ।`
+}
+
+};
+
+const params=new URLSearchParams(location.search);
+const id=params.get("article");
+const article=articles[id];
+
+if(article){
+ document.title=article.title+" | AAYUSH NEPALI SAHITYA";
+ document.getElementById("title").textContent=article.title;
+ document.getElementById("category").textContent="विधा: "+article.category;
+ document.getElementById("content").textContent=article.content;
+}else{
+ document.getElementById("title").textContent="लेख भेटिएन";
+ document.getElementById("content").textContent="कृपया साहित्य पेजबाट लेख छान्नुहोस्।";
+}
+</script>
+
+</body>
+</html>
