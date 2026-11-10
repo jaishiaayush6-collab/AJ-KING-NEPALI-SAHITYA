@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>कविता संग्रह | आयुस नेपाली साहित्य</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Noto Sans Devanagari",sans-serif;
+    background:#f4f6fb;
+    color:#222;
+    line-height:1.8;
+}
+
+header{
+    background:linear-gradient(135deg,#312e81,#be185d);
+    color:white;
+    text-align:center;
+    padding:30px 15px;
+}
+
+header h1{font-size:28px;}
+
+nav{
+    background:#be185d;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:12px 15px;
+}
+
+nav a:hover{background:#312e81;}
+
+.hero{
+    background:linear-gradient(135deg,#4c1d95,#db2777);
+    color:white;
+    text-align:center;
+    padding:45px 15px;
+}
+
+.hero h2{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.controls{
+    max-width:1100px;
+    margin:25px auto;
+    padding:10px;
+    text-align:center;
+}
+
+.controls input,
+.controls select{
+    padding:12px;
+    margin:5px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+#search{width:min(95%,450px);}
+
+button{
+    cursor:pointer;
+    border:0;
+    border-radius:7px;
+    padding:10px 15px;
+    background:#7e22ce;
+    color:white;
+    margin:4px;
+}
+
+button:hover{opacity:.85;}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:15px;
+}
+
+.section-title{
+    text-align:center;
+    color:#be185d;
+    margin:25px 0;
+}
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:12px;
+}
+
+.category{
+    background:#6b21a8;
+    color:white;
+    text-align:center;
+    padding:15px 8px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.category:hover{background:#be185d;}
+
+.poem-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:18px;
+}
+
+.poem-card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 3px 12px #00000012;
+}
+
+.poem-card h3{
+    color:#be185d;
+    margin-bottom:8px;
+}
+
+.meta{
+    color:#777;
+    font-size:13px;
+    margin:8px 0;
+}
+
+.poem-card button{background:#be185d;}
+
+#noResults{
+    display:none;
+    text-align:center;
+    padding:30px;
+}
+
+.reader{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:10;
+    background:#000b;
+    overflow-y:auto;
+    padding:20px;
+}
+
+.reader-box{
+    max-width:800px;
+    margin:20px auto;
+    background:white;
+    color:#222;
+    padding:25px;
+    border-radius:12px;
+}
+
+.reader-box h2{
+    color:#be185d;
+    text-align:center;
+    margin:15px 0;
+}
+
+#poemContent{
+    font-size:20px;
+    line-height:2.2;
+    white-space:pre-line;
+    text-align:center;
+    margin:25px 0;
+}
+
+.reader-tools{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+footer{
+    background:#312e81;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:40px;
+}
+
+body.dark{
+    background:#101827;
+    color:white;
+}
+
+body.dark .poem-card{
+    background:#1e293b;
+    color:white;
+}
+
+body.dark .reader-box{
+    background:#1e293b;
+    color:white;
+}
+
+@media(max-width:600px){
+    header h1{font-size:23px;}
+    .hero h2{font-size:24px;}
+    nav a{padding:10px;font-size:13px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📝 आयुस नेपाली साहित्य</h1>
+    <p>AAYUSH NEPALI SAHITYA</p>
+    <p>नेपाली कविता संग्रह</p>
+</header>
+
+<nav>
+    <a href="index.html">🏠 गृहपृष्ठ</a>
+    <a href="katha.html">📖 कथा</a>
+    <a href="kabita.html">📝 कविता</a>
+    <a href="bal-sahitya.html">🧒 बाल साहित्य</a>
+    <a href="nibandha.html">📚 निबन्ध</a>
+    <a href="about.html">👤 हाम्रो बारेमा</a>
+</nav>
+
+<section class="hero">
+    <h2>❤️ कविताको सुन्दर संसार</h2>
+    <p>भावना, कल्पना, प्रकृति, देश र जीवनका शब्दहरू।</p>
+    <p>पढौँ, लेखौँ र नेपाली साहित्यलाई माया गरौँ।</p>
+</section>
+
+<div class="controls">
+
+    <input
+        type="search"
+        id="search"
+        placeholder="🔍 कविताको शीर्षक वा शब्द खोज्नुहोस्..."
+        oninput="renderPoems()">
+
+    <select id="categoryFilter" onchange="renderPoems()">
+        <option value="सबै">सबै विधा</option>
+        <option>देशभक्ति</option>
+        <option>प्रकृति</option>
+        <option>जीवन</option>
+        <option>प्रेम</option>
+        <option>प्रेरणा</option>
+        <option>बाल कविता</option>
+        <option>समाज</option>
+    </select>
+
+    <button onclick="toggleDark()">🌙 Dark / Light</button>
+
+</div>
+
+<div class="container">
+
+    <h2 class="section-title">कविताका विधाहरू</h2>
+
+    <div class="categories">
+        <div class="category" onclick="chooseCategory('देशभक्ति')">🇳🇵<br>देशभक्ति</div>
+        <div class="category" onclick="chooseCategory('प्रकृति')">🌿<br>प्रकृति</div>
+        <div class="category" onclick="chooseCategory('जीवन')">🌍<br>जीवन</div>
+        <div class="category" onclick="chooseCategory('प्रेम')">❤️<br>प्रेम</div>
+        <div class="category" onclick="chooseCategory('प्रेरणा')">⭐<br>प्रेरणा</div>
+        <div class="category" onclick="chooseCategory('बाल कविता')">🧒<br>बाल कविता</div>
+        <div class="category" onclick="chooseCategory('समाज')">🤝<br>समाज</div>
+    </div>
+
+    <h2 class="section-title">📚 हाम्रो कविता पुस्तकालय</h2>
+
+    <div id="poemList" class="poem-grid"></div>
+
+    <p id="noResults">यो खोजसँग मिल्ने कविता भेटिएन।</p>
+
+</div>
+
+<div class="reader" id="reader">
+
+    <div class="reader-box">
+
+        <div class="reader-tools">
+            <button onclick="changeFont(1)">A+ ठूलो</button>
+            <button onclick="changeFont(-1)">A- सानो</button>
+            <button onclick="closeReader()">✖ बन्द</button>
+        </div>
+
+        <h2 id="readerTitle"></h2>
+
+        <p id="readerMeta" class="meta"></p>
+
+        <div id="poemContent"></div>
+
+        <h3 id="lastTitle" style="text-align:center;color:#be185d;"></h3>
+
+        <button onclick="closeReader()">कविता सूचीमा फर्कनुहोस्</button>
+
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 AAYUSH NEPALI SAHITYA</p>
+    <p>कविता लेखक: Aayush Jaishi</p>
+    <p>Developed by Aayush Jaishi</p>
+    <p>नेपाली भाषा र साहित्यको संरक्षण हाम्रो उद्देश्य।</p>
+</footer>
+
+<script>
+
+const poems = [
+
+{
+ title:"मेरो प्यारो नेपाल",
+ category:"देशभक्ति",
+ author:"Aayush Jaishi",
+ topic:"देशप्रेम",
+ content:`हिमाल हाँस्छ सेतो हिउँमा,
+पहाड रमाउँछ हरियालीमा।
+तराई सजिन्छ सुनौलो धानले,
+नेपाल चम्किन्छ आफ्नै शानले।
+
+मेचीदेखि महाकालीसम्म,
+माया छ हाम्रो मुटुभरि।
+भाषा अनेक, भेष अनेक,
+एकता हाम्रो सबैभन्दा ठूलो शक्ति।
+
+बुद्धको ज्ञान, सगरमाथाको शिर,
+इतिहास बोकेको हाम्रो देश।
+नेपालको माटो प्यारो लाग्छ,
+यसैमा छ हाम्रो स्वाभिमान विशेष।`
+},
+
+{
+ title:"प्रकृतिको मुस्कान",
+ category:"प्रकृति",
+ author:"Aayush Jaishi",
+ topic:"प्रकृति प्रेम",
+ content:`बिहानीको घाम उदाउँदा,
+फूलहरू मुस्कुराउँछन्।
+चराहरूको मीठो गीतले,
+वनपाखा गुञ्जाउँछन्।
+
+खोलाको पानी कलकल बग्छ,
+हावाले गीत सुनाउँछ।
+हरियो वनको काखभित्र,
+मनले शान्ति पाउँछ।
+
+प्रकृति हाम्रो जीवन हो,
+यसलाई सधैँ जोगाऔँ।
+रुख रोपौँ, सफा राखौँ,
+सुन्दर संसार बनाऔँ।`
+},
+
+{
+ title:"समयको मूल्य",
+ category:"जीवन",
+ author:"Aayush Jaishi",
+ topic:"समयको महत्त्व",
+ content:`समय कहिल्यै रोकिन्न,
+नदीझैँ बगिरहन्छ।
+आज गरेको राम्रो कर्मले,
+भोलिको बाटो खोलिरहन्छ।
+
+सानो प्रयास व्यर्थ हुँदैन,
+मेहनतले फल दिन्छ।
+धैर्य राखी अघि बढ्दा,
+सपनाले आकार लिन्छ।
+
+आजको समय अमूल्य छ,
+यसलाई खेर नफाल।
+ज्ञान र सीप सिक्दै जाऊ,
+आफ्नो भविष्य उज्यालो पार।`
+},
+
+{
+ title:"आमाको माया",
+ category:"प्रेम",
+ author:"Aayush Jaishi",
+ topic:"आमाप्रतिको माया",
+ content:`आमाको बोली मीठो लाग्छ,
+आमाको माया न्यानो।
+दुःखमा साथ दिने हात,
+आमाको मन विशाल र राम्रो।
+
+सानो हुँदा सम्हाल्ने,
+ठूलो हुँदा सम्झाउने।
+सही बाटो देखाइदिने,
+आमा नै हुन् सिकाउने।
+
+आमाको ऋण तिर्न सकिन्न,
+माया सधैँ गरिरहौँ।
+आमाको सम्मान गर्दै,
+असल मान्छे बनिरहौँ।`
+},
+
+{
+ title:"सपनाको बाटो",
+ category:"प्रेरणा",
+ author:"Aayush Jaishi",
+ topic:"लक्ष्य र मेहनत",
+ content:`सपना देख्नु राम्रो हो,
+तर कर्म पनि गर्नुपर्छ।
+लक्ष्य भेट्ने यात्रामा,
+धैर्यसाथ अघि बढ्नुपर्छ।
+
+बाटो कहिलेकाहीँ कठिन होला,
+मनमा आशा राखिराख।
+हरेक दिन केही सिक्दै,
+आफ्नो क्षमता बढाइराख।
+
+मेहनतको बीउ रोपेपछि,
+सफलताको फूल फुल्छ।
+आफूमाथि विश्वास राख्दा,
+नयाँ सम्भावना खुल्छ।`
+},
+
+{
+ title:"सानो साथी",
+ category:"बाल कविता",
+ author:"Aayush Jaishi",
+ topic:"बालमैत्री संसार",
+ content:`सानो साथी विद्यालय जाऊ,
+किताब बोकी ज्ञान बढाऊ।
+गुरुका कुरा ध्यानले सुन,
+नयाँ कुरा सिक्दै अघि बढ।
+
+साथीसँग मिलेर खेल,
+सबैसँग राम्रो बोल।
+सत्य बोल र सहयोग गर,
+असल बानी सधैँ सम्हाल।`
+},
+
+{
+ title:"हाम्रो गाउँ",
+ category:"समाज",
+ author:"Aayush Jaishi",
+ topic:"ग्रामीण जीवन",
+ content:`डाँडामाथि सानो गाउँ,
+वरिपरि हरियो वन।
+खेतबारीमा काम गर्ने,
+मेहनती मानिसको मन।
+
+बिहानीमा घाम झुल्किँदा,
+गाउँमा चहलपहल हुन्छ।
+मिलेर काम गर्दा यहाँ,
+हरेक कठिनाइ सजिलो बन्छ।
+
+गाउँ हाम्रो पहिचान हो,
+यसको माया गरौँ।
+शिक्षा, स्वास्थ्य र विकासले,
+आफ्नो गाउँ सजाऔँ।`
+},
+
+{
+ title:"ज्ञानको उज्यालो",
+ category:"प्रेरणा",
+ author:"Aayush Jaishi",
+ topic:"शिक्षाको महत्त्व",
+ content:`अँध्यारो हटाउने ज्योति,
+ज्ञानको उज्यालो हो।
+जीवनलाई बाटो देखाउने,
+शिक्षा अमूल्य धन हो।
+
+किताबसँग मित्रता गर,
+प्रश्न गर्न नडराऊ।
+नयाँ सीप र ज्ञान सिकेर,
+आफ्नो भविष्य बनाऊ।
+
+शिक्षित मनले समाज बदल्छ,
+सही सोच फैलाउँछ।
+ज्ञान बाँड्ने मानिसले,
+सबैको जीवन सजाउँछ।`
+},
+
+{
+ title:"वर्षाको गीत",
+ category:"प्रकृति",
+ author:"Aayush Jaishi",
+ topic:"वर्षा ऋतु",
+ content:`आकाशमा बादल लाग्यो,
+चिसो हावा चल्न थाल्यो।
+टिपटिप पानी झर्न थालेपछि,
+धरतीको मुहार खुल्न थाल्यो।
+
+खेतबारी हरियो भयो,
+किसानको मन रमायो।
+पानीले धोएको बाटोमा,
+नयाँ सुन्दरता छायो।
+
+वर्षा प्रकृतिको उपहार,
+पानीको महत्त्व बुझौँ।
+सफा पानी बचाउँदै,
+धरतीलाई माया गरौँ।`
+},
+
+{
+ title:"मित्रताको फूल",
+ category:"जीवन",
+ author:"Aayush Jaishi",
+ topic:"मित्रता",
+ content:`मित्रता एउटा फूल हो,
+विश्वास यसको सुगन्ध।
+सुखदुःखमा साथ दिने,
+मित्र नै जीवनको सम्बन्ध।
+
+रिस उठे पनि सम्झौँ,
+माफी माग्न सिकौँ।
+एकअर्काको सम्मान गर्दै,
+मित्रताको बाटो हिँडौँ।`
+},
+
+{
+ title:"हिमालको शान",
+ category:"देशभक्ति",
+ author:"Aayush Jaishi",
+ topic:"हिमाल र नेपालको गौरव",
+ content:`हिमाल हाम्रो गौरव हो,
+सेतो मुकुटझैँ चम्किन्छ।
+सगरमाथाको उचाइले,
+संसारभरि नाम चम्किन्छ।
+
+हिउँको काखमा सुन्दरता,
+प्रकृतिको अनुपम दान।
+नेपालको शिर उच्च राख्ने,
+हिमाल हाम्रो महान् पहिचान।`
+},
+
+{
+ title:"मेहनती किसान",
+ category:"समाज",
+ author:"Aayush Jaishi",
+ topic:"किसानको योगदान",
+ content:`बिहानै खेतमा पुग्छन्,
+किसानका मेहनती हात।
+घामपानी सहेर पनि,
+उनी गर्छन् दिनरात।
+
+धान, मकै र गहुँ फलाउँछन्,
+सबैको भोक मेटाउँछन्।
+किसानको श्रमले नै,
+हाम्रा घरमा अन्न पुर्‍याउँछन्।
+
+किसानलाई सम्मान गरौँ,
+उनीहरूको श्रम बुझौँ।
+अन्नको एक दाना पनि,
+कहिल्यै खेर नफालौँ।`
+},
+
+{
+ title:"बालापन",
+ category:"बाल कविता",
+ author:"Aayush Jaishi",
+ topic:"बाल्यकाल",
+ content:`बालापनका मीठा दिन,
+खेल र हाँसोले भरिएका।
+साथीभाइसँगका सम्झना,
+मनभित्र सधैँ सजिएका।
+
+कहिले कुद्ने, कहिले खेल्ने,
+कहिले गीत गाउने।
+सानो संसारभित्र हामी,
+ठूला सपना सजाउने।`
+},
+
+{
+ title:"सत्यको बाटो",
+ category:"जीवन",
+ author:"Aayush Jaishi",
+ topic:"इमानदारी",
+ content:`सत्य बोल्नु राम्रो बानी,
+झुटले मन दुखाउँछ।
+इमानदारीको बाटोले,
+विश्वास सधैँ बढाउँछ।
+
+सही कुरा गर्न सिकौँ,
+गल्ती भए स्वीकारौँ।
+सत्य र न्यायको पक्षमा,
+सधैँ अघि बढौँ।`
+},
+
+{
+ title:"फूलको सन्देश",
+ category:"प्रकृति",
+ author:"Aayush Jaishi",
+ topic:"फूल र प्रकृति",
+ content:`फूलले भन्छ मुस्कुराऊ,
+जीवन सुन्दर बनाऊ।
+रङ्गीचङ्गी संसारभित्र,
+सबैलाई माया बाँड।
+
+काँडाबीच पनि फुल्न सिक,
+आशा कहिल्यै नछोड।
+सानो सुगन्धले पनि,
+संसारलाई सुन्दर बनाऊ।`
+},
+
+{
+ title:"देशको भविष्य",
+ category:"देशभक्ति",
+ author:"Aayush Jaishi",
+ topic:"युवा र राष्ट्र निर्माण",
+ content:`हामी देशका सन्तान हौँ,
+भविष्य हाम्रो हातमा।
+ज्ञान र सीप लिएर अघि बढौँ,
+देशको विकासको साथमा।
+
+मेहनत गरौँ, इमानदार बनौँ,
+नयाँ विचार ल्याऔँ।
+आफ्नो देशको गौरव बढाउन,
+आफ्नो कर्तव्य निभाऔँ।`
+},
+
+{
+ title:"नदीको यात्रा",
+ category:"प्रकृति",
+ author:"Aayush Jaishi",
+ topic:"नदी र जीवन",
+ content:`पहाडबाट झरेको पानी,
+नदी बनेर बग्छ।
+ढुङ्गा र मोड पार गर्दै,
+आफ्नो यात्रा गर्छ।
+
+कहिल्यै पछि नहट्ने,
+नदीबाट पाठ सिकौँ।
+कठिनाइ आए पनि,
+आफ्नो लक्ष्यतिर हिँडौँ।`
+},
+
+{
+ title:"असल व्यवहार",
+ category:"समाज",
+ author:"Aayush Jaishi",
+ topic:"मानवीयता",
+ content:`मीठो बोली बोलौँ,
+सबैको सम्मान गरौँ।
+ठूलालाई आदर गर्दै,
+सानालाई माया गरौँ।
+
+अरूको दुःख बुझौँ,
+सहयोगको हात बढाऔँ।
+असल व्यवहार अपनाएर,
+सुन्दर समाज बनाऔँ।`
+},
+
+{
+ title:"उज्यालो बिहान",
+ category:"प्रेरणा",
+ author:"Aayush Jaishi",
+ topic:"नयाँ सुरुवात",
+ content:`रात बितेपछि बिहान आउँछ,
+अँध्यारो सधैँ रहँदैन।
+आज कठिनाइ भए पनि,
+भोलि आशा हराउँदैन।
+
+नयाँ दिन नयाँ अवसर,
+नयाँ सोच लिएर आऊ।
+आफ्नो लक्ष्य सम्झेर,
+अगाडि बढ्दै जाऊ।`
+},
+
+{
+ title:"सपनाको संसार",
+ category:"प्रेम",
+ author:"Aayush Jaishi",
+ topic:"सपना र भावना",
+ content:`मनभित्रका साना सपना,
+शब्द बनेर आउँछन्।
+नबोलेका भावनाहरू,
+कवितामा सजिन्छन्।
+
+सम्मान र विश्वासको बाटो,
+सम्बन्धलाई सुन्दर बनाउँछ।
+साँचो भावनाको उज्यालोले,
+मनमा आशा जगाउँछ।`
+}
+
+];
+
+function renderPoems(){
+
+    const list=document.getElementById("poemList");
+    const search=document.getElementById("search").value.toLowerCase();
+    const category=document.getElementById("categoryFilter").value;
+
+    list.innerHTML="";
+    let count=0;
+
+    poems.forEach((poem,index)=>{
+
+        const text=(poem.title+" "+poem.category+" "+poem.topic+" "+poem.content).toLowerCase();
+
+        const matchesSearch=text.includes(search);
+        const matchesCategory=category==="सबै" || poem.category===category;
+
+        if(matchesSearch && matchesCategory){
+
+            count++;
+
+            const card=document.createElement("article");
+            card.className="poem-card";
+
+            const title=document.createElement("h3");
+            title.textContent=poem.title;
+
+            const meta=document.createElement("p");
+            meta.className="meta";
+            meta.textContent="विधा: "+poem.category;
+
+            const topic=document.createElement("p");
+            topic.textContent="विषय: "+poem.topic;
+
+            const author=document.createElement("p");
+            author.className="meta";
+            author.textContent="लेखक: "+poem.author;
+
+            const preview=document.createElement("p");
+            preview.textContent=poem.content.slice(0,90)+"...";
+
+            const button=document.createElement("button");
+            button.textContent="पूरा कविता पढ्नुहोस् →";
+            button.onclick=()=>openReader(index);
+
+            card.append(title,meta,topic,author,preview,button);
+            list.appendChild(card);
+        }
+    });
+
+    document.getElementById("noResults").style.display=
+        count===0 ? "block" : "none";
+}
+
+let currentFont=20;
+
+function openReader(index){
+
+    const poem=poems[index];
+
+    document.getElementById("readerTitle").textContent=poem.title;
+
+    document.getElementById("readerMeta").textContent=
+        "विषय: "+poem.topic+" | विधा: "+poem.category+
+        " | लेखक: "+poem.author;
+
+    document.getElementById("poemContent").textContent=poem.content;
+
+    document.getElementById("lastTitle").textContent=
+        "— "+poem.title+" —";
+
+    document.getElementById("reader").style.display="block";
+}
+
+function closeReader(){
+    document.getElementById("reader").style.display="none";
+}
+
+function changeFont(amount){
+
+    currentFont+=amount;
+
+    if(currentFont<14)currentFont=14;
+    if(currentFont>34)currentFont=34;
+
+    document.getElementById("poemContent").style.fontSize=
+        currentFont+"px";
+}
+
+function chooseCategory(category){
+
+    document.getElementById("categoryFilter").value=category;
+    renderPoems();
+
+    document.querySelector(".section-title").scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+function toggleDark(){
+    document.body.classList.toggle("dark");
+}
+
+renderPoems();
+
+</script>
+
+</body>
+</html>
