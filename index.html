@@ -5,708 +5,293 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AAYUSH NEPALI SAHITYA</title>
-
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap');
-
-:root {
-    --blue: #183b70;
-    --light-blue: #eaf1ff;
-    --gold: #f3ad32;
-    --white: #ffffff;
-    --dark: #18263c;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Noto Sans Devanagari', sans-serif;
-    background: #f5f7fc;
-    color: var(--dark);
-}
-
-header {
-    background: linear-gradient(120deg,#102c55,#3569ae);
-    color: white;
-    padding: 24px 7%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.logo {
-    font-size: 22px;
-    font-weight: 800;
-}
-
-.logo span {
-    color: var(--gold);
-}
-
-.header-text {
-    font-size: 13px;
-    color: #d9e7ff;
-}
-
-nav {
-    background: white;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 13px;
-    box-shadow: 0 3px 10px #0000000c;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-nav button {
-    border: none;
-    background: transparent;
-    padding: 10px 17px;
-    border-radius: 7px;
-    cursor: pointer;
-    font-family: inherit;
-    color: var(--blue);
-    font-weight: 600;
-}
-
-nav button:hover,
-nav button.active {
-    background: var(--blue);
-    color: white;
-}
-
-.hero {
-    background: linear-gradient(120deg,#dceaff,#f5f8ff);
-    padding: 65px 8%;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    align-items: center;
-    gap: 30px;
-}
-
-.hero h1 {
-    font-size: clamp(27px,4vw,43px);
-    color: var(--blue);
-    line-height: 1.5;
-}
-
-.hero p {
-    margin: 15px 0;
-    color: #52647d;
-    line-height: 2;
-}
-
-.hero-image {
-    font-size: 100px;
-    text-align: center;
-    background: white;
-    padding: 35px;
-    border-radius: 25px;
-    box-shadow: 0 10px 30px #183b7015;
-}
-
-.primary-btn {
-    display: inline-block;
-    padding: 12px 23px;
-    background: var(--blue);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: inherit;
-    text-decoration: none;
-}
-
-.container {
-    max-width: 1150px;
-    margin: auto;
-    padding: 40px 20px;
-}
-
-.section-heading {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.section-heading h2 {
-    color: var(--blue);
-    font-size: 27px;
-}
-
-.section-heading p {
-    color: #718096;
-    margin-top: 8px;
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 17px;
-}
-
-.category-card {
-    background: white;
-    text-align: center;
-    padding: 25px 10px;
-    border-radius: 13px;
-    box-shadow: 0 4px 15px #00000009;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.category-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 22px #183b7020;
-}
-
-.category-card .emoji {
-    font-size: 39px;
-}
-
-.category-card h3 {
-    color: var(--blue);
-    margin-top: 8px;
-}
-
-.search-box {
-    max-width: 650px;
-    margin: 25px auto;
-}
-
-.search-box input {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #d7dfeb;
-    border-radius: 10px;
-    font-size: 16px;
-    font-family: inherit;
-    outline: none;
-}
-
-.search-box input:focus {
-    border-color: var(--blue);
-}
-
-.article-grid {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 20px;
-}
-
-.article-card {
-    background: white;
-    padding: 23px;
-    border-radius: 13px;
-    box-shadow: 0 4px 15px #00000009;
-    border-left: 4px solid var(--gold);
-}
-
-.article-card h3 {
-    color: var(--blue);
-    margin: 12px 0;
-}
-
-.article-card p {
-    color: #596579;
-    white-space: pre-wrap;
-    line-height: 2;
-    text-align: justify;
-}
-
-.article-tag {
-    background: var(--light-blue);
-    color: var(--blue);
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-}
-
-.read-btn {
-    margin-top: 15px;
-    background: var(--blue);
-    color: white;
-}
-
-.admin {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    margin-top: 35px;
-    box-shadow: 0 5px 20px #00000010;
-    display: none;
-}
-
-.admin.show {
-    display: block;
-}
-
-.admin input,
-.admin select,
-.admin textarea {
-    width: 100%;
-    padding: 13px;
-    margin: 10px 0 18px;
-    border: 1px solid #ccd5e4;
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 15px;
-}
-
-.admin textarea {
-    min-height: 150px;
-}
-
-.admin h2 {
-    color: var(--blue);
-}
-
-.admin-list {
-    margin-top: 25px;
-}
-
-.delete-btn {
-    background: #d94343;
-    color: white;
-    padding: 7px 12px;
-}
-
-footer {
-    background: #102c55;
-    color: white;
-    text-align: center;
-    padding: 35px 15px;
-    margin-top: 40px;
-}
-
-footer p {
-    color: #d1def2;
-    margin-top: 10px;
-}
-
-@media(max-width:750px) {
-    .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 40px 20px;
-    }
-
-    .category-grid {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-    .article-grid {
-        grid-template-columns: 1fr;
-    }
-
-    header {
-        justify-content: center;
-        text-align: center;
-    }
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans Devanagari",Arial,sans-serif;background:#f5f3ee;color:#252525}
+header{background:linear-gradient(120deg,#142d4e,#176b68);color:white;text-align:center;padding:35px 15px}
+header h1{margin:0;font-size:30px}
+header p{margin:10px 0 0}
+nav{background:#102b40;display:flex;justify-content:center;flex-wrap:wrap;gap:5px;padding:10px;position:sticky;top:0;z-index:5}
+nav button{background:transparent;color:white;border:0;padding:12px 15px;cursor:pointer;font-size:15px;border-radius:6px}
+nav button:hover,nav button.active{background:#e5a33b;color:#182b3c}
+main{max-width:1050px;margin:25px auto;padding:0 15px}
+.page{display:none}
+.page.active{display:block}
+.hero{background:#fff;border-radius:14px;padding:35px 20px;text-align:center;box-shadow:0 3px 14px #0001}
+.hero h2{color:#176b68}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px;margin-top:20px}
+.card{background:white;padding:20px;border-radius:12px;box-shadow:0 3px 12px #0001}
+.card h3{color:#176b68;margin-top:0}
+.card button,.primary{background:#176b68;color:white;border:0;padding:10px 16px;border-radius:7px;cursor:pointer}
+.card button:hover,.primary:hover{background:#104b49}
+.search{width:100%;padding:13px;border:1px solid #ccc;border-radius:8px;margin:15px 0;font-size:16px}
+.article{background:white;padding:24px;border-radius:12px;margin:12px 0;line-height:1.9}
+.article h2{color:#176b68}
+.article-content{white-space:pre-line;line-height:2;font-size:17px}
+.pagination{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:25px 0}
+.pagination button{padding:9px 14px;border:1px solid #176b68;background:white;color:#176b68;border-radius:6px;cursor:pointer}
+.pagination button.active{background:#176b68;color:white}
+footer{text-align:center;background:#102b40;color:white;padding:25px;margin-top:40px}
+.small{color:#666;font-size:14px}
 </style>
 </head>
-
 <body>
 
 <header>
-    <div class="logo">📚 AAYUSH <span>NEPALI SAHITYA</span></div>
-    <div class="header-text">नेपाली साहित्यको डिजिटल पुस्तकालय</div>
+<h1>📚 AAYUSH NEPALI SAHITYA</h1>
+<p>नेपाली भाषा, साहित्य, संस्कृति र सिर्जनाको साझा संसार</p>
 </header>
 
 <nav>
-    <button class="active" data-cat="सबै">गृहपृष्ठ</button>
-    <button data-cat="कथा">कथा</button>
-    <button data-cat="कविता">कविता</button>
-    <button data-cat="निबन्ध">निबन्ध</button>
-    <button data-cat="बालसाहित्य">बालसाहित्य</button>
-    <button id="adminOpen">⚙ Admin</button>
+<button class="active" onclick="showPage('home',this)">पहिलो पेज · गृहपृष्ठ</button>
+<button onclick="showPage('katha',this)">दोस्रो पेज · कथा</button>
+<button onclick="showPage('kabita',this)">तेस्रो पेज · कविता</button>
+<button onclick="showPage('nibandha',this)">चौथो पेज · निबन्ध</button>
+<button onclick="showPage('child',this)">पाँचौँ पेज · बालसाहित्य</button>
 </nav>
 
-<section class="hero">
-    <div>
-        <h1>नेपाली साहित्यको संसारमा स्वागत छ!</h1>
-        <p>
-            कथा, कविता, निबन्ध र बालसाहित्यका सुन्दर
-            सिर्जनाहरू पढ्नुहोस्। आफ्नो सिर्जना लेख्नुहोस्
-            र नेपाली साहित्यको विकासमा योगदान दिनुहोस्।
-        </p>
-        <button class="primary-btn" onclick="goArticles()">
-            साहित्य पढ्नुहोस् →
-        </button>
-    </div>
+<main>
 
-    <div class="hero-image">📚✍️</div>
+<section id="home" class="page active">
+<div class="hero">
+<h2>नेपाली साहित्यको सुन्दर संसारमा स्वागत छ!</h2>
+<p>कथा पढौँ, कविता महसुस गरौँ, निबन्धबाट ज्ञान बढाऔँ र बालसाहित्यबाट कल्पनाको संसार चिनौँ।</p>
+<p><b>हाम्रो उद्देश्य:</b> नेपाली भाषा र साहित्यको संरक्षण, विकास र प्रवर्द्धन।</p>
+</div>
+<div class="cards">
+<div class="card"><h3>📖 कथा</h3><p>जीवन, समाज, प्रकृति र मानवताका कथाहरू।</p><button onclick="goCategory('katha')">कथा पढ्नुहोस्</button></div>
+<div class="card"><h3>✍️ कविता</h3><p>भावना, प्रकृति, देश र जीवनका कविताहरू।</p><button onclick="goCategory('kabita')">कविता पढ्नुहोस्</button></div>
+<div class="card"><h3>📝 निबन्ध</h3><p>शिक्षा, विज्ञान, समाज र संस्कृतिका विषय।</p><button onclick="goCategory('nibandha')">निबन्ध पढ्नुहोस्</button></div>
+<div class="card"><h3>🧒 बालसाहित्य</h3><p>बालबालिकाका लागि रमाइला र ज्ञानवर्धक रचना।</p><button onclick="goCategory('child')">बालसाहित्य पढ्नुहोस्</button></div>
+</div>
 </section>
 
-<main class="container">
+<section id="katha" class="page">
+<h2>📖 नेपाली कथा सङ्ग्रह</h2>
+<p>जीवन र समाजका विभिन्न पक्ष समेटिएका कथाहरू।</p>
+<input class="search" id="search-katha" placeholder="कथा खोज्नुहोस्..." oninput="render('katha')">
+<div id="list-katha"></div><div id="pages-katha" class="pagination"></div>
+</section>
 
-    <section>
-        <div class="section-heading">
-            <h2>हाम्रा साहित्यिक विधाहरू</h2>
-            <p>आफ्नो रुचिअनुसार साहित्य छान्नुहोस्।</p>
-        </div>
+<section id="kabita" class="page">
+<h2>✍️ नेपाली कविता सङ्ग्रह</h2>
+<p>मनका भावना र जीवनका अनुभूति समेटिएका कविताहरू।</p>
+<input class="search" id="search-kabita" placeholder="कविता खोज्नुहोस्..." oninput="render('kabita')">
+<div id="list-kabita"></div><div id="pages-kabita" class="pagination"></div>
+</section>
 
-        <div class="category-grid">
-            <div class="category-card" onclick="chooseCategory('कथा')">
-                <div class="emoji">📖</div>
-                <h3>कथा</h3>
-            </div>
+<section id="nibandha" class="page">
+<h2>📝 नेपाली निबन्ध सङ्ग्रह</h2>
+<p>ज्ञान, शिक्षा, समाज र वातावरणका विषयमा निबन्धहरू।</p>
+<input class="search" id="search-nibandha" placeholder="निबन्ध खोज्नुहोस्..." oninput="render('nibandha')">
+<div id="list-nibandha"></div><div id="pages-nibandha" class="pagination"></div>
+</section>
 
-            <div class="category-card" onclick="chooseCategory('कविता')">
-                <div class="emoji">✍️</div>
-                <h3>कविता</h3>
-            </div>
+<section id="child" class="page">
+<h2>🧒 बालसाहित्य सङ्ग्रह</h2>
+<p>बालबालिकाका लागि रमाइला कथा र ज्ञानवर्धक रचनाहरू।</p>
+<input class="search" id="search-child" placeholder="बालसाहित्य खोज्नुहोस्..." oninput="render('child')">
+<div id="list-child"></div><div id="pages-child" class="pagination"></div>
+</section>
 
-            <div class="category-card" onclick="chooseCategory('निबन्ध')">
-                <div class="emoji">📝</div>
-                <h3>निबन्ध</h3>
-            </div>
-
-            <div class="category-card" onclick="chooseCategory('बालसाहित्य')">
-                <div class="emoji">🧒</div>
-                <h3>बालसाहित्य</h3>
-            </div>
-        </div>
-    </section>
-
-    <section id="literature">
-        <div class="section-heading" style="margin-top:55px">
-            <h2 id="listTitle">📚 साहित्यिक सिर्जनाहरू</h2>
-            <p>हाम्रो पुस्तकालयका लेखहरू पढ्नुहोस्।</p>
-        </div>
-
-        <div class="search-box">
-            <input
-                id="search"
-                type="search"
-                placeholder="🔍 शीर्षक वा लेख खोज्नुहोस्..."
-            >
-        </div>
-
-        <div class="article-grid" id="articleGrid"></div>
-    </section>
-
-    <section class="admin" id="admin">
-        <h2>⚙ Admin Dashboard</h2>
-        <p>नयाँ साहित्यिक सामग्री थप्नुहोस्।</p>
-
-        <form id="articleForm">
-
-            <label>लेखको शीर्षक</label>
-            <input id="title" required maxlength="150"
-                placeholder="शीर्षक लेख्नुहोस्">
-
-            <label>साहित्यको विधा</label>
-            <select id="category">
-                <option>कथा</option>
-                <option>कविता</option>
-                <option>निबन्ध</option>
-                <option>बालसाहित्य</option>
-            </select>
-
-            <label>पूरा लेख</label>
-            <textarea id="content" required maxlength="50000"
-                placeholder="यहाँ आफ्नो लेख लेख्नुहोस्..."></textarea>
-
-            <button class="primary-btn" type="submit">
-                ➕ लेख थप्नुहोस्
-            </button>
-        </form>
-
-        <div class="admin-list">
-            <h3>प्रकाशित सामग्री व्यवस्थापन</h3>
-            <div id="adminList"></div>
-        </div>
-    </section>
+<section id="reading" class="page">
+<button class="primary" onclick="backToCategory()">← पछाडि जानुहोस्</button>
+<div id="reading-content" class="article"></div>
+</section>
 
 </main>
 
 <footer>
-    <h2>📚 AAYUSH NEPALI SAHITYA</h2>
-    <p>नेपाली भाषा र साहित्य हाम्रो पहिचान हो।</p>
-    <p>© 2026 Aayush Nepali Sahitya</p>
+<h3>AAYUSH NEPALI SAHITYA</h3>
+<p>नेपाली साहित्यको संरक्षण र सिर्जनामा हाम्रो सानो प्रयास।</p>
+<p>© 2026 AAYUSH NEPALI SAHITYA</p>
 </footer>
 
 <script>
+const data = {
+katha:[
+{title:"इमानदार बालक",author:"AAYUSH NEPALI SAHITYA",content:`एउटा सुन्दर गाउँमा रमेश नाम गरेको बालक बस्थ्यो। ऊ मेहनती र इमानदार थियो। एक दिन विद्यालयबाट घर फर्कँदै गर्दा उसले बाटोमा एउटा पैसाले भरिएको पर्स भेट्टायो। उसले पर्स आफ्नो घरमा लगेन। बरु पर्समा भएको परिचयपत्र हेरेर त्यसका मालिक खोज्न थाल्यो।
 
-const defaultArticles = [
-{
-id:"1",
-category:"कथा",
-title:"मेहनती विद्यार्थी",
-content:`एउटा गाउँमा रमेश नाम गरेको विद्यार्थी बस्थ्यो।
-उसको परिवार आर्थिक रूपमा कमजोर थियो।
+केही समयपछि उसले पर्सका मालिक भेट्टायो। ती वृद्ध मानिसले आफ्नो हराएको पर्स पाउँदा खुसी हुँदै रमेशलाई धन्यवाद दिए। उनले रमेशलाई पुरस्कार दिन खोजे तर रमेशले भन्यो, "अरूको सामान फिर्ता गर्नु मेरो कर्तव्य हो।"
 
-तर ऊ मेहनती र लगनशील थियो। ऊ हरेक दिन
-विद्यालय जान्थ्यो र मन लगाएर पढ्थ्यो।
+त्यस दिन गाउँका सबैले रमेशको प्रशंसा गरे। यस घटनाले सबैलाई इमानदारीको महत्त्व सिकायो।
 
-धेरै वर्षको मेहनतपछि उसले सफलता प्राप्त गर्‍यो।
+शिक्षा: इमानदारी मानिसको सबैभन्दा ठूलो गुण हो।`},
+{title:"मेहनतको फल",author:"AAYUSH NEPALI SAHITYA",content:`एक गाउँमा सीता नामकी विद्यार्थी बस्थिन्। उनको परिवार साधारण थियो। विद्यालय जान र पढ्न उनले धेरै मेहनत गर्नुपर्थ्यो। उनी बिहान घरको काममा सघाउँथिन् र त्यसपछि विद्यालय जान्थिन्।
 
-शिक्षा: मेहनत र धैर्यले सफलता प्राप्त हुन्छ।`
-},
-{
-id:"2",
-category:"कविता",
-title:"मेरो सुन्दर नेपाल",
-content:`हिमालको शिरमा हिउँको मुकुट,
-पहाडको काखमा फूलको सुगन्ध।
-तराईको फाँटमा हरियाली छ,
-मेरो नेपाल साँच्चै सुन्दर छ।
+सीताले समयको सदुपयोग गरिन्। कठिन विषय बुझ्न शिक्षकसँग प्रश्न सोधिन् र नियमित अभ्यास गरिन्। परीक्षाको नतिजा आउँदा उनी राम्रो अङ्कसहित उत्तीर्ण भइन्।
+
+उनको सफलताले परिवार र शिक्षकलाई खुसी बनायो। उनले बुझिन् कि सफलता एकै दिनमा प्राप्त हुँदैन। निरन्तर प्रयास, धैर्य र अनुशासन आवश्यक हुन्छ।
+
+शिक्षा: मेहनत र लगनशीलताले सफलताको बाटो खोल्छ।`},
+{title:"सहयोगी छिमेकी",author:"AAYUSH NEPALI SAHITYA",content:`एउटा गाउँमा धेरै परिवार मिलेर बस्थे। एक वर्ष ठूलो वर्षा भयो र गाउँको बाटो बिग्रियो। विद्यालय जाने बाटो हिलोले भरियो।
+
+गाउँका मानिसले एकअर्कालाई दोष दिनुको सट्टा मिलेर बाटो सफा गर्ने निर्णय गरे। कसैले औजार ल्याए, कसैले ढुङ्गा र बालुवा ल्याए, अनि सबैले मिलेर बाटो मर्मत गरे।
+
+केही दिनमै बाटो हिँड्न सजिलो भयो। गाउँलेले एकताको शक्ति अनुभव गरे।
+
+शिक्षा: मिलेर काम गर्दा कठिन समस्या पनि समाधान गर्न सकिन्छ।`}
+],
+kabita:[
+{title:"मेरो देश नेपाल",author:"AAYUSH NEPALI SAHITYA",content:`हिमालको शिर उचो भएको,
+पहाडको छाती फराकिलो,
+तराईको फाँट हरियो भएको,
+मेरो देश छ प्यारो।
 
 नदी बग्छन् कलकल गर्दै,
-चराहरू गाउँछन् रमाइलो भाकामा।
-विविध भाषा र संस्कृति,
-नेपाल सजिएको छ एकताको मालामा।`
-},
-{
-id:"3",
-category:"निबन्ध",
-title:"शिक्षाको महत्त्व",
-content:`शिक्षा मानिसको जीवनको महत्त्वपूर्ण आधार हो।
-शिक्षाले मानिसलाई ज्ञान, सीप र चेतना प्रदान गर्छ।
+वनमा चराहरू गाउँछन्,
+विविध जाति, भाषा, संस्कृति,
+मिलेर नेपाल सजाउँछन्।
 
-शिक्षित मानिसले समाज र राष्ट्रको विकासमा
-महत्त्वपूर्ण योगदान दिन सक्छ।
+शान्ति, सद्भाव र एकताको,
+सन्देश फैलाऔँ हामी,
+मेहनत गरी देश बनाउने,
+नागरिक बनौँ हामी।`},
+{title:"शिक्षाको उज्यालो",author:"AAYUSH NEPALI SAHITYA",content:`ज्ञानको दीप बालौँ हामी,
+अज्ञानताको रात हटाऔँ,
+पढेर, लेखेर, सिकेर,
+नयाँ संसार बनाऔँ।
 
-त्यसैले सबै बालबालिकाले गुणस्तरीय शिक्षा
-प्राप्त गर्ने अवसर पाउनुपर्छ।`
-},
-{
-id:"4",
-category:"बालसाहित्य",
-title:"खरायो र कछुवा",
-content:`एउटा जंगलमा खरायो र कछुवा बस्थे।
-खरायो छिटो दौडिन्थ्यो र कछुवालाई जिस्क्याउँथ्यो।
+किताब हाम्रो असल साथी,
+शिक्षक ज्ञानका स्रोत,
+मेहनतले अघि बढेमा,
+खुल्छ सफलताको ढोका।`},
+{title:"प्रकृतिको गीत",author:"AAYUSH NEPALI SAHITYA",content:`हरिया वन, नीलो आकाश,
+फूलको मीठो बासना,
+चराको त्यो मधुर गीत,
+प्रकृतिको सुन्दर रचना।
 
-एक दिन उनीहरूबीच दौड प्रतियोगिता भयो।
-खरायो आराम गर्न थाल्यो तर कछुवा निरन्तर अघि बढ्यो।
+नदी, पहाड, वन र पाखा,
+हाम्रो साझा धन,
+संरक्षण गरौँ प्रकृतिलाई,
+यही हो हाम्रो कर्तव्य।`}
+],
+nibandha:[
+{title:"शिक्षाको महत्त्व",author:"AAYUSH NEPALI SAHITYA",content:`शिक्षा मानिसको जीवनमा अत्यन्त महत्त्वपूर्ण हुन्छ। शिक्षाले मानिसलाई ज्ञान, सीप, विवेक र सही निर्णय गर्ने क्षमता प्रदान गर्छ। शिक्षित व्यक्तिले आफ्नो जीवनलाई व्यवस्थित बनाउन सक्छ र समाजको विकासमा योगदान दिन सक्छ।
 
-अन्ततः कछुवाले प्रतियोगिता जित्यो।
+शिक्षाले अन्धविश्वास, अशिक्षा र कुरीतिहरू हटाउन सहयोग गर्छ। विद्यालयमा विद्यार्थीले पुस्तकबाट मात्र होइन, शिक्षक, साथी र व्यवहारबाट पनि धेरै कुरा सिक्छन्। शिक्षा मानिसलाई अनुशासित, जिम्मेवार र आत्मनिर्भर बन्न प्रेरित गर्छ।
 
-शिक्षा: निरन्तर प्रयासले सफलता प्राप्त हुन्छ।`
+आजको आधुनिक युगमा विज्ञान, प्रविधि र सञ्चारको विकाससँगै शिक्षाको आवश्यकता अझ बढेको छ। सबै बालबालिकाले गुणस्तरीय शिक्षा पाउनु आवश्यक छ। त्यसैले परिवार, विद्यालय, समाज र सरकारले शिक्षाको विकासमा ध्यान दिनुपर्छ।
+
+अन्त्यमा, शिक्षा नै उज्ज्वल भविष्यको आधार हो।`},
+{title:"वातावरण संरक्षण",author:"AAYUSH NEPALI SAHITYA",content:`वातावरण हाम्रो वरिपरि रहेको हावा, पानी, माटो, वनस्पति, जीवजन्तु र प्राकृतिक वस्तुहरूको समष्टि हो। स्वस्थ वातावरणले मानिस र अन्य जीवको जीवन सुरक्षित राख्छ।
+
+वन विनाश, फोहोरमैला, प्रदूषण र प्राकृतिक स्रोतको अव्यवस्थित प्रयोगले वातावरणमा समस्या उत्पन्न हुन्छ। यसले मानव स्वास्थ्य र जैविक विविधतामा असर पार्न सक्छ।
+
+वातावरण संरक्षणका लागि वृक्षरोपण गर्नुपर्छ, पानीको स्रोत सफा राख्नुपर्छ र फोहोरलाई उचित तरिकाले व्यवस्थापन गर्नुपर्छ। प्लास्टिकको अनावश्यक प्रयोग घटाउनु पनि आवश्यक छ।
+
+वातावरण संरक्षण सरकारको मात्र जिम्मेवारी होइन। प्रत्येक नागरिकले आफ्नो घर, विद्यालय र समुदाय सफा राखेर योगदान दिन सक्छ।
+
+स्वच्छ वातावरण नै स्वस्थ जीवनको आधार हो।`},
+{title:"नेपालको प्राकृतिक सौन्दर्य",author:"AAYUSH NEPALI SAHITYA",content:`नेपाल प्राकृतिक सौन्दर्यले भरिपूर्ण देश हो। यहाँ विश्वका अग्ला हिमाल, सुन्दर पहाड, हरिया वन, नदी, ताल र समथर तराईका फाँटहरू छन्।
+
+हिमाली क्षेत्रमा हिउँले ढाकिएका चुचुरा देखिन्छन्। पहाडी क्षेत्रमा हरिया डाँडा, झरना र रमणीय बस्ती छन्। तराई क्षेत्रमा उर्वर भूमि र फराकिला मैदान पाइन्छन्। यी विविधताले नेपाललाई विशेष बनाएका छन्।
+
+नेपालको प्राकृतिक सम्पदा पर्यटन, कृषि र जलस्रोतका लागि महत्त्वपूर्ण छ। यी सम्पदाको संरक्षण गर्नु हामी सबैको कर्तव्य हो।
+
+नेपालको सौन्दर्य हाम्रो गौरव हो। यसलाई जोगाएर भावी पुस्तालाई हस्तान्तरण गर्नुपर्छ।`}
+],
+child:[
+{title:"चतुर खरायो",author:"AAYUSH NEPALI SAHITYA",content:`एउटा हरियो वनमा एउटा सानो खरायो बस्थ्यो। ऊ छिटो दौडन सक्थ्यो र निकै चतुर थियो। एक दिन वनमा पानीको अभाव भयो। सबै जनावर चिन्तित भए।
+
+खरायोले सबैलाई मिलेर पानी खोज्न आग्रह गर्‍यो। उसले साथीहरूसँग वनका विभिन्न ठाउँमा खोजी गर्‍यो। अन्ततः उनीहरूले एउटा पुरानो मुहान भेट्टाए।
+
+सबै जनावर मिलेर मुहान वरिपरि सफा गरे। केही समयपछि त्यहाँ सफा पानी बग्न थाल्यो। सबै जनावर खुसी भए।
+
+शिक्षा: बुद्धि र सहकार्यले समस्या समाधान गर्न सकिन्छ।`},
+{title:"सानो बिरुवाको सपना",author:"AAYUSH NEPALI SAHITYA",content:`एउटा सानो बिरुवा खुला ठाउँमा उम्रियो। उसले ठूलो रूख बन्ने सपना देखेको थियो। घाम लाग्दा ऊ प्रकाशतिर फर्कन्थ्यो र पानी पर्दा खुसी हुन्थ्यो।
+
+केही दिनपछि हावाले उसलाई हल्लायो। कहिलेकाहीँ पानी कम पर्थ्यो। तर बिरुवाले आफ्नो वृद्धि रोक्न चाहेन।
+
+एक दिन एउटा बालकले बिरुवालाई पानी हाल्यो र वरिपरि बार लगाइदियो। समय बित्दै जाँदा बिरुवा ठूलो रूख बन्यो। त्यसले चराहरूलाई बास र मानिसलाई छहारी दियो।
+
+शिक्षा: सानो प्रयासले पनि ठूलो परिवर्तन ल्याउन सक्छ।`},
+{title:"मिल्ने साथीहरू",author:"AAYUSH NEPALI SAHITYA",content:`एउटा बगैँचामा कमिला, पुतली र मौरी साथी थिए। उनीहरू सधैँ एकअर्कालाई सहयोग गर्थे।
+
+एक दिन ठूलो हावा चल्यो। पुतलीको फूलमा बस्ने ठाउँ बिग्रियो। मौरी र कमिलाले मिलेर उसलाई सुरक्षित ठाउँ खोज्न सहयोग गरे।
+
+केही समयपछि पुतलीले पनि फूलमा पराग फैलाउन मद्दत गर्‍यो। सबैले एकअर्काको कामको महत्त्व बुझे।
+
+शिक्षा: साथीहरूबीच सहयोग र सद्भाव हुनुपर्छ।`}
+]
+};
+
+const categories=["katha","kabita","nibandha","child"];
+const names={katha:"कथा",kabita:"कविता",nibandha:"निबन्ध",child:"बालसाहित्य"};
+let currentCategory="katha";
+let currentPage={katha:1,kabita:1,nibandha:1,child:1};
+let currentArticle=null;
+const perPage=5;
+
+function showPage(id,button){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+ if(button)button.classList.add("active");
+ window.scrollTo(0,0);
 }
-];
-
-const KEY = "aayush_literature_v1";
-
-function loadArticles() {
-    try {
-        const saved = localStorage.getItem(KEY);
-        if (saved === null) return [...defaultArticles];
-
-        const data = JSON.parse(saved);
-
-        if (!Array.isArray(data)) return [...defaultArticles];
-
-        return data.filter(a =>
-            a &&
-            typeof a.id === "string" &&
-            typeof a.title === "string" &&
-            typeof a.content === "string" &&
-            ["कथा","कविता","निबन्ध","बालसाहित्य"].includes(a.category)
-        );
-    } catch {
-        return [...defaultArticles];
-    }
+function goCategory(id){
+ currentCategory=id;
+ showPage(id);
+ render(id);
 }
-
-let articles = loadArticles();
-let selectedCategory = "सबै";
-
-function saveArticles() {
-    try {
-        localStorage.setItem(KEY, JSON.stringify(articles));
-        return true;
-    } catch {
-        alert("लेख सुरक्षित भएन। Browser storage जाँच गर्नुहोस्।");
-        return false;
-    }
+function render(id){
+ const search=document.getElementById("search-"+id).value.trim().toLowerCase();
+ const filtered=data[id].filter(a=>(a.title+" "+a.author+" "+a.content).toLowerCase().includes(search));
+ const page=currentPage[id]||1;
+ const start=(page-1)*perPage;
+ const items=filtered.slice(start,start+perPage);
+ const list=document.getElementById("list-"+id);
+ list.innerHTML="";
+ if(items.length===0){
+  list.innerHTML='<div class="article">यस खोजसँग मिल्ने सामग्री भेटिएन।</div>';
+ }else{
+  items.forEach(a=>{
+   const div=document.createElement("div");
+   div.className="article";
+   const h=document.createElement("h3");
+   h.textContent=a.title;
+   const p=document.createElement("p");
+   p.textContent="लेखक: "+a.author;
+   const btn=document.createElement("button");
+   btn.className="primary";
+   btn.textContent="पूरा पढ्नुहोस्";
+   btn.onclick=()=>openArticle(id,a);
+   div.append(h,p,btn);
+   list.appendChild(div);
+  });
+ }
+ const total=Math.ceil(filtered.length/perPage);
+ const pages=document.getElementById("pages-"+id);
+ pages.innerHTML="";
+ for(let i=1;i<=total;i++){
+  const b=document.createElement("button");
+  b.textContent=i;
+  if(i===page)b.className="active";
+  b.onclick=()=>{currentPage[id]=i;render(id)};
+  pages.appendChild(b);
+ }
 }
-
-function renderArticles() {
-
-    const grid = document.getElementById("articleGrid");
-    const search = document.getElementById("search")
-        .value.trim().toLocaleLowerCase();
-
-    grid.replaceChildren();
-
-    const filtered = articles.filter(a => {
-
-        const categoryMatch =
-            selectedCategory === "सबै" ||
-            a.category === selectedCategory;
-
-        const searchMatch =
-            a.title.toLocaleLowerCase().includes(search) ||
-            a.content.toLocaleLowerCase().includes(search);
-
-        return categoryMatch && searchMatch;
-    });
-
-    if (!filtered.length) {
-        const message = document.createElement("p");
-        message.textContent = "कुनै सामग्री भेटिएन।";
-        grid.appendChild(message);
-        return;
-    }
-
-    filtered.forEach(a => {
-
-        const card = document.createElement("article");
-        card.className = "article-card";
-
-        const tag = document.createElement("span");
-        tag.className = "article-tag";
-        tag.textContent = a.category;
-
-        const title = document.createElement("h3");
-        title.textContent = a.title;
-
-        const content = document.createElement("p");
-        const preview = a.content.slice(0,180);
-        content.textContent =
-            preview + (a.content.length > 180 ? "..." : "");
-
-        const read = document.createElement("button");
-        read.className = "primary-btn read-btn";
-        read.textContent = "पूरा पढ्नुहोस्";
-
-        read.addEventListener("click", () => {
-            alert(a.title + "\n\n" + a.content);
-        });
-
-        card.append(tag,title,content,read);
-        grid.appendChild(card);
-    });
+function openArticle(category,article){
+ currentCategory=category;
+ currentArticle=article;
+ const area=document.getElementById("reading-content");
+ area.innerHTML="";
+ const h=document.createElement("h2");
+ h.textContent=article.title;
+ const author=document.createElement("p");
+ author.className="small";
+ author.textContent="लेखक: "+article.author;
+ const content=document.createElement("div");
+ content.className="article-content";
+ content.textContent=article.content;
+ area.append(h,author,content);
+ showPage("reading");
 }
-
-function chooseCategory(category) {
-    selectedCategory = category;
-
-    document.getElementById("listTitle").textContent =
-        category === "सबै"
-        ? "📚 साहित्यिक सिर्जनाहरू"
-        : "📖 " + category + " संग्रह";
-
-    document.querySelectorAll("nav button[data-cat]").forEach(btn => {
-        btn.classList.toggle(
-            "active",
-            btn.dataset.cat === category
-        );
-    });
-
-    renderArticles();
-    goArticles();
+function backToCategory(){
+ showPage(currentCategory);
 }
-
-document.querySelectorAll("nav button[data-cat]").forEach(btn => {
-    btn.addEventListener("click", () => {
-        chooseCategory(btn.dataset.cat);
-    });
-});
-
-function goArticles() {
-    document.getElementById("literature")
-        .scrollIntoView({behavior:"smooth"});
-}
-
-document.getElementById("search").addEventListener("input",renderArticles);
-
-// ADMIN PANEL
-
-document.getElementById("adminOpen").addEventListener("click",() => {
-    document.getElementById("admin").classList.toggle("show");
-    renderAdmin();
-});
-
-// ADD ARTICLE
-
-document.getElementById("articleForm").addEventListener("submit",e => {
-
-    e.preventDefault();
-
-    const title = document.getElementById("title").value.trim();
-    const category = document.getElementById("category").value;
-    const content = document.getElementById("content").value.trim();
-
-    if (!title || !content) return;
-
-    const article = {
-        id: crypto.randomUUID(),
-        title,
-        category,
-        content
-    };
-
-    articles.unshift(article);
-
-    if (!saveArticles()) {
-        articles.shift();
-        return;
-    }
-
-    e.target.reset();
-    renderArticles();
-    renderAdmin();
-
-    alert("नयाँ लेख थपियो!");
-});
-
-// ADMIN ARTICLE LIST
-
-function renderAdmin() {
-
-    const list = document.getElementById("adminList");
-    list.replaceChildren();
-
-    articles.forEach(a => {
-
-        const row = document.createElement("div");
-        row.style.cssText =
-            "padding:12px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap";
-
-        const name = document.createElement("span");
-        name.textContent = a.title + " - " + a.category;
-
-        const remove = document.createElement("button");
-        remove.className = "delete-btn";
-        remove.textContent = "हटाउनुहोस्";
-
-        remove.addEventListener("click", () => {
-
-            if (!confirm("यो लेख हटाउने हो?")) return;
-
-            const previous = articles;
-            articles = articles.filter(item => item.id !== a.id);
-
-            if (!saveArticles()) {
-                articles = previous;
-                return;
-            }
-
-            renderArticles();
-            renderAdmin();
-        });
-
-        row.append(name,remove);
-        list.appendChild(row);
-    });
-}
-
-renderArticles();
-renderAdmin();
-
+categories.forEach(render);
 </script>
-
 </body>
 </html>
