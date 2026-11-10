@@ -1,1 +1,1288 @@
-c
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>बाल साहित्य | AAYUSH NEPALI SAHITYA</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Noto Sans Devanagari",sans-serif;
+    background:#f4f8ff;
+    color:#222;
+    line-height:1.9;
+}
+
+header{
+    background:linear-gradient(135deg,#075985,#7c3aed);
+    color:white;
+    text-align:center;
+    padding:35px 15px;
+}
+
+header h1{
+    font-size:30px;
+}
+
+nav{
+    background:#0284c7;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:12px 15px;
+}
+
+nav a:hover{
+    background:#075985;
+}
+
+.hero{
+    background:linear-gradient(135deg,#0ea5e9,#a855f7);
+    color:white;
+    text-align:center;
+    padding:45px 15px;
+}
+
+.hero h2{
+    font-size:30px;
+}
+
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:20px;
+}
+
+.controls{
+    text-align:center;
+    margin:25px 0;
+}
+
+input,select{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    margin:5px;
+    font-size:15px;
+}
+
+#search{
+    width:min(95%,450px);
+}
+
+button{
+    background:#0284c7;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:7px;
+    cursor:pointer;
+    margin:4px;
+}
+
+button:hover{
+    background:#075985;
+}
+
+.title{
+    text-align:center;
+    color:#0369a1;
+    margin:30px 0 20px;
+}
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:12px;
+}
+
+.category{
+    background:#7c3aed;
+    color:white;
+    padding:16px 8px;
+    text-align:center;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+.category:hover{
+    background:#0284c7;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:18px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:13px;
+    box-shadow:0 3px 12px #00000012;
+}
+
+.card h3{
+    color:#7c3aed;
+    margin-bottom:8px;
+}
+
+.meta{
+    font-size:13px;
+    color:#777;
+    margin:5px 0;
+}
+
+.card button{
+    margin-top:12px;
+}
+
+.reader{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#000b;
+    z-index:10;
+    overflow-y:auto;
+    padding:15px;
+}
+
+.reader-box{
+    background:white;
+    max-width:850px;
+    margin:25px auto;
+    padding:25px;
+    border-radius:12px;
+}
+
+.reader-box h2{
+    color:#7c3aed;
+    text-align:center;
+}
+
+#content{
+    font-size:19px;
+    line-height:2.1;
+    white-space:pre-line;
+    margin:25px 0;
+}
+
+.tools{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:5px;
+}
+
+#noResults{
+    display:none;
+    text-align:center;
+    padding:30px;
+}
+
+footer{
+    background:#075985;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:40px;
+}
+
+body.dark{
+    background:#101827;
+    color:white;
+}
+
+body.dark .card,
+body.dark .reader-box{
+    background:#1e293b;
+    color:white;
+}
+
+body.dark .meta{
+    color:#ccc;
+}
+
+@media(max-width:600px){
+    header h1{
+        font-size:23px;
+    }
+
+    .hero h2{
+        font-size:24px;
+    }
+
+    nav a{
+        padding:9px;
+        font-size:13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🧒 आयुस नेपाली साहित्य</h1>
+    <p>AAYUSH NEPALI SAHITYA</p>
+    <p>बालबालिकाको ज्ञान, कल्पना र सिर्जनाको संसार</p>
+</header>
+
+<nav>
+    <a href="index.html">🏠 गृहपृष्ठ</a>
+    <a href="katha.html">📖 कथा</a>
+    <a href="kabita.html">📝 कविता</a>
+    <a href="bal-sahitya.html">🧒 बाल साहित्य</a>
+    <a href="nibandha.html">📚 निबन्ध</a>
+</nav>
+
+<section class="hero">
+    <h2>🌈 बाल साहित्यको रमाइलो संसार</h2>
+
+    <p>पढौँ, खेलौँ, सिकौँ र नयाँ कुरा जानौँ।</p>
+
+    <p>बालबालिकाको कल्पना, भावना र प्रतिभालाई सम्मान गरौँ।</p>
+</section>
+
+<div class="container">
+
+    <div class="controls">
+
+        <input
+            type="search"
+            id="search"
+            placeholder="🔍 कथा, कविता वा विषय खोज्नुहोस्..."
+            oninput="renderItems()">
+
+        <select id="filter" onchange="renderItems()">
+            <option value="सबै">सबै विधा</option>
+            <option>बाल कथा</option>
+            <option>बाल कविता</option>
+            <option>चुट्किला</option>
+            <option>पहेली</option>
+            <option>ज्ञान विज्ञान</option>
+            <option>प्रकृति</option>
+            <option>राम्रो बानी</option>
+            <option>शैक्षिक खेल</option>
+            <option>बाल मनोविज्ञान</option>
+            <option>अभिभावक सुझाव</option>
+        </select>
+
+        <button onclick="toggleDark()">🌙 Dark / Light</button>
+
+    </div>
+
+    <h2 class="title">🌈 बाल साहित्यका विधाहरू</h2>
+
+    <div class="categories">
+
+        <div class="category" onclick="choose('बाल कथा')">
+            📖<br>बाल कथा
+        </div>
+
+        <div class="category" onclick="choose('बाल कविता')">
+            📝<br>बाल कविता
+        </div>
+
+        <div class="category" onclick="choose('चुट्किला')">
+            😂<br>चुट्किला
+        </div>
+
+        <div class="category" onclick="choose('पहेली')">
+            🧩<br>पहेली
+        </div>
+
+        <div class="category" onclick="choose('ज्ञान विज्ञान')">
+            🔬<br>ज्ञान विज्ञान
+        </div>
+
+        <div class="category" onclick="choose('प्रकृति')">
+            🌳<br>प्रकृति
+        </div>
+
+        <div class="category" onclick="choose('राम्रो बानी')">
+            🤝<br>राम्रो बानी
+        </div>
+
+        <div class="category" onclick="choose('शैक्षिक खेल')">
+            🎮<br>शैक्षिक खेल
+        </div>
+
+        <div class="category" onclick="choose('बाल मनोविज्ञान')">
+            🧠<br>बाल मनोविज्ञान
+        </div>
+
+        <div class="category" onclick="choose('अभिभावक सुझाव')">
+            👨‍👩‍👧<br>अभिभावक सुझाव
+        </div>
+
+    </div>
+
+    <h2 class="title">📚 बाल साहित्य पुस्तकालय</h2>
+
+    <div id="itemList" class="grid"></div>
+
+    <p id="noResults">यो विषयसँग मिल्ने सामग्री भेटिएन।</p>
+
+</div>
+
+<div class="reader" id="reader">
+
+    <div class="reader-box">
+
+        <div class="tools">
+
+            <button onclick="changeFont(1)">A+ ठूलो</button>
+
+            <button onclick="changeFont(-1)">A- सानो</button>
+
+            <button onclick="closeReader()">❌ बन्द</button>
+
+        </div>
+
+        <h2 id="readerTitle"></h2>
+
+        <p id="readerMeta" class="meta"></p>
+
+        <div id="content"></div>
+
+        <button onclick="closeReader()">
+            सूचीमा फर्कनुहोस्
+        </button>
+
+    </div>
+
+</div>
+
+<footer>
+
+    <p>© 2026 AAYUSH NEPALI SAHITYA</p>
+
+    <p>लेखक: Aayush Jaishi</p>
+
+    <p>Developed by Aayush Jaishi</p>
+
+    <p>बालबालिकाको सिर्जनशीलता र ज्ञान विकास हाम्रो उद्देश्य।</p>
+
+</footer>
+
+<script>
+
+const items = [
+
+/* 1-10 बाल कथा */
+
+{
+title:"इमानदार बालक",
+category:"बाल कथा",
+topic:"इमानदारी",
+author:"Aayush Jaishi",
+content:`एउटा गाउँमा रमेश नाम गरेको बालक बस्थ्यो।
+
+एक दिन विद्यालय जाने क्रममा उसले बाटोमा एउटा पर्स भेट्टायो।
+
+पर्सभित्र केही पैसा र एउटा परिचयपत्र थियो।
+
+उसले पर्स आफ्नो शिक्षकलाई बुझायो।
+
+शिक्षकले पर्सको मालिक पत्ता लगाएर फिर्ता गरिदिए।
+
+सबैले रमेशको इमानदारीको प्रशंसा गरे।
+
+शिक्षा: इमानदार हुनु सबैभन्दा राम्रो गुण हो।`
+},
+
+{
+title:"बुद्धिमान खरायो",
+category:"बाल कथा",
+topic:"बुद्धिमानी",
+author:"Aayush Jaishi",
+content:`एउटा वनमा खरायो र कछुवा बस्थे।
+
+एक दिन उनीहरूबीच दौड प्रतियोगिता भयो।
+
+खरायो धेरै छिटो दौडियो।
+
+तर उसले बाटोमा आराम गर्न थाल्यो।
+
+कछुवा बिस्तारै अघि बढिरह्यो।
+
+अन्त्यमा कछुवा गन्तव्यमा पुग्यो।
+
+शिक्षा: निरन्तर प्रयास गर्नु महत्त्वपूर्ण हुन्छ।`
+},
+
+{
+title:"मित्रताको शक्ति",
+category:"बाल कथा",
+topic:"मित्रता",
+author:"Aayush Jaishi",
+content:`दुई साथी एउटै विद्यालयमा पढ्थे।
+
+उनीहरू पढाइ र खेल दुवैमा एकअर्कालाई सहयोग गर्थे।
+
+एक दिन एउटा साथीले गृहकार्य गर्न सकेन।
+
+अर्को साथीले उसलाई बुझाएर सिकायो।
+
+दुवैले मिलेर आफ्नो काम पूरा गरे।
+
+शिक्षा: असल मित्रले सहयोग गर्न सिकाउँछ।`
+},
+
+{
+title:"जादुई बीउ",
+category:"बाल कथा",
+topic:"वातावरण",
+author:"Aayush Jaishi",
+content:`एक बालिकाले हजुरबुबाबाट एउटा बीउ पाइन्।
+
+उनले त्यो बीउ बारीमा रोपिन्।
+
+हरेक दिन पानी हालिन्।
+
+केही समयपछि एउटा सुन्दर बिरुवा उम्रियो।
+
+वर्षौँपछि त्यो ठूलो रुख बन्यो।
+
+त्यसको छहारीमा धेरै मानिसले आराम गरे।
+
+शिक्षा: सानो प्रयासले ठूलो परिवर्तन ल्याउन सक्छ।`
+},
+
+{
+title:"साहसी बालिका",
+category:"बाल कथा",
+topic:"आत्मविश्वास",
+author:"Aayush Jaishi",
+content:`सीता नयाँ विद्यालयमा भर्ना भइन्।
+
+उनी सुरुमा साथीहरूसँग बोल्न डराउँथिन्।
+
+एक दिन शिक्षकले उनलाई कविता सुनाउन आग्रह गरे।
+
+उनले साहस गरेर कविता सुनाइन्।
+
+सबैले ताली बजाए।
+
+त्यसपछि उनलाई नयाँ साथी बनाउन सजिलो भयो।
+
+शिक्षा: आत्मविश्वासले नयाँ अवसर खोल्छ।`
+},
+
+{
+title:"हराएको पुस्तक",
+category:"बाल कथा",
+topic:"पुस्तकको महत्त्व",
+author:"Aayush Jaishi",
+content:`विद्यालयको पुस्तकालयबाट एउटा पुस्तक हरायो।
+
+विद्यार्थीहरूले पुस्तक खोज्न थाले।
+
+अन्त्यमा त्यो पुस्तक खेलमैदानको छेउमा भेटियो।
+
+एक विद्यार्थीले पुस्तक त्यहाँ छोडेको रहेछ।
+
+उसले आफ्नो गल्ती स्वीकार गर्‍यो।
+
+सबैले पुस्तकलाई सुरक्षित राख्ने निर्णय गरे।
+
+शिक्षा: सार्वजनिक सम्पत्तिको संरक्षण गर्नुपर्छ।`
+},
+
+{
+title:"सानो वैज्ञानिक",
+category:"बाल कथा",
+topic:"जिज्ञासा",
+author:"Aayush Jaishi",
+content:`अनिललाई नयाँ कुरा जान्न मन पर्थ्यो।
+
+उसले आकाशमा बादल कसरी बन्छ भनेर शिक्षकलाई सोध्यो।
+
+शिक्षकले पानीको वाष्प र बादलबारे बुझाए।
+
+अनिलले घरमा विज्ञानका पुस्तक पढ्न थाल्यो।
+
+उसले नयाँ नयाँ प्रश्नहरू लेख्न थाल्यो।
+
+शिक्षा: प्रश्न गर्नु सिकाइको राम्रो सुरुवात हो।`
+},
+
+{
+title:"पानीको महत्त्व",
+category:"बाल कथा",
+topic:"पानी संरक्षण",
+author:"Aayush Jaishi",
+content:`एउटा गाउँमा पानीको अभाव भयो।
+
+बालबालिकाले पानी खेर नफाल्ने अभियान सुरु गरे।
+
+उनीहरूले धारो खुला नछोड्ने निर्णय गरे।
+
+विद्यालयमा पानी बचत गर्ने कार्यक्रम आयोजना भयो।
+
+केही समयपछि गाउँले पानीको सही प्रयोग गर्न थाले।
+
+शिक्षा: पानी जीवनका लागि अमूल्य छ।`
+},
+
+{
+title:"सपनाको विद्यालय",
+category:"बाल कथा",
+topic:"शिक्षा",
+author:"Aayush Jaishi",
+content:`एउटा गाउँका बालबालिकाले पुस्तकालय बनाउने सपना देखे।
+
+उनीहरूले शिक्षकसँग सहयोग मागे।
+
+सबैले पुराना पुस्तक जम्मा गरे।
+
+गाउँलेहरूले एउटा कोठा उपलब्ध गराए।
+
+त्यहाँ सानो पुस्तकालय सुरु भयो।
+
+अब बालबालिकाले नियमित पढ्न पाए।
+
+शिक्षा: एकताले सपना पूरा गर्न सहयोग गर्छ।`
+},
+
+{
+title:"रङ्गीचङ्गी पुतली",
+category:"बाल कथा",
+topic:"प्रकृति",
+author:"Aayush Jaishi",
+content:`एउटा बगैँचामा सुन्दर फूलहरू फुलेका थिए।
+
+त्यहाँ एउटा रङ्गीचङ्गी पुतली आउँथी।
+
+बालबालिकाले पुतलीलाई ध्यानपूर्वक हेर्थे।
+
+उनीहरूले फूल र कीराहरूको महत्त्व बुझ्न थाले।
+
+उनीहरूले बगैँचा सफा राख्ने निर्णय गरे।
+
+शिक्षा: प्रकृतिका हरेक जीवको आफ्नै महत्त्व हुन्छ।`
+},
+
+/* 11-15 बाल कविता */
+
+{
+title:"मेरो विद्यालय",
+category:"बाल कविता",
+topic:"विद्यालय",
+author:"Aayush Jaishi",
+content:`मेरो प्यारो विद्यालय,
+ज्ञानको मीठो मन्दिर।
+
+साथीभाइसँग पढ्न पाउँदा,
+मन हुन्छ अति सुन्दर।
+
+गुरुहरूले ज्ञान दिनुहुन्छ,
+हामी सिक्छौँ नयाँ कुरा।
+
+पढेर लेखेर अघि बढौँ,
+सपना पूरा गरौँ पूरा।`
+},
+
+{
+title:"सानो चरा",
+category:"बाल कविता",
+topic:"चराचुरुङ्गी",
+author:"Aayush Jaishi",
+content:`सानो चरा उड्दै आयो,
+रुखको हाँगामा बस्यो।
+
+मीठो मीठो गीत गाएर,
+सबैको मन हर्षित बनायो।
+
+आकाशभरि उड्दै जाऊ,
+सुन्दर गीत सुनाउँदै।
+
+प्रकृतिको माया गरौँ,
+सबै जीव जोगाउँदै।`
+},
+
+{
+title:"हाम्रो नेपाल",
+category:"बाल कविता",
+topic:"देशप्रेम",
+author:"Aayush Jaishi",
+content:`हिमाल हाम्रो अग्लो शिर,
+पहाड हाम्रो शान।
+
+तराईको हरियालीले,
+बढाउँछ नेपालको मान।
+
+हामी सबै नेपाली हौँ,
+मिलेर अघि बढौँ।
+
+आफ्नो प्यारो मातृभूमि,
+सधैँ माया गरौँ।`
+},
+
+{
+title:"मेहनत गरौँ",
+category:"बाल कविता",
+topic:"मेहनत",
+author:"Aayush Jaishi",
+content:`सानो सानो काम गरौँ,
+हरेक दिन अघि बढौँ।
+
+ज्ञान र सीप सिक्दै जाऊँ,
+आफ्नो सपना पूरा गरौँ।
+
+हारबाट पनि सिकौँ,
+फेरि प्रयास गरौँ।
+
+असल मानिस बनेर,
+समाजको सेवा गरौँ।`
+},
+
+{
+title:"वर्षा आयो",
+category:"बाल कविता",
+topic:"वर्षा",
+author:"Aayush Jaishi",
+content:`आकाशमा बादल आयो,
+पानी टिपटिप झर्‍यो।
+
+खेतबारी हरियो भयो,
+किसानको मन रमायो।
+
+भ्यागुताहरू कराउन थाले,
+चराहरू गीत गाउन।
+
+वर्षा ऋतु आयो फेरि,
+धरतीलाई सजाउन।`
+},
+
+/* 16-20 चुट्किला */
+
+{
+title:"विद्यालयको प्रश्न",
+category:"चुट्किला",
+topic:"विद्यालय",
+author:"Aayush Jaishi",
+content:`शिक्षक: पृथ्वी किन घुम्छ?
+
+विद्यार्थी: सर, सायद उसलाई पनि संसार हेर्न मन लाग्छ!
+
+शिक्षक मुस्कुराउनुभयो।
+
+सबै विद्यार्थी हाँसे।`
+},
+
+{
+title:"बुद्धिमान विद्यार्थी",
+category:"चुट्किला",
+topic:"पढाइ",
+author:"Aayush Jaishi",
+content:`शिक्षक: गृहकार्य किन गरेनौ?
+
+विद्यार्थी: सर, कापीले आज बिदा माग्यो।
+
+शिक्षक: किन?
+
+विद्यार्थी: धेरै लेखेर थाकेको थियो नि!`
+},
+
+{
+title:"घडी",
+category:"चुट्किला",
+topic:"समय",
+author:"Aayush Jaishi",
+content:`साथी: तिम्रो घडी किन बन्द छ?
+
+अर्को साथी: यसले पनि कहिलेकाहीँ आराम गर्नुपर्छ नि!`
+},
+
+{
+title:"गणित",
+category:"चुट्किला",
+topic:"गणित",
+author:"Aayush Jaishi",
+content:`शिक्षक: दुई र दुई कति हुन्छ?
+
+विद्यार्थी: चार।
+
+शिक्षक: राम्रो!
+
+विद्यार्थी: तर सर, छुट्टी दुई दिन थपिदिनुभयो भने झन् राम्रो!`
+},
+
+{
+title:"पढाइको बहाना",
+category:"चुट्किला",
+topic:"विद्यालय",
+author:"Aayush Jaishi",
+content:`आमा: आज कति पढ्यौ?
+
+छोरा: धेरै पढेँ।
+
+आमा: के पढ्यौ?
+
+छोरा: किताबको अगाडि र पछाडि दुवै भाग!`
+},
+
+/* 21-25 पहेली */
+
+{
+title:"पहेली नम्बर १",
+category:"पहेली",
+topic:"प्रकृति",
+author:"Aayush Jaishi",
+content:`माथि आकाशमा देखिन्छु।
+
+राति चम्किन्छु।
+
+दिनमा प्रायः देखिँदिनँ।
+
+म को हुँ?
+
+उत्तर: तारा।`
+},
+
+{
+title:"पहेली नम्बर २",
+category:"पहेली",
+topic:"समय",
+author:"Aayush Jaishi",
+content:`मसँग तीनवटा सुई हुन्छन्।
+
+म समय बताउँछु।
+
+म बोल्दिनँ तर सबैलाई समय सम्झाउँछु।
+
+म को हुँ?
+
+उत्तर: घडी।`
+},
+
+{
+title:"पहेली नम्बर ३",
+category:"पहेली",
+topic:"फलफूल",
+author:"Aayush Jaishi",
+content:`म बाहिर हरियो हुन सक्छु।
+
+भित्र रातो हुन्छु।
+
+मिठो र रसिलो हुन्छु।
+
+म को हुँ?
+
+उत्तर: तरबुजा।`
+},
+
+{
+title:"पहेली नम्बर ४",
+category:"पहेली",
+topic:"प्रकृति",
+author:"Aayush Jaishi",
+content:`म आकाशबाट खस्छु।
+
+म आएपछि जमिन भिज्छ।
+
+बोटबिरुवा खुसी हुन्छन्।
+
+म को हुँ?
+
+उत्तर: पानी।`
+},
+
+{
+title:"पहेली नम्बर ५",
+category:"पहेली",
+topic:"शिक्षा",
+author:"Aayush Jaishi",
+content:`मसँग पाना हुन्छन्।
+
+म ज्ञान दिन्छु।
+
+म विद्यालयमा प्रयोग हुन्छु।
+
+म को हुँ?
+
+उत्तर: किताब।`
+},
+
+/* 26-30 ज्ञान विज्ञान */
+
+{
+title:"सौर्यमण्डल के हो?",
+category:"ज्ञान विज्ञान",
+topic:"खगोल विज्ञान",
+author:"Aayush Jaishi",
+content:`सूर्य र त्यसको वरिपरि घुम्ने ग्रहहरू मिलेर सौर्यमण्डल बन्छ।
+
+हाम्रो पृथ्वी पनि सौर्यमण्डलको एउटा ग्रह हो।
+
+सूर्यबाट पृथ्वीले प्रकाश र ताप पाउँछ।
+
+सौर्यमण्डलको अध्ययनले ब्रह्माण्ड बुझ्न मद्दत गर्छ।`
+},
+
+{
+title:"पानीको चक्र",
+category:"ज्ञान विज्ञान",
+topic:"विज्ञान",
+author:"Aayush Jaishi",
+content:`सूर्यको तापले पानी वाष्प बन्छ।
+
+वाष्प माथि गएर चिसिन्छ।
+
+त्यसबाट बादल बन्छ।
+
+बादलबाट वर्षा हुन्छ।
+
+यस प्रक्रियालाई पानीको चक्र भनिन्छ।`
+},
+
+{
+title:"हाम्रो शरीर",
+category:"ज्ञान विज्ञान",
+topic:"मानव शरीर",
+author:"Aayush Jaishi",
+content:`मानव शरीर विभिन्न अंग मिलेर बनेको हुन्छ।
+
+मुटुले रगत पम्प गर्छ।
+
+फोक्सोले श्वासप्रश्वासमा सहयोग गर्छ।
+
+मस्तिष्कले शरीरका धेरै गतिविधि नियन्त्रण गर्छ।
+
+स्वस्थ रहन सफा खाना, पानी र पर्याप्त आराम आवश्यक हुन्छ।`
+},
+
+{
+title:"रङ्ग कसरी बन्छ?",
+category:"ज्ञान विज्ञान",
+topic:"रङ्ग विज्ञान",
+author:"Aayush Jaishi",
+content:`हामी वरिपरि धेरै रङ्ग देख्छौँ।
+
+रातो, पहेँलो र नीलो आधारभूत रङ्गका उदाहरण हुन्।
+
+रङ्ग मिसाउँदा नयाँ रङ्ग बनाउन सकिन्छ।
+
+चित्रकलामा रङ्गको विशेष महत्त्व हुन्छ।`
+},
+
+{
+title:"बोटबिरुवाले खाना कसरी बनाउँछन्?",
+category:"ज्ञान विज्ञान",
+topic:"वनस्पति विज्ञान",
+author:"Aayush Jaishi",
+content:`बोटबिरुवाले सूर्यको प्रकाश प्रयोग गर्छन्।
+
+पातमा पानी र हावाबाट प्राप्त कार्बन डाइअक्साइडको सहायताले खाना बनाउँछन्।
+
+यस प्रक्रियालाई प्रकाश संश्लेषण भनिन्छ।
+
+यस प्रक्रियाबाट अक्सिजन पनि निस्कन्छ।`
+},
+
+/* 31-35 प्रकृति */
+
+{
+title:"वनको महत्त्व",
+category:"प्रकृति",
+topic:"वन संरक्षण",
+author:"Aayush Jaishi",
+content:`वनले वातावरण सफा राख्न मद्दत गर्छ।
+
+वनमा विभिन्न जनावर र चराहरू बस्छन्।
+
+रुखले माटो संरक्षण गर्छन्।
+
+हामीले वन फँडानी रोक्नुपर्छ र नयाँ बिरुवा रोप्नुपर्छ।`
+},
+
+{
+title:"पानी बचाऔँ",
+category:"प्रकृति",
+topic:"पानी संरक्षण",
+author:"Aayush Jaishi",
+content:`पानीबिना जीवन सम्भव छैन।
+
+हामीले धारो खुला छोड्नु हुँदैन।
+
+पानीलाई अनावश्यक रूपमा खेर फाल्नु हुँदैन।
+
+वर्षाको पानी संकलन गर्न पनि सकिन्छ।
+
+सबैले पानी संरक्षण गर्नुपर्छ।`
+},
+
+{
+title:"चराहरूको संसार",
+category:"प्रकृति",
+topic:"चराचुरुङ्गी",
+author:"Aayush Jaishi",
+content:`चराहरू प्रकृतिका सुन्दर जीव हुन्।
+
+उनीहरूले गुँड बनाएर बस्छन्।
+
+धेरै चराहरूले बीउ फैलाउन मद्दत गर्छन्।
+
+चराहरूको बासस्थान सुरक्षित राख्नु हाम्रो जिम्मेवारी हो।`
+},
+
+{
+title:"फूलको सुन्दरता",
+category:"प्रकृति",
+topic:"फूल",
+author:"Aayush Jaishi",
+content:`फूलहरूले वातावरण सुन्दर बनाउँछन्।
+
+धेरै फूलमा सुगन्ध हुन्छ।
+
+मौरी र पुतली फूलमा आउँछन्।
+
+फूल र बोटबिरुवाले प्रकृतिको सन्तुलनमा सहयोग गर्छन्।`
+},
+
+{
+title:"सफा वातावरण",
+category:"प्रकृति",
+topic:"सरसफाइ",
+author:"Aayush Jaishi",
+content:`हामी बस्ने ठाउँ सफा हुनुपर्छ।
+
+फोहोर जथाभावी फाल्नु हुँदैन।
+
+कुहिने र नकुहिने फोहोर छुट्याउनुपर्छ।
+
+प्लास्टिकको प्रयोग कम गर्नुपर्छ।
+
+सफा वातावरणले स्वस्थ जीवनमा सहयोग गर्छ।`
+},
+
+/* 36-40 राम्रो बानी */
+
+{
+title:"समयमै उठ्ने बानी",
+category:"राम्रो बानी",
+topic:"दैनिक जीवन",
+author:"Aayush Jaishi",
+content:`बिहान समयमै उठ्नु राम्रो बानी हो।
+
+उठेपछि आफ्नो सरसफाइ गर्नुपर्छ।
+
+दिनको कामको योजना बनाउनुपर्छ।
+
+पढाइ र खेलका लागि समय छुट्याउनुपर्छ।
+
+नियमित दिनचर्याले जीवन व्यवस्थित बनाउन मद्दत गर्छ।`
+},
+
+{
+title:"सत्य बोलौँ",
+category:"राम्रो बानी",
+topic:"इमानदारी",
+author:"Aayush Jaishi",
+content:`सधैँ सत्य बोल्ने प्रयास गर्नुपर्छ।
+
+गल्ती भए स्वीकार गर्नुपर्छ।
+
+अरूलाई झुट बोलेर दुःख दिनु हुँदैन।
+
+इमानदारीले विश्वास बढाउँछ।`
+},
+
+{
+title:"अरूलाई सम्मान गरौँ",
+category:"राम्रो बानी",
+topic:"सम्मान",
+author:"Aayush Jaishi",
+content:`हरेक मानिस सम्मानको योग्य हुन्छ।
+
+ठूलालाई आदर र सानालाई माया गर्नुपर्छ।
+
+साथीहरूको कुरा ध्यानपूर्वक सुन्नुपर्छ।
+
+कसैलाई होच्याएर बोल्नु हुँदैन।`
+},
+
+{
+title:"सहयोगी बनौँ",
+category:"राम्रो बानी",
+topic:"सहयोग",
+author:"Aayush Jaishi",
+content:`सहयोग गर्नु राम्रो मानवीय गुण हो।
+
+साथीलाई पढाइमा सहयोग गर्न सकिन्छ।
+
+घरमा साना काममा हात बटाउन सकिन्छ।
+
+समाजमा एकअर्कालाई सहयोग गर्दा सबैलाई फाइदा हुन्छ।`
+},
+
+{
+title:"स्वस्थ बानी",
+category:"राम्रो बानी",
+topic:"स्वास्थ्य र सरसफाइ",
+author:"Aayush Jaishi",
+content:`नियमित हात धुनुपर्छ।
+
+सफा पानी पिउनुपर्छ।
+
+पौष्टिक खाना खानुपर्छ।
+
+पर्याप्त निद्रा लिनुपर्छ।
+
+खेलकुद र शारीरिक गतिविधिमा सहभागी हुनुपर्छ।`
+},
+
+/* 41-43 शैक्षिक खेल */
+
+{
+title:"शब्द बनाउने खेल",
+category:"शैक्षिक खेल",
+topic:"भाषा सिकाइ",
+author:"Aayush Jaishi",
+content:`खेल: नेपाली शब्द बनाऔँ।
+
+अक्षरहरू: क, म, ल, घ, र।
+
+यी अक्षर प्रयोग गरेर अर्थपूर्ण शब्द बनाउनुहोस्।
+
+उदाहरण: कमल, घर, रम।
+
+उद्देश्य: नयाँ शब्द सिक्ने र भाषा विकास गर्ने।`
+},
+
+{
+title:"गणित खेल",
+category:"शैक्षिक खेल",
+topic:"गणित",
+author:"Aayush Jaishi",
+content:`प्रश्न १: ५ + ५ = ?
+
+प्रश्न २: १० - ३ = ?
+
+प्रश्न ३: ४ × २ = ?
+
+प्रश्न ४: २० ÷ ४ = ?
+
+उत्तर: १०, ७, ८ र ५।
+
+उद्देश्य: गणितीय अभ्यासलाई रमाइलो बनाउने।`
+},
+
+{
+title:"स्मरण शक्ति खेल",
+category:"शैक्षिक खेल",
+topic:"स्मरणशक्ति",
+author:"Aayush Jaishi",
+content:`पाँचवटा वस्तुको नाम पढ्नुहोस्।
+
+किताब, कलम, फूल, घडी र झोला।
+
+अब सूची नहेरी ती वस्तुको नाम सम्झनुहोस्।
+
+कति वस्तु सम्झन सक्नुभयो?
+
+उद्देश्य: ध्यान र स्मरण अभ्यास गर्नु।`
+},
+
+/* 44-47 बाल मनोविज्ञान */
+
+{
+title:"बालबालिकाको भावना बुझौँ",
+category:"बाल मनोविज्ञान",
+topic:"भावनात्मक विकास",
+author:"Aayush Jaishi",
+content:`बालबालिकाले खुसी, दुःख, डर र रिसजस्ता भावना अनुभव गर्छन्।
+
+उनीहरूको भावना ध्यानपूर्वक सुन्नुपर्छ।
+
+भावना व्यक्त गर्न सुरक्षित वातावरण दिनुपर्छ।
+
+उनीहरूको कुरा बीचमै काट्नु हुँदैन।
+
+माया, सम्मान र समझदारीले राम्रो सम्बन्ध बनाउन मद्दत गर्छ।`
+},
+
+{
+title:"बालबालिकाको आत्मविश्वास",
+category:"बाल मनोविज्ञान",
+topic:"आत्मविश्वास",
+author:"Aayush Jaishi",
+content:`बालबालिकालाई आफ्ना विचार व्यक्त गर्ने अवसर दिनुपर्छ।
+
+सानो सफलताको पनि प्रशंसा गर्नुपर्छ।
+
+गल्ती गर्दा अपमान गर्नु हुँदैन।
+
+नयाँ कुरा सिक्न प्रोत्साहन दिनुपर्छ।
+
+आत्मविश्वास विकास हुन समय लाग्छ।`
+},
+
+{
+title:"बालबालिकाको जिज्ञासा",
+category:"बाल मनोविज्ञान",
+topic:"जिज्ञासा र सिकाइ",
+author:"Aayush Jaishi",
+content:`बालबालिकाले धेरै प्रश्न सोध्छन्।
+
+उनीहरूको प्रश्नलाई महत्त्व दिनुपर्छ।
+
+उत्तर थाहा नभए सँगै खोज्न सकिन्छ।
+
+खेल, प्रयोग र अनुभवबाट सिक्ने अवसर दिनुपर्छ।
+
+जिज्ञासाले ज्ञान बढाउन सहयोग गर्छ।`
+},
+
+{
+title:"बालबालिकाको मित्रता",
+category:"बाल मनोविज्ञान",
+topic:"सामाजिक विकास",
+author:"Aayush Jaishi",
+content:`मित्रताले बालबालिकालाई मिलेर बस्न सिकाउँछ।
+
+पालो पर्खन, कुरा सुन्न र सहयोग गर्न सिक्नुपर्छ।
+
+मित्रबीच विवाद हुँदा शान्तिपूर्वक छलफल गर्न सिकाउनुपर्छ।
+
+हरेक बालबालिकाको आफ्नै स्वभाव र रुचि हुन्छ।`
+},
+
+/* 48-50 अभिभावक सुझाव */
+
+{
+title:"अभिभावकले बालबालिकालाई कसरी बुझ्ने?",
+category:"अभिभावक सुझाव",
+topic:"अभिभावक शिक्षा",
+author:"Aayush Jaishi",
+content:`बालबालिकासँग नियमित कुराकानी गर्नुहोस्।
+
+उनीहरूको कुरा ध्यान दिएर सुन्नुहोस्।
+
+उनीहरूको रुचि र क्षमता बुझ्ने प्रयास गर्नुहोस्।
+
+अरूसँग तुलना नगर्नुहोस्।
+
+गल्ती हुँदा शान्त भएर सम्झाउनुहोस्।
+
+माया, समय र सकारात्मक व्यवहारले उनीहरूको विकासमा सहयोग गर्छ।`
+},
+
+{
+title:"शिक्षकले बालबालिकालाई कसरी प्रोत्साहन गर्ने?",
+category:"अभिभावक सुझाव",
+topic:"शिक्षक शिक्षा",
+author:"Aayush Jaishi",
+content:`हरेक बालबालिकाको सिक्ने गति फरक हुन्छ।
+
+कसैले छिटो सिक्छन् भने कसैलाई बढी समय चाहिन्छ।
+
+प्रश्न सोध्न प्रोत्साहन दिनुपर्छ।
+
+खेल र गतिविधिमार्फत सिकाउन सकिन्छ।
+
+सकारात्मक प्रतिक्रिया दिनुपर्छ।
+
+कक्षामा सुरक्षित र सम्मानजनक वातावरण बनाउनुपर्छ।`
+},
+
+{
+title:"बालबालिकासँग गुणस्तरीय समय",
+category:"अभिभावक सुझाव",
+topic:"परिवार र बाल विकास",
+author:"Aayush Jaishi",
+content:`बालबालिकासँग दैनिक केही समय बिताउनुहोस्।
+
+सँगै किताब पढ्नुहोस्।
+
+खेल्नुहोस् र कुराकानी गर्नुहोस्।
+
+उनीहरूको दिन कस्तो बित्यो भनेर सोध्नुहोस्।
+
+मोबाइलभन्दा प्रत्यक्ष संवादलाई प्राथमिकता दिनुहोस्।
+
+यसले परिवारबीच विश्वास र आत्मीयता बढाउन मद्दत गर्छ।`
+}
+
+];
+
+let currentFont = 19;
+
+function renderItems(){
+
+    const list = document.getElementById("itemList");
+
+    const search = document.getElementById("search").value.toLowerCase();
+
+    const category = document.getElementById("filter").value;
+
+    list.innerHTML = "";
+
+    let count = 0;
+
+    items.forEach((item,index)=>{
+
+        const text = (
+            item.title +
+            item.category +
+            item.topic +
+            item.content
+        ).toLowerCase();
+
+        const matchesSearch = text.includes(search);
+
+        const matchesCategory =
+            category === "सबै" ||
+            item.category === category;
+
+        if(matchesSearch && matchesCategory){
+
+            count++;
+
+            const card = document.createElement("article");
+
+            card.className = "card";
+
+            const title = document.createElement("h3");
+            title.textContent = item.title;
+
+            const categoryText = document.createElement("p");
+            categoryText.className = "meta";
+            categoryText.textContent = "विधा: " + item.category;
+
+            const topic = document.createElement("p");
+            topic.textContent = "विषय: " + item.topic;
+
+            const author = document.createElement("p");
+            author.className = "meta";
+            author.textContent = "लेखक: " + item.author;
+
+            const preview = document.createElement("p");
+            preview.textContent =
+                item.content.slice(0,100) + "...";
+
+            const button = document.createElement("button");
+
+            button.textContent = "पूरा पढ्नुहोस् →";
+
+            button.onclick = ()=>openReader(index);
+
+            card.append(
+                title,
+                categoryText,
+                topic,
+                author,
