@@ -1,1 +1,463 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>हनुमान चालिसा | Aayush Nepali Sahitya</title>
 
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+--bg:#fff8ed;--card:#fff;--text:#34251a;
+--primary:#c45b16;--border:#ead5bd;
+}
+
+body.dark{
+--bg:#171717;--card:#252525;
+--text:#f5eeee;--primary:#ffad55;--border:#444;
+}
+
+body.blue{
+--bg:#eaf3ff;--card:#fff;
+--text:#17345c;--primary:#1765ad;--border:#c5d9ef;
+}
+
+body.green{
+--bg:#eff9ed;--card:#fff;
+--text:#23452a;--primary:#267c39;--border:#c8e4c5;
+}
+
+body{
+font-family:"Noto Sans Devanagari",sans-serif;
+background:var(--bg);color:var(--text);
+line-height:2;transition:.3s;
+}
+
+header{
+background:linear-gradient(135deg,#842c08,#ed8b24);
+color:white;text-align:center;padding:35px 15px;
+}
+
+header h1{font-size:34px}
+
+.controls,.audio-panel{
+background:var(--card);padding:15px;
+display:flex;justify-content:center;
+flex-wrap:wrap;gap:10px;
+border-bottom:1px solid var(--border);
+}
+
+.audio-panel{display:block;text-align:center;padding:20px}
+
+input,select,button{
+padding:10px 14px;border:1px solid var(--border);
+border-radius:8px;background:var(--card);
+color:var(--text);
+}
+
+button{cursor:pointer}
+button:hover{background:var(--primary);color:white}
+
+.search{width:90%;max-width:400px}
+
+.container{max-width:900px;margin:auto;padding:20px}
+
+.intro,.chalisa,.dohas{
+background:var(--card);padding:25px;
+border:1px solid var(--border);
+border-radius:12px;margin-bottom:20px;
+}
+
+h2{color:var(--primary);text-align:center;margin-bottom:15px}
+.dohas{text-align:center}
+
+.chaupai{
+padding:17px 10px;
+border-bottom:1px solid var(--border);
+text-align:center;
+}
+
+.chaupai h3{color:var(--primary);margin-bottom:8px}
+.chaupai p{font-size:18px;font-weight:600}
+
+.meaning{
+margin-top:10px;padding:12px;
+background:var(--bg);border-radius:8px;text-align:left;
+}
+
+.meaning strong{color:var(--primary)}
+.read-btn{margin-top:12px}
+.status{color:var(--primary);font-weight:bold;margin-top:10px}
+.hidden{display:none}
+
+footer{
+text-align:center;background:#57270e;
+color:white;padding:25px;
+}
+
+@media(max-width:600px){
+header h1{font-size:26px}
+.container{padding:12px}
+.chaupai p{font-size:16px}
+}
+
+@media print{
+.controls,.audio-panel,.read-btn{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>॥ श्री हनुमते नमः ॥</h1>
+<h2 style="color:white">हनुमान चालिसा</h2>
+<p>भक्ति • शक्ति • साहस • सेवा</p>
+<p>AAYUSH NEPALI SAHITYA</p>
+</header>
+
+<div class="controls">
+
+<input type="search" id="search" class="search"
+placeholder="चौपाई खोज्नुहोस्...">
+
+<select onchange="changeTheme(this.value)">
+<option value="">Theme छान्नुहोस्</option>
+<option value="light">Light</option>
+<option value="dark">Dark</option>
+<option value="blue">Blue</option>
+<option value="green">Green</option>
+</select>
+
+<button onclick="changeFont(1)">A+</button>
+<button onclick="changeFont(-1)">A-</button>
+<button onclick="window.print()">Print</button>
+
+</div>
+
+<section class="audio-panel">
+
+<h3>🔊 हनुमान चालिसा Audio Player</h3>
+
+<button onclick="playAll()">▶️ Play All</button>
+<button onclick="pauseAudio()">⏸ Pause</button>
+<button onclick="resumeAudio()">▶️ Resume</button>
+<button onclick="stopAudio()">⏹ Stop</button>
+
+<br><br>
+
+<label>आवाजको गति:</label>
+
+<select id="speed">
+<option value="0.7">Slow</option>
+<option value="0.85" selected>Normal</option>
+<option value="1">Fast</option>
+<option value="1.2">Very Fast</option>
+</select>
+
+<p class="status" id="status">
+Audio सुरु गर्न Play थिच्नुहोस्।
+</p>
+
+</section>
+
+<main class="container">
+
+<section class="intro">
+<h2>हनुमान चालिसाको परिचय</h2>
+
+<p>
+हनुमान चालिसा भगवान् श्री हनुमानको स्तुतिमा
+रचिएको प्रसिद्ध भक्तिगीत हो। यसको रचना
+गोस्वामी तुलसीदासले अवधी भाषामा गरेका हुन्।
+यसमा प्रारम्भिक दोहा, चालीस चौपाई र
+अन्तिम दोहा समावेश छन्।
+</p>
+
+<p>
+हनुमानजीलाई शक्ति, साहस, बुद्धि, भक्ति,
+निष्ठा र सेवाको प्रतीकका रूपमा पूजा गरिन्छ।
+</p>
+</section>
+
+<section class="dohas">
+<h2>प्रारम्भिक दोहा</h2>
+
+<p>
+श्रीगुरु चरन सरोज रज, निज मनु मुकुरु सुधारि।<br>
+बरनउँ रघुबर बिमल जसु, जो दायकु फल चारि॥
+</p>
+
+<p>
+बुद्धिहीन तनु जानिके, सुमिरौं पवन-कुमार।<br>
+बल बुद्धि विद्या देहु मोहिं, हरहु कलेस बिकार॥
+</p>
+
+<div class="meaning">
+<strong>नेपाली अर्थ:</strong>
+गुरुको चरणको धुलोले आफ्नो मनलाई पवित्र
+बनाएर श्रीरामको निर्मल यश वर्णन गर्दछु।
+हे पवनपुत्र हनुमान! मलाई बल, बुद्धि र विद्या
+प्रदान गरी दुःख तथा दोष हटाइदिनुहोस्।
+</div>
+</section>
+
+<section class="chalisa">
+<h2>हनुमान चालिसाका ४० चौपाई</h2>
+<div id="verses"></div>
+</section>
+
+<section class="dohas">
+<h2>समापन दोहा</h2>
+
+<p>
+पवनतनय संकट हरन, मंगल मूरति रूप।<br>
+राम लखन सीता सहित, हृदय बसहु सुर भूप॥
+</p>
+
+<div class="meaning">
+<strong>नेपाली अर्थ:</strong>
+हे पवनपुत्र हनुमान! तपाईं संकट हटाउने
+र मंगलमय स्वरूप हुनुहुन्छ।
+श्रीराम, लक्ष्मण र सीतासहित मेरो हृदयमा
+सधैँ निवास गर्नुहोस्।
+</div>
+</section>
+
+<section class="intro">
+<h2>हनुमान चालिसाबाट प्राप्त हुने शिक्षा</h2>
+<p>१. साहस र आत्मविश्वास कायम राख्नुपर्छ।</p>
+<p>२. आफ्नो कर्तव्यप्रति इमानदार हुनुपर्छ।</p>
+<p>३. सेवा, समर्पण र विनम्रताको भावना राख्नुपर्छ।</p>
+<p>४. कठिन परिस्थितिमा धैर्य राख्नुपर्छ।</p>
+<p>५. ज्ञान र बुद्धिको सदुपयोग गर्नुपर्छ।</p>
+</section>
+
+</main>
+
+<footer>
+<h2 style="color:white">॥ जय श्री राम ॥</h2>
+<h2 style="color:white">॥ जय बजरंगबली ॥</h2>
+<p>AAYUSH NEPALI SAHITYA</p>
+<p>लेखक तथा वेबसाइट निर्माता: Aayush Jaishi</p>
+<p>© 2026 Aayush Nepali Sahitya</p>
+</footer>
+
+<script>
+
+const verses=[
+
+["जय हनुमान ज्ञान गुन सागर। जय कपीस तिहुँ लोक उजागर॥","हे हनुमान! तपाईं ज्ञान र गुणका सागर हुनुहुन्छ। तीनै लोकमा तपाईंको महिमा प्रसिद्ध छ।"],
+["राम दूत अतुलित बल धामा। अञ्जनि-पुत्र पवनसुत नामा॥","तपाईं श्रीरामका दूत र अपार शक्तिका धनी हुनुहुन्छ।"],
+["महाबीर बिक्रम बजरंगी। कुमति निवार सुमति के संगी॥","तपाईं महान् वीर र शक्तिशाली हुनुहुन्छ। खराब बुद्धि हटाएर असल विचार दिनुहुन्छ।"],
+["कञ्चन बरन बिराज सुबेसा। कानन कुण्डल कुञ्चित केसा॥","तपाईंको शरीर सुनौलो वर्णको छ। कानमा कुण्डल र घुम्रिएका कपाल छन्।"],
+["हाथ बज्र औ ध्वजा बिराजै। काँधे मूँज जनेऊ साजै॥","तपाईंको हातमा बज्र र ध्वजा सुशोभित छन्।"],
+["शंकर सुवन केसरी नन्दन। तेज प्रताप महा जग वन्दन॥","तपाईं शिवका अंश र केसरीका पुत्र हुनुहुन्छ।"],
+["विद्यावान गुनी अति चातुर। राम काज करिबे को आतुर॥","तपाईं विद्वान्, गुणी र बुद्धिमान् हुनुहुन्छ।"],
+["प्रभु चरित्र सुनिबे को रसिया। राम लखन सीता मन बसिया॥","राम, लक्ष्मण र सीता तपाईंको हृदयमा बस्नुहुन्छ।"],
+["सूक्ष्म रूप धरि सियहिं दिखावा। बिकट रूप धरि लंक जरावा॥","तपाईंले सानो रूप धारण गरी सीतालाई दर्शन दिनुभयो।"],
+["भीम रूप धरि असुर सँहारे। रामचन्द्र के काज सँवारे॥","तपाईंले रामको काम पूरा गर्नुभयो।"],
+["लाय सजीवन लखन जियाये। श्रीरघुबीर हरषि उर लाये॥","तपाईंले सञ्जीवनी ल्याएर लक्ष्मणको जीवन बचाउनुभयो।"],
+["रघुपति कीन्ही बहुत बड़ाई। तुम मम प्रिय भरतहि सम भाई॥","श्रीरामले तपाईंलाई भरतसरह प्रिय भाइ भन्नुभयो।"],
+["सहस बदन तुम्हरो जस गावैं। अस कहि श्रीपति कण्ठ लगावैं॥","शेषनागले पनि तपाईंको महिमा गाउनुहुन्छ।"],
+["सनकादिक ब्रह्मादि मुनीसा। नारद सारद सहित अहीसा॥","ऋषि, ब्रह्मा, नारद र सरस्वतीले तपाईंको महिमा गाउनुहुन्छ।"],
+["जम कुबेर दिगपाल जहाँ ते। कवि कोविद कहि सके कहाँ ते॥","विद्वान्हरूले पनि तपाईंको महिमा पूर्ण रूपमा वर्णन गर्न सक्दैनन्।"],
+["तुम उपकार सुग्रीवहिं कीन्हा। राम मिलाय राज पद दीन्हा॥","तपाईंले सुग्रीवलाई सहयोग गर्नुभयो।"],
+["तुम्हरो मन्त्र बिभीषण माना। लंकेश्वर भए सब जग जाना॥","विभीषणले तपाईंको सल्लाह मानेर लङ्काको राजा बने।"],
+["जुग सहस्र जोजन पर भानू। लील्यो ताहि मधुर फल जानू॥","बाल्यकालमा तपाईंले सूर्यलाई फल सम्झेर समात्न खोज्नुभयो।"],
+["प्रभु मुद्रिका मेलि मुख माहीं। जलधि लाँघि गये अचरज नाहीं॥","रामको औँठी लिएर तपाईं समुद्र पार गर्नुभयो।"],
+["दुर्गम काज जगत के जेते। सुगम अनुग्रह तुम्हरे तेते॥","तपाईंको कृपाले कठिन काम पनि सहज हुन्छन्।"],
+["राम दुआरे तुम रखवारे। होत न आज्ञा बिनु पैसारे॥","तपाईं रामको द्वारका रक्षक हुनुहुन्छ।"],
+["सब सुख लहै तुम्हारी सरना। तुम रक्षक काहू को डरना॥","तपाईंको शरणमा आउनेले सुख पाउँछन्।"],
+["आपन तेज सम्हारो आपै। तीनों लोक हाँक तें काँपै॥","तपाईंको शक्ति असीमित छ।"],
+["भूत पिशाच निकट नहिं आवै। महावीर जब नाम सुनावै॥","हनुमानको नाम स्मरण गर्दा भय हट्ने विश्वास गरिन्छ।"],
+["नासै रोग हरै सब पीरा। जपत निरंतर हनुमत बीरा॥","हनुमानको स्मरणले पीडा हट्ने भक्तिभाव व्यक्त गरिएको छ।"],
+["संकट तें हनुमान छुड़ावै। मन क्रम बचन ध्यान जो लावै॥","हनुमानको ध्यान गर्ने भक्तलाई संकटबाट मुक्ति मिल्ने विश्वास छ।"],
+["सब पर राम तपस्वी राजा। तिनके काज सकल तुम साजा॥","तपाईंले श्रीरामका सबै काम पूरा गर्नुभयो।"],
+["और मनोरथ जो कोई लावै। सोई अमित जीवन फल पावै॥","हनुमानप्रति श्रद्धा राख्नेले शुभ फल प्राप्त गर्ने आशा राख्छ।"],
+["चारों जुग परताप तुम्हारा। है परसिद्ध जगत उजियारा॥","चारै युगमा तपाईंको महिमा प्रसिद्ध छ।"],
+["साधु संत के तुम रखवारे। असुर निकंदन राम दुलारे॥","तपाईं साधु-सन्तका रक्षक र रामका प्रिय हुनुहुन्छ।"],
+["अष्ट सिद्धि नौ निधि के दाता। अस बर दीन जानकी माता॥","माता जानकीले तपाईंलाई आठ सिद्धि र नौ निधि प्रदान गर्ने वरदान दिनुभयो।"],
+["राम रसायन तुम्हरे पासा। सदा रहो रघुपति के दासा॥","तपाईं सधैँ श्रीरामका सेवक हुनुहुन्छ।"],
+["तुम्हरे भजन राम को पावै। जनम जनम के दुख बिसरावै॥","तपाईंको भजन गर्नेले रामको कृपा प्राप्त गर्छ।"],
+["अंत काल रघुबर पुर जाई। जहाँ जन्म हरि भक्त कहाई॥","भक्तले रामको धाम प्राप्त गर्ने विश्वास व्यक्त गरिएको छ।"],
+["और देवता चित्त न धरई। हनुमत सेइ सर्व सुख करई॥","हनुमानको सेवा र भक्तिमा सुख प्राप्त हुने विश्वास छ।"],
+["संकट कटै मिटै सब पीरा। जो सुमिरै हनुमत बलबीरा॥","हनुमानको स्मरण गर्दा संकट र पीडा हट्ने विश्वास छ।"],
+["जय जय जय हनुमान गोसाईं। कृपा करहु गुरुदेव की नाईं॥","हे हनुमान स्वामी! गुरुजस्तै ममाथि कृपा गर्नुहोस्।"],
+["जो सत बार पाठ कर कोई। छूटहि बंदि महा सुख होई॥","श्रद्धापूर्वक पाठ गर्नाले सुख प्राप्त हुने विश्वास छ।"],
+["जो यह पढ़ै हनुमान चालीसा। होय सिद्धि साखी गौरीसा॥","हनुमान चालिसा पाठको महिमा भगवान् शिवले पनि स्वीकार गर्नुभएको छ।"],
+["तुलसीदास सदा हरि चेरा। कीजै नाथ हृदय महँ डेरा॥","तुलसीदासले हनुमानलाई आफ्नो हृदयमा बस्न प्रार्थना गर्छन्।"]
+
+];
+
+const container=document.getElementById("verses");
+
+verses.forEach((item,index)=>{
+let div=document.createElement("div");
+div.className="chaupai";
+
+div.innerHTML=`
+<h3>चौपाई ${index+1}</h3>
+<p>${item[0]}</p>
+<div class="meaning"><strong>नेपाली अर्थ:</strong> ${item[1]}</div>
+<button class="read-btn" onclick="readVerse(${index})">🔊 चौपाई सुन्नुहोस्</button>
+<button class="read-btn" onclick="readMeaning(${index})">🔊 अर्थ सुन्नुहोस्</button>
+`;
+
+container.appendChild(div);
+});
+
+// AUDIO SYSTEM
+
+let currentIndex=0;
+let playing=false;
+let voices=[];
+let selectedVoice=null;
+
+function loadVoices(){
+voices=speechSynthesis.getVoices();
+
+selectedVoice=
+voices.find(v=>v.lang.toLowerCase().startsWith("ne")) ||
+voices.find(v=>v.lang.toLowerCase().startsWith("hi")) ||
+null;
+}
+
+loadVoices();
+speechSynthesis.onvoiceschanged=loadVoices;
+
+function speak(text,callback){
+speechSynthesis.cancel();
+
+let speech=new SpeechSynthesisUtterance(text);
+
+speech.lang=selectedVoice?selectedVoice.lang:"hi-IN";
+if(selectedVoice)speech.voice=selectedVoice;
+
+speech.rate=parseFloat(document.getElementById("speed").value);
+speech.pitch=1;
+speech.volume=1;
+
+speech.onend=()=>{
+if(callback)callback();
+};
+
+speech.onerror=()=>{
+playing=false;
+document.getElementById("status").innerText="Audio चलाउन समस्या भयो।";
+};
+
+speechSynthesis.speak(speech);
+}
+
+function playAll(){
+stopAudio();
+currentIndex=0;
+playing=true;
+playNext();
+}
+
+function playNext(){
+if(!playing)return;
+
+if(currentIndex>=verses.length){
+playing=false;
+document.getElementById("status").innerText="🙏 हनुमान चालिसा समाप्त भयो!";
+return;
+}
+
+document.getElementById("status").innerText=
+"🔊 चौपाई "+(currentIndex+1)+" बजिरहेको छ...";
+
+speak(verses[currentIndex][0],()=>{
+if(!playing)return;
+currentIndex++;
+setTimeout(playNext,400);
+});
+}
+
+function readVerse(index){
+stopAudio();
+playing=true;
+document.getElementById("status").innerText="चौपाई "+(index+1)+" बजिरहेको छ।";
+
+speak(verses[index][0],()=>{
+playing=false;
+document.getElementById("status").innerText="चौपाई समाप्त भयो।";
+});
+}
+
+function readMeaning(index){
+stopAudio();
+playing=true;
+document.getElementById("status").innerText="नेपाली अर्थ बजिरहेको छ।";
+
+speak(verses[index][1],()=>{
+playing=false;
+document.getElementById("status").innerText="अर्थ समाप्त भयो।";
+});
+}
+
+function pauseAudio(){
+if(speechSynthesis.speaking){
+speechSynthesis.pause();
+document.getElementById("status").innerText="Audio Pause गरिएको छ।";
+}
+}
+
+function resumeAudio(){
+if(speechSynthesis.paused){
+speechSynthesis.resume();
+document.getElementById("status").innerText="Audio पुनः सुरु भयो।";
+}
+}
+
+function stopAudio(){
+playing=false;
+speechSynthesis.cancel();
+document.getElementById("status").innerText="Audio बन्द गरिएको छ।";
+}
+
+// FONT SIZE
+
+let fontSize=18;
+
+function changeFont(value){
+fontSize+=value;
+fontSize=Math.max(13,Math.min(28,fontSize));
+
+document.querySelectorAll(".chaupai p").forEach(p=>{
+p.style.fontSize=fontSize+"px";
+});
+}
+
+// THEME
+
+function changeTheme(theme){
+document.body.classList.remove("dark","blue","green");
+
+if(theme==="dark")document.body.classList.add("dark");
+if(theme==="blue")document.body.classList.add("blue");
+if(theme==="green")document.body.classList.add("green");
+
+localStorage.setItem("hanumanTheme",theme);
+}
+
+let savedTheme=localStorage.getItem("hanumanTheme");
+if(savedTheme)changeTheme(savedTheme);
+
+// SEARCH
+
+document.getElementById("search").addEventListener("input",function(){
+let value=this.value.toLowerCase();
+
+document.querySelectorAll(".chaupai").forEach(div=>{
+div.classList.toggle("hidden",
+!div.innerText.toLowerCase().includes(value));
+});
+});
+
+</script>
+</body>
+</html>
