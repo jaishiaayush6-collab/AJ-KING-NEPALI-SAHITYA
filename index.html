@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>आयुस नेपाली साहित्य | AAYUSH NEPALI SAHITYA</title>
+<title>आयुस जैसी नेपाली साहित्य | AAYUSH JAISHI NEPALI SAHITYA</title>
 
 <meta name="description" content="आयुस नेपाली साहित्य नेपाली भाषा, कथा, कविता, बाल साहित्य र निबन्धको साझा डिजिटल संसार हो।">
 
@@ -1280,7 +1280,19 @@ if(savedTheme==="dark"){
     document.body.classList.add("dark");
 
     document.getElementById("themeBtn").textContent=
-    "☀️ Light";
+    "☀️ <div class="theme-box">
+    <label for="themeSelect">🎨 Theme:</label>
+
+    <select id="themeSelect">
+        <option value="light">☀️ Light</option>
+        <option value="dark">🌙 Dark</option>
+        <option value="blue">💙 Blue</option>
+        <option value="green">💚 Green</option>
+        <option value="pink">💗 Pink</option>
+        <option value="purple">💜 Purple</option>
+        <option value="orange">🧡 Orange</option>
+    </select>
+</div> ";
 
 }
 
@@ -1299,13 +1311,13 @@ function toggleLanguage(){
     if(english){
 
         alert(
-        "यो वेबसाइटको मुख्य सामग्री नेपाली भाषामा उपलब्ध छ। English version is coming soon."
+        "यो वेबसाइटको मुख्य सामग्री नेपाली र अन्य भाषामा उपलब्ध छ। English version is coming soon."
         );
 
         english=false;
 
         document.getElementById("languageBtn").textContent=
-        "🌐 नेपाली";
+        "🌐 नेपाली,english,hindi,russien,maithali";
 
     }
 
