@@ -1,4 +1,3 @@
-
 {
   "id": "./",
   "name": "AAYUSH NEPALI SAHITYA",
@@ -10,6 +9,13 @@
   "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#1e3a8a",
+
+  "categories": [
+    "books",
+    "education",
+    "lifestyle"
+  ],
+
   "icons": [
     {
       "src": "./icon-192.png",
@@ -22,6 +28,16 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
+    }
+  ],
+
+  "screenshots": [
+    {
+      "src": "./screenshot.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "AAYUSH NEPALI SAHITYA Homepage"
     }
   ]
 }
