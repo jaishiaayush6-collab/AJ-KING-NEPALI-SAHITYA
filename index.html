@@ -1359,6 +1359,26 @@ document.getElementById("year").textContent=
 new Date().getFullYear();
 
 </script>
+    </script>
+
+<!-- यहाँबाट नयाँ कोड राख्ने -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(function (registration) {
+        console.log('Service Worker सफल भयो:', registration.scope);
+      })
+      .catch(function (error) {
+        console.log('Service Worker दर्ता भएन:', error);
+      });
+  });
+}
+</script>
+<!-- यहाँसम्म -->
+
+</body>
+</html>
 
 </body>
 </html>
