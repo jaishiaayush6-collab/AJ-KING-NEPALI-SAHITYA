@@ -2,34 +2,13 @@
   "id": "./",
   "name": "AAYUSH NEPALI SAHITYA",
   "short_name": "AAYUSH SAHITYA",
-  "description": "नेपाली कथा, कविता, उपन्यास, निबन्ध, बाल साहित्य, संस्कृति र नेपाली साहित्यको डिजिटल संग्रह।",
-
+  "description": "नेपाली कथा, कविता, संस्कृति र साहित्य",
   "start_url": "./",
   "scope": "./",
-
   "display": "standalone",
-  "display_override": [
-    "standalone",
-    "minimal-ui"
-  ],
-
   "orientation": "portrait",
-
   "background_color": "#ffffff",
   "theme_color": "#1e3a8a",
-
-  "lang": "ne",
-  "dir": "ltr",
-
-  "categories": [
-    "books",
-    "education",
-    "entertainment",
-    "lifestyle"
-  ],
-
-  "prefer_related_applications": false,
-
   "icons": [
     {
       "src": "./icon-192.png",
@@ -42,22 +21,6 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
-    },
-    {
-      "src": "./icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ],
-
-  "screenshots": [
-    {
-      "src": "./screenshot.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "AAYUSH NEPALI SAHITYA Mobile Homepage"
     }
   ]
 }
