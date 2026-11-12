@@ -1,0 +1,10 @@
+{
+  "name": "AAYUSH NEPALI SAHITYA",
+  "short_name": "AAYUSH SAHITYA",
+  "description": "नेपाली कथा, कविता, निबन्ध र साहित्य",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e3a8a"
+}
