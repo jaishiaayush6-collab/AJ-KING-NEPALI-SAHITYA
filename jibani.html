@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>महान व्यक्तिहरूको जीवनी संग्रह | Aayush Nepali Sahitya</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#f3f5fa;
+    --card:#ffffff;
+    --text:#20243a;
+    --primary:#673de6;
+    --secondary:#e9e4ff;
+}
+
+body{
+    font-family:"Noto Sans Devanagari",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:.3s;
+}
+
+body.dark{
+    --bg:#10121d;
+    --card:#1d2131;
+    --text:#ffffff;
+    --secondary:#30304a;
+}
+
+header{
+    background:linear-gradient(120deg,#5125c9,#a34be8);
+    color:white;
+    text-align:center;
+    padding:35px 15px;
+}
+
+header h1{
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+header p{
+    font-size:15px;
+}
+
+nav{
+    background:var(--card);
+    padding:15px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    box-shadow:0 2px 10px #0001;
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--text);
+    font-weight:bold;
+}
+
+button,select{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button{
+    background:var(--primary);
+    color:white;
+}
+
+.container{
+    max-width:1250px;
+    margin:auto;
+    padding:25px 15px;
+}
+
+.search-box{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+}
+
+input,select{
+    background:var(--card);
+    color:var(--text);
+    border:1px solid #9995;
+}
+
+input{
+    flex:1;
+    min-width:180px;
+    padding:13px;
+    border-radius:8px;
+}
+
+select{
+    min-width:180px;
+}
+
+h2{
+    margin:20px 0;
+}
+
+.stats{
+    background:var(--secondary);
+    padding:18px;
+    border-radius:12px;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:var(--card);
+    border-radius:13px;
+    overflow:hidden;
+    box-shadow:0 4px 15px #0001;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    background:#ddd;
+}
+
+.card-content{
+    padding:16px;
+}
+
+.card h3{
+    margin-bottom:8px;
+    font-size:19px;
+}
+
+.category{
+    color:#a05bea;
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:14px;
+    line-height:1.8;
+}
+
+.read{
+    margin-top:12px;
+    width:100%;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#000b;
+    z-index:10;
+    overflow:auto;
+    padding:20px;
+}
+
+.modal-content{
+    background:var(--card);
+    color:var(--text);
+    max-width:700px;
+    margin:30px auto;
+    padding:25px;
+    border-radius:15px;
+}
+
+.modal-content img{
+    width:100%;
+    max-height:350px;
+    object-fit:contain;
+    margin:15px 0;
+}
+
+.close{
+    float:right;
+    font-size:25px;
+}
+
+footer{
+    background:#171329;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:40px;
+}
+
+@media(max-width:600px){
+    header h1{
+        font-size:23px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📚 महान व्यक्तिहरूको जीवनी</h1>
+    <p>इतिहास, साहित्य, विज्ञान, कला र समाजका प्रेरणादायी व्यक्तित्वहरू</p>
+    <p>AAYUSH NEPALI SAHITYA</p>
+</header>
+
+<nav>
+    <a href="#home">गृहपृष्ठ</a>
+    <a href="#biography">जीवनी</a>
+    <a href="#about">हाम्रो बारेमा</a>
+    <button onclick="toggleTheme()">🌙 Theme</button>
+</nav>
+
+<div class="container" id="home">
+
+    <div class="stats">
+        <h2>२०० महान व्यक्तित्वको जीवनी संग्रह</h2>
+        <p>महान व्यक्तिहरूको जीवन, संघर्ष, सफलता र योगदानबारे पढौँ।</p>
+        <h3 id="count">२०० जीवनी</h3>
+    </div>
+
+    <div class="search-box">
+
+        <input
+            type="search"
+            id="search"
+            placeholder="नाम वा जीवनी खोज्नुहोस्..."
+            oninput="render()"
+        >
+
+        <select id="category" onchange="render()">
+            <option value="all">सबै विधा</option>
+            <option value="साहित्य">साहित्यकार</option>
+            <option value="विज्ञान">वैज्ञानिक</option>
+            <option value="राजनीति">राजनीतिज्ञ</option>
+            <option value="समाजसेवा">समाजसेवी</option>
+            <option value="कला">कलाकार</option>
+            <option value="दर्शन">दार्शनिक</option>
+            <option value="खेलकुद">खेलाडी</option>
+            <option value="धर्म">धार्मिक व्यक्तित्व</option>
+        </select>
+
+    </div>
+
+    <h2 id="biography">📖 व्यक्तित्वहरूको जीवनी</h2>
+
+    <div class="grid" id="people"></div>
+
+</div>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <button class="close" onclick="closeModal()">✕</button>
+        <div id="detail"></div>
+    </div>
+</div>
+
+<div class="container" id="about">
+    <h2>हाम्रो बारेमा</h2>
+    <p style="line-height:2">
+        आयुष नेपाली साहित्य नेपाली भाषा, साहित्य, इतिहास,
+        ज्ञान र महान व्यक्तिहरूका जीवनका प्रेरणादायी पक्षहरू
+        प्रस्तुत गर्ने उद्देश्यले तयार गरिएको डिजिटल पुस्तकालय हो।
+        यस वेबसाइटमा विभिन्न क्षेत्रका महान व्यक्तिहरूको
+        जीवनी अध्ययन गर्न सकिन्छ।
+    </p>
+</div>
+
+<footer>
+    <h3>AAYUSH NEPALI SAHITYA</h3>
+    <p>Website Developer: Aayush Jaishi</p>
+    <p>ज्ञान नै जीवनको सबैभन्दा ठूलो सम्पत्ति हो।</p>
+    <p>© 2026 Aayush Nepali Sahitya</p>
+</footer>
+
+<script>
+
+/* २०० महान व्यक्तिहरूको सूची */
+
+const raw = [
+
+["भानुभक्त आचार्य","Bhanubhakta Acharya","साहित्य"],
+["मोतीराम भट्ट","Motiram Bhatta","साहित्य"],
+["लक्ष्मीप्रसाद देवकोटा","Laxmi Prasad Devkota","साहित्य"],
+["बालकृष्ण सम","Balkrishna Sama","साहित्य"],
+["लेखनाथ पौड्याल","Lekhnath Paudyal","साहित्य"],
+["गोपालप्रसाद रिमाल","Gopal Prasad Rimal","साहित्य"],
+["सिद्धिचरण श्रेष्ठ","Siddhicharan Shrestha","साहित्य"],
+["माधवप्रसाद घिमिरे","Madhav Prasad Ghimire","साहित्य"],
+["पारिजात","Parijat writer","साहित्य"],
+["भूपी शेरचन","Bhupi Sherchan","साहित्य"],
+["ईश्वर बल्लभ","Ishwar Ballav","साहित्य"],
+["गोपालप्रसाद पाण्डे","Gopal Prasad Pandey","साहित्य"],
+["हरिभक्त कटुवाल","Haribhakta Katuwal","साहित्य"],
+["विजय मल्ल","Bijaya Malla","साहित्य"],
+["धरणीधर कोइराला","Dharanidhar Koirala","साहित्य"],
+["यज्ञनिधि दाहाल","Yagyanidhi Dahal","साहित्य"],
+["कृष्ण धरावासी","Krishna Dharabasi","साहित्य"],
+["नारायण वाग्ले","Narayan Wagle","साहित्य"],
+["मञ्जुश्री थापा","Manjushree Thapa","साहित्य"],
+["अमर न्यौपाने","Amar Neupane","साहित्य"],
+["आदिकवि भानुभक्त","Bhanubhakta Acharya","साहित्य"],
+["राष्ट्रकवि घिमिरे","Madhav Prasad Ghimire","साहित्य"],
+["रामनाथ दाहाल","Ramnath Dahal","साहित्य"],
+["गणेश रसिक","Ganesh Rasik","साहित्य"],
+["गोविन्द वर्तमान","Govinda Vartaman","साहित्य"],
+
+["आइज्याक न्यूटन","Isaac Newton","विज्ञान"],
+["अल्बर्ट आइन्स्टाइन","Albert Einstein","विज्ञान"],
+["ग्यालिलियो ग्यालिली","Galileo Galilei","विज्ञान"],
+["निकोलस कोपर्निकस","Nicolaus Copernicus","विज्ञान"],
+["चार्ल्स डार्विन","Charles Darwin","विज्ञान"],
+["थोमस एडिसन","Thomas Edison","विज्ञान"],
+["निकोल टेस्ला","Nikola Tesla","विज्ञान"],
+["मेरी क्युरी","Marie Curie","विज्ञान"],
+["लुइ पाश्चर","Louis Pasteur","विज्ञान"],
+["स्टीफन हकिङ","Stephen Hawking","विज्ञान"],
+["एडा लभलेस","Ada Lovelace","विज्ञान"],
+["एलन ट्युरिङ","Alan Turing","विज्ञान"],
+["रोजालिन्ड फ्र्याङ्कलिन","Rosalind Franklin","विज्ञान"],
+["जेम्स वाट","James Watt","विज्ञान"],
+["माइकल फराडे","Michael Faraday","विज्ञान"],
+["सीभी रमन","C. V. Raman","विज्ञान"],
+["जगदीशचन्द्र बोस","Jagadish Chandra Bose","विज्ञान"],
+["एपीजे अब्दुल कलाम","A. P. J. Abdul Kalam","विज्ञान"],
+["क्याथरिन जोन्सन","Katherine Johnson","विज्ञान"],
+["कार्ल सेगन","Carl Sagan","विज्ञान"],
+["जेन गुडल","Jane Goodall","विज्ञान"],
+["ग्रेगर मेन्डेल","Gregor Mendel","विज्ञान"],
+["दिमित्री मेन्डेलिभ","Dmitri Mendeleev","विज्ञान"],
+["रोबर्ट ओपेनहाइमर","J. Robert Oppenheimer","विज्ञान"],
+["रिचर्ड फाइनम्यान","Richard Feynman","विज्ञान"],
+
+["पृथ्वीनारायण शाह","Prithvi Narayan Shah","राजनीति"],
+["बहादुर शाह","Bahadur Shah of Nepal","राजनीति"],
+["जंगबहादुर राणा","Jung Bahadur Rana","राजनीति"],
+["त्रिभुवन शाह","Tribhuvan of Nepal","राजनीति"],
+["बीपी कोइराला","B. P. Koirala","राजनीति"],
+["गणेशमान सिंह","Ganesh Man Singh","राजनीति"],
+["पुष्पलाल श्रेष्ठ","Pushpa Lal Shrestha","राजनीति"],
+["मनमोहन अधिकारी","Man Mohan Adhikari","राजनीति"],
+["मदन भण्डारी","Madan Bhandari","राजनीति"],
+["कृष्णप्रसाद भट्टराई","Krishna Prasad Bhattarai","राजनीति"],
+["गिरिजाप्रसाद कोइराला","Girija Prasad Koirala","राजनीति"],
+["महात्मा गान्धी","Mahatma Gandhi","राजनीति"],
+["नेल्सन मण्डेला","Nelson Mandela","राजनीति"],
+["अब्राहम लिंकन","Abraham Lincoln","राजनीति"],
+["जर्ज वासिङ्टन","George Washington","राजनीति"],
+["मार्टिन लुथर किङ","Martin Luther King Jr.","राजनीति"],
+["विन्स्टन चर्चिल","Winston Churchill","राजनीति"],
+["नेपोलियन बोनापार्ट","Napoleon","राजनीति"],
+["जवाहरलाल नेहरू","Jawaharlal Nehru","राजनीति"],
+["इन्दिरा गान्धी","Indira Gandhi","राजनीति"],
+["एपीजे अब्दुल कलाम","A. P. J. Abdul Kalam","राजनीति"],
+["बराक ओबामा","Barack Obama","राजनीति"],
+["व्लादिमिर लेनिन","Vladimir Lenin","राजनीति"],
+["क्वीन एलिजाबेथ द्वितीय","Elizabeth II","राजनीति"],
+["डोनाल्ड ट्रम्प","Donald Trump","राजनीति"],
+
+["अनुराधा कोइराला","Anuradha Koirala","समाजसेवा"],
+["पुष्पा बस्नेत","Pushpa Basnet","समाजसेवा"],
+["मदर टेरेसा","Mother Teresa","समाजसेवा"],
+["फ्लोरेन्स नाइटिङ्गेल","Florence Nightingale","समाजसेवा"],
+["मलाला युसुफजई","Malala Yousafzai","समाजसेवा"],
+["नेल्सन मण्डेला","Nelson Mandela","समाजसेवा"],
+["बाबा आम्टे","Baba Amte","समाजसेवा"],
+["डायना","Diana Princess of Wales","समाजसेवा"],
+["मार्गरेट मीड","Margaret Mead","समाजसेवा"],
+["जेन एडम्स","Jane Addams","समाजसेवा"],
+["अब्दुल सत्तार इधी","Abdul Sattar Edhi","समाजसेवा"],
+["ग्रेटा थनबर्ग","Greta Thunberg","समाजसेवा"],
+["डेसमन्ड टुटु","Desmond Tutu","समाजसेवा"],
+["एलेनोर रुजवेल्ट","Eleanor Roosevelt","समाजसेवा"],
+["फ्रेड रोजर्स","Fred Rogers","समाजसेवा"],
+["कैलाश सत्यार्थी","Kailash Satyarthi","समाजसेवा"],
+["वाङ्गारी माथाई","Wangari Maathai","समाजसेवा"],
+["रिगोबर्टा मेन्चु","Rigoberta Menchu","समाजसेवा"],
+["हेलेन केलर","Helen Keller","समाजसेवा"],
+["सावित्रीबाई फुले","Savitribai Phule","समाजसेवा"],
+["ज्योतिबा फुले","Jyotirao Phule","समाजसेवा"],
+["राजेन्द्र सिंह","Rajendra Singh water conservationist","समाजसेवा"],
+["अन्ना हजारे","Anna Hazare","समाजसेवा"],
+["बाबा साहेब अम्बेडकर","B. R. Ambedkar","समाजसेवा"],
+["विनोबा भावे","Vinoba Bhave","समाजसेवा"],
+
+["अरनिको","Araniko","कला"],
+["अमिताभ बच्चन","Amitabh Bachchan","कला"],
+["चार्ली च्याप्लिन","Charlie Chaplin","कला"],
+["लियोनार्डो दा भिन्ची","Leonardo da Vinci","कला"],
+["भिन्सेन्ट भ्यान गग","Vincent van Gogh","कला"],
+["पाब्लो पिकासो","Pablo Picasso","कला"],
+["रवीन्द्रनाथ ठाकुर","Rabindranath Tagore","कला"],
+["लता मङ्गेशकर","Lata Mangeshkar","कला"],
+["एआर रहमान","A. R. Rahman","कला"],
+["माइकल ज्याक्सन","Michael Jackson","कला"],
+["फ्रेडी मर्क्युरी","Freddie Mercury","कला"],
+["एल्विस प्रेस्ली","Elvis Presley","कला"],
+["मारिया क्यारी","Mariah Carey","कला"],
+["ब्रुस ली","Bruce Lee","कला"],
+["ज्याकी च्यान","Jackie Chan","कला"],
+["राज कपूर","Raj Kapoor","कला"],
+["सत्यजित रे","Satyajit Ray","कला"],
+["दीपिका पादुकोण","Deepika Padukone","कला"],
+["शाहरुख खान","Shah Rukh Khan","कला"],
+["रजनीकान्त","Rajinikanth","कला"],
+["भुवन केसी","Bhuwan K.C.","कला"],
+["हरिवंश आचार्य","Hari Bansha Acharya","कला"],
+["मह जोडी","Madan Krishna Shrestha","कला"],
+["अञ्जु पन्त","Anju Panta","कला"],
+["नारायण गोपाल","Narayan Gopal","कला"],
+
+["गौतम बुद्ध","Gautama Buddha","दर्शन"],
+["कन्फ्युसियस","Confucius","दर्शन"],
+["सुकरात","Socrates","दर्शन"],
+["प्लेटो","Plato","दर्शन"],
+["अरस्तु","Aristotle","दर्शन"],
+["कार्ल मार्क्स","Karl Marx","दर्शन"],
+["फ्रेडरिक नित्से","Friedrich Nietzsche","दर्शन"],
+["रेने देकार्त","René Descartes","दर्शन"],
+["जाँ-जाक रुसो","Jean-Jacques Rousseau","दर्शन"],
+["इमानुएल कान्ट","Immanuel Kant","दर्शन"],
+["स्वामी विवेकानन्द","Swami Vivekananda","दर्शन"],
+["ओशो","Osho","दर्शन"],
+["रवीन्द्रनाथ ठाकुर","Rabindranath Tagore","दर्शन"],
+["लाओत्से","Laozi","दर्शन"],
+["मार्कस अरिलियस","Marcus Aurelius","दर्शन"],
+["जिद्दु कृष्णमूर्ति","Jiddu Krishnamurti","दर्शन"],
+["चाणक्य","Chanakya","दर्शन"],
+["पतञ्जलि","Patanjali","दर्शन"],
+["रामानुज","Ramanuja","दर्शन"],
+["आदि शंकराचार्य","Adi Shankara","दर्शन"],
+["रमण महर्षि","Ramana Maharshi","दर्शन"],
+["मिर्जा गालिब","Mirza Ghalib","दर्शन"],
+["रुमी","Rumi","दर्शन"],
+["इब्न सिना","Avicenna","दर्शन"],
+["अल्बर्ट कामु","Albert Camus","दर्शन"],
+
+["सचिन तेन्दुलकर","Sachin Tendulkar","खेलकुद"],
+["क्रिस्टियानो रोनाल्डो","Cristiano Ronaldo","खेलकुद"],
+["लियोनेल मेस्सी","Lionel Messi","खेलकुद"],
+["पेले","Pelé","खेलकुद"],
+["डिएगो म्याराडोना","Diego Maradona","खेलकुद"],
+["विराट कोहली","Virat Kohli","खेलकुद"],
+["एमएस धोनी","MS Dhoni","खेलकुद"],
+["उसैन बोल्ट","Usain Bolt","खेलकुद"],
+["माइकल जोर्डन","Michael Jordan","खेलकुद"],
+["सेरेना विलियम्स","Serena Williams","खेलकुद"],
+["रोजर फेडेरर","Roger Federer","खेलकुद"],
+["नोभाक जोकोभिच","Novak Djokovic","खेलकुद"],
+["राफेल नाडाल","Rafael Nadal","खेलकुद"],
+["मोहम्मद अली","Muhammad Ali","खेलकुद"],
+["मिल्खा सिंह","Milkha Singh","खेलकुद"],
+["मेरी कोम","Mary Kom","खेलकुद"],
+["दीपा कर्माकर","Dipa Karmakar","खेलकुद"],
+["पारस खड्का","Paras Khadka","खेलकुद"],
+["सन्दीप लामिछाने","Sandeep Lamichhane","खेलकुद"],
+["मीराबाई चानु","Mirabai Chanu","खेलकुद"],
+["नीरज चोपडा","Neeraj Chopra","खेलकुद"],
+["मेसुट ओजिल","Mesut Özil","खेलकुद"],
+["किलियन एम्बाप्पे","Kylian Mbappé","खेलकुद"],
+["लेब्रोन जेम्स","LeBron James","खेलकुद"],
+["सिमोन बाइल्स
