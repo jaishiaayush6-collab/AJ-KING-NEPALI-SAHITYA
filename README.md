@@ -1,16 +1,25 @@
-# AAYUSH NEPALI SAHITYA — Updated
+# AAYUSH नेपाली साहित्य — PWA Updated
 
 ## मुख्य अपडेट
-- सबै HTML पृष्ठबाट पुरानो Sound / Speech System हटाइएको छ।
-- १५ वटा साझा Theme: Light, Dark, Blue, Sky Blue, Pink, Sky Pink, Blue Pink, Green, Purple, Yellow, Orange, Ocean, Forest, Rose, Sepia।
-- २० वटा interface language विकल्प: English, हिन्दी, বাংলা, मराठी, ગુજરાતી, ਪੰਜਾਬੀ, தமிழ், తెలుగు, ಕನ್ನಡ, മലയാളം, اردو, العربية, فارسی, 中文, 日本語, 한국어, Español, Français, Deutsch, Русский।
-- Theme रोजाइ localStorage मा सुरक्षित हुन्छ।
-- Desktop मा विस्तृत side-note र सबै पृष्ठमा theme/language control थपिएको छ।
-- `index.html` मा `jibani.html` सहित सबै मुख्य पृष्ठहरूको navigation र विस्तृत विचार/उद्देश्य section थपिएको छ।
-- `jibani.html` मा टप २० महान व्यक्तिका विस्तृत biography samples राखिएका छन्।
-- `ramayan.html` मा सात काण्डसँगै विस्तृत व्याख्या/सन्देश section थपिएको छ।
-- `hanuman-chalisa.html` मा सम्पूर्ण चालीसा एउटै निरन्तर पाठमा राखिएको छ; अलग-अलग चौपाइ कार्ड हटाइएको छ।
-- मूल Google site-verification फाइल सुरक्षित राखिएको छ।
+- Primary language: नेपाली (`ne`)
+- Top 20 supported interface languages
+- Speech / sound / speech synthesis प्रणाली हटाइएको
+- 15 visual themes
+- App logo: `logo.svg`
+- App icons: `icon-192.png`, `icon-512.png`
+- PWA manifest: `manifest.json`
+- Offline/app caching: `service-worker.js`
+- Installable website/app structure
+- Responsive mobile-friendly layout
+- हनुमान चालीसा निरन्तर पाठको रूपमा
+- हनुमान चालीसाको ठीक तल हनुमान जीको आरती थपिएको
+- `jibani.html` सहित मुख्य सबै साहित्यिक पृष्ठहरू
+
+## 20 भाषाहरू
+नेपाली, English, हिन्दी, Español, Français, Deutsch, 中文, 日本語,
+한국어, العربية, Русский, Português, Italiano, বাংলা, தமிழ், తెలుగు,
+मराठी, ગુજરાતી, ਪੰਜਾਬੀ, اردو
 
 ## चलाउने तरिका
-`index.html` खोल्नुहोस्। इन्टरनेट बिना पनि मुख्य HTML सामग्री चल्छ; Google font जस्ता बाह्य स्रोत प्रयोग भएको पुरानो पृष्ठमा browser cache/connection अनुसार फरक हुन सक्छ।
+`index.html` खोल्नुहोस्। PWA install सुविधा browser ले समर्थन गरेमा
+"📱 एप स्थापना" बटन देखिन्छ। HTTPS वा localhost मा service worker राम्रोसँग चल्छ।

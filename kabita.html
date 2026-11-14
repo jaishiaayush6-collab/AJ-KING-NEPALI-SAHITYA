@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="ne">
-<head>
+<html  lang="ne">
+<head><meta name="theme-color" content="#0d47a1"><link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>कविता संग्रह | AAYUSH NEPALI SAHITYA</title>
@@ -341,9 +341,71 @@ body a{color:var(--ay-primary)}
 .ay-page-extra p{margin:10px 0;text-align:justify}
 @media(max-width:900px){.ay-side-note{display:none}.ay-tools{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.ay-tools{grid-template-columns:1fr;margin:10px;padding:12px}.ay-tools h2,.ay-hint{grid-column:auto}}
-</style></head>
+</style>
+<style id="aayush-pwa-ui">
+.ay-appbar{position:relative;z-index:50;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 16px;background:var(--ay-card,#fff);border-bottom:1px solid var(--ay-border,#dbe3ef)}
+.ay-brand{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none;color:var(--ay-text,#17233a)}
+.ay-brand img{width:38px;height:38px;border-radius:10px}
+.ay-tools{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ay-tools select{padding:7px 10px;border-radius:8px;border:1px solid var(--ay-border,#cbd5e1);background:var(--ay-card,#fff);color:var(--ay-text,#17233a)}
+.ay-install{display:none;padding:7px 11px;border:0;border-radius:8px;background:var(--ay-primary,#2563eb);color:#fff;font-weight:700;cursor:pointer}
+.ay-app-links{display:flex;gap:7px;flex-wrap:wrap;padding:8px 16px;background:var(--ay-soft,#eff6ff);border-bottom:1px solid var(--ay-border,#dbe3ef)}
+.ay-app-links a{font-weight:700;text-decoration:none;padding:5px 9px;border-radius:7px;color:var(--ay-text,#17233a)}
+.ay-app-links a:hover{background:var(--ay-card,#fff)}
+@media(max-width:600px){.ay-tools{width:100%;margin-left:0}.ay-app-links{overflow:auto;flex-wrap:nowrap}}
+</style>
+</head>
 
 <body>
+<div class="ay-appbar">
+  <a class="ay-brand" href="index.html" aria-label="आयुष नेपाली साहित्य">
+    <img src="logo.svg" alt="आयुष नेपाली साहित्य लोगो">
+    <span>आयुष नेपाली साहित्य</span>
+  </a>
+  <div class="ay-tools">
+    <label for="ayLanguage" style="font-weight:700">भाषा</label>
+    <select id="ayLanguage" aria-label="भाषा चयन"><option value="ne">नेपाली</option>
+<option value="en">English</option>
+<option value="hi">हिन्दी</option>
+<option value="es">Español</option>
+<option value="fr">Français</option>
+<option value="de">Deutsch</option>
+<option value="zh">中文</option>
+<option value="ja">日本語</option>
+<option value="ko">한국어</option>
+<option value="ar">العربية</option>
+<option value="ru">Русский</option>
+<option value="pt">Português</option>
+<option value="it">Italiano</option>
+<option value="bn">বাংলা</option>
+<option value="ta">தமிழ்</option>
+<option value="te">తెలుగు</option>
+<option value="mr">मराठी</option>
+<option value="gu">ગુજરાતી</option>
+<option value="pa">ਪੰਜਾਬੀ</option>
+<option value="ur">اردو</option></select>
+    <label for="ayTheme" style="font-weight:700">थिम</label>
+    <select id="ayTheme" aria-label="थिम चयन">
+      <option value="light">Light</option><option value="dark">Dark</option>
+      <option value="blue">Blue</option><option value="sky">Sky Blue</option>
+      <option value="pink">Pink</option><option value="sky-pink">Sky Pink</option>
+      <option value="blue-pink">Blue Pink</option><option value="green">Green</option>
+      <option value="purple">Purple</option><option value="yellow">Yellow</option>
+      <option value="orange">Orange</option><option value="ocean">Ocean</option>
+      <option value="forest">Forest</option><option value="rose">Rose</option>
+      <option value="sepia">Sepia</option>
+    </select>
+    <button id="ayInstall" class="ay-install" type="button">📱 एप स्थापना</button>
+  </div>
+</div>
+<div class="ay-app-links">
+  <a href="index.html">गृहपृष्ठ</a><a href="about.html">हाम्रो बारेमा</a>
+  <a href="bal-sahitya.html">बाल साहित्य</a><a href="jibani.html">जीवनी</a>
+  <a href="kabita.html">कविता</a><a href="katha.html">कथा</a>
+  <a href="nibandha.html">निबन्ध</a><a href="ramayan.html">रामायण</a>
+  <a href="hanuman-chalisa.html">हनुमान चालीसा</a>
+</div>
+
 
 <header>
     <h1>📖 AAYUSH नेपाली साहित्य</h1>
@@ -861,8 +923,8 @@ renderPoems();
 <script>
 (function(){
  const themes=[["light", "Light"], ["dark", "Dark"], ["blue", "Blue"], ["skyblue", "Sky Blue"], ["pink", "Pink"], ["skypink", "Sky Pink"], ["bluepink", "Blue Pink"], ["green", "Green"], ["purple", "Purple"], ["yellow", "Yellow"], ["orange", "Orange"], ["ocean", "Ocean"], ["forest", "Forest"], ["rose", "Rose"], ["sepia", "Sepia"]];
- const langs={"en": "English", "hi": "हिन्दी", "bn": "বাংলা", "mr": "मराठी", "gu": "ગુજરાતી", "pa": "ਪੰਜਾਬੀ", "ta": "தமிழ்", "te": "తెలుగు", "kn": "ಕನ್ನಡ", "ml": "മലയാളം", "ur": "اردو", "ar": "العربية", "fa": "فارسی", "zh": "中文", "ja": "日本語", "ko": "한국어", "es": "Español", "fr": "Français", "de": "Deutsch", "ru": "Русский"};
- const tr={"en": {"home": "Home", "bio": "Biography", "poem": "Poetry", "story": "Stories", "essay": "Essays", "ramayan": "Ramayana", "chalisa": "Hanuman Chalisa", "about": "About", "theme": "Theme", "language": "Language"}, "hi": {"home": "होम", "bio": "जीवनी", "poem": "कविता", "story": "कहानी", "essay": "निबंध", "ramayan": "रामायण", "chalisa": "हनुमान चालीसा", "about": "हमारे बारे में", "theme": "थीम", "language": "भाषा"}, "bn": {"home": "হোম", "bio": "জীবনী", "poem": "কবিতা", "story": "গল্প", "essay": "প্রবন্ধ", "ramayan": "রামায়ণ", "chalisa": "হনুমান চালিসা", "about": "আমাদের সম্পর্কে", "theme": "থিম", "language": "ভাষা"}, "mr": {"home": "मुखपृष्ठ", "bio": "चरित्र", "poem": "कविता", "story": "कथा", "essay": "निबंध", "ramayan": "रामायण", "chalisa": "हनुमान चालीसा", "about": "आमच्याबद्दल", "theme": "थीम", "language": "भाषा"}, "gu": {"home": "હોમ", "bio": "જીવનચરિત્ર", "poem": "કવિતા", "story": "વાર્તા", "essay": "નિબંધ", "ramayan": "રામાયણ", "chalisa": "હનુમાન ચાલીસા", "about": "અમારા વિશે", "theme": "થીમ", "language": "ભાષા"}, "pa": {"home": "ਘਰ", "bio": "ਜੀਵਨੀ", "poem": "ਕਵਿਤਾ", "story": "ਕਹਾਣੀਆਂ", "essay": "ਲੇਖ", "ramayan": "ਰਾਮਾਇਣ", "chalisa": "ਹਨੂਮਾਨ ਚਾਲੀਸਾ", "about": "ਸਾਡੇ ਬਾਰੇ", "theme": "ਥੀਮ", "language": "ਭਾਸ਼ਾ"}, "ta": {"home": "முகப்பு", "bio": "வாழ்க்கை வரலாறு", "poem": "கவிதை", "story": "கதை", "essay": "கட்டுரை", "ramayan": "ராமாயணம்", "chalisa": "அனுமன் சாலிசா", "about": "எங்களைப் பற்றி", "theme": "தீம்", "language": "மொழி"}, "te": {"home": "హోమ్", "bio": "జీవిత చరిత్ర", "poem": "కవిత్వం", "story": "కథలు", "essay": "వ్యాసాలు", "ramayan": "రామాయణం", "chalisa": "హనుమాన్ చాలీసా", "about": "మా గురించి", "theme": "థీమ్", "language": "భాష"}, "kn": {"home": "ಮುಖಪುಟ", "bio": "ಜೀವನಚರಿತ್ರೆ", "poem": "ಕವನ", "story": "ಕಥೆಗಳು", "essay": "ಪ್ರಬಂಧ", "ramayan": "ರಾಮಾಯಣ", "chalisa": "ಹನುಮಾನ್ ಚಾಲೀಸಾ", "about": "ನಮ್ಮ ಬಗ್ಗೆ", "theme": "ಥೀಮ್", "language": "ಭಾಷೆ"}, "ml": {"home": "ഹോം", "bio": "ജീവചരിത്രം", "poem": "കവിത", "story": "കഥകൾ", "essay": "ലേഖനങ്ങൾ", "ramayan": "രാമായണം", "chalisa": "ഹനുമാൻ ചാലിസ", "about": "ഞങ്ങളെക്കുറിച്ച്", "theme": "തീം", "language": "ഭാഷ"}, "ur": {"home": "گھر", "bio": "سوانح", "poem": "شاعری", "story": "کہانیاں", "essay": "مضامین", "ramayan": "رامائن", "chalisa": "ہنومان چالیسہ", "about": "ہمارے بارے میں", "theme": "تھیم", "language": "زبان"}, "ar": {"home": "الرئيسية", "bio": "السيرة", "poem": "الشعر", "story": "القصص", "essay": "المقالات", "ramayan": "رامايانا", "chalisa": "هانومان تشاليسا", "about": "من نحن", "theme": "المظهر", "language": "اللغة"}, "fa": {"home": "خانه", "bio": "زندگی‌نامه", "poem": "شعر", "story": "داستان‌ها", "essay": "مقاله‌ها", "ramayan": "رامایانا", "chalisa": "هانومان چالیسا", "about": "درباره ما", "theme": "پوسته", "language": "زبان"}, "zh": {"home": "首页", "bio": "传记", "poem": "诗歌", "story": "故事", "essay": "文章", "ramayan": "罗摩衍那", "chalisa": "哈奴曼颂", "about": "关于我们", "theme": "主题", "language": "语言"}, "ja": {"home": "ホーム", "bio": "伝記", "poem": "詩", "story": "物語", "essay": "エッセイ", "ramayan": "ラーマーヤナ", "chalisa": "ハヌマーン・チャリサー", "about": "私たちについて", "theme": "テーマ", "language": "言語"}, "ko": {"home": "홈", "bio": "전기", "poem": "시", "story": "이야기", "essay": "에세이", "ramayan": "라마야나", "chalisa": "하누만 찰리사", "about": "소개", "theme": "테마", "language": "언어"}, "es": {"home": "Inicio", "bio": "Biografías", "poem": "Poesía", "story": "Historias", "essay": "Ensayos", "ramayan": "Ramayana", "chalisa": "Hanuman Chalisa", "about": "Sobre nosotros", "theme": "Tema", "language": "Idioma"}, "fr": {"home": "Accueil", "bio": "Biographies", "poem": "Poésie", "story": "Histoires", "essay": "Essais", "ramayan": "Ramayana", "chalisa": "Hanuman Chalisa", "about": "À propos", "theme": "Thème", "language": "Langue"}, "de": {"home": "Startseite", "bio": "Biografien", "poem": "Gedichte", "story": "Geschichten", "essay": "Aufsätze", "ramayan": "Ramayana", "chalisa": "Hanuman Chalisa", "about": "Über uns", "theme": "Thema", "language": "Sprache"}, "ru": {"home": "Главная", "bio": "Биографии", "poem": "Поэзия", "story": "Рассказы", "essay": "Эссе", "ramayan": "Рамаяна", "chalisa": "Хануман Чалиса", "about": "О нас", "theme": "Тема", "language": "Язык"}};
+ const langs={"ne":"नेपाली","en":"English","hi":"हिन्दी","es":"Español","fr":"Français","de":"Deutsch","zh":"中文","ja":"日本語","ko":"한국어","ar":"العربية","ru":"Русский","pt":"Português","it":"Italiano","bn":"বাংলা","ta":"தமிழ்","te":"తెలుగు","mr":"मराठी","gu":"ગુજરાતી","pa":"ਪੰਜਾਬੀ","ur":"اردو"};
+ const tr={"ne":{"home":"गृहपृष्ठ","bio":"जीवनी","poem":"कविता","story":"कथा","essay":"निबन्ध","ramayan":"रामायण","chalisa":"हनुमान चालीसा","about":"हाम्रो बारेमा","theme":"थीम","language":"भाषा"},"en":{"home":"Home","bio":"Biography","poem":"Poetry","story":"Stories","essay":"Essays","ramayan":"Ramayana","chalisa":"Hanuman Chalisa","about":"About","theme":"Theme","language":"Language"},"hi":{"home":"होम","bio":"जीवनी","poem":"कविता","story":"कहानी","essay":"निबंध","ramayan":"रामायण","chalisa":"हनुमान चालीसा","about":"हमारे बारे में","theme":"थीम","language":"भाषा"},"es":{"home":"Inicio","bio":"Biografías","poem":"Poesía","story":"Historias","essay":"Ensayos","ramayan":"Ramayana","chalisa":"Hanuman Chalisa","about":"Sobre nosotros","theme":"Tema","language":"Idioma"},"fr":{"home":"Accueil","bio":"Biographies","poem":"Poésie","story":"Histoires","essay":"Essais","ramayan":"Ramayana","chalisa":"Hanuman Chalisa","about":"À propos","theme":"Thème","language":"Langue"},"de":{"home":"Startseite","bio":"Biografien","poem":"Gedichte","story":"Geschichten","essay":"Aufsätze","ramayan":"Ramayana","chalisa":"Hanuman Chalisa","about":"Über uns","theme":"Thema","language":"Sprache"},"zh":{"home":"首页","bio":"传记","poem":"诗歌","story":"故事","essay":"文章","ramayan":"罗摩衍那","chalisa":"哈奴曼颂","about":"关于我们","theme":"主题","language":"语言"},"ja":{"home":"ホーム","bio":"伝記","poem":"詩","story":"物語","essay":"エッセイ","ramayan":"ラーマーヤナ","chalisa":"ハヌマーン・チャリサー","about":"私たちについて","theme":"テーマ","language":"言語"},"ko":{"home":"홈","bio":"전기","poem":"시","story":"이야기","essay":"에세이","ramayan":"라마야나","chalisa":"하누만 찰리사","about":"소개","theme":"테마","language":"언어"},"ar":{"home":"الرئيسية","bio":"السيرة","poem":"الشعر","story":"القصص","essay":"المقالات","ramayan":"رامايانا","chalisa":"هانومان تشاليسا","about":"من نحن","theme":"المظهر","language":"اللغة"},"ru":{"home":"Главная","bio":"Биографии","poem":"Поэзия","story":"Рассказы","essay":"Эссе","ramayan":"Рамаяна","chalisa":"Хануман Чалиса","about":"О нас","theme":"Тема","language":"Язык"},"pt":{"home":"Início","bio":"Biografias","poem":"Poesia","story":"Histórias","essay":"Ensaios","ramayan":"Ramayana","chalisa":"Hanuman Chalisa","about":"Sobre nós","theme":"Tema","language":"Idioma"},"it":{"home":"Home","bio":"Biografie","poem":"Poesia","story":"Storie","essay":"Saggi","ramayan":"Ramayana","chalisa":"Hanuman Chalisa","about":"Chi siamo","theme":"Tema","language":"Lingua"},"bn":{"home":"হোম","bio":"জীবনী","poem":"কবিতা","story":"গল্প","essay":"প্রবন্ধ","ramayan":"রামায়ণ","chalisa":"হনুমান চালিসা","about":"আমাদের সম্পর্কে","theme":"থিম","language":"ভাষা"},"ta":{"home":"முகப்பு","bio":"வாழ்க்கை வரலாறு","poem":"கவிதை","story":"கதை","essay":"கட்டுரை","ramayan":"ராமாயணம்","chalisa":"அனுமன் சாலிசா","about":"எங்களைப் பற்றி","theme":"தீம்","language":"மொழி"},"te":{"home":"హోమ్","bio":"జీవిత చరిత్ర","poem":"కవిత్వం","story":"కథలు","essay":"వ్యాసాలు","ramayan":"రామాయణం","chalisa":"హనుమాన్ చాలీసా","about":"మా గురించి","theme":"థీమ్","language":"భాష"},"mr":{"home":"मुखपृष्ठ","bio":"चरित्र","poem":"कविता","story":"कथा","essay":"निबंध","ramayan":"रामायण","chalisa":"हनुमान चालीसा","about":"आमच्याबद्दल","theme":"थीम","language":"भाषा"},"gu":{"home":"હોમ","bio":"જીવનચરિત્ર","poem":"કવિતા","story":"વાર્તા","essay":"નિબંધ","ramayan":"રામાયણ","chalisa":"હનુમાન ચાલીસા","about":"અમારા વિશે","theme":"થીમ","language":"ભાષા"},"pa":{"home":"ਘਰ","bio":"ਜੀਵਨੀ","poem":"ਕਵਿਤਾ","story":"ਕਹਾਣੀਆਂ","essay":"ਲੇਖ","ramayan":"ਰਾਮਾਇਣ","chalisa":"ਹਨੂਮਾਨ ਚਾਲੀਸਾ","about":"ਸਾਡੇ ਬਾਰੇ","theme":"ਥੀਮ","language":"ਭਾਸ਼ਾ"},"ur":{"home":"گھر","bio":"سوانح","poem":"شاعری","story":"کہانیاں","essay":"مضامین","ramayan":"رامائن","chalisa":"ہنومان چالیسہ","about":"ہمارے بارے میں","theme":"تھیم","language":"زبان"}};
  const savedTheme=localStorage.getItem("aayushTheme15")||"light";
  document.body.dataset.ayTheme=savedTheme;
  function navMap(){
@@ -877,12 +939,12 @@ renderPoems();
    <div><label data-i18n="theme">Theme</label><select id="ayThemeSelect"></select></div>
    <div><label data-i18n="language">Language</label><select id="ayLangSelect"></select></div>
    <div class="ay-actions"><button type="button" id="ayReset">↺ Reset</button></div>
-   <p class="ay-hint">15 रंगीन Theme र 20 भाषा interface विकल्प। सामग्रीका मूल पाठहरू नेपालीमै सुरक्षित छन्।</p>`;
+   <p class="ay-hint">🇳🇵 नेपाली प्राथमिक भाषा। नेपालीसँगै English, हिन्दी, Español, Français, Deutsch, 中文, 日本語, 한국어, العربية, Русский लगायत २० भाषा विकल्प छन्।</p>`;
   const nav=document.querySelector("nav"); if(nav) nav.insertAdjacentElement("afterend",bar); else document.body.prepend(bar);
   const ts=document.getElementById("ayThemeSelect"), ls=document.getElementById("ayLangSelect");
   themes.forEach(([v,n])=>{const o=document.createElement("option");o.value=v;o.textContent=n;ts.appendChild(o)});
-  Object.entries(langs).forEach(([v,n])=>{const o=document.createElement("option");o.value=v;o.textContent=n;ls.appendChild(o)});
-  ts.value=savedTheme; ls.value=localStorage.getItem("aayushLang20")||"en";
+  Object.entries(langs).forEach(([v,n])=>{const o=document.createElement("option");o.value=v;o.textContent=(v==="ne"?"🇳🇵 ":"")+n;ls.appendChild(o)});
+  ts.value=savedTheme; ls.value=localStorage.getItem("aayushLang20")||"ne";
   ts.onchange=()=>{document.body.dataset.ayTheme=ts.value;localStorage.setItem("aayushTheme15",ts.value)};
   ls.onchange=()=>{localStorage.setItem("aayushLang20",ls.value);applyLang(ls.value)};
   document.getElementById("ayReset").onclick=()=>{localStorage.removeItem("aayushTheme15");localStorage.removeItem("aayushLang20");location.reload()};
@@ -893,10 +955,63 @@ renderPoems();
   document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;if(d[k]) el.textContent=d[k]});
   document.documentElement.lang=code;
  }
- navMap(); renderTools(); applyLang(localStorage.getItem("aayushLang20")||"en");
+ navMap(); renderTools(); applyLang(localStorage.getItem("aayushLang20")||"ne");
  const note=document.createElement("aside"); note.className="ay-side-note";
  note.innerHTML=`<h3>📚 AAYUSH नेपाली साहित्य</h3><p>यो डिजिटल पुस्तकालयमा कथा, कविता, बाल साहित्य, निबन्ध, जीवनी, रामायण र हनुमान चालीसा सामग्री एउटै ठाउँमा राखिएको छ।</p><p>थीम परिवर्तन गर्दा रोजाइ सुरक्षित हुन्छ। भाषा विकल्पले मुख्य interface बदल्छ; मूल साहित्यिक पाठ सुरक्षित रहन्छ।</p><a href="index.html">गृहपृष्ठ</a>`;
  document.body.appendChild(note);
 })();
-</script></body>
+</script>
+<script id="aayush-pwa-js">
+(function(){
+  const langs = [{"code": "ne", "name": "नेपाली"}, {"code": "en", "name": "English"}, {"code": "hi", "name": "हिन्दी"}, {"code": "es", "name": "Español"}, {"code": "fr", "name": "Français"}, {"code": "de", "name": "Deutsch"}, {"code": "zh", "name": "中文"}, {"code": "ja", "name": "日本語"}, {"code": "ko", "name": "한국어"}, {"code": "ar", "name": "العربية"}, {"code": "ru", "name": "Русский"}, {"code": "pt", "name": "Português"}, {"code": "it", "name": "Italiano"}, {"code": "bn", "name": "বাংলা"}, {"code": "ta", "name": "தமிழ்"}, {"code": "te", "name": "తెలుగు"}, {"code": "mr", "name": "मराठी"}, {"code": "gu", "name": "ગુજરાતી"}, {"code": "pa", "name": "ਪੰਜਾਬੀ"}, {"code": "ur", "name": "اردو"}];
+  const savedLang = localStorage.getItem("aayushLanguage") || "ne";
+  const savedTheme = localStorage.getItem("aayushTheme") || "light";
+  document.documentElement.lang = savedLang;
+  document.documentElement.dataset.primaryLanguage = "ne";
+
+  function setTheme(t){
+    document.body.dataset.ayTheme = t;
+    localStorage.setItem("aayushTheme", t);
+  }
+  function setLang(l){
+    document.documentElement.lang = l;
+    localStorage.setItem("aayushLanguage", l);
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    const sel = document.getElementById("ayLanguage");
+    if(sel){
+      sel.value = savedLang;
+      sel.addEventListener("change", e => setLang(e.target.value));
+    }
+    const theme = document.getElementById("ayTheme");
+    if(theme){
+      theme.value = savedTheme;
+      theme.addEventListener("change", e => setTheme(e.target.value));
+    }
+    setTheme(savedTheme);
+    const installBtn = document.getElementById("ayInstall");
+    let deferredPrompt = null;
+    window.addEventListener("beforeinstallprompt", e => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if(installBtn) installBtn.style.display = "inline-block";
+    });
+    if(installBtn){
+      installBtn.addEventListener("click", async () => {
+        if(!deferredPrompt) return;
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        installBtn.style.display = "none";
+      });
+    }
+  });
+
+  if("serviceWorker" in navigator){
+    window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(()=>{}));
+  }
+})();
+</script>
+</body>
 </html>
