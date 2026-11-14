@@ -1,568 +1,185 @@
-
 <!DOCTYPE html>
-<html lang="ne">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>हनुमान चालीसा | AAYUSH NEPALI SAHITYA</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Noto Sans Devanagari", Arial, sans-serif;
-    background: linear-gradient(135deg,#fff3e0,#ffcc80);
-    color: #492000;
-    transition: .3s;
-}
-
-body.dark {
-    background: #17120f;
-    color: #ffe0b2;
-}
-
-header {
-    background: linear-gradient(120deg,#b71c1c,#ef6c00);
-    color: white;
-    text-align: center;
-    padding: 28px 12px;
-}
-
-header h1 {
-    font-size: 30px;
-    margin-bottom: 8px;
-}
-
-header p {
-    font-size: 14px;
-}
-
-.container {
-    max-width: 950px;
-    margin: 22px auto;
-    padding: 15px;
-}
-
-.panel {
-    background: white;
-    padding: 20px;
-    border-radius: 16px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 18px #0002;
-}
-
-.dark .panel {
-    background: #29211c;
-}
-
-h2 {
-    color: #d84315;
-    margin-bottom: 15px;
-}
-
-.dark h2 {
-    color: #ffab40;
-}
-
-.controls {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(190px,1fr));
-    gap: 14px;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 7px;
-}
-
-select, input[type="range"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #e0a36d;
-    border-radius: 8px;
-    background: #fffaf5;
-}
-
-button {
-    border: none;
-    padding: 11px 16px;
-    margin: 5px 3px;
-    border-radius: 9px;
-    background: #e65100;
-    color: white;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-button:hover {
-    background: #bf360c;
-    transform: translateY(-1px);
-}
-
-button.secondary {
-    background: #6d4c41;
-}
-
-button.green {
-    background: #2e7d32;
-}
-
-button.blue {
-    background: #1565c0;
-}
-
-.status {
-    margin-top: 12px;
-    padding: 12px;
-    background: #fff3e0;
-    border-radius: 8px;
-    color: #8d3b00;
-    font-weight: bold;
-}
-
-.dark .status {
-    background: #403026;
-    color: #ffcc80;
-}
-
-.verse {
-    padding: 15px;
-    margin: 12px 0;
-    background: #fff8e1;
-    border-left: 5px solid #ef6c00;
-    border-radius: 8px;
-    line-height: 2;
-    font-size: 19px;
-    white-space: pre-line;
-}
-
-.dark .verse {
-    background: #382a20;
-}
-
-.verse button {
-    font-size: 13px;
-    padding: 7px 11px;
-}
-
-footer {
-    text-align: center;
-    padding: 25px;
-    background: #4e260c;
-    color: white;
-    margin-top: 30px;
-}
-
-.top-buttons {
-    text-align: center;
-    margin: 15px 0;
-}
-
-@media(max-width:600px) {
-    header h1 {font-size: 23px;}
-    .verse {font-size: 17px;}
-    .panel {padding: 14px;}
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <h1>🚩 श्री हनुमान चालीसा 🚩</h1>
-    <p>भक्ति, श्रद्धा र सकारात्मकताको पवित्र पाठ</p>
-    <p>AAYUSH NEPALI SAHITYA</p>
-</header>
-
+<html lang="ne"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>हनुमान चालीसा | AAYUSH नेपाली साहित्य</title>
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:"Noto Sans Devanagari",Arial,sans-serif;line-height:1.9}
+header{background:linear-gradient(120deg,#b71c1c,#ef6c00);color:#fff;text-align:center;padding:38px 15px}header h1{font-size:34px}
+nav{position:sticky;top:0;z-index:10;background:#fff;padding:13px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;border-bottom:1px solid #ddd}nav a{text-decoration:none;font-weight:700;padding:6px 10px}
+.container{max-width:1000px;margin:auto;padding:24px 16px}.panel{padding:24px;border-radius:16px;border:1px solid #ddd;margin-bottom:20px}.panel p{text-align:justify;margin:10px 0}
+.chalisa{white-space:pre-line;font-size:20px;line-height:2.2;padding:25px;border-radius:14px;border-left:5px solid #ef6c00;background:#fff8e1}
+footer{text-align:center;background:#4e260c;color:#fff;padding:28px;margin-top:35px}
+</style></head><body>
+<header><h1>॥ श्री हनुमान चालीसा ॥</h1><p>भक्ति, साहस, सेवा र आत्मबलको प्रेरणादायी पाठ</p><p>AAYUSH NEPALI SAHITYA</p></header>
+<nav><a href="index.html">🏠 गृहपृष्ठ</a><a href="bal-sahitya.html">बाल साहित्य</a><a href="jibani.html">जीवनी</a><a href="kabita.html">कविता</a><a href="katha.html">कथा</a><a href="nibandha.html">निबन्ध</a><a href="ramayan.html">रामायण</a><a href="hanuman-chalisa.html">हनुमान चालीसा</a><a href="about.html">हाम्रो बारेमा</a></nav>
 <div class="container">
+<section class="panel"><h2>हनुमान चालीसाको परिचय</h2><p>हनुमान चालीसा गोस्वामी तुलसीदाससँग सम्बन्धित प्रसिद्ध भक्तिपरक रचना हो। यसमा श्री हनुमानको शक्ति, ज्ञान, सेवा, विनम्रता, रामभक्ति र संकटमोचन स्वरूपको स्तुति गरिन्छ।</p><p>तपाईंको अनुरोधअनुसार यहाँ चालीसाका सबै चौपाइहरू अलग-अलग “चौपाइ १, चौपाइ २” शीर्षकमा नछुट्याई एउटै निरन्तर पाठमा राखिएका छन्, ताकि पढ्दा पुस्तकजस्तो प्रवाह कायम रहोस्।</p></section>
+<section class="panel"><h2>📖 सम्पूर्ण पाठ</h2><div class="chalisa">श्रीगुरु चरन सरोज रज, निज मनु मुकुरु सुधारि।
+बरनऊँ रघुबर बिमल जसु, जो दायकु फल चारि॥
 
-    <div class="top-buttons">
-        <button onclick="toggleTheme()">🌙 Dark / Light</button>
-        <button onclick="changeFont(1)">A+ अक्षर ठूलो</button>
-        <button onclick="changeFont(-1)">A- अक्षर सानो</button>
-    </div>
+बुद्धिहीन तनु जानिके, सुमिरौं पवन-कुमार।
+बल बुद्धि विद्या देहु मोहिं, हरहु कलेस बिकार॥
 
-    <section class="panel">
-        <h2>🎵 आवाज तथा Speech Settings</h2>
+जय हनुमान ज्ञान गुन सागर।
+जय कपीस तिहुँ लोक उजागर॥
 
-        <div class="controls">
+राम दूत अतुलित बल धामा।
+अंजनि-पुत्र पवनसुत नामा॥
 
-            <div>
-                <label for="voiceSelect">आवाज छान्नुहोस्</label>
-                <select id="voiceSelect">
-                    <option value="">Default Voice</option>
-                </select>
-            </div>
+महाबीर बिक्रम बजरंगी।
+कुमति निवार सुमति के संगी॥
 
-            <div>
-                <label for="styleSelect">Speech Style</label>
-                <select id="styleSelect">
-                    <option value="normal">Normal Reading</option>
-                    <option value="bhajan">Bhajan Style</option>
-                    <option value="rhythm">Rhythm Style</option>
-                    <option value="slow">Slow Devotional</option>
-                </select>
-            </div>
+कंचन बरन बिराज सुबेसा।
+कानन कुण्डल कुंचित केसा॥
 
-            <div>
-                <label for="rateControl">बोल्ने गति: <span id="rateValue">0.8</span></label>
-                <input id="rateControl" type="range"
-                    min="0.5" max="1.5" step="0.1" value="0.8">
-            </div>
+हाथ बज्र औ ध्वजा बिराजै।
+काँधे मूँज जनेऊ साजै॥
 
-            <div>
-                <label for="pitchControl">आवाजको Pitch: <span id="pitchValue">1</span></label>
-                <input id="pitchControl" type="range"
-                    min="0.5" max="2" step="0.1" value="1">
-            </div>
-        </div>
+शंकर सुवन केसरी नंदन।
+तेज प्रताप महा जग वंदन॥
 
-        <div style="margin-top:18px;text-align:center">
-            <button class="green" onclick="playAll()">▶ पूरा पाठ</button>
-            <button class="blue" onclick="pauseAudio()">⏸ Pause</button>
-            <button class="green" onclick="resumeAudio()">▶ Resume</button>
-            <button class="secondary" onclick="stopAudio()">⏹ Stop</button>
-        </div>
+विद्यावान गुनी अति चातुर।
+राम काज करिबे को आतुर॥
 
-        <div class="status" id="status">
-            🙏 पाठ सुरु गर्न Play बटन थिच्नुहोस्।
-        </div>
-    </section>
+प्रभु चरित्र सुनिबे को रसिया।
+राम लखन सीता मन बसिया॥
 
-    <section class="panel">
-        <h2>📖 हनुमान चालीसा</h2>
-        <div id="chalisaContent"></div>
-    </section>
+सूक्ष्म रूप धरि सियहिं दिखावा।
+विकट रूप धरि लंक जरावा॥
 
-</div>
+भीम रूप धरि असुर सँहारे।
+रामचंद्र के काज सँवारे॥
 
-<footer>
-    <p>🚩 जय श्री राम | जय हनुमान 🚩</p>
-    <p>© AAYUSH NEPALI SAHITYA</p>
-</footer>
+लाय सजीवन लखन जियाये।
+श्री रघुबीर हरषि उर लाये॥
 
+रघुपति कीन्ही बहुत बड़ाई।
+तुम मम प्रिय भरतहि सम भाई॥
+
+सहस बदन तुम्हरो जस गावैं।
+अस कहि श्रीपति कंठ लगावैं॥
+
+सनकादिक ब्रह्मादि मुनीसा।
+नारद सारद सहित अहीसा॥
+
+जम कुबेर दिगपाल जहाँ ते।
+कवि कोविद कहि सके कहाँ ते॥
+
+तुम उपकार सुग्रीवहिं कीन्हा।
+राम मिलाय राज पद दीन्हा॥
+
+तुम्हरो मंत्र विभीषण माना।
+लंकेश्वर भए सब जग जाना॥
+
+जुग सहस्र जोजन पर भानू।
+लील्यो ताहि मधुर फल जानू॥
+
+प्रभु मुद्रिका मेलि मुख माहीं।
+जलधि लाँघि गये अचरज नाहीं॥
+
+दुर्गम काज जगत के जेते।
+सुगम अनुग्रह तुम्हरे तेते॥
+
+राम दुआरे तुम रखवारे।
+होत न आज्ञा बिनु पैसारे॥
+
+सब सुख लहै तुम्हारी सरना।
+तुम रक्षक काहू को डरना॥
+
+आपन तेज सम्हारो आपै।
+तीनों लोक हाँक तें काँपै॥
+
+भूत पिशाच निकट नहिं आवै।
+महाबीर जब नाम सुनावै॥
+
+नासै रोग हरै सब पीरा।
+जपत निरंतर हनुमत बीरा॥
+
+संकट तें हनुमान छुड़ावै।
+मन क्रम वचन ध्यान जो लावै॥
+
+सब पर राम तपस्वी राजा।
+तिनके काज सकल तुम साजा॥
+
+और मनोरथ जो कोई लावै।
+सोइ अमित जीवन फल पावै॥
+
+चारों जुग परताप तुम्हारा।
+है परसिद्ध जगत उजियारा॥
+
+साधु संत के तुम रखवारे।
+असुर निकंदन राम दुलारे॥
+
+अष्ट सिद्धि नौ निधि के दाता।
+अस बर दीन जानकी माता॥
+
+राम रसायन तुम्हरे पासा।
+सदा रहो रघुपति के दासा॥
+
+तुम्हरे भजन राम को पावै।
+जनम जनम के दुख बिसरावै॥
+
+अंत काल रघुबर पुर जाई।
+जहाँ जन्म हरि-भक्त कहाई॥
+
+और देवता चित्त न धरई।
+हनुमत सेइ सर्व सुख करई॥
+
+संकट कटै मिटै सब पीरा।
+जो सुमिरै हनुमत बलबीरा॥
+
+जय जय जय हनुमान गोसाईं।
+कृपा करहु गुरुदेव की नाईं॥
+
+जो सत बार पाठ कर कोई।
+छूटहि बंदि महा सुख होई॥
+
+जो यह पढ़ै हनुमान चालीसा।
+होय सिद्धि साखी गौरीसा॥
+
+तुलसीदास सदा हरि चेरा।
+कीजै नाथ हृदय महँ डेरा॥
+
+पवनतनय संकट हरन, मंगल मूरति रूप।
+राम लखन सीता सहित, हृदय बसहु सुर भूप॥</div></section>
+<section class="panel"><h2>🌺 भावार्थको संकेत</h2><p>हनुमान चालीसाले बलसँगै बुद्धि, विद्या, विवेक, सेवा, अनुशासन र भक्ति आवश्यक हुन्छ भन्ने भाव प्रस्तुत गर्छ। हनुमानलाई केवल शारीरिक शक्तिको प्रतीक नभई कठिन अवस्थामा धैर्य, कर्तव्य र समर्पण कायम राख्ने आदर्शका रूपमा पनि बुझ्न सकिन्छ।</p></section>
+</div><footer>🚩 जय श्री राम · जय हनुमान 🚩<br>© 2026 AAYUSH NEPALI SAHITYA</footer>
 <script>
-const verses = [
-`श्रीगुरु चरन सरोज रज, निज मनु मुकुरु सुधारि।
-बरनऊँ रघुबर बिमल जसु, जो दायकु फल चारि॥`,
-
-`बुद्धिहीन तनु जानिके, सुमिरौं पवन-कुमार।
-बल बुद्धि विद्या देहु मोहिं, हरहु कलेस बिकार॥`,
-
-`जय हनुमान ज्ञान गुन सागर।
-जय कपीस तिहुँ लोक उजागर॥`,
-
-`राम दूत अतुलित बल धामा।
-अंजनि-पुत्र पवनसुत नामा॥`,
-
-`महाबीर बिक्रम बजरंगी।
-कुमति निवार सुमति के संगी॥`,
-
-`कंचन बरन बिराज सुबेसा।
-कानन कुण्डल कुंचित केसा॥`,
-
-`हाथ बज्र औ ध्वजा बिराजै।
-काँधे मूँज जनेऊ साजै॥`,
-
-`शंकर सुवन केसरी नंदन।
-तेज प्रताप महा जग वंदन॥`,
-
-`विद्यावान गुनी अति चातुर।
-राम काज करिबे को आतुर॥`,
-
-`प्रभु चरित्र सुनिबे को रसिया।
-राम लखन सीता मन बसिया॥`,
-
-`सूक्ष्म रूप धरि सियहिं दिखावा।
-विकट रूप धरि लंक जरावा॥`,
-
-`भीम रूप धरि असुर सँहारे।
-रामचंद्र के काज सँवारे॥`,
-
-`लाय सजीवन लखन जियाये।
-श्री रघुबीर हरषि उर लाये॥`,
-
-`रघुपति कीन्ही बहुत बड़ाई।
-तुम मम प्रिय भरतहि सम भाई॥`,
-
-`सहस बदन तुम्हरो जस गावैं।
-अस कहि श्रीपति कंठ लगावैं॥`,
-
-`सनकादिक ब्रह्मादि मुनीसा।
-नारद सारद सहित अहीसा॥`,
-
-`जम कुबेर दिगपाल जहाँ ते।
-कवि कोविद कहि सके कहाँ ते॥`,
-
-`तुम उपकार सुग्रीवहिं कीन्हा।
-राम मिलाय राज पद दीन्हा॥`,
-
-`तुम्हरो मंत्र विभीषण माना।
-लंकेश्वर भए सब जग जाना॥`,
-
-`जुग सहस्र जोजन पर भानू।
-लील्यो ताहि मधुर फल जानू॥`,
-
-`प्रभु मुद्रिका मेलि मुख माहीं।
-जलधि लाँघि गये अचरज नाहीं॥`,
-
-`दुर्गम काज जगत के जेते।
-सुगम अनुग्रह तुम्हरे तेते॥`,
-
-`राम दुआरे तुम रखवारे।
-होत न आज्ञा बिनु पैसारे॥`,
-
-`सब सुख लहै तुम्हारी सरना।
-तुम रक्षक काहू को डरना॥`,
-
-`आपन तेज सम्हारो आपै।
-तीनों लोक हाँक तें काँपै॥`,
-
-`भूत पिशाच निकट नहिं आवै।
-महाबीर जब नाम सुनावै॥`,
-
-`नासै रोग हरै सब पीरा।
-जपत निरंतर हनुमत बीरा॥`,
-
-`संकट तें हनुमान छुड़ावै।
-मन क्रम वचन ध्यान जो लावै॥`,
-
-`सब पर राम तपस्वी राजा।
-तिनके काज सकल तुम साजा॥`,
-
-`और मनोरथ जो कोई लावै।
-सोइ अमित जीवन फल पावै॥`,
-
-`चारों जुग परताप तुम्हारा।
-है परसिद्ध जगत उजियारा॥`,
-
-`साधु संत के तुम रखवारे।
-असुर निकंदन राम दुलारे॥`,
-
-`अष्ट सिद्धि नौ निधि के दाता।
-अस बर दीन जानकी माता॥`,
-
-`राम रसायन तुम्हरे पासा।
-सदा रहो रघुपति के दासा॥`,
-
-`तुम्हरे भजन राम को पावै।
-जनम जनम के दुख बिसरावै॥`,
-
-`अंत काल रघुबर पुर जाई।
-जहाँ जन्म हरि-भक्त कहाई॥`,
-
-`और देवता चित्त न धरई।
-हनुमत सेइ सर्व सुख करई॥`,
-
-`संकट कटै मिटै सब पीरा।
-जो सुमिरै हनुमत बलबीरा॥`,
-
-`जय जय जय हनुमान गोसाईं।
-कृपा करहु गुरुदेव की नाईं॥`,
-
-`जो सत बार पाठ कर कोई।
-छूटहि बंदि महा सुख होई॥`,
-
-`जो यह पढ़ै हनुमान चालीसा।
-होय सिद्धि साखी गौरीसा॥`,
-
-`तुलसीदास सदा हरि चेरा।
-कीजै नाथ हृदय महँ डेरा॥`,
-
-`पवनतनय संकट हरन, मंगल मूरति रूप।
-राम लखन सीता सहित, हृदय बसहु सुर भूप॥`
-];
-
-let currentIndex = 0;
-let playing = false;
-let fontSize = 19;
-let voices = [];
-
-const synth = window.speechSynthesis;
-
-function renderVerses() {
-    const area = document.getElementById("chalisaContent");
-    area.innerHTML = "";
-
-    verses.forEach((verse, index) => {
-        const div = document.createElement("div");
-        div.className = "verse";
-        div.style.fontSize = fontSize + "px";
-
-        const text = document.createElement("div");
-        text.textContent = verse;
-
-        const button = document.createElement("button");
-        button.textContent = "🔊 यो श्लोक पढ्नुहोस्";
-        button.onclick = () => readVerse(index);
-
-        div.appendChild(text);
-        div.appendChild(button);
-        area.appendChild(div);
-    });
-}
-
-function loadVoices() {
-    voices = synth.getVoices();
-    const select = document.getElementById("voiceSelect");
-    const oldValue = select.value;
-
-    select.innerHTML = '<option value="">Default Voice</option>';
-
-    voices.forEach((voice, index) => {
-        const option = document.createElement("option");
-        option.value = index;
-        option.textContent = voice.name + " (" + voice.lang + ")";
-        select.appendChild(option);
-    });
-
-    if (oldValue !== "") select.value = oldValue;
-}
-
-if ("speechSynthesis" in window) {
-    loadVoices();
-    synth.onvoiceschanged = loadVoices;
-}
-
-function getSpeechSettings() {
-    let rate = Number(document.getElementById("rateControl").value);
-    let pitch = Number(document.getElementById("pitchControl").value);
-
-    const style = document.getElementById("styleSelect").value;
-
-    if (style === "bhajan") {
-        rate = Math.min(rate, 0.75);
-        pitch = Math.max(pitch, 1.1);
-    }
-
-    if (style === "rhythm") {
-        rate = Math.min(rate, 0.9);
-    }
-
-    if (style === "slow") {
-        rate = 0.6;
-    }
-
-    return {rate, pitch};
-}
-
-function speak(text, onEnd) {
-    if (!("speechSynthesis" in window)) {
-        updateStatus("यो Browser मा Speech सुविधा उपलब्ध छैन।");
-        return;
-    }
-
-    synth.cancel();
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "hi-IN";
-
-    const selectedVoice = document.getElementById("voiceSelect").value;
-
-    if (selectedVoice !== "" && voices[selectedVoice]) {
-        utterance.voice = voices[selectedVoice];
-        utterance.lang = voices[selectedVoice].lang;
-    }
-
-    const settings = getSpeechSettings();
-    utterance.rate = settings.rate;
-    utterance.pitch = settings.pitch;
-
-    utterance.onend = function() {
-        if (onEnd) onEnd();
-    };
-
-    utterance.onerror = function() {
-        updateStatus("आवाज चलाउन समस्या भयो। अर्को Voice छानेर प्रयास गर्नुहोस्।");
-        playing = false;
-    };
-
-    synth.speak(utterance);
-}
-
-function playAll() {
-    stopAudio();
-    currentIndex = 0;
-    playing = true;
-    playNext();
-}
-
-function playNext() {
-    if (!playing || currentIndex >= verses.length) {
-        playing = false;
-        updateStatus("🙏 पूरा पाठ समाप्त भयो। जय हनुमान!");
-        return;
-    }
-
-    updateStatus("🔊 पाठ भइरहेको छ: " + (currentIndex + 1) + " / " + verses.length);
-
-    speak(verses[currentIndex], function() {
-        currentIndex++;
-        if (playing) {
-            setTimeout(playNext, 500);
-        }
-    });
-}
-
-function readVerse(index) {
-    stopAudio();
-    currentIndex = index;
-    playing = false;
-    updateStatus("🔊 श्लोक " + (index + 1) + " पढिँदैछ।");
-    speak(verses[index]);
-}
-
-function pauseAudio() {
-    if (synth.speaking && !synth.paused) {
-        synth.pause();
-        updateStatus("⏸ पाठ रोकिएको छ।");
-    }
-}
-
-function resumeAudio() {
-    if (synth.paused) {
-        synth.resume();
-        updateStatus("▶ पाठ फेरि सुरु भयो।");
-    }
-}
-
-function stopAudio() {
-    playing = false;
-    synth.cancel();
-    updateStatus("⏹ पाठ रोकियो।");
-}
-
-function updateStatus(message) {
-    document.getElementById("status").textContent = message;
-}
-
-function changeFont(amount) {
-    fontSize += amount;
-    if (fontSize < 14) fontSize = 14;
-    if (fontSize > 32) fontSize = 32;
-    renderVerses();
-}
-
-function toggleTheme() {
-    document.body.classList.toggle("dark");
-}
-
-document.getElementById("rateControl").addEventListener("input", function() {
-    document.getElementById("rateValue").textContent = this.value;
-});
-
-document.getElementById("pitchControl").addEventListener("input", function() {
-    document.getElementById("pitchValue").textContent = this.value;
-});
-
-renderVerses();
-</script>
-
-</body>
-</html>
+(function(){
+ const themes=[["light", "Light"], ["dark", "Dark"], ["blue", "Blue"], ["skyblue", "Sky Blue"], ["pink", "Pink"], ["skypink", "Sky Pink"], ["bluepink", "Blue Pink"], ["green", "Green"], ["purple", "Purple"], ["yellow", "Yellow"], ["orange", "Orange"], ["ocean", "Ocean"], ["forest", "Forest"], ["rose", "Rose"], ["sepia", "Sepia"]];
+ const langs={"en": "English", "hi": "हिन्दी", "bn": "বাংলা", "mr": "मराठी", "gu": "ગુજરાતી", "pa": "ਪੰਜਾਬੀ", "ta": "தமிழ்", "te": "తెలుగు", "kn": "ಕನ್ನಡ", "ml": "മലയാളം", "ur": "اردو", "ar": "العربية", "fa": "فارسی", "zh": "中文", "ja": "日本語", "ko": "한국어", "es": "Español", "fr": "Français", "de": "Deutsch", "ru": "Русский"};
+ const tr={"en": {"home": "Home", "bio": "Biography", "poem": "Poetry", "story": "Stories", "essay": "Essays", "ramayan": "Ramayana", "chalisa": "Hanuman Chalisa", "about": "About", "theme": "Theme", "language": "Language"}, "hi": {"home": "होम", "bio": "जीवनी", "poem": "कविता", "story": "कहानी", "essay": "निबंध", "ramayan": "रामायण", "chalisa": "हनुमान चालीसा", "about": "हमारे बारे में", "theme": "थीम", "language": "भाषा"}, "bn": {"home": "হোম", "bio": "জীবনী", "poem": "কবিতা", "story": "গল্প", "essay": "প্রবন্ধ", "ramayan": "রামায়ণ", "chalisa": "হনুমান চালিসা", "about": "আমাদের সম্পর্কে", "theme": "থিম", "language": "ভাষা"}, "mr": {"home": "मुखपृष्ठ", "bio": "चरित्र", "poem": "कविता", "story": "कथा", "essay": "निबंध", "ramayan": "रामायण", "chalisa": "हनुमान चालीसा", "about": "आमच्याबद्दल", "theme": "थीम", "language": "भाषा"}, "gu": {"home": "હોમ", "bio": "જીવનચરિત્ર", "poem": "કવિતા", "story": "વાર્તા", "essay": "નિબંધ", "ramayan": "રામાયણ", "chalisa": "હનુમાન ચાલીસા", "about": "અમારા વિશે", "theme": "થીમ", "language": "ભાષા"}, "pa": {"home": "ਘਰ", "bio": "ਜੀਵਨੀ", "poem": "ਕਵਿਤਾ", "story": "ਕਹਾਣੀਆਂ", "essay": "ਲੇਖ", "ramayan": "ਰਾਮਾਇਣ", "chalisa": "ਹਨੂਮਾਨ ਚਾਲੀਸਾ", "about": "ਸਾਡੇ ਬਾਰੇ", "theme": "ਥੀਮ", "language": "ਭਾਸ਼ਾ"}, "ta": {"home": "முகப்பு", "bio": "வாழ்க்கை வரலாறு", "poem": "கவிதை", "story": "கதை", "essay": "கட்டுரை", "ramayan": "ராமாயணம்", "chalisa": "அனுமன் சாலிசா", "about": "எங்களைப் பற்றி", "theme": "தீம்", "language": "மொழி"}, "te": {"home": "హోమ్", "bio": "జీవిత చరిత్ర", "poem": "కవిత్వం", "story": "కథలు", "essay": "వ్యాసాలు", "ramayan": "రామాయణం", "chalisa": "హనుమాన్ చాలీసా", "about": "మా గురించి", "theme": "థీమ్", "language": "భాష"}, "kn": {"home": "ಮುಖಪುಟ", "bio": "ಜೀವನಚರಿತ್ರೆ", "poem": "ಕವನ", "story": "ಕಥೆಗಳು", "essay": "ಪ್ರಬಂಧ", "ramayan": "ರಾಮಾಯಣ", "chalisa": "ಹನುಮಾನ್ ಚಾಲೀಸಾ", "about": "ನಮ್ಮ ಬಗ್ಗೆ", "theme": "ಥೀಮ್", "language": "ಭಾಷೆ"}, "ml": {"home": "ഹോം", "bio": "ജീവചരിത്രം", "poem": "കവിത", "story": "കഥകൾ", "essay": "ലേഖനങ്ങൾ", "ramayan": "രാമായണം", "chalisa": "ഹനുമാൻ ചാലിസ", "about": "ഞങ്ങളെക്കുറിച്ച്", "theme": "തീം", "language": "ഭാഷ"}, "ur": {"home": "گھر", "bio": "سوانح", "poem": "شاعری", "story": "کہانیاں", "essay": "مضامین", "ramayan": "رامائن", "chalisa": "ہنومان چالیسہ", "about": "ہمارے بارے میں", "theme": "تھیم", "language": "زبان"}, "ar": {"home": "الرئيسية", "bio": "السيرة", "poem": "الشعر", "story": "القصص", "essay": "المقالات", "ramayan": "رامايانا", "chalisa": "هانومان تشاليسا", "about": "من نحن", "theme": "المظهر", "language": "اللغة"}, "fa": {"home": "خانه", "bio": "زندگی‌نامه", "poem": "شعر", "story": "داستان‌ها", "essay": "مقاله‌ها", "ramayan": "رامایانا", "chalisa": "هانومان چالیسا", "about": "درباره ما", "theme": "پوسته", "language": "زبان"}, "zh": {"home": "首页", "bio": "传记", "poem": "诗歌", "story": "故事", "essay": "文章", "ramayan": "罗摩衍那", "chalisa": "哈奴曼颂", "about": "关于我们", "theme": "主题", "language": "语言"}, "ja": {"home": "ホーム", "bio": "伝記", "poem": "詩", "story": "物語", "essay": "エッセイ", "ramayan": "ラーマーヤナ", "chalisa": "ハヌマーン・チャリサー", "about": "私たちについて", "theme": "テーマ", "language": "言語"}, "ko": {"home": "홈", "bio": "전기", "poem": "시", "story": "이야기", "essay": "에세이", "ramayan": "라마야나", "chalisa": "하누만 찰리사", "about": "소개", "theme": "테마", "language": "언어"}, "es": {"home": "Inicio", "bio": "Biografías", "poem": "Poesía", "story": "Historias", "essay": "Ensayos", "ramayan": "Ramayana", "chalisa": "Hanuman Chalisa", "about": "Sobre nosotros", "theme": "Tema", "language": "Idioma"}, "fr": {"home": "Accueil", "bio": "Biographies", "poem": "Poésie", "story": "Histoires", "essay": "Essais", "ramayan": "Ramayana", "chalisa": "Hanuman Chalisa", "about": "À propos", "theme": "Thème", "language": "Langue"}, "de": {"home": "Startseite", "bio": "Biografien", "poem": "Gedichte", "story": "Geschichten", "essay": "Aufsätze", "ramayan": "Ramayana", "chalisa": "Hanuman Chalisa", "about": "Über uns", "theme": "Thema", "language": "Sprache"}, "ru": {"home": "Главная", "bio": "Биографии", "poem": "Поэзия", "story": "Рассказы", "essay": "Эссе", "ramayan": "Рамаяна", "chalisa": "Хануман Чалиса", "about": "О нас", "theme": "Тема", "language": "Язык"}};
+ const savedTheme=localStorage.getItem("aayushTheme15")||"light";
+ document.body.dataset.ayTheme=savedTheme;
+ function navMap(){
+  const links=document.querySelectorAll("nav a");
+  const map={"index.html":"home","jibani.html":"bio","kabita.html":"poem","katha.html":"story","nibandha.html":"essay","ramayan.html":"ramayan","hanuman-chalisa.html":"chalisa","about.html":"about"};
+  links.forEach(a=>{const key=map[(a.getAttribute("href")||"").split("#")[0]]; if(key) a.dataset.navKey=key;});
+ }
+ function renderTools(){
+  if(document.getElementById("ayThemeLang")) return;
+  const bar=document.createElement("section"); bar.id="ayThemeLang"; bar.className="ay-tools";
+  bar.innerHTML=`<h2>🎨 Theme & Language</h2>
+   <div><label data-i18n="theme">Theme</label><select id="ayThemeSelect"></select></div>
+   <div><label data-i18n="language">Language</label><select id="ayLangSelect"></select></div>
+   <div class="ay-actions"><button type="button" id="ayReset">↺ Reset</button></div>
+   <p class="ay-hint">15 रंगीन Theme र 20 भाषा interface विकल्प। सामग्रीका मूल पाठहरू नेपालीमै सुरक्षित छन्।</p>`;
+  const nav=document.querySelector("nav"); if(nav) nav.insertAdjacentElement("afterend",bar); else document.body.prepend(bar);
+  const ts=document.getElementById("ayThemeSelect"), ls=document.getElementById("ayLangSelect");
+  themes.forEach(([v,n])=>{const o=document.createElement("option");o.value=v;o.textContent=n;ts.appendChild(o)});
+  Object.entries(langs).forEach(([v,n])=>{const o=document.createElement("option");o.value=v;o.textContent=n;ls.appendChild(o)});
+  ts.value=savedTheme; ls.value=localStorage.getItem("aayushLang20")||"en";
+  ts.onchange=()=>{document.body.dataset.ayTheme=ts.value;localStorage.setItem("aayushTheme15",ts.value)};
+  ls.onchange=()=>{localStorage.setItem("aayushLang20",ls.value);applyLang(ls.value)};
+  document.getElementById("ayReset").onclick=()=>{localStorage.removeItem("aayushTheme15");localStorage.removeItem("aayushLang20");location.reload()};
+ }
+ function applyLang(code){
+  const d=tr[code]||tr.en;
+  document.querySelectorAll("[data-nav-key]").forEach(a=>{const k=a.dataset.navKey;if(d[k]) a.textContent=(k==="home"?"🏠 ":"")+d[k]});
+  document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;if(d[k]) el.textContent=d[k]});
+  document.documentElement.lang=code;
+ }
+ navMap(); renderTools(); applyLang(localStorage.getItem("aayushLang20")||"en");
+ const note=document.createElement("aside"); note.className="ay-side-note";
+ note.innerHTML=`<h3>📚 AAYUSH नेपाली साहित्य</h3><p>यो डिजिटल पुस्तकालयमा कथा, कविता, बाल साहित्य, निबन्ध, जीवनी, रामायण र हनुमान चालीसा सामग्री एउटै ठाउँमा राखिएको छ।</p><p>थीम परिवर्तन गर्दा रोजाइ सुरक्षित हुन्छ। भाषा विकल्पले मुख्य interface बदल्छ; मूल साहित्यिक पाठ सुरक्षित रहन्छ।</p><a href="index.html">गृहपृष्ठ</a>`;
+ document.body.appendChild(note);
+})();
+</script></body></html>

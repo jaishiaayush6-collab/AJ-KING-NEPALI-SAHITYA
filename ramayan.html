@@ -179,7 +179,54 @@ footer{
 }
 
 </style>
-</head>
+<style>
+/* AAYUSH SHARED THEME + LANGUAGE SYSTEM — 15 THEMES / 20 LANGUAGES */
+:root{
+ --ay-bg:#f7f9fc;--ay-card:#fff;--ay-text:#17233a;--ay-primary:#2563eb;
+ --ay-border:#cbd5e1;--ay-soft:#eff6ff;--ay-shadow:0 8px 26px rgba(15,23,42,.08);
+}
+body{background:var(--ay-bg)!important;color:var(--ay-text)!important;transition:background .25s,color .25s}
+body[data-ay-theme="light"]{--ay-bg:#f8fafc;--ay-card:#fff;--ay-text:#1e293b;--ay-primary:#2563eb;--ay-border:#cbd5e1;--ay-soft:#eff6ff}
+body[data-ay-theme="dark"]{--ay-bg:#0f172a;--ay-card:#1e293b;--ay-text:#f8fafc;--ay-primary:#93c5fd;--ay-border:#475569;--ay-soft:#26364f}
+body[data-ay-theme="blue"]{--ay-bg:#e8f3ff;--ay-card:#fff;--ay-text:#12345a;--ay-primary:#075db5;--ay-border:#9fc8f1;--ay-soft:#d8ebff}
+body[data-ay-theme="skyblue"]{--ay-bg:#e9f8ff;--ay-card:#fff;--ay-text:#16445b;--ay-primary:#0284c7;--ay-border:#a9def5;--ay-soft:#dff4ff}
+body[data-ay-theme="pink"]{--ay-bg:#fff0f6;--ay-card:#fff;--ay-text:#64213f;--ay-primary:#db2777;--ay-border:#f3b6d2;--ay-soft:#ffe0ed}
+body[data-ay-theme="skypink"]{--ay-bg:#fff4fb;--ay-card:#fefaff;--ay-text:#5b3151;--ay-primary:#e879b5;--ay-border:#f5c9e4;--ay-soft:#ffeaf7}
+body[data-ay-theme="bluepink"]{--ay-bg:#edf4ff;--ay-card:#fff0f7;--ay-text:#3d3159;--ay-primary:#a13d9b;--ay-border:#d8b5e5;--ay-soft:#f7e5f5}
+body[data-ay-theme="green"]{--ay-bg:#edf8ef;--ay-card:#fff;--ay-text:#173d27;--ay-primary:#23834a;--ay-border:#b8dfc2;--ay-soft:#dff3e4}
+body[data-ay-theme="purple"]{--ay-bg:#f4efff;--ay-card:#fff;--ay-text:#352451;--ay-primary:#7442c8;--ay-border:#d2c1f0;--ay-soft:#eae0ff}
+body[data-ay-theme="yellow"]{--ay-bg:#fff9db;--ay-card:#fffef5;--ay-text:#55420b;--ay-primary:#b77908;--ay-border:#ead58a;--ay-soft:#fff0b8}
+body[data-ay-theme="orange"]{--ay-bg:#fff3e8;--ay-card:#fff;--ay-text:#5a2b13;--ay-primary:#ea580c;--ay-border:#f3c5a8;--ay-soft:#ffe6d4}
+body[data-ay-theme="ocean"]{--ay-bg:#e7f7f7;--ay-card:#fff;--ay-text:#123d43;--ay-primary:#0f766e;--ay-border:#a9d9d5;--ay-soft:#d9f0ee}
+body[data-ay-theme="forest"]{--ay-bg:#edf5ee;--ay-card:#fff;--ay-text:#173d2a;--ay-primary:#166534;--ay-border:#b7d8bf;--ay-soft:#dff0e2}
+body[data-ay-theme="rose"]{--ay-bg:#fff1f2;--ay-card:#fff;--ay-text:#57243c;--ay-primary:#be123c;--ay-border:#f0bcc8;--ay-soft:#ffe1e5}
+body[data-ay-theme="sepia"]{--ay-bg:#f4ead8;--ay-card:#fff8e9;--ay-text:#493b2a;--ay-primary:#98652b;--ay-border:#dfcba9;--ay-soft:#efe0c3}
+body .panel,body .intro,body .item,body .card,body .category-card,body .poem-card,body .essay-item,body .essay-box,
+body .kanda,body .toc,body .stats,body .modal-content,body .story-reader,body .verse,body #reader,body #readerText,
+body .about,body .category,body .category-card{
+ background:var(--ay-card)!important;color:var(--ay-text)!important;border-color:var(--ay-border)!important;
+}
+body input,body select,body textarea{background:var(--ay-card)!important;color:var(--ay-text)!important;border-color:var(--ay-border)!important}
+body a{color:var(--ay-primary)}
+.ay-tools{max-width:1180px;margin:14px auto;padding:14px 16px;background:var(--ay-card);color:var(--ay-text);
+ border:2px solid var(--ay-border);border-radius:16px;box-shadow:var(--ay-shadow);display:grid;
+ grid-template-columns:2fr 1fr 1fr;gap:12px;align-items:end;font:14px/1.6 system-ui,sans-serif}
+.ay-tools h2,.ay-hint{grid-column:1/-1}.ay-tools h2{margin:0;color:var(--ay-primary);font-size:19px}
+.ay-tools label{display:block;font-weight:700;margin-bottom:5px}.ay-tools select{width:100%;padding:9px;border-radius:9px}
+.ay-tools button{padding:9px 12px;border:1px solid var(--ay-border);border-radius:9px;background:var(--ay-primary);color:#fff;cursor:pointer;font-weight:700}
+.ay-actions{display:flex;flex-wrap:wrap;gap:6px}.ay-hint{margin:0;font-size:12px;opacity:.75}
+.ay-theme-grid{display:flex;gap:6px;flex-wrap:wrap}.ay-swatch{min-width:70px!important}
+.ay-side-note{position:fixed;right:12px;top:180px;width:220px;padding:14px;border:1px solid var(--ay-border);
+ background:var(--ay-card);color:var(--ay-text);border-radius:14px;box-shadow:var(--ay-shadow);z-index:5;font-size:12px;line-height:1.8}
+.ay-side-note h3{color:var(--ay-primary);font-size:14px;margin-bottom:6px}
+.ay-side-note p{margin:0 0 8px}.ay-side-note a{font-weight:700}
+.ay-page-extra{max-width:1180px;margin:22px auto;padding:22px;background:var(--ay-card);border:1px solid var(--ay-border);
+ border-radius:16px;box-shadow:var(--ay-shadow);line-height:2}
+.ay-page-extra h2,.ay-page-extra h3{color:var(--ay-primary)}
+.ay-page-extra p{margin:10px 0;text-align:justify}
+@media(max-width:900px){.ay-side-note{display:none}.ay-tools{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.ay-tools{grid-template-columns:1fr;margin:10px;padding:12px}.ay-tools h2,.ay-hint{grid-column:auto}}
+</style></head>
 
 <body>
 
@@ -192,8 +239,6 @@ footer{
 <p>AAYUSH NEPALI SAHITYA</p>
 
 </header>
-
-
 <div class="controls">
 
 <input
@@ -773,7 +818,25 @@ placeholder="रामायणभित्र कथा खोज्नुह�
 
 </section>
 
-</main>
+<section class="ay-page-extra">
+<h2>📜 रामायणको विस्तृत व्याख्या, जीवनदर्शन र समग्र सन्देश</h2>
+<h3>१. आदर्श व्यक्तित्वको शिक्षा</h3>
+<p>रामायणको केन्द्रमा श्रीरामको चरित्र छ। उहाँलाई मर्यादा, सत्य, कर्तव्य र संयमका आदर्शका रूपमा प्रस्तुत गरिन्छ। राजकुमार भएर पनि कठिन परिस्थितिमा व्यक्तिगत सुखभन्दा पिताको वचन र कर्तव्यलाई प्राथमिकता दिनु कथाको महत्वपूर्ण नैतिक पक्ष हो। यसबाट अधिकारसँगै जिम्मेवारी पनि आउँछ भन्ने शिक्षा लिन सकिन्छ।</p>
+<h3>२. सीताको धैर्य र आत्मसम्मान</h3>
+<p>सीताको पात्रलाई केवल दुःख सहने पात्रका रूपमा मात्र होइन, कठिन परिस्थितिमा दृढ रहने, निर्णयमा अडिने र आफ्नो मर्यादा कायम राख्ने व्यक्तित्वका रूपमा बुझ्न सकिन्छ। वनवास, अपहरण र अशोक वाटिकाको कठिन अवस्थामा पनि उनको आत्मसम्मान र धैर्य कथाको महत्वपूर्ण पक्ष हो।</p>
+<h3>३. लक्ष्मण, भरत र शत्रुघ्नको योगदान</h3>
+<p>रामायणको आदर्श केवल रामको कथामा सीमित छैन। लक्ष्मणको सेवा र त्याग, भरतको राज्यप्रतिको अनासक्ति र रामप्रतिको सम्मान, तथा शत्रुघ्नको पारिवारिक जिम्मेवारीले परिवार, कर्तव्य र सम्बन्धको विभिन्न रूप देखाउँछन्। भरतले पादुका राखेर राज्य सञ्चालन गर्नु त्याग र प्रतिनिधि नेतृत्वको प्रतीकात्मक उदाहरणका रूपमा व्याख्या गर्न सकिन्छ।</p>
+<h3>४. हनुमानको सेवा, बुद्धि र साहस</h3>
+<p>हनुमानको चरित्रमा बलसँगै विवेक, नम्रता, नेतृत्व, समस्या समाधान र सेवाभाव जोडिएको छ। समुद्र पार गर्ने, सीतालाई भेट्ने, लङ्का पुगेर सूचना ल्याउने र युद्धमा सहयोग गर्ने प्रसंगहरूले चुनौतीपूर्ण काममा आत्मविश्वास र रणनीतिक सोचको महत्व देखाउँछन्।</p>
+<h3>५. रावणको चरित्रबाट प्राप्त चेतावनी</h3>
+<p>रावण विद्वान्, शक्तिशाली र सम्पन्न राजा भए पनि अहंकार, अन्याय र अनियन्त्रित इच्छाका कारण पतनतर्फ जान्छन्। यसले केवल ज्ञान वा शक्ति पर्याप्त हुँदैन; त्यसलाई सही नैतिक दिशामा प्रयोग गर्नुपर्छ भन्ने सन्देश दिन्छ। रामायणको विरोधी पात्रको रूपमा रावणको चरित्रलाई अध्ययन गर्दा शक्ति र चरित्रबीचको सम्बन्ध बुझ्न सकिन्छ।</p>
+<h3>६. सात काण्डको समग्र अर्थ</h3>
+<p>बालकाण्डले रामको प्रारम्भिक जीवन र विवाहको पृष्ठभूमि तयार गर्छ। अयोध्याकाण्डले वचन, परिवार र त्यागको परीक्षा देखाउँछ। अरण्यकाण्डले वनजीवन, संकट र सीता हरणको मोड ल्याउँछ। किष्किन्धाकाण्डले मित्रता र सहयोगको शक्ति देखाउँछ। सुन्दरकाण्डमा हनुमानको साहस र भक्तिको उत्कर्ष देखिन्छ। युद्धकाण्डमा अन्यायविरुद्धको संघर्ष र विजयको कथा आउँछ। उत्तरकाण्डमा राज्य, परिवार, लोकधर्म र रामकथाको पछिल्लो परम्पराबारे चर्चा हुन्छ।</p>
+<h3>७. आधुनिक जीवनमा रामायण</h3>
+<p>रामायणलाई आधुनिक जीवनमा पढ्दा यसको धार्मिक वा सांस्कृतिक अर्थसँगै नेतृत्व, परिवार, नैतिक निर्णय, संकट व्यवस्थापन, मित्रता, जिम्मेवारी र आत्मअनुशासनका पक्ष पनि अध्ययन गर्न सकिन्छ। विद्यालय, परिवार र समाजमा सत्य बोल्ने, आफ्नो जिम्मेवारी पूरा गर्ने, अरूको सम्मान गर्ने र कठिन समयमा धैर्य राख्ने व्यवहारका लागि यसबाट प्रेरणा लिन सकिन्छ।</p>
+<h3>८. अध्ययन गर्दा ध्यान दिनुपर्ने कुरा</h3>
+<p>रामायणका विभिन्न संस्करण, क्षेत्रीय परम्परा र भाषिक रूपहरूमा कथाको प्रस्तुति फरक हुन सक्छ। त्यसैले कुनै एक संस्करणलाई मात्र सम्पूर्ण परम्पराको एउटै रूप ठान्नुको सट्टा विभिन्न रामायण परम्परालाई सम्मानपूर्वक अध्ययन गर्नु उपयोगी हुन्छ। यो पृष्ठ अध्ययन र सामान्य परिचयका लागि तयार गरिएको डिजिटल प्रस्तुति हो।</p>
+</section></main>
 
 
 <footer>
@@ -863,5 +926,48 @@ section.classList.toggle(
 
 </script>
 
-</body>
+
+
+
+<script>
+(function(){
+ const themes=[["light", "Light"], ["dark", "Dark"], ["blue", "Blue"], ["skyblue", "Sky Blue"], ["pink", "Pink"], ["skypink", "Sky Pink"], ["bluepink", "Blue Pink"], ["green", "Green"], ["purple", "Purple"], ["yellow", "Yellow"], ["orange", "Orange"], ["ocean", "Ocean"], ["forest", "Forest"], ["rose", "Rose"], ["sepia", "Sepia"]];
+ const langs={"en": "English", "hi": "हिन्दी", "bn": "বাংলা", "mr": "मराठी", "gu": "ગુજરાતી", "pa": "ਪੰਜਾਬੀ", "ta": "தமிழ்", "te": "తెలుగు", "kn": "ಕನ್ನಡ", "ml": "മലയാളം", "ur": "اردو", "ar": "العربية", "fa": "فارسی", "zh": "中文", "ja": "日本語", "ko": "한국어", "es": "Español", "fr": "Français", "de": "Deutsch", "ru": "Русский"};
+ const tr={"en": {"home": "Home", "bio": "Biography", "poem": "Poetry", "story": "Stories", "essay": "Essays", "ramayan": "Ramayana", "chalisa": "Hanuman Chalisa", "about": "About", "theme": "Theme", "language": "Language"}, "hi": {"home": "होम", "bio": "जीवनी", "poem": "कविता", "story": "कहानी", "essay": "निबंध", "ramayan": "रामायण", "chalisa": "हनुमान चालीसा", "about": "हमारे बारे में", "theme": "थीम", "language": "भाषा"}, "bn": {"home": "হোম", "bio": "জীবনী", "poem": "কবিতা", "story": "গল্প", "essay": "প্রবন্ধ", "ramayan": "রামায়ণ", "chalisa": "হনুমান চালিসা", "about": "আমাদের সম্পর্কে", "theme": "থিম", "language": "ভাষা"}, "mr": {"home": "मुखपृष्ठ", "bio": "चरित्र", "poem": "कविता", "story": "कथा", "essay": "निबंध", "ramayan": "रामायण", "chalisa": "हनुमान चालीसा", "about": "आमच्याबद्दल", "theme": "थीम", "language": "भाषा"}, "gu": {"home": "હોમ", "bio": "જીવનચરિત્ર", "poem": "કવિતા", "story": "વાર્તા", "essay": "નિબંધ", "ramayan": "રામાયણ", "chalisa": "હનુમાન ચાલીસા", "about": "અમારા વિશે", "theme": "થીમ", "language": "ભાષા"}, "pa": {"home": "ਘਰ", "bio": "ਜੀਵਨੀ", "poem": "ਕਵਿਤਾ", "story": "ਕਹਾਣੀਆਂ", "essay": "ਲੇਖ", "ramayan": "ਰਾਮਾਇਣ", "chalisa": "ਹਨੂਮਾਨ ਚਾਲੀਸਾ", "about": "ਸਾਡੇ ਬਾਰੇ", "theme": "ਥੀਮ", "language": "ਭਾਸ਼ਾ"}, "ta": {"home": "முகப்பு", "bio": "வாழ்க்கை வரலாறு", "poem": "கவிதை", "story": "கதை", "essay": "கட்டுரை", "ramayan": "ராமாயணம்", "chalisa": "அனுமன் சாலிசா", "about": "எங்களைப் பற்றி", "theme": "தீம்", "language": "மொழி"}, "te": {"home": "హోమ్", "bio": "జీవిత చరిత్ర", "poem": "కవిత్వం", "story": "కథలు", "essay": "వ్యాసాలు", "ramayan": "రామాయణం", "chalisa": "హనుమాన్ చాలీసా", "about": "మా గురించి", "theme": "థీమ్", "language": "భాష"}, "kn": {"home": "ಮುಖಪುಟ", "bio": "ಜೀವನಚರಿತ್ರೆ", "poem": "ಕವನ", "story": "ಕಥೆಗಳು", "essay": "ಪ್ರಬಂಧ", "ramayan": "ರಾಮಾಯಣ", "chalisa": "ಹನುಮಾನ್ ಚಾಲೀಸಾ", "about": "ನಮ್ಮ ಬಗ್ಗೆ", "theme": "ಥೀಮ್", "language": "ಭಾಷೆ"}, "ml": {"home": "ഹോം", "bio": "ജീവചരിത്രം", "poem": "കവിത", "story": "കഥകൾ", "essay": "ലേഖനങ്ങൾ", "ramayan": "രാമായണം", "chalisa": "ഹനുമാൻ ചാലിസ", "about": "ഞങ്ങളെക്കുറിച്ച്", "theme": "തീം", "language": "ഭാഷ"}, "ur": {"home": "گھر", "bio": "سوانح", "poem": "شاعری", "story": "کہانیاں", "essay": "مضامین", "ramayan": "رامائن", "chalisa": "ہنومان چالیسہ", "about": "ہمارے بارے میں", "theme": "تھیم", "language": "زبان"}, "ar": {"home": "الرئيسية", "bio": "السيرة", "poem": "الشعر", "story": "القصص", "essay": "المقالات", "ramayan": "رامايانا", "chalisa": "هانومان تشاليسا", "about": "من نحن", "theme": "المظهر", "language": "اللغة"}, "fa": {"home": "خانه", "bio": "زندگی‌نامه", "poem": "شعر", "story": "داستان‌ها", "essay": "مقاله‌ها", "ramayan": "رامایانا", "chalisa": "هانومان چالیسا", "about": "درباره ما", "theme": "پوسته", "language": "زبان"}, "zh": {"home": "首页", "bio": "传记", "poem": "诗歌", "story": "故事", "essay": "文章", "ramayan": "罗摩衍那", "chalisa": "哈奴曼颂", "about": "关于我们", "theme": "主题", "language": "语言"}, "ja": {"home": "ホーム", "bio": "伝記", "poem": "詩", "story": "物語", "essay": "エッセイ", "ramayan": "ラーマーヤナ", "chalisa": "ハヌマーン・チャリサー", "about": "私たちについて", "theme": "テーマ", "language": "言語"}, "ko": {"home": "홈", "bio": "전기", "poem": "시", "story": "이야기", "essay": "에세이", "ramayan": "라마야나", "chalisa": "하누만 찰리사", "about": "소개", "theme": "테마", "language": "언어"}, "es": {"home": "Inicio", "bio": "Biografías", "poem": "Poesía", "story": "Historias", "essay": "Ensayos", "ramayan": "Ramayana", "chalisa": "Hanuman Chalisa", "about": "Sobre nosotros", "theme": "Tema", "language": "Idioma"}, "fr": {"home": "Accueil", "bio": "Biographies", "poem": "Poésie", "story": "Histoires", "essay": "Essais", "ramayan": "Ramayana", "chalisa": "Hanuman Chalisa", "about": "À propos", "theme": "Thème", "language": "Langue"}, "de": {"home": "Startseite", "bio": "Biografien", "poem": "Gedichte", "story": "Geschichten", "essay": "Aufsätze", "ramayan": "Ramayana", "chalisa": "Hanuman Chalisa", "about": "Über uns", "theme": "Thema", "language": "Sprache"}, "ru": {"home": "Главная", "bio": "Биографии", "poem": "Поэзия", "story": "Рассказы", "essay": "Эссе", "ramayan": "Рамаяна", "chalisa": "Хануман Чалиса", "about": "О нас", "theme": "Тема", "language": "Язык"}};
+ const savedTheme=localStorage.getItem("aayushTheme15")||"light";
+ document.body.dataset.ayTheme=savedTheme;
+ function navMap(){
+  const links=document.querySelectorAll("nav a");
+  const map={"index.html":"home","jibani.html":"bio","kabita.html":"poem","katha.html":"story","nibandha.html":"essay","ramayan.html":"ramayan","hanuman-chalisa.html":"chalisa","about.html":"about"};
+  links.forEach(a=>{const key=map[(a.getAttribute("href")||"").split("#")[0]]; if(key) a.dataset.navKey=key;});
+ }
+ function renderTools(){
+  if(document.getElementById("ayThemeLang")) return;
+  const bar=document.createElement("section"); bar.id="ayThemeLang"; bar.className="ay-tools";
+  bar.innerHTML=`<h2>🎨 Theme & Language</h2>
+   <div><label data-i18n="theme">Theme</label><select id="ayThemeSelect"></select></div>
+   <div><label data-i18n="language">Language</label><select id="ayLangSelect"></select></div>
+   <div class="ay-actions"><button type="button" id="ayReset">↺ Reset</button></div>
+   <p class="ay-hint">15 रंगीन Theme र 20 भाषा interface विकल्प। सामग्रीका मूल पाठहरू नेपालीमै सुरक्षित छन्।</p>`;
+  const nav=document.querySelector("nav"); if(nav) nav.insertAdjacentElement("afterend",bar); else document.body.prepend(bar);
+  const ts=document.getElementById("ayThemeSelect"), ls=document.getElementById("ayLangSelect");
+  themes.forEach(([v,n])=>{const o=document.createElement("option");o.value=v;o.textContent=n;ts.appendChild(o)});
+  Object.entries(langs).forEach(([v,n])=>{const o=document.createElement("option");o.value=v;o.textContent=n;ls.appendChild(o)});
+  ts.value=savedTheme; ls.value=localStorage.getItem("aayushLang20")||"en";
+  ts.onchange=()=>{document.body.dataset.ayTheme=ts.value;localStorage.setItem("aayushTheme15",ts.value)};
+  ls.onchange=()=>{localStorage.setItem("aayushLang20",ls.value);applyLang(ls.value)};
+  document.getElementById("ayReset").onclick=()=>{localStorage.removeItem("aayushTheme15");localStorage.removeItem("aayushLang20");location.reload()};
+ }
+ function applyLang(code){
+  const d=tr[code]||tr.en;
+  document.querySelectorAll("[data-nav-key]").forEach(a=>{const k=a.dataset.navKey;if(d[k]) a.textContent=(k==="home"?"🏠 ":"")+d[k]});
+  document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;if(d[k]) el.textContent=d[k]});
+  document.documentElement.lang=code;
+ }
+ navMap(); renderTools(); applyLang(localStorage.getItem("aayushLang20")||"en");
+ const note=document.createElement("aside"); note.className="ay-side-note";
+ note.innerHTML=`<h3>📚 AAYUSH नेपाली साहित्य</h3><p>यो डिजिटल पुस्तकालयमा कथा, कविता, बाल साहित्य, निबन्ध, जीवनी, रामायण र हनुमान चालीसा सामग्री एउटै ठाउँमा राखिएको छ।</p><p>थीम परिवर्तन गर्दा रोजाइ सुरक्षित हुन्छ। भाषा विकल्पले मुख्य interface बदल्छ; मूल साहित्यिक पाठ सुरक्षित रहन्छ।</p><a href="index.html">गृहपृष्ठ</a>`;
+ document.body.appendChild(note);
+})();
+</script></body>
 </html>
