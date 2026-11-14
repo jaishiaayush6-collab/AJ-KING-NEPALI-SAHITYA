@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>कथा संसार | आयुष नेपाली साहित्य</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+ --bg:#f4f2fa;
+ --card:#ffffff;
+ --text:#25243a;
+ --muted:#777287;
+ --accent:#7442c8;
+ --soft:#eee7fb;
+ --border:#e4ddef;
+}
+
+body.dark{
+ --bg:#171625;
+ --card:#242236;
+ --text:#f5f1ff;
+ --muted:#c0b9d0;
+ --accent:#bd9cff;
+ --soft:#39304e;
+ --border:#45405b;
+}
+
+body.sepia{
+ --bg:#f3ead8;
+ --card:#fff8e9;
+ --text:#463624;
+ --muted:#79684f;
+ --accent:#98652b;
+ --soft:#efe0c3;
+ --border:#e3d2b3;
+}
+
+body{
+ background:var(--bg);
+ color:var(--text);
+ font-family:"Noto Sans Devanagari","Mangal",sans-serif;
+ line-height:1.9;
+ transition:.2s;
+}
+
+header{
+ background:linear-gradient(120deg,#4c1d95,#9333ea);
+ color:white;
+ text-align:center;
+ padding:35px 15px;
+}
+
+header h1{font-size:clamp(26px,5vw,42px)}
+header p{margin-top:8px}
+
+nav{
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:20px;
+ padding:14px;
+ background:var(--card);
+ position:sticky;
+ top:0;
+ z-index:10;
+ box-shadow:0 3px 12px #0001;
+}
+
+nav a{
+ text-decoration:none;
+ color:var(--accent);
+ font-weight:bold;
+}
+
+.container{
+ max-width:1200px;
+ margin:25px auto;
+ padding:0 15px;
+}
+
+.panel,.story-reader{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:18px;
+ padding:22px;
+ margin-bottom:20px;
+ box-shadow:0 5px 20px #00000008;
+}
+
+h2{color:var(--accent);margin-bottom:10px}
+
+.controls{
+ display:grid;
+ grid-template-columns:2fr 1fr 1fr;
+ gap:10px;
+ margin-top:15px;
+}
+
+input,select,button{
+ font:inherit;
+ border:1px solid var(--border);
+ border-radius:10px;
+ padding:11px;
+ background:var(--card);
+ color:var(--text);
+}
+
+button{cursor:pointer}
+
+.primary{
+ background:var(--accent);
+ color:white;
+ border:none;
+ font-weight:bold;
+}
+
+.chips{
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+ margin-top:15px;
+}
+
+.chip{
+ background:var(--soft);
+ color:var(--accent);
+ border:none;
+ border-radius:25px;
+ padding:8px 13px;
+}
+
+.chip.active{
+ background:var(--accent);
+ color:white;
+}
+
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+ gap:15px;
+}
+
+.item{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:16px;
+ padding:17px;
+}
+
+.item h3{
+ color:var(--accent);
+ margin:8px 0;
+}
+
+.item p{color:var(--muted)}
+
+.item button{
+ width:100%;
+ margin-top:9px;
+}
+
+.fav{
+ background:#fff0f3;
+ color:#c02655;
+ border:none;
+}
+
+.muted{
+ color:var(--muted);
+ font-size:14px;
+}
+
+.toolbar{
+ display:flex;
+ flex-wrap:wrap;
+ gap:9px;
+ margin:15px 0;
+}
+
+#reader{display:none}
+
+.reader-title{
+ display:flex;
+ justify-content:space-between;
+ flex-wrap:wrap;
+ gap:10px;
+}
+
+.story-text p{
+ text-align:justify;
+ margin-bottom:20px;
+ line-height:2.1;
+}
+
+.story-text h3{
+ color:var(--accent);
+ margin:25px 0 10px;
+}
+
+.empty{
+ text-align:center;
+ padding:35px;
+ color:var(--muted);
+}
+
+footer{
+ text-align:center;
+ padding:30px;
+ color:var(--muted);
+}
+
+@media(max-width:700px){
+ .controls{grid-template-columns:1fr}
+ .panel,.story-reader{padding:15px}
+ nav{gap:12px}
+}
+
+@media print{
+ nav,.controls,.chips,.toolbar,footer,#listing{display:none!important}
+ body{background:white;color:black}
+ #reader{display:block!important}
+ .story-reader{border:none;box-shadow:none}
+}
+</style>
+<style>
+/* AAYUSH SHARED THEME + LANGUAGE SYSTEM — 15 THEMES / 20 LANGUAGES */
+:root{
+ --ay-bg:#f7f9fc;--ay-card:#fff;--ay-text:#17233a;--ay-primary:#2563eb;
+ --ay-border:#cbd5e1;--ay-soft:#eff6ff;--ay-shadow:0 8px 26px rgba(15,23,42,.08);
+}
+body{background:var(--ay-bg)!important;color:var(--ay-text)!important;transition:background .25s,color .25s}
+body[data-ay-theme="light"]{--ay-bg:#f8fafc;--ay-card:#fff;--ay-text:#1e293b;--ay-primary:#2563eb;--ay-border:#cbd5e1;--ay-soft:#eff6ff}
+body[data-ay-theme="dark"]{--ay-bg:#0f172a;--ay-card:#1e293b;--ay-text:#f8fafc;--ay-primary:#93c5fd;--ay-border:#475569;--ay-soft:#26364f}
+body[data-ay-theme="blue"]{--ay-bg:#e8f3ff;--ay-card:#fff;--ay-text:#12345a;--ay-primary:#075db5;--ay-border:#9fc8f1;--ay-soft:#d8ebff}
+body[data-ay-theme="skyblue"]{--ay-bg:#e9f8ff;--ay-card:#fff;--ay-text:#16445b;--ay-primary:#0284c7;--ay-border:#a9def5;--ay-soft:#dff4ff}
+body[data-ay-theme="pink"]{--ay-bg:#fff0f6;--ay-card:#fff;--ay-text:#64213f;--ay-primary:#db2777;--ay-border:#f3b6d2;--ay-soft:#ffe0ed}
+body[data-ay-theme="skypink"]{--ay-bg:#fff4fb;--ay-card:#fefaff;--ay-text:#5b3151;--ay-primary:#e879b5;--ay-border:#f5c9e4;--ay-soft:#ffeaf7}
+body[data-ay-theme="bluepink"]{--ay-bg:#edf4ff;--ay-card:#fff0f7;--ay-text:#3d3159;--ay-primary:#a13d9b;--ay-border:#d8b5e5;--ay-soft:#f7e5f5}
+body[data-ay-theme="green"]{--ay-bg:#edf8ef;--ay-card:#fff;--ay-text:#173d27;--ay-primary:#23834a;--ay-border:#b8dfc2;--ay-soft:#dff3e4}
+body[data-ay-theme="purple"]{--ay-bg:#f4efff;--ay-card:#fff;--ay-text:#352451;--ay-primary:#7442c8;--ay-border:#d2c1f0;--ay-soft:#eae0ff}
+body[data-ay-theme="yellow"]{--ay-bg:#fff9db;--ay-card:#fffef5;--ay-text:#55420b;--ay-primary:#b77908;--ay-border:#ead58a;--ay-soft:#fff0b8}
+body[data-ay-theme="orange"]{--ay-bg:#fff3e8;--ay-card:#fff;--ay-text:#5a2b13;--ay-primary:#ea580c;--ay-border:#f3c5a8;--ay-soft:#ffe6d4}
+body[data-ay-theme="ocean"]{--ay-bg:#e7f7f7;--ay-card:#fff;--ay-text:#123d43;--ay-primary:#0f766e;--ay-border:#a9d9d5;--ay-soft:#d9f0ee}
+body[data-ay-theme="forest"]{--ay-bg:#edf5ee;--ay-card:#fff;--ay-text:#173d2a;--ay-primary:#166534;--ay-border:#b7d8bf;--ay-soft:#dff0e2}
+body[data-ay-theme="rose"]{--ay-bg:#fff1f2;--ay-card:#fff;--ay-text:#57243c;--ay-primary:#be123c;--ay-border:#f0bcc8;--ay-soft:#ffe1e5}
+body[data-ay-theme="sepia"]{--ay-bg:#f4ead8;--ay-card:#fff8e9;--ay-text:#493b2a;--ay-primary:#98652b;--ay-border:#dfcba9;--ay-soft:#efe0c3}
+body .panel,body .intro,body .item,body .card,body .category-card,body .poem-card,body .essay-item,body .essay-box,
+body .kanda,body .toc,body .stats,body .modal-content,body .story-reader,body .verse,body #reader,body #readerText,
+body .about,body .category,body .category-card{
+ background:var(--ay-card)!important;color:var(--ay-text)!important;border-color:var(--ay-border)!important;
+}
+body input,body select,body textarea{background:var(--ay-card)!important;color:var(--ay-text)!important;border-color:var(--ay-border)!important}
+body a{color:var(--ay-primary)}
+.ay-tools{max-width:1180px;margin:14px auto;padding:14px 16px;background:var(--ay-card);color:var(--ay-text);
+ border:2px solid var(--ay-border);border-radius:16px;box-shadow:var(--ay-shadow);display:grid;
+ grid-template-columns:2fr 1fr 1fr;gap:12px;align-items:end;font:14px/1.6 system-ui,sans-serif}
+.ay-tools h2,.ay-hint{grid-column:1/-1}.ay-tools h2{margin:0;color:var(--ay-primary);font-size:19px}
+.ay-tools label{display:block;font-weight:700;margin-bottom:5px}.ay-tools select{width:100%;padding:9px;border-radius:9px}
+.ay-tools button{padding:9px 12px;border:1px solid var(--ay-border);border-radius:9px;background:var(--ay-primary);color:#fff;cursor:pointer;font-weight:700}
+.ay-actions{display:flex;flex-wrap:wrap;gap:6px}.ay-hint{margin:0;font-size:12px;opacity:.75}
+.ay-theme-grid{display:flex;gap:6px;flex-wrap:wrap}.ay-swatch{min-width:70px!important}
+.ay-side-note{position:fixed;right:12px;top:180px;width:220px;padding:14px;border:1px solid var(--ay-border);
+ background:var(--ay-card);color:var(--ay-text);border-radius:14px;box-shadow:var(--ay-shadow);z-index:5;font-size:12px;line-height:1.8}
+.ay-side-note h3{color:var(--ay-primary);font-size:14px;margin-bottom:6px}
+.ay-side-note p{margin:0 0 8px}.ay-side-note a{font-weight:700}
+.ay-page-extra{max-width:1180px;margin:22px auto;padding:22px;background:var(--ay-card);border:1px solid var(--ay-border);
+ border-radius:16px;box-shadow:var(--ay-shadow);line-height:2}
+.ay-page-extra h2,.ay-page-extra h3{color:var(--ay-primary)}
+.ay-page-extra p{margin:10px 0;text-align:justify}
+@media(max-width:900px){.ay-side-note{display:none}.ay-tools{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.ay-tools{grid-template-columns:1fr;margin:10px;padding:12px}.ay-tools h2,.ay-hint{grid-column:auto}}
+</style></head>
+
+<body>
+
+<header>
+ <h1>📚 आयुष नेपाली साहित्य</h1>
+ <p>पढौँ, लेखौँ, सिकौँ र साहित्यको संसारमा रमाऔँ।</p>
+</header>
+<nav>
+ <a href="index.html">गृहपृष्ठ</a>
+ <a href="katha.html">कथा</a>
+ <a href="kabita.html">कविता</a>
+ <a href="bal-sahitya.html">बाल साहित्य</a>
+ <a href="nibandha.html">निबन्ध</a>
+</nav>
+
+<main class="container">
+
+<section class="panel">
+ <h2>📖 कथा संसारमा स्वागत छ</h2>
+
+ <p>
+ साहित्य मानव जीवनको ऐना हो। कथाले मानिसलाई मनोरञ्जन मात्र
+ दिँदैन, जीवनका अनुभव, समाजका समस्या, असल व्यवहार,
+ नैतिकता र सकारात्मक सोचबारे पनि सिकाउँछ।
+ यस कथा विभागमा विभिन्न विधाका कथाहरू पढ्न सक्नुहुन्छ।
+ </p>
+
+ <p class="muted">
+ आयुष नेपाली साहित्य | कथा विभाग
+ </p>
+</section>
+
+<section class="panel">
+
+ <h2>🔎 आफ्नो मनपर्ने कथा खोज्नुहोस्</h2>
+
+ <div class="controls">
+
+  <input
+   id="search"
+   type="search"
+   placeholder="कथाको नाम वा शब्द लेख्नुहोस्..."
+  >
+
+  <select id="category">
+   <option value="all">सबै विधा</option>
+  </select>
+
+  <select id="theme">
+   <option value="light">उज्यालो थिम</option>
+   <option value="dark">डार्क थिम</option>
+   <option value="sepia">पुस्तक थिम</option>
+  </select>
+
+ </div>
+
+ <div class="chips" id="chips"></div>
+
+ <p id="status" class="muted"></p>
+
+</section>
+
+<section id="reader" class="story-reader">
+
+ <div class="reader-title">
+
+  <div>
+   <h2 id="storyTitle"></h2>
+   <p id="storyInfo" class="muted"></p>
+  </div>
+
+  <button onclick="closeStory()">← कथा सूची</button>
+
+ </div>
+
+ <div class="toolbar">
+
+  <button class="fav" id="readerFav" onclick="toggleCurrentFav()">
+   ♡ मनपर्नेमा राख्नुहोस्
+  </button>
+
+  <button onclick="changeFont(1)">अक्षर ठूलो +</button>
+
+  <button onclick="changeFont(-1)">अक्षर सानो −</button>
+
+  <button onclick="window.print()">प्रिन्ट / PDF</button>
+
+ </div>
+
+ <article id="storyContent" class="story-text"></article>
+
+ <div class="toolbar">
+  <button class="primary" onclick="closeStory()">अन्य कथा पढ्नुहोस्</button>
+ </div>
+
+</section>
+
+<section id="listing">
+
+ <div class="toolbar">
+
+  <button class="primary" onclick="showAll()">सबै कथा</button>
+
+  <button onclick="showFavorites()">♡ मेरा मनपर्ने कथा</button>
+
+ </div>
+
+ <div id="storyGrid" class="grid"></div>
+
+</section>
+
+</main>
+
+<footer>
+ © <span id="year"></span> आयुष नेपाली साहित्य
+ <br>
+ Developed by Aayush Jaishi
+</footer>
+
+<script>
+
+/* ==========================
+   कथा विधाहरू
+========================== */
+
+const categories=[
+
+{
+name:"सामाजिक कथा",
+description:"समाज, समानता, सहयोग र सामाजिक परिवर्तन",
+titles:["गाउँको चौतारी","छिमेकीको साथ","विद्यालयको नयाँ नियम","एकताको शक्ति","सहयोगी हात","भेदभावविरुद्ध आवाज","समुदायको पुस्तकालय","हराएको विश्वास","सफा बस्ती अभियान","नयाँ पुस्ताको सपना"]
+},
+
+{
+name:"डर तथा रहस्य कथा",
+description:"रहस्य, कौतूहल र खोजीका घटना",
+titles:["पुरानो घरको बत्ती","मध्यरातको आवाज","वनको पदचाप","बन्द कोठाको चिठी","हराएको घडी","कुवाको प्रतिध्वनि","पहाडको छायाँ","पुरानो स्टेशन","नक्सामा नभएको बाटो","अन्तिम ढोका"]
+},
+
+{
+name:"नैतिक कथा",
+description:"इमानदारी, परिश्रम र असल व्यवहार",
+titles:["इमानदार किसान","सत्यको पुरस्कार","लोभको परिणाम","वचनको मूल्य","सानो सहयोग","समयको सदुपयोग","क्षमा गर्न सिकौँ","मेहनती विद्यार्थी","घमण्डको हार","दयालु मन"]
+},
+
+{
+name:"बाल कथा",
+description:"बालबालिकाको कल्पना, मित्रता र सिकाइ",
+titles:["चरीको साथी","जादुई पेन्सिल","बोल्ने रूख","हराएको खेलौना","सानो वैज्ञानिक","इन्द्रेणीको यात्रा","खरायोको नयाँ घर","मित्रताको पतंग","नदीसँगको कुरा","सपनाको विद्यालय"]
+},
+
+{
+name:"ऐतिहासिक कथा",
+description:"इतिहास, सम्पदा र पुर्खाको अनुभव",
+titles:["पुरानो किल्लाको सन्देश","वीर पुर्खाको सम्झना","इतिहास बोकेको ढुङ्गा","दरबारको पुस्तकालय","पुरानो व्यापारिक बाटो","सीमाको चौकी","पुरातत्त्वविद्को खोज","अभिलेख जोगाउने बालक","पुरानो मन्दिर","समयको साक्षी"]
+},
+
+{
+name:"लघुकथा",
+description:"थोरै शब्दमा गहिरो अर्थ",
+titles:["एक कप चिया","अन्तिम बस","खाली कुर्सी","सानो बिरुवा","फर्किएको पत्र","एक मुस्कान","पुरानो जुत्ता","झ्यालको उज्यालो","दुई थोपा पानी","नयाँ बिहान"]
+},
+
+{
+name:"पारिवारिक कथा",
+description:"परिवार, सम्बन्ध र पुस्ताबीचको अनुभव",
+titles:["आमाको पुरानो बाकस","हजुरबुबाको कथा","दिदीको सपना","बाबुको मेहनत","भाइबहिनीको साथ","घर फर्किएको चाड","परिवारको निर्णय","भान्साको सम्झना","टाढिएको मन","एकै टेबलमा"]
+},
+
+{
+name:"प्राकृतिक कथा",
+description:"हिमाल, पहाड, नदी र जीवजन्तु",
+titles:["वनको बिहान","हिमालको हिउँ","नदीको यात्रा","चराको गुँड","फूलको मौसम","बादलको सन्देश","वनको साथी","झरनाको गीत","पातको यात्रा","माटोको सुगन्ध"]
+},
+
+{
+name:"वातावरण सम्बन्धी कथा",
+description:"प्रदूषण नियन्त्रण र वातावरण संरक्षण",
+titles:["हरियो गाउँ","प्लास्टिकमुक्त बजार","नदी सफा गर्ने टोली","रूख रोप्ने दिन","फोहोरको सही बाटो","पानी बचाऔँ","विद्यालयको बगैँचा","हराएको चराको आवाज","स्वच्छ हावा","भोलिको पृथ्वी"]
+},
+
+{
+name:"विज्ञान तथा प्रविधि कथा",
+description:"आविष्कार, कम्प्युटर र डिजिटल प्रविधि",
+titles:["रोबोट साथी","स्मार्ट गाउँ","हराएको पासवर्ड","सौर्य बत्ती","डिजिटल पुस्तकालय","किसानको एप","अन्तरिक्षको सन्देश","सानो ड्रोन","कोडको रहस्य","भविष्यको कक्षा"]
+},
+
+{
+name:"वैज्ञानिक कथा",
+description:"वैज्ञानिक सोच, अनुसन्धान र नयाँ खोज",
+titles:["मंगलको बिहान","समयको प्रयोगशाला","अदृश्य तरंग","समुद्रको गहिराइ","ताराको नक्सा","ऊर्जाको रहस्य","सानो अनुसन्धानकर्ता","चन्द्र आधार","नयाँ खोज","प्रकाशको यात्रा"]
+},
+
+{
+name:"वैवाहिक कथा",
+description:"सम्मान, संवाद र साझा जिम्मेवारी",
+titles:["सम्झदारीको सम्बन्ध","दुई परिवार","साझा सपना","सम्मानको जग","जीवनको नयाँ अध्याय","संवादको शक्ति","विश्वासको पुल","साझा जिम्मेवारी","परम्परा र परिवर्तन","साथीको साथ"]
+},
+
+{
+name:"सांस्कृतिक कथा",
+description:"भाषा, कला, संस्कृति र चाडपर्व",
+titles:["गाउँको जात्रा","मादलको ताल","हजुरआमाको गीत","भाषाको माया","पुरानो नाच","चाडको रौनक","हस्तकलाको कथा","लोककथाको साँझ","पोशाकको पहिचान","संस्कृतिको पुल"]
+},
+
+{
+name:"प्रेम कथा",
+description:"मित्रता, विश्वास र सम्मान",
+titles:["वर्षाको भेट","पुस्तकालयको चिनजान","अधुरो चिठी","विश्वासको उज्यालो","फूलको उपहार","टाढाको सहर","साझा सपना","मौन समझदारी","समयले दिएको उत्तर","मित्रताबाट सुरु"]
+},
+
+{
+name:"विश्वसम्बन्धी कथा",
+description:"विश्वका समाज, भाषा र अन्तरदेशीय मित्रता",
+titles:["हिमालपारिको साथी","समुद्रपारिको चिठी","तीन देशको टोली","विश्वको नक्सा","भाषाको पुल","शान्तिको सन्देश","टाढाको विद्यालय","यात्राको डायरी","साझा पृथ्वी","सीमाभन्दा पर"]
+}
+
+];
+
+
+/* ==========================
+   कथा पात्र र स्थान
+========================== */
+
+const characters=[
+"आरव","सुमना","निरज","आशा","किरण",
+"प्रकृति","समीर","अनु","विवेक","दीपा",
+"सागर","रचना","अमित","निशा","रोहन"
+];
+
+const places=[
+"कञ्चनपुरको एउटा सुन्दर गाउँ",
+"तपाईंको काखमा रहेको सानो बस्ती",
+"नदीकिनारको पुरानो बजार",
+"हरियालीले भरिएको एउटा विद्यालय",
+"सहरको व्यस्त तर आत्मीय टोल",
+"हिमाल देखिने सुन्दर गाउँ",
+"वनजङ्गलले घेरिएको एउटा बस्ती",
+"शान्त वातावरण भएको एउटा सानो सहर"
+];
+
+const dialogue=[
+"हामीले समस्या देखेर मात्र हुँदैन, त्यसको समाधानका लागि पनि प्रयास गर्नुपर्छ।",
+"तिमीले भनेको कुरा सही हो। तर हामी सबैले मिलेर काम गर्नुपर्छ।",
+"मलाई विश्वास छ, इमानदार प्रयास कहिल्यै खेर जाँदैन।",
+"कुनै पनि काम सुरु गर्नुअघि त्यसको राम्रोसँग अध्ययन गर्नुपर्छ।",
+"हामीले अरूको विचार पनि सम्मान गर्न सिक्नुपर्छ।"
+];
+
+const suffixes=[
+"को नयाँ अध्याय","को अनौठो मोड","र एउटा निर्णय",
+"को सम्झना","को उज्यालो बाटो","को परीक्षा",
+"को रहस्य","को प्रेरणा","को यात्रा","को सन्देश"
+];
+
+
+/* ==========================
+   लामो कथा निर्माण प्रणाली
+========================== */
+
+function makeStory(categoryIndex,number){
+
+ const category=categories[categoryIndex];
+
+ const baseTitle=category.titles[(number-1)%10];
+
+ const extra=suffixes[Math.floor((number-1)/10)];
+
+ const title=number<=10?baseTitle:baseTitle+" "+extra;
+
+ const person=characters[(number+categoryIndex)%characters.length];
+
+ const friend=characters[(number+categoryIndex+3)%characters.length];
+
+ const place=places[(number+categoryIndex)%places.length];
+
+ const talk=dialogue[(number+categoryIndex)%dialogue.length];
+
+ const paragraphs=[
+
+ `नेपालको सुन्दर भूभागभित्र रहेको ${place} मा ${person} नाम गरेको एक जिज्ञासु र मेहनती व्यक्ति बस्दथ्यो। ऊ सधैँ नयाँ कुरा सिक्न चाहन्थ्यो। आफ्नो गाउँ, समाज र वरिपरिको वातावरणलाई राम्रो बनाउने उसको ठूलो इच्छा थियो। उसले सानैदेखि आफूले देखेका घटना र मानिसहरूका अनुभवबाट धेरै कुरा सिक्दै आएको थियो।`,
+
+ `एक दिन ${person} को जीवनमा "${title}" सँग सम्बन्धित एउटा महत्त्वपूर्ण घटना घट्यो। सुरुमा उसलाई यो घटना सामान्यजस्तै लाग्यो। तर केही समयपछि त्यस घटनाले धेरै मानिसको जीवन र सोचमा प्रभाव पार्न सक्ने कुरा उसले बुझ्यो। उसले यस विषयलाई ध्यानपूर्वक हेर्न थाल्यो।`,
+
+ `उसको साथी ${friend} पनि त्यस घटनाबारे जान्न उत्सुक थियो। एक दिन दुवैजना भेटेर यस विषयमा लामो छलफल गरे। ${friend} ले भन्यो, "हामीले हरेक समस्यालाई शान्त मनले बुझ्नुपर्छ। हतारमा निर्णय गर्दा कहिलेकाहीँ झन् समस्या बढ्न सक्छ।" उसको कुरा सुनेर ${person} केही समय सोचमग्न भयो।`,
+
+ `अर्को बिहान ${person} ले वास्तविक अवस्था बुझ्न विभिन्न मानिसहरूसँग भेट्ने निर्णय गर्‍यो। उसले ज्येष्ठ नागरिक, शिक्षक, विद्यार्थी र स्थानीय व्यक्तिहरूसँग कुरा गर्‍यो। सबैका अनुभव फरक थिए। कसैले आफ्नो पुरानो अनुभव सुनाए भने कसैले नयाँ उपाय सुझाए। ती सबै विचार सुनेपछि उसले समस्यालाई धेरै पक्षबाट हेर्न सिक्यो।`,
+
+ `केही दिनको अध्ययनपछि उसले आफ्नो योजना तयार गर्‍यो। योजना बनाउँदा उसले समय, साधन, मानिसहरूको सहयोग र भविष्यमा पर्न सक्ने प्रभावबारे विचार गर्‍यो। उसलाई थाहा थियो कि राम्रो उद्देश्य भए पनि त्यसलाई पूरा गर्न निरन्तर मेहनत आवश्यक पर्छ। त्यसैले उसले सानो कामबाट सुरुवात गर्ने निर्णय गर्‍यो।`,
+
+ `योजना सुरु भएको केही दिनपछि केही चुनौतीहरू देखा परे। कतिपय मानिसले उसको विचार बुझ्न सकेनन् भने कतिपयले काम सफल नहुने अनुमान गरे। तर ${person} ले कसैसँग विवाद गरेन। उसले सबैको कुरा ध्यानपूर्वक सुन्यो र आफ्नो योजनामा आवश्यक सुधार गर्दै अघि बढ्यो। उसले बुझ्यो कि आलोचनाबाट पनि उपयोगी कुरा सिक्न सकिन्छ।`,
+
+ `एक साँझ उसले आफ्नो साथी ${friend} सँग फेरि छलफल गर्‍यो। ${friend} ले भन्यो, "${talk}" यो कुरा सुनेपछि ${person} को आत्मविश्वास बढ्यो। दुवैले मिलेर काम गर्ने र अरूलाई पनि सकारात्मक रूपमा सहभागी गराउने निर्णय गरे। उनीहरूले आफ्नो उद्देश्य सबैलाई सरल भाषामा बुझाउन थाले।`,
+
+ `समय बित्दै जाँदा उनीहरूको प्रयासमा अरू मानिसहरू पनि सहभागी हुन थाले। कसैले आवश्यक सामग्री उपलब्ध गराए, कसैले आफ्नो समय दिए भने कसैले अनुभव बाँडे। सबैले आ-आफ्नो क्षमताअनुसार सहयोग गरे। पहिले एक्लै गर्न कठिन देखिएको काम अब सामूहिक प्रयासबाट सम्भव हुन थालेको थियो।`,
+
+ `तर सफलताको बाटो सधैँ सजिलो हुँदैन। एक दिन उनीहरूले सोचेभन्दा फरक परिस्थिति सामना गर्नुपर्‍यो। केही काम रोकिए र उनीहरूको योजनामा ढिलाइ भयो। त्यसबेला उनीहरूले हतास हुनुको सट्टा फेरि छलफल गरे। गल्ती कहाँ भयो भनेर खोजे र अर्को उपाय अपनाए। यसबाट उनीहरूले धैर्य र लचकताको महत्त्व बुझे।`,
+
+ `केही समयपछि उनीहरूको मेहनतको राम्रो परिणाम देखिन थाल्यो। मानिसहरूमा नयाँ सोच विकास भयो र पहिलेभन्दा बढी सहयोगको भावना देखिन थाल्यो। ${person} ले आफ्नो प्रयासले अरूलाई पनि प्रेरणा दिएको अनुभव गर्‍यो। उसले बुझ्यो कि ठूलो परिवर्तन सधैँ ठूलो कामबाट मात्र सुरु हुँदैन; कहिलेकाहीँ सानो प्रयास नै परिवर्तनको पहिलो पाइला हुन्छ।`,
+
+ `एक दिन सबै सहयोगीहरू भेला भए। उनीहरूले आफ्नो यात्राका अनुभव सुनाए। कसैले कठिन समय सम्झिए, कसैले सिकेका नयाँ कुरा बताए र कसैले भविष्यमा अझ राम्रो काम गर्ने योजना प्रस्तुत गरे। ${person} ले सबैलाई धन्यवाद दिँदै भन्यो, "हामीले एकअर्कालाई सम्मान र सहयोग गर्न सक्यौँ भने कुनै पनि राम्रो उद्देश्यतर्फ अघि बढ्न सक्छौँ।"`,
+
+ `यसरी "${title}" को घटनाले सबैलाई नयाँ अनुभव र शिक्षा दियो। ${person} ले जीवनमा इमानदारी, धैर्य, परिश्रम र सहकार्यको महत्त्व कहिल्यै नबिर्सने निर्णय गर्‍यो। उसले आफ्नो अनुभव अरूसँग पनि बाँड्यो, ताकि अरूले पनि त्यसबाट सिक्न सकून्। जीवनमा समस्या आउनु स्वाभाविक हो, तर सकारात्मक सोच र निरन्तर प्रयासले समाधानको बाटो खोज्न सकिन्छ भन्ने कुरा उसले प्रमाणित गर्‍यो।`
+
+ ];
+
+ return {
+  title:title,
+  paragraphs:paragraphs
+ };
+
+}
+
+
+/* ==========================
+   एपको काम गर्ने भाग
+========================== */
+
+let favorites=JSON.parse(
+ localStorage.getItem("aayushKathaFavorites")||"[]"
+);
+
+let currentStory=null;
+let favoritesOnly=false;
+let fontSize=18;
+
+const $=id=>document.getElementById(id);
+
+
+/* विधा सूची बनाउने */
+
+categories.forEach((category,index)=>{
+
+ const option=document.createElement("option");
+
+ option.value=index;
+ option.textContent=category.name;
+
+ $("category").appendChild(option);
+
+ const chip=document.createElement("button");
+
+ chip.className="chip";
+ chip.textContent=category.name;
+
+ chip.onclick=()=>{
+  $("category").value=index;
+  renderStories();
+ };
+
+ $("chips").appendChild(chip);
+
+});
+
+
+/* कथा ID */
+
+function storyID(categoryIndex,number){
+ return categoryIndex*100+number-1;
+}
+
+function isFavorite(id){
+ return favorites.includes(id);
+}
+
+function saveFavorites(){
+ localStorage.setItem(
+  "aayushKathaFavorites",
+  JSON.stringify(favorites)
+ );
+}
+
+
+/* मनपर्ने कथा */
+
+function toggleFavorite(id){
+
+ if(isFavorite(id)){
+  favorites=favorites.filter(x=>x!==id);
+ }else{
+  favorites.push(id);
+ }
+
+ saveFavorites();
+ renderStories();
+
+ if(currentStory!==null){
+  updateReaderFavorite();
+ }
+
+}
+
+function toggleCurrentFav(){
+
+ if(currentStory!==null){
+  toggleFavorite(currentStory);
+ }
+
+}
+
+function updateReaderFavorite(){
+
+ $("readerFav").textContent=
+ isFavorite(currentStory)
+ ?"♥ मनपर्नेबाट हटाउनुहोस्"
+ :"♡ मनपर्नेमा राख्नुहोस्";
+
+}
+
+
+/* कथा सूची */
+
+function renderStories(){
+
+ const query=$("search").value.trim().toLowerCase();
+
+ const selectedCategory=$("category").value;
+
+ let results=[];
+
+ categories.forEach((category,index)=>{
+
+  if(
+   selectedCategory!=="all" &&
+   Number(selectedCategory)!==index
+  ){
+   return;
+  }
+
+  for(let number=1;number<=100;number++){
+
+   const story=makeStory(index,number);
+
+   const id=storyID(index,number);
+
+   if(favoritesOnly && !isFavorite(id)){
+    continue;
+   }
+
+   const searchable=(
+    story.title+" "+
+    category.name+" "+
+    category.description+" "+
+    story.paragraphs.join(" ")
+   ).toLowerCase();
+
+   if(query && !searchable.includes(query)){
+    continue;
+   }
+
+   results.push({
+    id,
+    index,
+    number,
+    title:story.title,
+    paragraphs:story.paragraphs
+   });
+
+  }
+
+ });
+
+
+ $("status").textContent=
+ `${results.length} वटा कथा देखाइँदैछन् | जम्मा १,५०० कथा`;
+
+ $("chips").querySelectorAll("button").forEach((button,index)=>{
+
+  button.classList.toggle(
+   "active",
+   selectedCategory==index
+  );
+
+ });
+
+
+ if(results.length===0){
+
+  $("storyGrid").innerHTML=
+  '<div class="empty">कुनै कथा भेटिएन। अर्को शब्द खोज्नुहोस्।</div>';
+
+  return;
+
+ }
+
+
+ $("storyGrid").innerHTML=results.map(story=>`
+
+  <article class="item">
+
+   <div class="muted">
+    ${categories[story.index].name}
+    · कथा ${story.number}/१००
+   </div>
+
+   <h3>${story.title}</h3>
+
+   <p>
+    ${story.paragraphs[0].slice(0,160)}...
+   </p>
+
+   <button class="primary"
+    onclick="openStory(${story.index},${story.number})">
+    📖 पूरा लामो कथा पढ्नुहोस्
+   </button>
+
+   <button class="fav"
+    onclick="toggleFavorite(${story.id})">
+
+    ${isFavorite(story.id)
+     ?"♥ मनपर्नेमा सुरक्षित छ"
+     :"♡ मनपर्नेमा राख्नुहोस्"}
+
+   </button>
+
+  </article>
+
+ `).join("");
+
+}
+
+
+/* कथा खोल्ने */
+
+function openStory(categoryIndex,number){
+
+ const story=makeStory(categoryIndex,number);
+
+ currentStory=storyID(categoryIndex,number);
+
+ $("storyTitle").textContent=story.title;
+
+ $("storyInfo").textContent=
+ categories[categoryIndex].name+
+ " | कथा "+number+"/१००"+
+ " | आयुष नेपाली साहित्य";
+
+ $("storyContent").innerHTML=
+ story.paragraphs.map((paragraph,index)=>`
+
+  <p>${paragraph}</p>
+
+ `).join("");
+
+ $("storyContent").style.fontSize=fontSize+"px";
+
+ updateReaderFavorite();
+
+ $("reader").style.display="block";
+
+ $("listing").style.display="none";
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
+
+}
+
+
+/* कथा बन्द गर्ने */
+
+function closeStory(){
+
+ $("reader").style.display="none";
+
+ $("listing").style.display="block";
+
+ currentStory=null;
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
+
+}
+
+
+/* अक्षरको आकार */
+
+function changeFont(change){
+
+ fontSize=Math.max(
+  14,
+  Math.min(28,fontSize+change)
+ );
+
+ $("storyContent").style.fontSize=
+ fontSize+"px";
+
+}
+
+
+/* सबै कथा */
+
+function showAll(){
+
+ favoritesOnly=false;
+
+ renderStories();
+
+}
+
+
+/* मनपर्ने कथा मात्र */
+
+function showFavorites(){
+
+ favoritesOnly=true;
+
+ renderStories();
+
+}
+
+
+/* खोजी */
+
+$("search").addEventListener(
+ "input",
+ renderStories
+);
+
+$("category").addEventListener(
+ "change",
+ renderStories
+);
+
+
+/* थिम */
+
+$("theme").addEventListener("change",event=>{
+
+ document.body.classList.remove(
+  "dark",
+  "sepia"
+ );
+
+ const selected=event.target.value;
+
+ if(selected!=="light"){
+  document.body.classList.add(selected);
+ }
+
+ localStorage.setItem(
+  "aayushKathaTheme",
+  selected
+ );
+
+});
+
+
+/* पहिलेको थिम */
+
+const savedTheme=
+ localStorage.getItem("aayushKathaTheme")||"light";
+
+$("theme").value=savedTheme;
+
+if(savedTheme!=="light"){
+ document.body.classList.add(savedTheme);
+}
+
+
+/* वर्ष */
+
+$("year").textContent=
+ new Date().getFullYear();
+
+
+/* सुरुमा सबै कथा देखाउने */
+
+renderStories();
+
+</script>
+
+
+
+
+<script>
+(function(){
+ const themes=[["light", "Light"], ["dark", "Dark"], ["blue", "Blue"], ["skyblue", "Sky Blue"], ["pink", "Pink"], ["skypink", "Sky Pink"], ["bluepink", "Blue Pink"], ["green", "Green"], ["purple", "Purple"], ["yellow", "Yellow"], ["orange", "Orange"], ["ocean", "Ocean"], ["forest", "Forest"], ["rose", "Rose"], ["sepia", "Sepia"]];
+ const langs={"ne":"नेपाली","en":"English","hi":"हिन्दी","es":"Español","fr":"Français","de":"Deutsch","zh":"中文","ja":"日本語","ko":"한국어","ar":"العربية","ru":"Русский","pt":"Português","it":"Italiano","bn":"বাংলা","ta":"தமிழ்","te":"తెలుగు","mr":"मराठी","gu":"ગુજરાતી","pa":"ਪੰਜਾਬੀ","ur":"اردو"};
+ const tr={"ne":{"home":"गृहपृष्ठ","bio":"जीवनी","poem":"कविता","story":"कथा","essay":"निबन्ध","ramayan":"रामायण","chalisa":"हनुमान चालीसा","about":"हाम्रो बारेमा","theme":"थीम","language":"भाषा"},"en":{"home":"Home","bio":"Biography","poem":"Poetry","story":"Stories","essay":"Essays","ramayan":"Ramayana","chalisa":"Hanuman Chalisa","about":"About","theme":"Theme","language":"Language"},"hi":{"home":"होम","bio":"जीवनी","poem":"कविता","story":"कहानी","essay":"निबंध","ramayan":"रामायण","chalisa":"हनुमान चालीसा","about":"हमारे बारे में","theme":"थीम","language":"भाषा"},"es":{"home":"Inicio","bio":"Biografías","poem":"Poesía","story":"Historias","essay":"Ensayos","ramayan":"Ramayana","chalisa":"Hanuman Chalisa","about":"Sobre nosotros","theme":"Tema","language":"Idioma"},"fr":{"home":"Accueil","bio":"Biographies","poem":"Poésie","story":"Histoires","essay":"Essais","ramayan":"Ramayana","chalisa":"Hanuman Chalisa","about":"À propos","theme":"Thème","language":"Langue"},"de":{"home":"Startseite","bio":"Biografien","poem":"Gedichte","story":"Geschichten","essay":"Aufsätze","ramayan":"Ramayana","chalisa":"Hanuman Chalisa","about":"Über uns","theme":"Thema","language":"Sprache"},"zh":{"home":"首页","bio":"传记","poem":"诗歌","story":"故事","essay":"文章","ramayan":"罗摩衍那","chalisa":"哈奴曼颂","about":"关于我们","theme":"主题","language":"语言"},"ja":{"home":"ホーム","bio":"伝記","poem":"詩","story":"物語","essay":"エッセイ","ramayan":"ラーマーヤナ","chalisa":"ハヌマーン・チャリサー","about":"私たちについて","theme":"テーマ","language":"言語"},"ko":{"home":"홈","bio":"전기","poem":"시","story":"이야기","essay":"에세이","ramayan":"라마야나","chalisa":"하누만 찰리사","about":"소개","theme":"테마","language":"언어"},"ar":{"home":"الرئيسية","bio":"السيرة","poem":"الشعر","story":"القصص","essay":"المقالات","ramayan":"رامايانا","chalisa":"هانومان تشاليسا","about":"من نحن","theme":"المظهر","language":"اللغة"},"ru":{"home":"Главная","bio":"Биографии","poem":"Поэзия","story":"Рассказы","essay":"Эссе","ramayan":"Рамаяна","chalisa":"Хануман Чалиса","about":"О нас","theme":"Тема","language":"Язык"},"pt":{"home":"Início","bio":"Biografias","poem":"Poesia","story":"Histórias","essay":"Ensaios","ramayan":"Ramayana","chalisa":"Hanuman Chalisa","about":"Sobre nós","theme":"Tema","language":"Idioma"},"it":{"home":"Home","bio":"Biografie","poem":"Poesia","story":"Storie","essay":"Saggi","ramayan":"Ramayana","chalisa":"Hanuman Chalisa","about":"Chi siamo","theme":"Tema","language":"Lingua"},"bn":{"home":"হোম","bio":"জীবনী","poem":"কবিতা","story":"গল্প","essay":"প্রবন্ধ","ramayan":"রামায়ণ","chalisa":"হনুমান চালিসা","about":"আমাদের সম্পর্কে","theme":"থিম","language":"ভাষা"},"ta":{"home":"முகப்பு","bio":"வாழ்க்கை வரலாறு","poem":"கவிதை","story":"கதை","essay":"கட்டுரை","ramayan":"ராமாயணம்","chalisa":"அனுமன் சாலிசா","about":"எங்களைப் பற்றி","theme":"தீம்","language":"மொழி"},"te":{"home":"హోమ్","bio":"జీవిత చరిత్ర","poem":"కవిత్వం","story":"కథలు","essay":"వ్యాసాలు","ramayan":"రామాయణం","chalisa":"హనుమాన్ చాలీసా","about":"మా గురించి","theme":"థీమ్","language":"భాష"},"mr":{"home":"मुखपृष्ठ","bio":"चरित्र","poem":"कविता","story":"कथा","essay":"निबंध","ramayan":"रामायण","chalisa":"हनुमान चालीसा","about":"आमच्याबद्दल","theme":"थीम","language":"भाषा"},"gu":{"home":"હોમ","bio":"જીવનચરિત્ર","poem":"કવિતા","story":"વાર્તા","essay":"નિબંધ","ramayan":"રામાયણ","chalisa":"હનુમાન ચાલીસા","about":"અમારા વિશે","theme":"થીમ","language":"ભાષા"},"pa":{"home":"ਘਰ","bio":"ਜੀਵਨੀ","poem":"ਕਵਿਤਾ","story":"ਕਹਾਣੀਆਂ","essay":"ਲੇਖ","ramayan":"ਰਾਮਾਇਣ","chalisa":"ਹਨੂਮਾਨ ਚਾਲੀਸਾ","about":"ਸਾਡੇ ਬਾਰੇ","theme":"ਥੀਮ","language":"ਭਾਸ਼ਾ"},"ur":{"home":"گھر","bio":"سوانح","poem":"شاعری","story":"کہانیاں","essay":"مضامین","ramayan":"رامائن","chalisa":"ہنومان چالیسہ","about":"ہمارے بارے میں","theme":"تھیم","language":"زبان"}};
+ const savedTheme=localStorage.getItem("aayushTheme15")||"light";
+ document.body.dataset.ayTheme=savedTheme;
+ function navMap(){
+  const links=document.querySelectorAll("nav a");
+  const map={"index.html":"home","jibani.html":"bio","kabita.html":"poem","katha.html":"story","nibandha.html":"essay","ramayan.html":"ramayan","hanuman-chalisa.html":"chalisa","about.html":"about"};
+  links.forEach(a=>{const key=map[(a.getAttribute("href")||"").split("#")[0]]; if(key) a.dataset.navKey=key;});
+ }
+ function renderTools(){
+  if(document.getElementById("ayThemeLang")) return;
+  const bar=document.createElement("section"); bar.id="ayThemeLang"; bar.className="ay-tools";
+  bar.innerHTML=`<h2>🎨 Theme & Language</h2>
+   <div><label data-i18n="theme">Theme</label><select id="ayThemeSelect"></select></div>
+   <div><label data-i18n="language">Language</label><select id="ayLangSelect"></select></div>
+   <div class="ay-actions"><button type="button" id="ayReset">↺ Reset</button></div>
+   <p class="ay-hint">🇳🇵 नेपाली प्राथमिक भाषा। नेपालीसँगै English, हिन्दी, Español, Français, Deutsch, 中文, 日本語, 한국어, العربية, Русский लगायत २० भाषा विकल्प छन्।</p>`;
+  const nav=document.querySelector("nav"); if(nav) nav.insertAdjacentElement("afterend",bar); else document.body.prepend(bar);
+  const ts=document.getElementById("ayThemeSelect"), ls=document.getElementById("ayLangSelect");
+  themes.forEach(([v,n])=>{const o=document.createElement("option");o.value=v;o.textContent=n;ts.appendChild(o)});
+  Object.entries(langs).forEach(([v,n])=>{const o=document.createElement("option");o.value=v;o.textContent=(v==="ne"?"🇳🇵 ":"")+n;ls.appendChild(o)});
+  ts.value=savedTheme; ls.value=localStorage.getItem("aayushLang20")||"ne";
+  ts.onchange=()=>{document.body.dataset.ayTheme=ts.value;localStorage.setItem("aayushTheme15",ts.value)};
+  ls.onchange=()=>{localStorage.setItem("aayushLang20",ls.value);applyLang(ls.value)};
+  document.getElementById("ayReset").onclick=()=>{localStorage.removeItem("aayushTheme15");localStorage.removeItem("aayushLang20");location.reload()};
+ }
+ function applyLang(code){
+  const d=tr[code]||tr.en;
+  document.querySelectorAll("[data-nav-key]").forEach(a=>{const k=a.dataset.navKey;if(d[k]) a.textContent=(k==="home"?"🏠 ":"")+d[k]});
+  document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;if(d[k]) el.textContent=d[k]});
+  document.documentElement.lang=code;
+ }
+ navMap(); renderTools(); applyLang(localStorage.getItem("aayushLang20")||"ne");
+ const note=document.createElement("aside"); note.className="ay-side-note";
+ note.innerHTML=`<h3>📚 AAYUSH नेपाली साहित्य</h3><p>यो डिजिटल पुस्तकालयमा कथा, कविता, बाल साहित्य, निबन्ध, जीवनी, रामायण र हनुमान चालीसा सामग्री एउटै ठाउँमा राखिएको छ।</p><p>थीम परिवर्तन गर्दा रोजाइ सुरक्षित हुन्छ। भाषा विकल्पले मुख्य interface बदल्छ; मूल साहित्यिक पाठ सुरक्षित रहन्छ।</p><a href="index.html">गृहपृष्ठ</a>`;
+ document.body.appendChild(note);
+})();
+</script></body>
+</html>

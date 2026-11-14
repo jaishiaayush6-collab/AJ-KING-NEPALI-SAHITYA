@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html  lang="ne">
-<head><meta name="theme-color" content="#0d47a1"><link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<html lang="ne">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -368,71 +368,9 @@ body a{color:var(--ay-primary)}
 .ay-page-extra p{margin:10px 0;text-align:justify}
 @media(max-width:900px){.ay-side-note{display:none}.ay-tools{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.ay-tools{grid-template-columns:1fr;margin:10px;padding:12px}.ay-tools h2,.ay-hint{grid-column:auto}}
-</style>
-<style id="aayush-pwa-ui">
-.ay-appbar{position:relative;z-index:50;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 16px;background:var(--ay-card,#fff);border-bottom:1px solid var(--ay-border,#dbe3ef)}
-.ay-brand{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none;color:var(--ay-text,#17233a)}
-.ay-brand img{width:38px;height:38px;border-radius:10px}
-.ay-tools{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.ay-tools select{padding:7px 10px;border-radius:8px;border:1px solid var(--ay-border,#cbd5e1);background:var(--ay-card,#fff);color:var(--ay-text,#17233a)}
-.ay-install{display:none;padding:7px 11px;border:0;border-radius:8px;background:var(--ay-primary,#2563eb);color:#fff;font-weight:700;cursor:pointer}
-.ay-app-links{display:flex;gap:7px;flex-wrap:wrap;padding:8px 16px;background:var(--ay-soft,#eff6ff);border-bottom:1px solid var(--ay-border,#dbe3ef)}
-.ay-app-links a{font-weight:700;text-decoration:none;padding:5px 9px;border-radius:7px;color:var(--ay-text,#17233a)}
-.ay-app-links a:hover{background:var(--ay-card,#fff)}
-@media(max-width:600px){.ay-tools{width:100%;margin-left:0}.ay-app-links{overflow:auto;flex-wrap:nowrap}}
-</style>
-</head>
+</style></head>
 
 <body>
-<div class="ay-appbar">
-  <a class="ay-brand" href="index.html" aria-label="आयुष नेपाली साहित्य">
-    <img src="logo.svg" alt="आयुष नेपाली साहित्य लोगो">
-    <span>आयुष नेपाली साहित्य</span>
-  </a>
-  <div class="ay-tools">
-    <label for="ayLanguage" style="font-weight:700">भाषा</label>
-    <select id="ayLanguage" aria-label="भाषा चयन"><option value="ne">नेपाली</option>
-<option value="en">English</option>
-<option value="hi">हिन्दी</option>
-<option value="es">Español</option>
-<option value="fr">Français</option>
-<option value="de">Deutsch</option>
-<option value="zh">中文</option>
-<option value="ja">日本語</option>
-<option value="ko">한국어</option>
-<option value="ar">العربية</option>
-<option value="ru">Русский</option>
-<option value="pt">Português</option>
-<option value="it">Italiano</option>
-<option value="bn">বাংলা</option>
-<option value="ta">தமிழ்</option>
-<option value="te">తెలుగు</option>
-<option value="mr">मराठी</option>
-<option value="gu">ગુજરાતી</option>
-<option value="pa">ਪੰਜਾਬੀ</option>
-<option value="ur">اردو</option></select>
-    <label for="ayTheme" style="font-weight:700">थिम</label>
-    <select id="ayTheme" aria-label="थिम चयन">
-      <option value="light">Light</option><option value="dark">Dark</option>
-      <option value="blue">Blue</option><option value="sky">Sky Blue</option>
-      <option value="pink">Pink</option><option value="sky-pink">Sky Pink</option>
-      <option value="blue-pink">Blue Pink</option><option value="green">Green</option>
-      <option value="purple">Purple</option><option value="yellow">Yellow</option>
-      <option value="orange">Orange</option><option value="ocean">Ocean</option>
-      <option value="forest">Forest</option><option value="rose">Rose</option>
-      <option value="sepia">Sepia</option>
-    </select>
-    <button id="ayInstall" class="ay-install" type="button">📱 एप स्थापना</button>
-  </div>
-</div>
-<div class="ay-app-links">
-  <a href="index.html">गृहपृष्ठ</a><a href="about.html">हाम्रो बारेमा</a>
-  <a href="bal-sahitya.html">बाल साहित्य</a><a href="jibani.html">जीवनी</a>
-  <a href="kabita.html">कविता</a><a href="katha.html">कथा</a>
-  <a href="nibandha.html">निबन्ध</a><a href="ramayan.html">रामायण</a>
-  <a href="hanuman-chalisa.html">हनुमान चालीसा</a>
-</div>
-
 
 <header>
     <h1>📚 आयुस नेपाली साहित्य</h1>
@@ -1203,58 +1141,5 @@ renderItems();
  note.innerHTML=`<h3>📚 AAYUSH नेपाली साहित्य</h3><p>यो डिजिटल पुस्तकालयमा कथा, कविता, बाल साहित्य, निबन्ध, जीवनी, रामायण र हनुमान चालीसा सामग्री एउटै ठाउँमा राखिएको छ।</p><p>थीम परिवर्तन गर्दा रोजाइ सुरक्षित हुन्छ। भाषा विकल्पले मुख्य interface बदल्छ; मूल साहित्यिक पाठ सुरक्षित रहन्छ।</p><a href="index.html">गृहपृष्ठ</a>`;
  document.body.appendChild(note);
 })();
-</script>
-<script id="aayush-pwa-js">
-(function(){
-  const langs = [{"code": "ne", "name": "नेपाली"}, {"code": "en", "name": "English"}, {"code": "hi", "name": "हिन्दी"}, {"code": "es", "name": "Español"}, {"code": "fr", "name": "Français"}, {"code": "de", "name": "Deutsch"}, {"code": "zh", "name": "中文"}, {"code": "ja", "name": "日本語"}, {"code": "ko", "name": "한국어"}, {"code": "ar", "name": "العربية"}, {"code": "ru", "name": "Русский"}, {"code": "pt", "name": "Português"}, {"code": "it", "name": "Italiano"}, {"code": "bn", "name": "বাংলা"}, {"code": "ta", "name": "தமிழ்"}, {"code": "te", "name": "తెలుగు"}, {"code": "mr", "name": "मराठी"}, {"code": "gu", "name": "ગુજરાતી"}, {"code": "pa", "name": "ਪੰਜਾਬੀ"}, {"code": "ur", "name": "اردو"}];
-  const savedLang = localStorage.getItem("aayushLanguage") || "ne";
-  const savedTheme = localStorage.getItem("aayushTheme") || "light";
-  document.documentElement.lang = savedLang;
-  document.documentElement.dataset.primaryLanguage = "ne";
-
-  function setTheme(t){
-    document.body.dataset.ayTheme = t;
-    localStorage.setItem("aayushTheme", t);
-  }
-  function setLang(l){
-    document.documentElement.lang = l;
-    localStorage.setItem("aayushLanguage", l);
-  }
-
-  document.addEventListener("DOMContentLoaded", function(){
-    const sel = document.getElementById("ayLanguage");
-    if(sel){
-      sel.value = savedLang;
-      sel.addEventListener("change", e => setLang(e.target.value));
-    }
-    const theme = document.getElementById("ayTheme");
-    if(theme){
-      theme.value = savedTheme;
-      theme.addEventListener("change", e => setTheme(e.target.value));
-    }
-    setTheme(savedTheme);
-    const installBtn = document.getElementById("ayInstall");
-    let deferredPrompt = null;
-    window.addEventListener("beforeinstallprompt", e => {
-      e.preventDefault();
-      deferredPrompt = e;
-      if(installBtn) installBtn.style.display = "inline-block";
-    });
-    if(installBtn){
-      installBtn.addEventListener("click", async () => {
-        if(!deferredPrompt) return;
-        deferredPrompt.prompt();
-        await deferredPrompt.userChoice;
-        deferredPrompt = null;
-        installBtn.style.display = "none";
-      });
-    }
-  });
-
-  if("serviceWorker" in navigator){
-    window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(()=>{}));
-  }
-})();
-</script>
-</body>
+</script></body>
 </html>
